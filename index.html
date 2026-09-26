@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vedic Birth Chart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Foreground */
+      --color-foreground-faint:         #706E68;
+      --color-foreground-subtle:        #6F4925;
+      --color-foreground-default:       #663100;
+      --color-foreground-intense:       #411F00;
+      --color-foreground-brand-default: #812781;
+      --color-foreground-brand-subtle:  #0774D6;
+      --color-foreground-inverse:       #F2EFEA;
+
+      /* Background */
+      --color-background-default:       #F2EFEA;
+      --color-background-subtle:        #EBE7E0;
+      --color-background-intense:       #D2CDC5;
+      --color-background-brand-subtle:  #FFCC02;
+      --color-background-brand-default: #B2C656;
+      --color-background-brand-intense: #FF3303;
+
+      /* Border */
+      --color-border-default:           #D2CDC5;
+      --color-border-intense:           #706E68;
+
+      /* Legacy aliases — keeps existing code working */
+      --bg:        var(--color-background-default);
+      --bg-elev:   var(--color-background-subtle);
+      --bg-elev-2: var(--color-background-intense);
+      --stroke:    var(--color-border-default);
+      --stroke-soft: var(--color-border-default);
+      --text:      var(--color-foreground-intense);
+      --text-2:    var(--color-foreground-default);
+      --text-3:    var(--color-foreground-faint);
+      --accent:    var(--color-foreground-intense);
+      --good:      #2D6A4F;
+      --warn:      #8B5E2A;
+      --danger:    #8B3A34;
+      /* color-block fills — replace with images */
+      --block-rose:   #D4847A;
+      --block-green:  #4A7C5F;
+      --block-lime:   #B8C94A;
+      --block-earth:  #8B6F4E;
+      --maxw: 1080px;
+      --font-display: "Bricolage Grotesque", Helvetica, Arial, sans-serif;
+      --font-base: "Geist", Helvetica, Arial, sans-serif;
+      --font-symbols: "Apple Symbols", "Symbols", sans-serif;
+
+      /* Font weights */
+      --text-weight-lt: 300;
+      --text-weight-reg: 400;
+      --text-weight-med: 500;
+      --text-weight-semi: 600;
+      --text-weight-bold: 700;
+      --text-weight-xbold: 800;
+      --text-weight-black: 900;
+
+      /* Line heights */
+      --text-line-height-compressed: 1.1;
+      --text-line-height-tight: 1.25;
+      --text-line-height-cozy: 1.375;
+      --text-line-height-normal: 1.5;
+      --text-line-height-relaxed: 1.625;
+      --text-line-height-loose: 1.75;
+      --text-line-height-spacious: 2;
+
+      /* Letter spacing */
+      --text-letter-spacing-compressed: -0.01em;
+      --text-letter-spacing-tight: -0.008em;
+      --text-letter-spacing-cozy: -0.006em;
+      --text-letter-spacing-normal: -0.004em;
+
+      /* Spacing scale (rem @16px base) */
+      --spacing-1: 0.25rem;   /* 4px */
+      --spacing-2: 0.5rem;    /* 8px */
+      --spacing-3: 0.75rem;   /* 12px */
+      --spacing-4: 1rem;      /* 16px */
+      --spacing-5: 1.25rem;   /* 20px */
+      --spacing-6: 1.5rem;    /* 24px */
+      --spacing-7: 2rem;      /* 32px */
+      --spacing-8: 2.5rem;    /* 40px */
+      --spacing-9: 3rem;      /* 48px */
+      --spacing-10: 3.5rem;   /* 56px */
+      --spacing-11: 4rem;     /* 64px */
+      --spacing-12: 5rem;     /* 80px */
+
+      /* Border radius */
+      --border-radius-sm: 0.125rem;  /* 2px */
+      --border-radius-md: 0.25rem;   /* 4px */
+      --border-radius-lg: 0.375rem;  /* 6px */
+      --border-radius-xl: 0.5rem;    /* 8px */
+      --border-radius-2xl: 0.75rem;  /* 12px */
+      --border-radius-3xl: 1rem;     /* 16px */
+      --border-radius-4xl: 1.5rem;   /* 24px */
+      --border-radius-full: 9999px;
+
+      /* Type scale — 16px base */
+      --text-size-3xs: 0.625rem;    /* 10px */
+      --text-size-xxs: 0.75rem;    /* 12px */
+      --text-size-xs: 0.875rem;    /* 14px */
+      --text-size-sm: 1rem;        /* 16px */
+      --text-size-md: 1.25rem;     /* 20px */
+      --text-size-lg: 1.5rem;      /* 24px */
+      --text-size-xl: 1.75rem;     /* 28px */
+      --text-size-2xl: 2.5rem;     /* 40px */
+      --text-size-3xl: 3rem;       /* 48px */
+      --text-size-4xl: 3.75rem;    /* 60px */
+      --text-size-5xl: 4.5rem;     /* 72px */
+    }
+    /* ─── TEXT STYLES ─── */
+    .text-display {
+      font-family: var(--font-display); font-size: var(--text-size-5xl);
+      line-height: var(--text-line-height-normal); letter-spacing: var(--text-letter-spacing-tight);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-display-sm {
+      font-family: var(--font-display); font-size: var(--text-size-4xl);
+      line-height: var(--text-line-height-tight); letter-spacing: var(--text-letter-spacing-cozy);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-heading-3xl {
+      font-family: var(--font-display); font-size: var(--text-size-3xl);
+      line-height: var(--text-line-height-tight); letter-spacing: var(--text-letter-spacing-normal);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-heading-2xl {
+      font-family: var(--font-display); font-size: var(--text-size-2xl);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-heading-xl {
+      font-family: var(--font-display); font-size: var(--text-size-xl);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-heading-lg {
+      font-family: var(--font-display); font-size: var(--text-size-lg);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-heading-md {
+      font-family: var(--font-display); font-size: var(--text-size-md);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-intense); font-weight: var(--text-weight-xbold);
+    }
+    .text-heading-sm {
+      font-family: var(--font-display); font-size: var(--text-size-sm);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-default); font-weight: var(--text-weight-med);
+    }
+    .text-subtitle {
+      font-family: var(--font-base); font-size: var(--text-size-md);
+      line-height: var(--text-line-height-tight); letter-spacing: var(--text-letter-spacing-compressed);
+      color: var(--color-foreground-subtle); font-weight: var(--text-weight-lt);
+    }
+    .text-body-lg {
+      font-family: var(--font-base); font-size: var(--text-size-sm);
+      line-height: var(--text-line-height-normal); letter-spacing: var(--text-letter-spacing-normal);
+      color: var(--color-foreground-default); font-weight: var(--text-weight-reg);
+    }
+    .text-body-md {
+      font-family: var(--font-base); font-size: var(--text-size-xs);
+      line-height: var(--text-line-height-normal);
+      color: var(--color-foreground-subtle); font-weight: var(--text-weight-reg);
+    }
+    .text-body-sm {
+      font-family: var(--font-base); font-size: var(--text-size-xxs);
+      line-height: var(--text-line-height-normal);
+      color: var(--color-foreground-subtle); font-weight: var(--text-weight-reg);
+    }
+    .text-body-xs {
+      font-family: var(--font-base); font-size: var(--text-size-3xs);
+      line-height: var(--text-line-height-normal); font-weight: var(--text-weight-reg); color:var(--color-foreground-subtle);
+    }
+    .text-eyebrow {
+      font-family: var(--font-display); font-size: var(--text-size-xxs);
+      line-height: var(--text-line-height-compressed); font-weight: var(--text-weight-bold); color:var(--color-foreground-subtle);
+      margin-bottom: 8px;
+    }
+    .text-symbol-lg {
+      font-family: var(--font-symbols); font-size: var(--text-size-3xl);
+      line-height: var(--text-line-height-tight);
+    }
+    ul, li { line-height: var(--text-line-height-spacious); }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-base);
+      font-weight: var(--text-weight-reg);
+      line-height: var(--text-line-height-relaxed);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 0 var(--spacing-12); }
+    h1 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); letter-spacing: var(--text-letter-spacing-tight); font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); }
+    h2 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0 0 var(--spacing-3); }
+    h3 { font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: var(--text-line-height-tight); color: var(--color-foreground-default); margin: 0; }
+    p { margin: 0 0 12px; color: var(--text-2); font-weight: var(--text-weight-lt); }
+    .muted { color: var(--text-3); font-weight: var(--text-weight-lt); }
+    .accent { color: var(--accent); }
+    .inner { padding: 0 32px; }
+
+    /* ─── RESPONSIVE BREAKPOINTS ───────────────────────────────
+       The site uses exactly two breakpoints. Snap every media
+       query to one of these — do not introduce intermediate values.
+         • 1080px — desktop → tablet: two-column layouts collapse to
+                    one column, the Compatibility tab collapses to its
+                    icon, and page gutters appear.
+         • 720px  — tablet → mobile: smallest tier (tighter padding,
+                    single-column grids, stacked cards).
+       (CSS custom properties can't be used inside @media, so these
+       are a documented convention, not variables.)
+    ──────────────────────────────────────────────────────────── */
+    @media (max-width: 720px) { .inner { padding: 0 18px; } }
+    /* Keep a 24px edge gutter on all page content below the max content width */
+    @media (max-width: 1080px) {
+      .wrap { padding-left: var(--spacing-6); padding-right: var(--spacing-6); }
+      .site-header { padding-left: 0; padding-right: 0; }
+    }
+
+    /* ─── SITE HEADER: logo + picker row ─── */
+    .site-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--spacing-9) var(--spacing-7) 0;   /* 48px top · 32px sides */
+      margin-bottom: var(--spacing-8);                 /* 40px gap down to nav */
+      background: var(--bg);
+    }
+    .site-logo {
+      font-family: var(--font-display);
+      font-size: var(--text-size-md);                  /* 20px */
+      font-weight: var(--text-weight-xbold);           /* 800 */
+      line-height: var(--text-line-height-compressed); /* 1.1 */
+      color: var(--color-foreground-intense);
+      text-decoration: none;
+    }
+    .picker { display: flex; align-items: center; gap: var(--spacing-3); }  /* 12px */
+    .picker label {
+      font-family: var(--font-base);
+      font-size: 12px; font-weight: var(--text-weight-med);
+      line-height: var(--text-line-height-normal);
+      color: var(--color-foreground-faint);
+      text-transform: none; letter-spacing: normal;
+    }
+    .picker select {
+      -webkit-appearance: none; appearance: none;
+      background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' stroke='%23663100' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right var(--spacing-4) center;
+      color: var(--color-foreground-default);
+      border: 1px solid var(--color-border-default); border-radius: 0;
+      padding: var(--spacing-2) calc(var(--spacing-4) + 20px) var(--spacing-2) var(--spacing-4);  /* room for chevron */
+      min-width: 240px;
+      font-size: var(--text-size-xs);                  /* 14px */
+      font-family: var(--font-base); cursor: pointer;
+      font-weight: var(--text-weight-semi);
+      line-height: var(--text-line-height-normal);
+    }
+    .picker select:focus { outline: none; border-color: var(--color-foreground-default); }
+    @media (max-width: 720px) { .site-header { padding: 28px 0 0; } }
+
+    /* ─── HERO ─── */
+    header.hero {
+      background: var(--bg);
+    }
+    .hero-main {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: var(--spacing-7);
+      /* full content width — aligns with the stats boxes below & the tab bar above */
+    }
+    .hero-copy {
+      flex: 1 1 0; min-width: 0;
+      background: var(--color-background-brand-subtle);   /* #ffcc02 */
+      display: flex; flex-direction: column; justify-content: space-between;
+      gap: var(--spacing-6);
+      padding: 60px var(--spacing-6) var(--spacing-4);    /* 60 · 24 · 16 */
+    }
+    .hero-info { display: flex; flex-direction: column; gap: var(--spacing-2); }
+    header.hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 72px);                  /* --text-size-5xl */
+      font-weight: var(--text-weight-xbold);
+      line-height: var(--text-line-height-compressed);    /* 1.1 */
+      letter-spacing: -1px;
+      color: var(--color-foreground-intense);
+      margin: 0;
+    }
+    .hero-birth {
+      font-family: var(--font-base);
+      font-size: var(--text-size-md);                     /* 20px */
+      font-weight: var(--text-weight-reg);
+      line-height: 1.3;
+      color: var(--color-foreground-subtle);
+    }
+    .hero-system {
+      font-family: var(--font-base);
+      font-size: 10px;
+      font-weight: var(--text-weight-reg);
+      line-height: var(--text-line-height-normal);
+      color: var(--color-foreground-subtle);
+    }
+    .hero-image-cell {
+      flex: 1 1 0; min-width: 0;
+      overflow: hidden;
+      align-self: stretch;
+    }
+    .hero-image-cell img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    @media (max-width: 1080px) {
+      .hero-main { flex-direction: column; }
+      .hero-copy { padding: 40px 24px 24px; }
+      .hero-image-cell { width: 100%; min-height: 220px; }
+    }
+    @media (max-width: 720px) {
+      .hero-copy { padding: 28px 18px 20px; }
+    }
+
+    /* ─── STATS ─── dramatic scale */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--stroke);
+      margin-bottom: var(--spacing-7);
+    }
+    .stat {
+      background: var(--bg);
+      padding: var(--spacing-6) 22px var(--spacing-5);
+      display: flex; flex-direction: column;
+      border-right: 1px solid var(--stroke);
+    }
+    .stat:last-child { border-right: none; }
+    .stat .l {
+      font-size: 9px; color: var(--text-3);
+      text-transform: uppercase; letter-spacing: 2.5px;
+      margin-bottom: var(--spacing-2); font-weight: var(--text-weight-semi);
+    }
+    .stat .v {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: var(--text-weight-black);
+      letter-spacing: -2px;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat .d {
+      font-size: 11.5px; color: var(--text-3);
+      line-height: 1.5; font-weight: var(--text-weight-lt);
+      border-top: 1px solid var(--stroke-soft);
+      padding-top: var(--spacing-2); margin-top: auto;
+    }
+    @media (max-width: 1080px) { .stats { grid-template-columns: repeat(2,1fr); } }
+
+    /* ─── STICKY NAV ─── sits flush above the hero ─── */
+    nav.tabs {
+      display: flex; align-items: stretch; flex-wrap: nowrap; gap: 0;
+      border-top: 1px solid var(--color-border-default);
+      border-bottom: 1px solid var(--color-border-default);
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      padding: 0;
+      min-height: 60px;
+      overflow-x: auto;
+      scrollbar-width: none;                            /* Firefox: hide scrollbar */
+    }
+    nav.tabs::-webkit-scrollbar { display: none; }      /* WebKit: hide scrollbar */
+    .tab {
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 auto; white-space: nowrap;             /* keep size, scroll instead of wrap */
+      background: none; border: none; border-right: 1px solid var(--color-border-default);
+      color: var(--color-foreground-faint);
+      font-family: var(--font-display); font-weight: var(--text-weight-med);
+      font-size: var(--text-size-sm);                 /* 16px */
+      line-height: var(--text-line-height-normal);
+      text-transform: capitalize; letter-spacing: normal;
+      padding: var(--spacing-5) var(--spacing-6);      /* 20px 24px */
+      cursor: pointer; text-decoration: none;
+      transition: color .12s, box-shadow .12s;
+    }
+    /* Compatibility tab: icon + label; collapses to icon only on mobile */
+    .tab-compat { gap: var(--spacing-2); }             /* 8px between icon and label */
+    .tab-compat-icon { flex: none; width: 21px; height: 18px; display: block; }
+    @media (max-width: 1080px) { .tab-compat-label { display: none; } }
+    .tab:first-child { border-left: 1px solid var(--color-border-default); }
+    .tab:hover {
+      color: var(--color-foreground-intense);
+      outline: 3px solid var(--color-background-brand-subtle);
+      outline-offset: -3px;
+    }
+    .tab.active {
+      color: var(--color-foreground-intense);
+      background: var(--color-background-subtle);
+      border-radius: var(--border-radius-sm);          /* 2px */
+      box-shadow: inset 0 0 10px 10px var(--color-background-brand-subtle);
+    }
+    .tab:last-child { margin-left: auto; border: 1px solid var(--color-border-default); }
+    @media (max-width: 720px) { nav.tabs { padding: 0; } .tab { padding: 14px 12px; font-size: var(--text-size-xs); } }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .panel-inner { padding: 0; }
+
+    .split { display: grid; grid-template-columns: 1fr minmax(0, 460px); gap: var(--spacing-7); align-items: start; }
+    /* push chart down so its top edge aligns with the first theme card's top border (section header height + gap) */
+    .chart-col { padding-top: calc(var(--text-size-2xl) * 1.1 + var(--spacing-7)); }
+    @media (max-width: 1080px) { .split { grid-template-columns: 1fr; } .chart-col { padding-top: 0; } }
+
+    /* ─── SOUTH INDIAN CHART ─── */
+    .chart {
+      display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr);
+      gap: 1px; aspect-ratio: 1 / 1;
+      background: var(--color-border-intense);
+      border: 1px solid var(--color-border-intense);
+      overflow: hidden;
+    }
+    .cell {
+      position: relative;
+      border: none; background: var(--color-background-default); padding: 8px;
+      display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: hidden;
+    }
+    .cell .signname {
+      display: flex; align-items: baseline; gap: 8px;
+      font-family: var(--font-display); font-weight: var(--text-weight-med);
+      font-size: var(--text-size-sm); line-height: 1.1;
+      color: var(--color-foreground-default);
+      text-transform: none; letter-spacing: 0;
+    }
+    .cell .signname .glyph { font-family: var(--font-symbols); font-weight: var(--text-weight-reg); }
+    .cell .asc-tag {
+      font-family: var(--font-base); font-weight: var(--text-weight-reg);
+      font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: .5px;
+      color: var(--color-foreground-faint); margin-top: -4px;
+    }
+    .cell .planets { display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; }
+    .pchip {
+      font-family: var(--font-base); font-size: 12px; line-height: 1.5; font-weight: var(--text-weight-reg);
+      background: var(--color-background-brand-default); color: var(--color-foreground-intense);
+      border: none; border-radius: 0; padding: 2px 4px; white-space: nowrap;
+    }
+    .pchip .abbr { font-weight: var(--text-weight-semi); }
+    .cell .house-no {
+      position: absolute; right: 8px; bottom: 6px; z-index: 1;
+      display: flex; align-items: flex-end; gap: 1px; color: var(--color-foreground-subtle);
+    }
+    .cell .house-no .n {
+      font-family: var(--font-display); font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-md); line-height: 1; letter-spacing: -0.02em;
+    }
+    .cell .house-no .lbl {
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      font-family: var(--font-base); font-size: 8px; line-height: 1.1; letter-spacing: -0.01em;
+    }
+    .cell.asc { background: var(--color-background-default); }
+    .cell.asc::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      box-shadow: inset 0 0 32px 0 var(--color-background-brand-subtle);
+    }
+    .cell.asc .signname, .cell.asc .asc-tag, .cell.asc .planets { position: relative; z-index: 1; }
+    .center-cell {
+      grid-column: 2 / 4; grid-row: 2 / 4; border: none;
+      background: var(--color-background-subtle);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+    }
+    .center-cell .t {
+      font-family: var(--font-display); font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-xl); line-height: 1.1; color: var(--color-foreground-intense);
+    }
+    .center-cell .s { font-size: var(--text-size-xs); color: var(--color-foreground-subtle); }
+
+    /* ─── CARDS ─── */
+    .card { background: var(--bg-elev); border: 1px solid var(--stroke); padding: 22px 24px; margin-bottom: 14px; }
+    .card h3 { margin-bottom: var(--spacing-2); }
+
+    /* ─── SIGNATURE THEMES ─── */
+    .sig-title { font-size: var(--text-size-2xl); letter-spacing: -0.4px; line-height: 1.1; color: #3d210f; margin: 0 0 var(--spacing-7); }
+    .theme-stack { display: flex; flex-direction: column; }
+    .theme-card { background: var(--color-background-default); border-top: 1px solid var(--color-border-default); padding: var(--spacing-6); display: flex; flex-direction: column; gap: var(--spacing-6); }
+    .theme-card h3 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); line-height: 1.1; letter-spacing: 0; color: var(--color-foreground-intense); margin: 0; }
+    .theme-card p { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
+    #nakshatra-card { border-bottom: 1px solid var(--color-border-default); }
+    #nakshatra-card .nk-head h3 { margin: 0; }
+    #nakshatra-card .nk-meta { font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-reg); color: var(--color-foreground-faint); margin: 4px 0 0; }
+    #nakshatra-card .nk-intro { font-style: italic; font-size: var(--text-size-xs); font-weight: var(--text-weight-lt); color: var(--color-foreground-faint); margin: 0 0 12px; }
+    #nakshatra-card .nk-body p:last-child { margin: 0; }
+
+    /* ─── PERSONA CARDS (overview reading) ─── two-column w/ sign art */
+    .persona-card {
+      display: flex; align-items: stretch;
+      background: var(--bg-elev);
+      border: 1px solid var(--stroke);
+      margin-bottom: var(--spacing-7);
+    }
+    .persona-body {
+      flex: 1 1 0; min-width: 0;
+      border-left: 4px solid var(--sign-accent, var(--text));
+      padding: 40px;
+      display: flex; flex-direction: column;
+    }
+    .persona-image {
+      flex: 0 0 340px; align-self: stretch;
+      background: var(--sign-accent, var(--bg-elev));
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .persona-image img {
+      width: auto; height: 100%; max-width: none; max-height: 400px;
+      object-fit: contain; display: block;
+    }
+    .persona-card .text-eyebrow { color: var(--color-foreground-faint); margin-bottom: 12px; }
+    .persona-card .detail-head { margin-bottom: 12px; }
+    .persona-card .detail-head .title {
+      font-size: var(--text-size-2xl); letter-spacing: 0; line-height: 1.1;
+      font-weight: var(--text-weight-reg);
+      color: var(--color-foreground-intense);
+    }
+    .persona-card .detail-head .title .rising { font-weight: var(--text-weight-med); }
+    .persona-card .detail-head .pos { color: var(--color-foreground-faint); }
+    .persona-card .motto {
+      font-family: var(--font-base); font-size: var(--text-size-md);
+      line-height: 1.3; color: var(--color-foreground-default);
+      font-style: normal; font-weight: var(--text-weight-reg);
+      margin: 0 0 24px;
+    }
+    .persona-card .dd p {
+      font-size: var(--text-size-sm); line-height: 1.5;
+      color: var(--color-foreground-subtle); font-weight: var(--text-weight-reg);
+      margin: 0 0 16px;
+    }
+    .persona-card a { color: var(--color-foreground-intense) !important; }
+    .persona-card .dd p:last-child { margin-bottom: 0; }
+    @media (max-width: 720px) {
+      .persona-card { flex-direction: column-reverse; }
+      .persona-image { flex: none; width: 100%; height: 220px; padding: 24px; }
+      .persona-body { padding: 28px 22px; }
+    }
+
+    /* ─── PLANETS TAB ─── */
+    .section-titles { display: flex; flex-direction: column; gap: var(--spacing-2); margin-bottom: var(--spacing-6); }
+    .section-titles h2 { font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); margin: 0; }
+    .section-titles .tab-sub { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-faint); margin: 0; }
+
+    .planet-nav {
+      display: flex; gap: 0;
+      border-top: 1px solid var(--color-border-default);
+      border-bottom: 1px solid var(--color-border-default);
+      border-right: 1px solid var(--color-border-default);
+    }
+    .pbtn {
+      flex: 1 0 0; min-width: 0;
+      position: relative; overflow: hidden;
+      background: var(--color-background-subtle);
+      border: none; border-left: 1px solid var(--color-border-default);
+      color: var(--color-foreground-subtle);
+      padding: 14px 12px; cursor: pointer;
+      transition: background .12s, color .12s;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .pbtn .pname {
+      font-family: var(--font-display); font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-md); line-height: 1.1; letter-spacing: 0;
+      color: inherit; text-align: center;
+    }
+    .pbtn .pnum {
+      font-family: var(--font-base); font-weight: var(--text-weight-semi);
+      font-size: 14px; line-height: 1; letter-spacing: 0;
+      color: var(--color-foreground-faint);
+      transition: color .12s;
+    }
+    .pbtn.active::before {
+      content: ""; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      width: 57px; height: 57px; border-radius: 999px; pointer-events: none; z-index: 0;
+      background: var(--color-background-brand-default);
+      box-shadow: inset 0 0 8px 6px var(--color-background-default);
+    }
+    .pbtn .pname, .pbtn .pnum { position: relative; z-index: 1; }
+    .pbtn:hover { color: var(--color-foreground-intense); background: var(--color-background-default); }
+    .pbtn:hover .pnum { color: var(--color-foreground-intense); }
+    .pbtn.active {
+      background: var(--color-background-default);
+      color: var(--color-foreground-intense);
+    }
+    .pbtn.active .pnum { color: var(--color-foreground-intense); }
+
+    /* planet detail — spec panel */
+    #planet-detail {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-default);
+      border-top: none; /* nav above already provides this edge — avoid a doubled line */
+      display: flex; flex-direction: column;
+    }
+
+    .pd-top { display: flex; flex-direction: column; }
+    .pd-row { display: flex; align-items: stretch; }
+    .pd-textcol { flex: 1 1 auto; min-width: 0; padding: var(--spacing-8) var(--spacing-8) 0; }
+    @media (max-width: 1080px){ .pd-textcol { padding: var(--spacing-7) var(--spacing-6) 0; } }
+
+    .pd-catheader { display: flex; flex-direction: column; gap: var(--spacing-6); }
+    .pd-eyegroup { display: flex; flex-direction: column; gap: 12px; }
+    .pd-eyebrow { font-family: var(--font-display); font-weight: var(--text-weight-bold); font-size: var(--text-size-xxs); line-height: 1.1; color: var(--color-foreground-faint); }
+
+    .pd-signrow { display: flex; align-items: stretch; flex-wrap: wrap; }
+    .pd-pill { display: flex; align-items: center; gap: 12px; border: 1px solid var(--color-border-default); padding: 8px 24px 8px 12px; margin-right: -1px; }
+    .pd-pill.pd-in { padding: 8px 16px; }
+    .pd-glyph { font-family: var(--font-symbols); font-weight: var(--text-weight-med); font-size: var(--text-size-3xl); line-height: 1; color: var(--color-foreground-intense); }
+    .pd-pill-name { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-2xl); letter-spacing: -0.4px; line-height: 1.1; color: var(--color-foreground-intense); }
+    .pd-in-text { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: 32px; line-height: 1; color: var(--color-foreground-faint); }
+
+    .pd-block { display: flex; flex-direction: column; gap: 12px; }
+    .pd-subhead { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); line-height: 1.1; color: var(--color-foreground-subtle); margin: 0; }
+    .pd-body { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
+    .pd-badge-wrap { align-self: flex-start; }
+
+    .pd-divider { border: none; border-top: 1px solid var(--color-border-default); margin: 0; height: 0; align-self: stretch; }
+    .pd-readwrap { display: flex; flex-direction: column; gap: var(--spacing-7); }
+    .pd-readhead { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: 1.1; color: var(--color-foreground-intense); margin: 0; }
+    .pd-readbody { display: flex; flex-direction: column; gap: var(--spacing-4); }
+    .pd-motto { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-default); margin: 0; }
+
+    .pd-imagecol { flex: 0 0 397px; align-self: stretch; display: flex; flex-direction: column; }
+    @media (max-width: 1080px){ .pd-imagecol { flex-basis: 40%; } }
+    .pd-image { flex: 1 1 0; min-height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .pd-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    .pd-strength { padding: var(--spacing-7) var(--spacing-8) var(--spacing-8); }
+    @media (max-width: 1080px){ .pd-strength { padding: var(--spacing-6); } }
+    .pd-strength-inner { display: flex; flex-direction: column; gap: var(--spacing-6); }
+    .pd-strength-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .pd-strength-label { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: 1.1; color: var(--color-foreground-intense); }
+    .pd-strength-val { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-lg); line-height: 1.1; color: var(--color-foreground-intense); white-space: nowrap; }
+    .pd-bar { height: 16px; background: var(--color-background-subtle); border: 1px solid var(--color-border-default); overflow: hidden; }
+    .pd-fill { height: 100%; background: var(--color-background-brand-default); }
+    .pd-tips-link { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); text-decoration: underline; text-decoration-style: solid; width: fit-content; }
+
+    /* spec accordions */
+    .pd-accstack { display: flex; flex-direction: column; }
+    .pd-acc { border-top: 1px solid var(--color-border-default); border-bottom: 1px solid var(--color-border-default); }
+    .pd-acc + .pd-acc { border-top: none; }
+    .pd-accstack .pd-acc:last-child { border-bottom: none; }
+    .pd-acc-summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: var(--spacing-8); cursor: pointer; list-style: none; -webkit-user-select: none; user-select: none; }
+    @media (max-width: 1080px){ .pd-acc-summary { padding: var(--spacing-6); } }
+    .pd-acc-summary::-webkit-details-marker { display: none; }
+    .pd-acc-label { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: 1.1; color: var(--color-foreground-intense); }
+    .pd-acc-summary::after { content: "+"; font-family: var(--font-base); font-weight: var(--text-weight-med); font-size: var(--text-size-2xl); line-height: 1; color: var(--color-foreground-default); flex: 0 0 auto; }
+    .pd-acc[open] .pd-acc-summary::after { content: "\2212"; }
+    .pd-acc[open] .pd-acc-summary { padding-bottom: var(--spacing-6); }
+    .pd-acc-body { padding: 0 var(--spacing-8) var(--spacing-8); display: flex; flex-direction: column; gap: var(--spacing-6); }
+    @media (max-width: 1080px){ .pd-acc-body { padding: 0 var(--spacing-6) var(--spacing-6); } }
+
+    .pd-titlepill { display: inline-flex; align-items: center; border: 1px solid var(--color-border-default); padding: 8px 12px; width: fit-content; }
+    .pd-titlepill-text { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-2xl); letter-spacing: -0.4px; line-height: 1.1; color: var(--color-foreground-intense); }
+
+    .pd-infogrid { display: flex; gap: var(--spacing-6); background: var(--color-background-subtle); padding: 16px; }
+    @media (max-width: 720px){ .pd-infogrid { flex-direction: column; gap: 16px; } }
+    .pd-infocol { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 4px; }
+    .pd-infolabel { font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-subtle); }
+    .pd-infodiv { height: 1px; background: var(--color-border-default); width: 100%; }
+    .pd-infoval { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
+    .pd-infoval strong { font-weight: var(--text-weight-bold); }
+
+    .pd-flavorhead { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); line-height: 1.1; color: var(--color-foreground-subtle); margin: 0; }
+    .pd-bullets { margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 8px; list-style: disc; }
+    .pd-bullets li { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); }
+
+    .detail-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+    .detail-head .title { font-size: clamp(36px, 5vw, 56px); font-family: var(--font-display); font-weight: var(--text-weight-xbold); letter-spacing: -2px; color: var(--text); line-height: 1; }
+    .detail-head .pos { color: var(--text-3); font-size: var(--text-size-xs); font-weight: var(--text-weight-lt); }
+    .planet-identity {
+      font-size: var(--text-size-xs); color: var(--text-2);
+      margin: 0 0 18px; line-height: var(--text-line-height-relaxed);
+      border-left: 3px solid var(--stroke);
+      padding-left: 14px; font-weight: var(--text-weight-lt);
+    }
+    .motto { font-style: normal; font-size: 15px; color: var(--text-2); margin: 2px 0 14px; font-weight: var(--text-weight-reg); }
+
+    .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 22px; }
+    .chip { font-size: 11px; font-weight: var(--text-weight-semi); padding: var(--spacing-1) var(--spacing-3); border: 1px solid var(--stroke); color: var(--text-3);
+      background: var(--bg); text-transform: uppercase; letter-spacing: 0.8px; }
+    .chip.good { color: var(--good); border-color: var(--good); background: var(--bg); }
+    .chip.warn { color: var(--warn); border-color: var(--warn); background: var(--bg); }
+    .chip.danger { color: var(--danger); border-color: var(--danger); background: var(--bg); }
+    .chip.info { color: var(--accent); border-color: var(--stroke); background: var(--bg); }
+
+    /* ─── STATUS BADGE + POPOVER ─── */
+    .status-badge-wrap { position: relative; display: inline-block; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-4);
+      border: 1px solid var(--color-border-default);
+      color: var(--color-foreground-brand-default);
+      background: var(--color-background-default);
+      font-family: var(--font-base); font-weight: var(--text-weight-semi);
+      font-size: var(--text-size-xs); line-height: 1.5;
+      cursor: default; -webkit-user-select: none; user-select: none;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .status-badge svg { width: 16px; height: 16px; display: block; flex: 0 0 16px; }
+    .status-badge-wrap:hover .status-badge,
+    .status-badge-wrap:focus-within .status-badge {
+      background: var(--color-foreground-brand-default);
+      border-color: var(--color-foreground-brand-default);
+      color: var(--color-foreground-inverse);
+    }
+    .status-popover {
+      position: fixed; z-index: 40; top: 0; left: 0;
+      width: max-content; max-width: min(320px, 90vw);
+      background: var(--color-background-brand-subtle);
+      color: var(--color-foreground-default);
+      padding: var(--spacing-4) var(--spacing-5);
+      display: none; flex-direction: column; gap: var(--spacing-2);
+      line-height: 1.5; text-align: left;
+      pointer-events: none;
+    }
+    .status-popover.open { display: flex; }
+    .status-popover .sp-head { display: flex; flex-direction: column; }
+    .status-popover .sp-label { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-3xs); text-transform: none; letter-spacing: 0; }
+    .status-popover .sp-title { font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xs); text-transform: none; letter-spacing: 0; }
+    .status-popover .sp-body { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xxs); text-transform: none; letter-spacing: 0; }
+
+    /* ─── SUMMARY CARDS (overview) ─── */
+    .summary-card { padding: var(--spacing-6) 22px var(--spacing-5); }
+    .sc-sign {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: var(--text-weight-xbold);
+      letter-spacing: -0.02em; line-height: 1.05;
+      color: var(--color-foreground-default);
+      margin-bottom: var(--spacing-2);
+    }
+    .sc-role {
+      font-size: var(--text-size-xxs); color: var(--text-3);
+      font-weight: var(--text-weight-reg); line-height: 1.4;
+      margin-bottom: var(--spacing-3);
+    }
+    .sc-role strong { color: var(--color-foreground-default); font-weight: var(--text-weight-semi); }
+    .sc-desc {
+      font-size: var(--text-size-xxs); color: var(--text-2);
+      line-height: 1.55; font-weight: var(--text-weight-reg);
+      margin-bottom: var(--spacing-4);
+    }
+    .summary-card .status-badge-wrap { margin-top: auto; align-self: flex-start; }
+
+    .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; margin-bottom: 8px;
+      border-top: 1px solid var(--stroke); }
+    @media (max-width: 720px){ .facts { grid-template-columns: 1fr; } }
+    .fact { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--stroke-soft); padding: 9px 0; font-size: 13px; }
+    .fact .k { color: var(--text-3); font-weight: var(--text-weight-reg); }
+    .fact .val { color: var(--text); text-align: right; font-weight: var(--text-weight-med); }
+    .facts-note { font-size: var(--text-size-xxs); color: var(--text-3); margin: 6px 0 22px; font-weight: var(--text-weight-lt); }
+
+    .strength { margin: 4px 0 22px; }
+    .strength .bar { height: 3px; background: var(--stroke); overflow: hidden; margin-top: 10px; }
+    .strength .fill { height: 100%; background: var(--text); }
+    .strength .lab { display:flex; justify-content: space-between; font-size: var(--text-size-xxs); color: var(--text-3); font-weight: var(--text-weight-reg); }
+
+    .dd p:last-child { margin-bottom: 0; }
+    .dd p { color: var(--text-2); }
+
+    /* Accordions */
+    .accordion { border: 1px solid var(--stroke); margin-bottom: 0; }
+    .accordion + .accordion { border-top: none; }
+    .accordion summary {
+      font-size: 10px; font-weight: var(--text-weight-bold); text-transform: uppercase; letter-spacing: 2px;
+      color: var(--text-3); padding: 14px 18px; cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--bg); user-select: none;
+      transition: background .12s;
+    }
+    .accordion summary::-webkit-details-marker { display: none; }
+    .accordion[open] summary { background: var(--bg-elev); color: var(--text-2); border-bottom: 1px solid var(--stroke); }
+    .accordion summary::after { content: "+"; font-size: 18px; font-weight: var(--text-weight-lt); color: var(--stroke); }
+    .accordion[open] summary::after { content: "−"; }
+    .accordion-body { padding: 18px 20px; }
+
+    /* Strengthening card — separate card below the accordions */
+    .remedy {
+      border: 1px solid var(--color-border-default);
+      border-top: 4px solid #9CC933;
+      margin-top: var(--spacing-7);
+      padding: var(--spacing-8);
+      display: flex; flex-direction: column; gap: var(--spacing-6);
+      scroll-margin-top: 16px;
+    }
+    @media (max-width: 1080px){ .remedy { padding: var(--spacing-6); } }
+    .remedy .rem-head { display: flex; flex-direction: column; gap: 12px; }
+    .remedy h3 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); letter-spacing: -0.32px; line-height: 1.1; color: var(--color-foreground-intense); margin: 0; }
+    .remedy .rem-sub { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-md); line-height: 1.3; color: var(--color-foreground-default); margin: 0; }
+    .remedy .rgrid { display: flex; flex-direction: column; gap: 8px; }
+    .remedy .rrow { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+    .remedy .rk { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-faint); }
+    .remedy .rv { font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: 1.1; color: var(--color-foreground-subtle); }
+    .remedy .mantra-box { background: var(--color-background-brand-subtle); display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; padding: 12px; width: 100%; }
+    .remedy .mantra { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: 1.1; color: var(--color-foreground-default); text-align: center; margin: 0; }
+    .remedy .mnote { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xxs); line-height: 1.5; color: var(--color-foreground-subtle); text-align: center; margin: 0; }
+    .remedy .flag { border-left: 4px solid var(--color-background-brand-default); padding: 0 0 0 16px; width: 100%;
+      font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; background: none; }
+    .remedy .flag.strained { border-left-color: var(--color-foreground-brand-default); }
+    .remedy .flag.eased { border-left-color: var(--color-background-brand-default); }
+
+    /* ─── TABLES ─── */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--stroke-soft); }
+    th { color: var(--text-3); font-weight: var(--text-weight-bold); font-size: 9px; text-transform: uppercase; letter-spacing: 2px; }
+    td.center, th.center { text-align: center; }
+    tr:hover td { background: var(--bg-elev); }
+
+    /* ─── HOUSES ─── */
+    .houses-main { margin-bottom: var(--spacing-8); }
+    .houses-subtitle { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); letter-spacing: -0.32px; line-height: 1.1; color: #3d210f; margin: 0 0 var(--spacing-7); }
+    .houses-translation-head { margin-top: var(--spacing-9); }
+    .houses-chart-col { padding-top: calc(var(--text-size-xl) * 1.1 + var(--spacing-7)); }
+    @media (max-width: 1080px){ .houses-chart-col { padding-top: 0; } }
+
+    /* signs & planets table — typography matched to the chart diagram */
+    #house-table { width: 100%; border-collapse: collapse; }
+    #house-table th { text-align: left; text-transform: none; letter-spacing: 0;
+      font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xs);
+      color: var(--color-foreground-subtle); padding: 4px; border-bottom: 1px solid var(--color-border-default); }
+    #house-table td { padding: 4px; height: 48px; vertical-align: middle; border-bottom: 1px solid var(--color-border-default); }
+    #house-table tr:hover td { background: transparent; }
+    #house-table .hcol-num { width: 40px; text-align: center; }
+    #house-table td.hcol-num { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); line-height: 1.1; color: var(--color-foreground-subtle); }
+    #house-table td.hcol-sign { color: var(--color-foreground-default); font-size: var(--text-size-sm); line-height: 1.1; }
+    #house-table .hsign { display: inline-flex; align-items: baseline; gap: 10px; }
+    #house-table .hsign .nm { font-family: var(--font-display); font-weight: var(--text-weight-med); }
+    #house-table .hsign .glyph { font-family: var(--font-symbols); font-weight: var(--text-weight-reg); }
+    #house-table td.hcol-area { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); color: var(--color-foreground-subtle); }
+    #house-table .hplanets { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+    #house-table .hplanets .none { color: var(--color-foreground-faint); font-size: var(--text-size-xs); }
+
+    /* clickable chart cells (houses page) */
+    .chart .cell.clickable { cursor: pointer; }
+    .chart .cell.clickable:hover, .chart .cell.clickable:focus-visible { background: var(--color-background-subtle); outline: none; }
+
+    /* house translation cards */
+    .hgroup { margin-bottom: var(--spacing-8); }
+    .hgroup-title { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-md); line-height: 1.1; color: var(--color-foreground-subtle); margin: 0 0 var(--spacing-6); }
+    .hgroup-title strong { font-weight: var(--text-weight-xbold); color: var(--color-foreground-intense); }
+    .hcards { display: flex; flex-direction: column; }
+    .hcard { display: flex; align-items: stretch; overflow: hidden; background: var(--color-background-default);
+      border: 1px solid var(--color-border-default); scroll-margin-top: 16px; }
+    .hcard + .hcard { border-top: none; }
+    .hcard-body { flex: 1 1 auto; min-width: 0; padding: var(--spacing-6) var(--spacing-7); display: flex; flex-direction: column; gap: var(--spacing-7); }
+    .hcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .hcard-title { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-2xl); letter-spacing: -0.4px; line-height: 1.1; color: var(--color-foreground-intense); }
+    .hcard-title strong { font-weight: var(--text-weight-xbold); }
+    .hcard-sign { display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap; font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); color: var(--color-foreground-default); }
+    .hcard-sign .glyph { font-family: var(--font-symbols); font-weight: var(--text-weight-reg); }
+    .hcard-theme { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-md); line-height: 1.5; color: var(--color-foreground-faint); }
+    .hcard-planet { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; font-family: var(--font-base); font-size: var(--text-size-xs); line-height: 1.5; }
+    .hcard-planet .lbl { font-weight: var(--text-weight-semi); color: var(--color-foreground-subtle); }
+    .hcard-planet .none { color: var(--color-foreground-faint); }
+    .hcard-body .hplanets { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-3); }
+    .hcard-body .pchip { font-size: var(--text-size-sm); }
+    .hcard-desc { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
+    .hcard-image { flex: 0 0 320px; align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 320px; }
+    .hcard-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    @media (max-width: 720px){ .hcard { flex-direction: column-reverse; } .hcard-image { flex: none; width: 100%; height: 180px; min-height: 0; } .hcard-body { padding: var(--spacing-6); } }
+
+    /* ─── ENERGY MAP (ashtakavarga) ─── */
+    /* Two-column layout: score table on the left, energy-map grid on the right */
+    .emap-main { display: flex; gap: var(--spacing-6); align-items: flex-start; }
+    .emap-table-col { flex: 1 1 0; min-width: 0; }
+    .emap-chart-col { flex: 0 0 480px; padding-top: var(--spacing-7); }
+    @media (max-width: 1080px) {
+      .emap-main { flex-direction: column; }
+      .emap-chart-col { flex: 1 1 auto; width: 100%; max-width: 480px; padding-top: 0; }
+    }
+
+    /* Energy-map cells reuse the .chart grid (see SOUTH INDIAN CHART) */
+    .ecell {
+      position: relative; background: var(--color-background-default);
+      padding: var(--spacing-4) var(--spacing-2) var(--spacing-2);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 0; overflow: hidden;
+    }
+    .ecell .etop {
+      position: absolute; top: 7px; left: 7px; right: 7px; z-index: 2;
+      display: flex; align-items: center; justify-content: space-between;
+      color: var(--color-foreground-default);
+    }
+    .ecell .esign { display: flex; align-items: center; gap: var(--spacing-1);
+      font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xxs); }
+    .ecell .esign .glyph { font-family: var(--font-symbols); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); }
+    .ecell .ehouse { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-sm); line-height: 1.1; }
+    .ecell .escore { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-xl); line-height: 1.1; letter-spacing: -0.01em; color: var(--color-foreground-intense); z-index: 1; }
+    .ecell .epts { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xxs); line-height: 1.5; color: var(--color-foreground-subtle); z-index: 1; }
+    .ecell.high::after { content:""; position:absolute; inset:0; pointer-events:none; box-shadow: inset 0 0 32px 0 var(--color-background-brand-default); }
+    .ecell.low::after  { content:""; position:absolute; inset:0; pointer-events:none; box-shadow: inset 0 0 32px 0 var(--color-background-brand-intense); }
+
+    /* Score table */
+    .emap-table { width: 100%; border-collapse: collapse; }
+    .emap-table th {
+      text-align: left; text-transform: none; letter-spacing: 0; padding: var(--spacing-1);
+      font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xs);
+      color: var(--color-foreground-subtle); border-bottom: 1px solid var(--color-border-default);
+    }
+    .emap-table th.c { text-align: center; }
+    .emap-table td { border-bottom: 1px solid var(--color-border-default); vertical-align: middle; padding: var(--spacing-2) var(--spacing-1); }
+    .emap-table td.num { width: 40px; text-align: center; font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); line-height: 1.1; color: var(--color-foreground-subtle); }
+    .emap-table td.sign { width: 130px; white-space: nowrap; font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: 1.1; color: var(--color-foreground-default); }
+    .emap-table td.sign .glyph { font-family: var(--font-symbols); margin-left: var(--spacing-2); }
+    .emap-table td.score { width: 62px; text-align: center; }
+    .emap-table td.reading { padding: var(--spacing-2) var(--spacing-4); font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.2; color: var(--color-foreground-subtle); }
+    .escore-chip {
+      display: inline-flex; align-items: center; justify-content: center; padding: var(--spacing-2) var(--spacing-4);
+      font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-sm);
+      color: var(--color-foreground-intense); border: 2px solid transparent;
+    }
+    .escore-chip.high { border-color: var(--color-background-brand-default); }
+    .escore-chip.low  { border-color: var(--color-background-brand-intense); }
+
+    /* "What does this mean for you" + takeaways box */
+    .emap-mean-title { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); line-height: 1.1; color: var(--color-foreground-intense); margin: var(--spacing-7) 0 var(--spacing-6); }
+    .emap-takeaways { display: flex; flex-direction: column; gap: var(--spacing-7); border: 1px solid var(--color-border-default); padding: 48px 64px; }
+    .emap-takeaways p { margin: 0; font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); }
+    @media (max-width: 720px) { .emap-takeaways { padding: var(--spacing-6); } }
+
+    /* ─── PANCHANGA (birth almanac) ─── */
+    /* Summary banner: birth date/time on the left, sunrise/sunset on the right */
+    .almanac-banner {
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-7);
+      padding: 0 var(--spacing-6);
+      background: var(--color-background-brand-default);   /* #b2c656 */
+      border-radius: var(--border-radius-sm);
+      overflow: hidden; margin-bottom: var(--spacing-6);
+    }
+    .almanac-date {
+      flex: 1 1 0; display: flex; flex-direction: column; gap: var(--spacing-3);
+      padding: var(--spacing-6) 0; background: var(--color-background-brand-default);
+    }
+    .almanac-date .weekday { font-family: var(--font-display); font-weight: var(--text-weight-bold); font-size: var(--text-size-xxs); line-height: 1.1; color: var(--color-foreground-faint); }
+    .almanac-date .date-group { display: flex; flex-direction: column; gap: var(--spacing-1); }
+    .almanac-date .date { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-3xl); line-height: 1.1; color: var(--color-foreground-intense); }
+    .almanac-date .time { font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-subtle); }
+    .almanac-date .summary { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-default); margin: 0; }
+    .almanac-suntimes {
+      flex: 1 1 0; height: 156px; display: flex; align-items: center; justify-content: flex-end; gap: var(--spacing-3);
+      padding: var(--spacing-6); border: 1px solid var(--color-border-intense);
+      background: var(--color-background-brand-default);
+    }
+    .almanac-suntimes .suntime { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: var(--spacing-1); }
+    .almanac-suntimes .suntime .t { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-2xl); line-height: 1.1; letter-spacing: -0.4px; color: var(--color-foreground-default); }
+    .almanac-suntimes .suntime .lbl { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-subtle); }
+    .almanac-suntimes .divider { width: 1px; align-self: stretch; margin: var(--spacing-2) 0; background: var(--color-border-intense); }
+
+    /* Quality cards: 2-up grid, colored accent on the left edge */
+    .almanac-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-6); }
+    .almanac-card {
+      display: flex; flex-direction: column; gap: var(--spacing-7); padding: var(--spacing-6);
+      border: 1px solid var(--color-border-default);
+      border-left: 4px solid var(--color-background-brand-intense);   /* accent set per-card in JS */
+    }
+    .almanac-card .ac-label { font-family: var(--font-display); font-weight: var(--text-weight-bold); font-size: var(--text-size-xxs); line-height: 1.1; color: var(--color-foreground-faint); }
+    .almanac-card .ac-title { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-2xl); line-height: 1.1; letter-spacing: -0.4px; color: var(--color-foreground-intense); }
+    .almanac-card .ac-body { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
+    @media (max-width: 1080px) {
+      .almanac-cards { grid-template-columns: 1fr; }
+      .almanac-banner { flex-direction: column; align-items: stretch; padding: 0; }
+      .almanac-date { padding: var(--spacing-6); }
+      .almanac-suntimes { height: auto; }
+    }
+
+    .tab-intro { background: var(--bg-elev); border: 1px solid var(--stroke);
+      border-left: 3px solid var(--text); padding: var(--spacing-4) var(--spacing-5); margin-bottom: var(--spacing-6); max-width: 880px; }
+    .tab-intro p { color: var(--text-2); font-size: 13.5px; margin: 0 0 10px; font-weight: var(--text-weight-lt); }
+    .tab-intro p:last-child { margin-bottom: 0; }
+
+    .footer-note { margin: var(--spacing-8) var(--spacing-7) 0; padding-top: var(--spacing-5); border-top: 1px solid var(--stroke); color: var(--text-3); font-size: 12.5px; font-weight: var(--text-weight-lt); }
+    .tab-sub { color: var(--text-3); font-size: var(--text-size-xs); margin: -6px 0 24px; font-weight: var(--text-weight-lt); }
+
+    /* ─── OVERVIEW PERSONA accent strip between header and stats ─── */
+    .overview-blob-strip { display: none; }
+
+
+    /* ─── NAV top strip ─── */
+    nav.tabs-wrap {
+      background: var(--bg);
+      border-bottom: 2px solid var(--text);
+      position: sticky; top: 0; z-index: 50;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="site-header">
+      <a class="site-logo" href="#">Vedic Astrology Birthchart</a>
+      <div class="picker" id="picker" style="display:none">
+        <label for="chartsel">Viewing</label>
+        <select id="chartsel"></select>
+      </div>
+    </div>
+
+    <nav class="tabs" id="main-tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="planets">Planets</button>
+      <button class="tab" data-tab="houses">Houses</button>
+      <button class="tab" data-tab="panchanga">Birth almanac</button>
+      <button class="tab" data-tab="ashtakavarga">Energy map</button>
+      <a class="tab tab-compat" href="compatibility.html" aria-label="Compatibility">
+        <img class="tab-compat-icon" src="src/Images/Compatibility icon.svg" alt="" aria-hidden="true" />
+        <span class="tab-compat-label">Compatibility ↗</span>
+      </a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-main">
+        <div class="hero-copy">
+          <div class="hero-info">
+            <h1 id="title"></h1>
+            <div class="hero-birth" id="birthline"></div>
+          </div>
+          <div class="hero-system" id="systemline"></div>
+        </div>
+        <div class="hero-image-cell">
+          <img src="src/Images/hero-image.jpg" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </header>
+
+    <section class="panel active" id="panel-overview">
+      <div class="stats" id="stats"></div>
+      <div class="panel-inner">
+        <div class="persona-card" id="persona-card"></div>
+        <div class="persona-card" id="moon-portrait"></div>
+        <div class="persona-card" id="sun-portrait"></div>
+        <div class="split" style="border-top:1px solid var(--color-border-default);padding-top:var(--spacing-11)">
+          <div>
+            <h2 class="sig-title">Signature themes</h2>
+            <div class="theme-stack" id="highlights"></div>
+            <div class="theme-card" id="nakshatra-card"></div>
+          </div>
+          <div class="chart-col">
+            <div class="chart" id="chart"></div>
+            <p class="muted" style="font-size:11px;margin-top:8px" id="charthint"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-planets">
+      <div class="panel-inner">
+        <div class="section-titles">
+          <h2>Planets and positioning</h2>
+          <p class="tab-sub">Each planet governs a different energy in your life. Click any planet below to explore what it means for you specifically.</p>
+        </div>
+        <div class="planet-nav" id="planet-nav"></div>
+        <div id="planet-detail"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-houses">
+      <div class="panel-inner">
+        <div class="section-titles">
+          <h2>The twelve houses</h2>
+          <p class="tab-sub">Your birth chart is divided into twelve houses — each one a different zone of life. Think of them like rooms in a house: one for relationships, one for career, one for home, and so on. The planets that sit in each room bring their energy there. Empty rooms aren't empty lives — they're simply areas that unfold through other channels.</p>
+        </div>
+        <div class="split houses-main">
+          <div class="houses-table-col">
+            <h3 class="houses-subtitle">Signs and planets</h3>
+            <table id="house-table"></table>
+          </div>
+          <div class="houses-chart-col">
+            <div class="chart" id="chart2"></div>
+          </div>
+        </div>
+        <h3 class="houses-subtitle houses-translation-head">House Translation</h3>
+        <div id="house-groups"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-panchanga">
+      <div class="panel-inner">
+        <div class="section-titles">
+          <h2>Your birth almanac</h2>
+          <p class="tab-sub" id="panchanga-intro"></p>
+        </div>
+        <div class="almanac-banner" id="panchanga-banner"></div>
+        <div class="almanac-cards" id="panchanga-limbs"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-ashtakavarga">
+      <div class="panel-inner">
+        <div class="section-titles">
+          <h2>Where energy flows in your life</h2>
+          <p class="tab-sub" id="av-intro"></p>
+        </div>
+        <div class="emap-main">
+          <div class="emap-table-col">
+            <table class="emap-table" id="av-table"></table>
+          </div>
+          <div class="emap-chart-col">
+            <div class="chart emap" id="av-chart"></div>
+          </div>
+        </div>
+        <h2 class="emap-mean-title">What does this mean for you</h2>
+        <div class="emap-takeaways" id="av-takeaways"></div>
+      </div>
+    </section>
+
+    <div class="footer-note" id="footer"></div>
+  </div>
+
+  <script src="data/chart-data.js"></script>
+  <script src="data/access.js"></script>
+  <script>
+    (function () {
+      var DATA = (window.VEDIC_DATA && window.VEDIC_DATA.charts) || {};
+      var ALL_IDS = Object.keys(DATA);
+      var SIGN_POS = {
+        Pisces:[1,1], Aries:[2,1], Taurus:[3,1], Gemini:[4,1],
+        Cancer:[4,2], Leo:[4,3], Virgo:[4,4],
+        Libra:[3,4], Scorpio:[2,4], Sagittarius:[1,4],
+        Capricorn:[1,3], Aquarius:[1,2]
+      };
+      var SIGN_ORDER = Object.keys(SIGN_POS);
+      var SIGN_SYMBOL = {
+        Aries:"♈", Taurus:"♉", Gemini:"♊", Cancer:"♋", Leo:"♌", Virgo:"♍",
+        Libra:"♎", Scorpio:"♏", Sagittarius:"♐", Capricorn:"♑", Aquarius:"♒", Pisces:"♓"
+      };
+      var ZODIAC = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
+
+      // Astrological planet glyphs (rendered in --font-symbols)
+      var PLANET_SYMBOL = { Sun:"☉", Moon:"☽", Mars:"♂", Mercury:"☿", Jupiter:"♃", Venus:"♀", Saturn:"♄", Rahu:"☊", Ketu:"☋" };
+      // Planet artwork (src/Images/*.svg) + accent color (each SVG's own background rect).
+      var PLANET_ART = {
+        Sun:{file:"Sun.svg",color:"#9CC933"}, Moon:{file:"Moon.svg",color:"#0774D6"},
+        Mars:{file:"Mars.svg",color:"#FF3303"}, Mercury:{file:"Mercury.svg",color:"#723700"},
+        Jupiter:{file:"Jupiter.svg",color:"#00C3B6"}, Venus:{file:"Venus.svg",color:"#930025"},
+        Saturn:{file:"Saturn.svg",color:"#FFCC02"}, Rahu:{file:"Rahu.svg",color:"#AE1BAD"}, Ketu:{file:"Ketu.svg",color:"#9CC933"}
+      };
+      // Sign artwork (src/Images/*.svg) + accent color (the SVG's own background).
+      var SIGN_ART = {
+        Aries:{file:"Aries.svg",color:"#FF3303"}, Taurus:{file:"Taurus.svg",color:"#9CC933"},
+        Gemini:{file:"Gemini.svg",color:"#FFCC02"}, Cancer:{file:"Cancer.svg",color:"#003EB9"},
+        Leo:{file:"Leo.svg",color:"#FF0329"}, Virgo:{file:"Virgo.svg",color:"#723700"},
+        Libra:{file:"LIbra.svg",color:"#FC7265"}, Scorpio:{file:"Scorpio.svg",color:"#930025"},
+        Sagittarius:{file:"Sagitarius.svg",color:"#AE1BAD"}, Capricorn:{file:"Capricorn.svg",color:"#003EB9"},
+        Aquarius:{file:"Aquarius.svg",color:"#0774D6"}, Pisces:{file:"Pisces.svg",color:"#00C3B6"}
+      };
+      function makeArtBox(art, name) {
+        var box = el("div", "pd-image");
+        if (art) {
+          box.style.background = art.color;
+          var img = document.createElement("img");
+          img.src = "src/Images/" + art.file;
+          img.alt = name; img.setAttribute("aria-hidden", "true");
+          box.appendChild(img);
+        }
+        return box;
+      }
+
+      // Plain-English description of what each planet IS, for everyone
+      var PLANET_IDENTITY = {
+        Sun:     "The Sun governs your core identity, vitality, and sense of self — your confidence, what makes you feel alive, and where you naturally shine.",
+        Moon:    "The Moon governs your emotional inner world, instincts, and mind. In Vedic astrology it's considered the most personal and important placement of all — it shows how you feel, not just how you act.",
+        Mars:    "Mars governs your drive, courage, and initiative — how you take action, fight for what you want, and channel physical and competitive energy.",
+        Mercury: "Mercury governs your mind, speech, and reasoning — how you think, communicate, learn, and make sense of the world.",
+        Jupiter: "Jupiter governs wisdom, growth, and good fortune — your capacity for faith, optimism, expansion, and the opportunities that come to you.",
+        Venus:   "Venus governs love, beauty, pleasure, and connection — your relationship with harmony, creativity, and what you truly value.",
+        Saturn:  "Saturn governs discipline, endurance, and hard-won mastery — the areas of life where things take time, effort, and patience, but where the rewards last.",
+        Rahu:    "Rahu is the North Node of the Moon — not a physical planet, but an invisible cosmic point that marks where your soul hungers to grow in this lifetime. It brings intensity, ambition, and sometimes obsession toward whatever it touches.",
+        Ketu:    "Ketu is the South Node of the Moon — the invisible counterpart to Rahu, governing spirituality, detachment, and past-life mastery. It brings deep intuitive gifts and a pull toward the spiritual, alongside a tendency toward dissatisfaction with purely worldly things."
+      };
+
+      // Plain-English dignity descriptions (chip label + note for deep dive)
+      function dignityInfo(dignity) {
+        var d = (dignity || "").toLowerCase();
+        if (d.indexOf("own") >= 0) return { cls: "good", label: "Strong · At Home", note: null };
+        if (d.indexOf("exalt") >= 0) return { cls: "good", label: "Exalted · High Comfort", note: null };
+        if (d.indexOf("friendly") >= 0) return { cls: "", label: "Comfortable · Supported", note: null };
+        if (d.indexOf("neutral") >= 0) return { cls: "", label: "Neutral · Workable", note: null };
+        if (d.indexOf("debil") >= 0) return {
+          cls: "warn", label: "Challenged · Growth Through Effort",
+          note: "debilitated"
+        };
+        if (d.indexOf("enemy") >= 0) return {
+          cls: "warn", label: "Strained · Works Harder",
+          note: "enemy"
+        };
+        if (d.indexOf("combust") >= 0) return {
+          cls: "warn", label: "Overshadowed · Merged with the Sun",
+          note: "combust"
+        };
+        return { cls: "", label: dignity, note: null };
+      }
+
+      // Reusable status-badge component (hoverable badge → popover). See Figma 300-1256 / 316-486.
+      var INFO_ICON_SVG = '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+        '<circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.3"/>' +
+        '<path d="M8 7.1v3.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>' +
+        '<circle cx="8" cy="4.9" r="0.95" fill="currentColor"/></svg>';
+
+      function statusBadge(label, title, body) {
+        var wrap = el("span", "status-badge-wrap");
+        var badge = el("span", "status-badge");
+        badge.setAttribute("tabindex", "0");
+        badge.setAttribute("role", "button");
+        badge.setAttribute("aria-label", label + ". " + title + ": " + body);
+        badge.innerHTML = INFO_ICON_SVG + "<span>" + label + "</span>";
+        wrap.appendChild(badge);
+        var pop = el("div", "status-popover");
+        pop.setAttribute("role", "tooltip");
+        // Body is "Status Name (Descriptor): explanation." — promote the pre-colon
+        // part to a large title, with the category (title) as a small kicker label.
+        var ci = body.indexOf(": ");
+        var bodyTitle = ci >= 0 ? body.slice(0, ci) : title;
+        var bodyText = ci >= 0 ? body.slice(ci + 2) : body;
+        var head = el("div", "sp-head");
+        head.appendChild(el("div", "sp-label", title));
+        head.appendChild(el("div", "sp-title", bodyTitle));
+        pop.appendChild(head);
+        pop.appendChild(el("div", "sp-body", bodyText));
+        wrap.appendChild(pop);
+
+        var GAP = 20, EDGE = 8;
+        // Position the popover ~GAP px from a viewport point, flipping to stay on-screen.
+        function placeAt(px, py) {
+          var w = pop.offsetWidth, h = pop.offsetHeight;
+          var vw = window.innerWidth, vh = window.innerHeight;
+          var x = px + GAP;
+          if (x + w > vw - EDGE) x = px - GAP - w;
+          if (x < EDGE) x = EDGE;
+          var y = py - h / 2;
+          if (y + h > vh - EDGE) y = vh - EDGE - h;
+          if (y < EDGE) y = EDGE;
+          pop.style.left = x + "px";
+          pop.style.top = y + "px";
+        }
+        function show() { pop.classList.add("open"); }
+        function hide() { pop.classList.remove("open"); }
+        wrap.addEventListener("mouseenter", function (e) { show(); placeAt(e.clientX, e.clientY); });
+        wrap.addEventListener("mousemove", function (e) { placeAt(e.clientX, e.clientY); });
+        wrap.addEventListener("mouseleave", hide);
+        // Keyboard: anchor near the badge since there's no cursor.
+        badge.addEventListener("focus", function () {
+          show();
+          var r = badge.getBoundingClientRect();
+          placeAt(r.left, r.bottom - GAP);
+        });
+        badge.addEventListener("blur", hide);
+        return wrap;
+      }
+
+      // Maps a raw dignity string → badge label + popover content.
+      function dignityBadgeContent(dignity) {
+        var d = (dignity || "").toLowerCase();
+        var TITLE = "Dignity (Placement Status)";
+        if (d.indexOf("own") >= 0 || d.indexOf("moolatrikona") >= 0)
+          return { label: "Strong — Home Field", title: TITLE, body: "Own Sign / Moolatrikona (High Comfort): Like an athlete playing on their home field — the planet's energy flows naturally, with real strength and ease." };
+        if (d.indexOf("exalt") >= 0)
+          return { label: "Exalted — High Comfort", title: TITLE, body: "Exalted (High Comfort): Like an athlete at the very top of their game — the planet's energy flows effortlessly, at its maximum strength." };
+        if (d.indexOf("friendly") >= 0)
+          return { label: "Comfortable — Supported", title: TITLE, body: "Friendly Sign (Supported): Like a welcome guest in a friend's home — the planet is comfortable and works with relative ease." };
+        if (d.indexOf("neutral") >= 0)
+          return { label: "Neutral — Workable Placement", title: TITLE, body: "Neutral / Workable (Balanced Baseline): Like being in a neutral location. The planet isn't super-charged with extra luck, but it's not hindered or blocked either. It is standard, flexible territory where your conscious effort directly shapes the outcome." };
+        if (d.indexOf("debil") >= 0)
+          return { label: "Challenged — Friction", title: TITLE, body: "Challenged / Debilitated (Friction): Like walking uphill — the planet's energy requires more awareness, maturity, and conscious practice to work smoothly." };
+        if (d.indexOf("enemy") >= 0)
+          return { label: "Strained — Works Harder", title: TITLE, body: "Enemy Sign (Friction): Like working in unfamiliar territory where you don't speak the language — the planet can still do its job, but it takes more effort and conscious attention." };
+        if (d.indexOf("combust") >= 0)
+          return { label: "Overshadowed — Merged with the Sun", title: TITLE, body: "Combust (Overshadowed): Like a candle beside a floodlight — sitting so close to the Sun that this planet's energy blends into your identity and expresses less independently." };
+        return null;
+      }
+
+      // Returns a status-badge DOM node for a dignity, or null if unmapped.
+      function dignityBadgeEl(dignity) {
+        var info = dignityBadgeContent(dignity);
+        return info ? statusBadge(info.label, info.title, info.body) : null;
+      }
+
+      function planetContextNote(p) {
+        var info = dignityInfo(p.dignity);
+        var notes = [];
+        if (info.note === "debilitated") {
+          notes.push(p.name + " is in " + p.sign + ", a sign where it's considered debilitated — meaning it's working in less comfortable territory than it would prefer. This doesn't mean it's broken; it means it works harder and the results tend to come with more friction, depth, or emotional intensity than a comfortable placement would.");
+        } else if (info.note === "enemy") {
+          notes.push(p.name + " is in " + p.sign + ", a sign it finds difficult — like being a guest in someone's home who doesn't speak the same language. It can still do its job, but with more effort and occasional tension.");
+        } else if (info.note === "combust") {
+          notes.push(p.name + " is very close to the Sun in the chart, which is called 'combust.' The Sun's heat can overshadow this planet's energy — it may express itself less independently and more as part of your sense of identity or ego. The effect varies: sometimes it fuses the two energies in interesting ways, sometimes it muffles one of them.");
+        }
+        if (!p.benefic && p.name !== "Rahu" && p.name !== "Ketu") {
+          notes.push("For your particular rising sign, " + p.name + " plays a more challenging or neutral role in the chart — not because it's harmful, but because of which houses it governs. Think of it as a planet that brings growth through effort rather than ease.");
+        }
+        return notes;
+      }
+
+      function roleToNarrative(p) {
+        var role = p.role || "";
+        if (!role) return null;
+        if (p.name === "Rahu" || p.name === "Ketu") {
+          return "In your chart, " + p.name + "'s placement tells the story of where your karmic axis lands — what you're moving toward and what you're releasing. The role it plays here is: " + role + ".";
+        }
+        if (role.toLowerCase().indexOf("lagna lord") >= 0 || role.toLowerCase().indexOf("ruler of the 1st") >= 0) {
+          return "In your chart, " + p.name + " is your chart ruler — it governs your 1st house, which means it literally represents you, your body, and the overall direction of your life. Where it sits and how it's doing colors everything.";
+        }
+        if (role.toLowerCase().indexOf("yogakaraka") >= 0) {
+          return "In your chart, " + p.name + " holds a special role called yogakaraka — it rules two important houses at once, making it your single most auspicious planet. When you tend to the things Venus governs (love, beauty, home, meaning), you're directly activating your chart's fortune.";
+        }
+        return "In your chart, " + p.name + " governs the following life areas: " + role + ". This means wherever " + p.name + " sits and however it's doing has a direct effect on those parts of your life.";
+      }
+
+      var HOUSE_GROUPS = [
+        { title: "You — identity, voice & courage", houses: [1, 2, 3] },
+        { title: "Home & heart — comfort, creativity & daily life", houses: [4, 5, 6] },
+        { title: "Relationships & growth — partnerships, depth & fortune", houses: [7, 8, 9] },
+        { title: "Your place in the world — career, gains & release", houses: [10, 11, 12] }
+      ];
+
+      var SIGN_RULER = {
+        Aries: "Mars", Taurus: "Venus", Gemini: "Mercury", Cancer: "Moon",
+        Leo: "Sun", Virgo: "Mercury", Libra: "Venus", Scorpio: "Mars",
+        Sagittarius: "Jupiter", Capricorn: "Saturn", Aquarius: "Saturn", Pisces: "Jupiter"
+      };
+
+      var PANCHANGA_LABELS = [
+        { m: /vara|weekday/i,    label: "Weekday",             note: "The day of the week you were born, each ruled by a planet — it sets a baseline energy for your temperament." },
+        { m: /tithi|lunar day/i, label: "Lunar day",           note: "The Moon's phase-step at your birth — there are 30 in a lunar month, split between waxing and waning." },
+        { m: /nakshatra|star/i,  label: "Birth star",          note: "The star cluster your Moon occupied — the same one shown in your summary cards above." },
+        { m: /yoga/i,            label: "Sun–Moon combination", note: "One of 27 combinations based on the positions of the Sun and Moon together — it gives a subtle flavor to the day you were born." },
+        { m: /karana/i,          label: "Half-day quality",     note: "A smaller time-unit (half of the lunar day) that fine-tunes the character of the moment you were born." },
+        { m: /hora/i,            label: "Hour ruler",           note: "The planet ruling the exact hour you were born — a subtle personal stamp on your birth moment." },
+        { m: /month/i,           label: "Lunar month",          note: "The lunar month of your birth, named after the star the full Moon falls near." }
+      ];
+      function panchangaInfo(k) {
+        for (var i = 0; i < PANCHANGA_LABELS.length; i++) {
+          if (PANCHANGA_LABELS[i].m.test(k)) return PANCHANGA_LABELS[i];
+        }
+        return { label: k, note: null };
+      }
+      // Left-edge accent color cycled across the birth-almanac cards
+      var ALMANAC_ACCENTS = ["#FF3303", "#B2C656", "#0774D6", "#00C3B6", "#812781", "#FFCC02"];
+
+      var PLANET_REMEDIES = {
+        Sun:     { deity: "Surya, the Sun god — also Shiva", governs: "vitality, confidence, health, father, authority", mantra: "Om Hraam Hreem Hraum Sah Suryaya Namah", day: "Sunday" },
+        Moon:    { deity: "Chandra, the Moon god (with Parvati / Gauri)", governs: "emotions, calm, the mind, mother, contentment", mantra: "Om Shraam Shreem Shraum Sah Chandraya Namah", day: "Monday" },
+        Mars:    { deity: "Skanda – Kartikeya (with Hanuman)", governs: "courage, drive, energy, discipline, protection", mantra: "Om Kraam Kreem Kraum Sah Bhaumaya Namah", day: "Tuesday" },
+        Mercury: { deity: "Vishnu (Budha)", governs: "intellect, communication, learning, business", mantra: "Om Braam Breem Braum Sah Budhaya Namah", day: "Wednesday" },
+        Jupiter: { deity: "Brihaspati / Brahma (Guru)", governs: "wisdom, growth, luck, teachers, faith", mantra: "Om Graam Greem Graum Sah Gurave Namah", day: "Thursday" },
+        Venus:   { deity: "Shukra (with Lakshmi)", governs: "love, relationships, beauty, comfort, creativity", mantra: "Om Draam Dreem Draum Sah Shukraya Namah", day: "Friday" },
+        Saturn:  { deity: "Shani (with Hanuman)", governs: "discipline, patience, endurance, long-term work", mantra: "Om Praam Preem Praum Sah Shanaischaraya Namah", day: "Saturday" },
+        Rahu:    { deity: "Durga (Rahu)", governs: "ambition, worldly desires, overcoming obstacles", mantra: "Om Bhraam Bhreem Bhraum Sah Rahave Namah", day: "Saturday" },
+        Ketu:    { deity: "Ganesha (Ketu)", governs: "spirituality, insight, detachment, letting go", mantra: "Om Sraam Sreem Sraum Sah Ketave Namah", day: "Tuesday" }
+      };
+
+      function ord(n) { var s=["th","st","nd","rd"],v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }
+      function el(tag, cls, html) { var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+      function byId(id) { return document.getElementById(id); }
+      function txt(str) { return document.createTextNode(str); }
+
+      var HOUSE_NAMES = {
+        1:"self", 2:"resources & voice", 3:"courage & communication",
+        4:"home & inner life", 5:"creativity & romance", 6:"work & health",
+        7:"relationships", 8:"depth & transformation", 9:"fortune & beliefs",
+        10:"career", 11:"gains & networks", 12:"release & spirituality"
+      };
+
+      // ----- Access control -----
+      var access = window.VEDIC_ACCESS.resolve(ALL_IDS);
+      var allowed = access.allowed;
+      var current;
+
+      if (!allowed.length) {
+        document.querySelector(".wrap").innerHTML =
+          "<div style='padding:60px 0;text-align:center;color:var(--text-3)'>" +
+          "<h1>No charts available</h1>" +
+          "<p>This link does not grant access to any charts. Please ask for a valid link.</p></div>";
+        return;
+      }
+
+      // ----- Picker -----
+      var sel = byId("chartsel");
+      if (allowed.length > 1) {
+        allowed.forEach(function(id) {
+          var o = document.createElement("option");
+          o.value = id; o.textContent = DATA[id].name;
+          sel.appendChild(o);
+        });
+        byId("picker").style.display = "flex";
+        sel.addEventListener("change", function() {
+          window.VEDIC_ACCESS.setActive(sel.value);
+          render(DATA[sel.value]);
+          window.scrollTo(0, 0);
+        });
+      }
+
+      function renderChart(container, clickable) {
+        container.innerHTML = "";
+        var ascIdx = ZODIAC.indexOf(current.ascendant.sign);
+        SIGN_ORDER.forEach(function(sign) {
+          var pos = SIGN_POS[sign];
+          var isAsc = current.ascendant.sign === sign;
+          var cell = el("div", "cell" + (isAsc ? " asc" : ""));
+          cell.style.gridColumn = pos[0];
+          cell.style.gridRow = pos[1];
+
+          var head = el("div", "signname");
+          head.appendChild(el("span", "nm", sign));
+          head.appendChild(el("span", "glyph", SIGN_SYMBOL[sign] || ""));
+          cell.appendChild(head);
+          if (isAsc) cell.appendChild(el("div", "asc-tag", "Ascendant"));
+
+          var pc = el("div", "planets");
+          current.planets.filter(function(p) { return p.sign === sign; }).forEach(function(p) {
+            var deg = p.degree ? p.degree.split("°")[0] : "";
+            var chipEl = el("span", "pchip", "<span class='abbr'>" + p.abbr + "</span> - " + deg + "°");
+            chipEl.title = p.name + " · " + p.sign + " " + p.degree + " · " + ord(p.house) + " house";
+            pc.appendChild(chipEl);
+          });
+          cell.appendChild(pc);
+
+          var houseNum = ((ZODIAC.indexOf(sign) - ascIdx + 12) % 12) + 1;
+          var hn = el("div", "house-no");
+          hn.appendChild(el("span", "n", String(houseNum)));
+          hn.appendChild(el("span", "lbl", "house"));
+          cell.appendChild(hn);
+
+          if (clickable) {
+            cell.classList.add("clickable");
+            cell.setAttribute("role", "button");
+            cell.setAttribute("tabindex", "0");
+            cell.setAttribute("aria-label", "Jump to house " + houseNum + " details");
+            (function(hnum) {
+              function go() { var t = byId("house-card-" + hnum); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+              cell.addEventListener("click", go);
+              cell.addEventListener("keydown", function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+            })(houseNum);
+          }
+
+          container.appendChild(cell);
+        });
+        var c = el("div", "center-cell");
+        c.appendChild(el("div", "t", "Birth chart"));
+        c.appendChild(el("div", "s", "South-Indian style"));
+        container.appendChild(c);
+      }
+
+      var detailEl, navEl;
+
+      // Build a spec-format accordion: title pill, intro, 4-col info grid, flavor sub-head, bullets.
+      function buildSpecAccordion(opts) {
+        var acc = el("details", "pd-acc");
+        if (opts.open) acc.setAttribute("open", "");
+        var sum = el("summary", "pd-acc-summary");
+        sum.appendChild(el("span", "pd-acc-label", opts.label));
+        acc.appendChild(sum);
+        var body = el("div", "pd-acc-body");
+        if (opts.titlePill) {
+          var pill = el("div", "pd-titlepill");
+          pill.appendChild(el("span", "pd-titlepill-text", opts.titlePill));
+          body.appendChild(pill);
+        }
+        if (opts.intro) body.appendChild(el("p", "pd-body", opts.intro));
+        if (opts.columns && opts.columns.length) {
+          var grid = el("div", "pd-infogrid");
+          opts.columns.forEach(function(c) {
+            var col = el("div", "pd-infocol");
+            col.appendChild(el("span", "pd-infolabel", c.label));
+            col.appendChild(el("span", "pd-infodiv"));
+            var v = el("p", "pd-infoval");
+            var lead = document.createElement("strong");
+            lead.textContent = c.lead;
+            v.appendChild(lead);
+            v.appendChild(txt(" — " + c.desc));
+            col.appendChild(v);
+            grid.appendChild(col);
+          });
+          body.appendChild(grid);
+        }
+        if (opts.flavorHead) body.appendChild(el("h4", "pd-flavorhead", opts.flavorHead));
+        if (opts.bullets && opts.bullets.length) {
+          var ul = el("ul", "pd-bullets");
+          opts.bullets.forEach(function(b) { var li = document.createElement("li"); li.textContent = b; ul.appendChild(li); });
+          body.appendChild(ul);
+        }
+        acc.appendChild(body);
+        return acc;
+      }
+
+      function renderPlanet(p) {
+        detailEl.innerHTML = "";
+
+        var top = el("div", "pd-top");
+        var row = el("div", "pd-row");
+
+        // LEFT — text column
+        var textCol = el("div", "pd-textcol");
+        var cat = el("div", "pd-catheader");
+
+        // Eyebrow + "Sun in Pisces" pill row
+        var eye = el("div", "pd-eyegroup");
+        if (p.theme) eye.appendChild(el("div", "pd-eyebrow", p.theme));
+        var signRow = el("div", "pd-signrow");
+        var pill1 = el("div", "pd-pill");
+        pill1.appendChild(el("span", "pd-glyph", PLANET_SYMBOL[p.name] || ""));
+        pill1.appendChild(el("span", "pd-pill-name", p.name));
+        signRow.appendChild(pill1);
+        var pillIn = el("div", "pd-pill pd-in");
+        pillIn.appendChild(el("span", "pd-in-text", "in"));
+        signRow.appendChild(pillIn);
+        var pill2 = el("div", "pd-pill");
+        pill2.appendChild(el("span", "pd-glyph", SIGN_SYMBOL[p.sign] || ""));
+        pill2.appendChild(el("span", "pd-pill-name", p.sign));
+        signRow.appendChild(pill2);
+        eye.appendChild(signRow);
+        cat.appendChild(eye);
+
+        // Context and role
+        var ctx = el("div", "pd-block");
+        ctx.appendChild(el("h3", "pd-subhead", "Context and role"));
+        var roleNarrative = roleToNarrative(p);
+        if (roleNarrative) ctx.appendChild(el("p", "pd-body", roleNarrative));
+        cat.appendChild(ctx);
+
+        // Placement notes + plain-English identity
+        planetContextNote(p).forEach(function(note) { cat.appendChild(el("p", "pd-body", note)); });
+        var identity = PLANET_IDENTITY[p.name];
+        if (identity) cat.appendChild(el("p", "pd-body", identity));
+
+        // Dignity badge
+        var digBadge = dignityBadgeEl(p.dignity);
+        if (digBadge) { var badgeWrap = el("div", "pd-badge-wrap"); badgeWrap.appendChild(digBadge); cat.appendChild(badgeWrap); }
+
+        // Divider → Your reading → divider
+        var readWrap = el("div", "pd-readwrap");
+        readWrap.appendChild(el("hr", "pd-divider"));
+        readWrap.appendChild(el("h2", "pd-readhead", "Your reading"));
+        var readBody = el("div", "pd-readbody dd");
+        if (p.motto) readBody.appendChild(el("p", "pd-motto", p.motto));
+        (p.deepDive || []).forEach(function(para) { readBody.appendChild(el("p", "pd-body", para)); });
+        readWrap.appendChild(readBody);
+        cat.appendChild(readWrap);
+        cat.appendChild(el("hr", "pd-divider"));
+
+        textCol.appendChild(cat);
+        row.appendChild(textCol);
+
+        // RIGHT — image column (planet over sign)
+        var imgCol = el("div", "pd-imagecol");
+        imgCol.appendChild(makeArtBox(PLANET_ART[p.name], p.name));
+        imgCol.appendChild(makeArtBox(SIGN_ART[p.sign], p.sign));
+        row.appendChild(imgCol);
+        top.appendChild(row);
+
+        // Overall sign strength
+        if (current.shadbalaRange && typeof p.shadbala === "number") {
+          var rng = current.shadbalaRange;
+          var pct = Math.max(4, Math.min(100, Math.round((p.shadbala - rng.min) / (rng.max - rng.min) * 100)));
+          var str = el("div", "pd-strength");
+          var inner = el("div", "pd-strength-inner");
+          var sh = el("div", "pd-strength-head");
+          sh.appendChild(el("span", "pd-strength-label", "Overall sign strength"));
+          sh.appendChild(el("span", "pd-strength-val", p.shadbala + "pts"));
+          inner.appendChild(sh);
+          var bar = el("div", "pd-bar"); var fill = el("div", "pd-fill"); fill.style.width = pct + "%"; bar.appendChild(fill); inner.appendChild(bar);
+          var link = el("a", "pd-tips-link", "Strengthening tips below");
+          link.setAttribute("href", "#pd-remedy");
+          inner.appendChild(link);
+          str.appendChild(inner);
+          top.appendChild(str);
+        }
+        detailEl.appendChild(top);
+
+        // Accordions: Life areas → Birth star (open) → Inner chart
+        var accStack = el("div", "pd-accstack");
+
+        // Birth star (Nakshatra) accordion — open by default
+        var accNakEl = (function() {
+          var NAK_DATA = {
+            "Ashwini":          { theme: "swift beginnings, healing, and instinctive courage", pada: ["bold initiative and self-launching drive", "patient building and material instinct", "curious versatility and social ease", "emotional sensitivity and inner depth"] },
+            "Bharani":          { theme: "transformation, creative force, and carrying life's weight", pada: ["pioneering self-expression and ambition", "steady endurance and resourcefulness", "adaptive wit and relational charm", "deep emotional intensity and feeling"] },
+            "Krittika":         { theme: "sharp clarity, purification, and cutting through illusion", pada: ["fierce ambition and solar fire", "earthy determination and practical strength", "social precision and communicative sharpness", "nurturing depth and emotional loyalty"] },
+            "Rohini":           { theme: "growth, beauty, magnetism, and material abundance", pada: ["bold self-expression and creative vitality", "steadfast sensuality and patient building", "playful charm and social grace", "deep emotional richness and protective instinct"] },
+            "Mrigashira":       { theme: "gentle seeking, curiosity, and the search for beauty", pada: ["pioneering restlessness and eager exploration", "grounded sensuality and refined taste", "quick wit and communicative charm", "emotional sensitivity and nurturing search"] },
+            "Ardra":            { theme: "storm, transformation, and the power to break and renew", pada: ["intense drive and pioneering disruption", "earthy perseverance and structural rebuilding", "sharp intellect and communicative power", "emotional depth and psychological insight"] },
+            "Punarvasu":        { theme: "renewal, optimism, and returning home to oneself", pada: ["bold expansion and philosophical courage", "grounded patience and steady hope", "quick learning and versatile renewal", "emotional nurturing and protective return"] },
+            "Pushya":           { theme: "nourishment, discipline, and steady, devoted care", pada: ["structured ambition and disciplined purpose", "patient endurance and material care", "communicative service and intellectual nourishment", "deep emotional devotion and inner care"] },
+            "Ashlesha":         { theme: "coiling wisdom, emotional intelligence, and hidden power", pada: ["intense drive and penetrating insight", "stubborn persistence and resourceful depth", "sharp wit and psychological astuteness", "deep feeling and transformative inner knowing"] },
+            "Magha":            { theme: "ancestral power, regal dignity, and deep roots", pada: ["fiery authority and commanding presence", "earthy strength and material legacy", "communicative leadership and social charisma", "deep emotional connection to lineage and belonging"] },
+            "Purva Phalguni":   { theme: "warmth, creativity, charm, and celebration of life", pada: ["proactive self-expression, confidence, and creative leadership", "sensual pleasure, artistic refinement, and material enjoyment", "social grace, playful charm, and relational ease", "emotional warmth, romantic depth, and heartfelt connection"] },
+            "Uttara Phalguni":  { theme: "loyalty, service, and the fruits of steady partnership", pada: ["bold generosity and dignified leadership", "grounded reliability and practical devotion", "communicative intelligence and cooperative skill", "deep emotional loyalty and nurturing care"] },
+            "Hasta":            { theme: "dexterity, craft, and the healing power of skillful hands", pada: ["ambitious precision and practical initiative", "steady craft and sensory mastery", "quick-handed intelligence and communicative skill", "emotional sensitivity and intuitive care"] },
+            "Chitra":           { theme: "brilliant creativity, artistry, and the desire to dazzle", pada: ["bold creative ambition and fiery expression", "earthy craftsmanship and tangible beauty", "social artistry and relational brilliance", "deep emotional creativity and transformative vision"] },
+            "Swati":            { theme: "independence, adaptability, and moving with life's wind", pada: ["pioneering freedom and self-directed purpose", "grounded self-sufficiency and steady flexibility", "quick social intelligence and communicative ease", "emotional independence and inner equilibrium"] },
+            "Vishakha":         { theme: "focused purpose, drive, and the power of a single pointed goal", pada: ["fiery determination and bold ambition", "steady material focus and patient striving", "sharp intellectual purpose and communicative drive", "deep emotional intensity and transformative seeking"] },
+            "Anuradha":         { theme: "devotion, friendship, and the strength found in loyal connection", pada: ["bold initiative in relationship and devoted courage", "patient loyalty and steady emotional care", "quick social intelligence and connective warmth", "deep emotional devotion and soulful bonding"] },
+            "Jyeshtha":         { theme: "seniority, protective authority, and hard-earned inner power", pada: ["fiery ambition and commanding presence", "patient authority and material endurance", "sharp communicative power and social dominance", "deep emotional intensity and protective inner strength"] },
+            "Mula":             { theme: "uprooting, deep inquiry, and the search for ultimate truth", pada: ["fierce philosophical drive and bold questioning", "patient investigation and material rootedness", "sharp intellectual inquiry and communicative depth", "emotional intensity and transformative inner seeking"] },
+            "Purva Ashadha":    { theme: "invincibility, creative force, and riding life's current", pada: ["bold creative ambition and expansive fire", "grounded sensuality and pleasurable striving", "social brilliance and communicative flair", "deep emotional force and transformative passion"] },
+            "Uttara Ashadha":   { theme: "victory, long-term achievement, and lasting dignity", pada: ["fiery ambition and commanding drive toward victory", "grounded persistence and material achievement", "sharp intelligence and communicative mastery", "deep emotional endurance and soulful purpose"] },
+            "Shravana":         { theme: "listening, learning, and the wisdom that comes through attentive connection", pada: ["bold learning and pioneering knowledge", "patient listening and grounded wisdom", "quick communicative intelligence and relational learning", "deep emotional receptivity and inner attunement"] },
+            "Dhanishtha":       { theme: "wealth, rhythm, and the power to manifest and resonate", pada: ["fiery drive toward abundance and dynamic manifestation", "patient accumulation and steady material rhythm", "quick social brilliance and communicative wealth", "deep emotional resonance and inner music"] },
+            "Shatabhisha":      { theme: "healing, solitude, and the power of a hundred remedies", pada: ["bold independence and pioneering healing", "patient endurance and grounded restoration", "sharp intellectual inquiry and healing through knowledge", "deep emotional wisdom and transformative inner healing"] },
+            "Purva Bhadrapada": { theme: "fiery transformation, renunciation, and depth of purpose", pada: ["intense fiery purpose and radical drive", "patient endurance through transformation and depth", "sharp intellectual fire and communicative intensity", "deep emotional transformation and soulful searching"] },
+            "Uttara Bhadrapada":{ theme: "deep wisdom, rain-cloud compassion, and cosmic endurance", pada: ["bold wisdom and pioneering spiritual depth", "patient endurance and grounded compassion", "sharp communicative wisdom and relational insight", "deep emotional compassion and soulful presence"] },
+            "Revati":           { theme: "completion, safe passage, and the gentle close of a cycle", pada: ["bold completion and pioneering closure", "patient finishing and grounded wholeness", "quick social grace and communicative completion", "deep emotional nurturing and tender closure"] },
+          };
+          var NAK_LORD_FLAVOR = {
+            "Sun":     { self: "radiance, authority, and a commanding solar presence",     forOther: "pride, dignity, and a quiet solar confidence" },
+            "Moon":    { self: "deep feeling, instinctive wisdom, and emotional fluency",  forOther: "emotional intelligence, care, and responsiveness" },
+            "Mars":    { self: "bold courage, direct action, and competitive fire",         forOther: "drive, assertiveness, and decisive momentum" },
+            "Mercury": { self: "sharp wit, communicative skill, and analytical agility",   forOther: "intelligence, discernment, and communicative ease" },
+            "Jupiter": { self: "expansive wisdom, optimism, and philosophical generosity", forOther: "wisdom, growth, and a sense of grace and possibility" },
+            "Venus":   { self: "beauty, charm, creative pleasure, and relational warmth",  forOther: "warmth, artistry, and the desire to connect and enjoy" },
+            "Saturn":  { self: "patient discipline, endurance, and earned authority",      forOther: "focus, perseverance, and a serious, grounding quality" },
+            "Rahu":    { self: "intense hunger, ambition, and boundary-crossing drive",    forOther: "unconventional intensity and a restless, reaching quality" },
+            "Ketu":    { self: "spiritual insight, detachment, and intuitive depth",       forOther: "intuition, inner searching, and a quiet otherworldly depth" },
+          };
+          var PLANET_WHAT = {
+            "Sun":     "core identity, vitality, and sense of self",
+            "Moon":    "emotional inner world, instincts, and responsiveness",
+            "Mars":    "drive, courage, and initiative",
+            "Mercury": "mind, speech, and reasoning",
+            "Jupiter": "wisdom, growth, and good fortune",
+            "Venus":   "love, beauty, and desire for connection",
+            "Saturn":  "discipline, endurance, and long-term mastery",
+            "Rahu":    "karmic hunger, ambition, and the edges of growth",
+            "Ketu":    "spiritual depth, detachment, and past-life mastery",
+          };
+
+          var nakInfo = NAK_DATA[p.nakshatra] || { theme: "precision and purpose", pada: ["pioneering focus","steady application","communicative intelligence","emotional depth"] };
+          var lordFlavor = NAK_LORD_FLAVOR[p.nakshatraLord] || { self: "depth and nuance", forOther: "depth and nuance" };
+          var isSelf = (p.nakshatraLord === p.name);
+          var lordDesc = isSelf ? lordFlavor.self : lordFlavor.forOther;
+          var planetWhat = PLANET_WHAT[p.name] || "energy and purpose";
+          var padaDesc = nakInfo.pada[p.pada - 1] || "focused and purposeful expression";
+
+          var bullets = [
+            "Your " + p.name + "'s core motivation is filtered through " + nakInfo.theme + " — this is the underlying 'why' behind how this planet operates for you.",
+            "Pada " + p.pada + " brings " + padaDesc + " as a sharpening lens — giving your " + p.name + " a more specific quality and focus within the broader star.",
+            p.nakshatraLord + " as the nakshatra lord adds " + lordDesc + " to the way your " + p.name + " expresses — " + (isSelf ? "doubling down on its own nature and amplifying its natural qualities" : "lending a secondary flavor that colors its behavior in your chart") + ".",
+            "Together, this means your " + p.name + " shines through " + nakInfo.theme.split(",")[0] + " — the most personal layer of how this planet's energy moves through your life."
+          ];
+          return buildSpecAccordion({
+            label: "Birth Star",
+            open: true,
+            titlePill: p.nakshatra,
+            intro: "A birth star (nakshatra) zooms past your broad zodiac sign to reveal the precise flavor, style, and motivation behind how a planet behaves in your life. For your " + p.name + " — which represents " + planetWhat + " — sitting in the " + (isSelf ? "" : p.nakshatraLord + "-ruled star of ") + p.nakshatra + " infuses this energy with " + nakInfo.theme + ". This means the way " + p.name + " shows up for you is shaped at its core by that specific quality.",
+            columns: [
+              { label: "planet", lead: p.name, desc: "your " + planetWhat },
+              { label: "birth star", lead: p.nakshatra, desc: nakInfo.theme },
+              { label: "chapter", lead: "Pada " + p.pada, desc: padaDesc },
+              { label: "ruler", lead: p.nakshatraLord, desc: "lending its quality of " + lordDesc }
+            ],
+            flavorHead: "What " + p.nakshatraLord + (isSelf ? "'s own rulership" : " as the ruler") + " means for your " + p.name,
+            bullets: bullets
+          });
+        })();
+
+        // Inner chart (Navamsa) accordion — closed by default
+        var accNavEl = (function() {
+          var NAV_SIGN = {
+            "Aries":       { qual: "bold, pioneering, and action-first",                  soul: "pushes toward directness, initiative, and self-directed momentum",      grow: "courage, restlessness, and the drive to break new ground" },
+            "Taurus":      { qual: "steady, sensual, and deeply grounded",                soul: "deepens through patience, beauty, and tangible, earned security",         grow: "sensory richness, loyalty, and a slow-building inner strength" },
+            "Gemini":      { qual: "quick, curious, and endlessly adaptable",             soul: "seeks out ideas, conversation, and the pleasure of mental connection",     grow: "versatility, wit, and a hunger to understand the world" },
+            "Cancer":      { qual: "deeply feeling, nurturing, and instinctive",          soul: "is shaped by emotional depth and a drive to protect what it loves",        grow: "emotional intelligence, care, and a strong instinct for home" },
+            "Leo":         { qual: "radiant, expressive, and proudly itself",             soul: "wants to shine, be recognized, and give warmth generously",               grow: "creative confidence, regal dignity, and heartfelt self-expression" },
+            "Virgo":       { qual: "precise, discerning, and quietly devoted",            soul: "refines itself through careful attention, service, and honest analysis",   grow: "craft, discernment, and a devotion to getting things right" },
+            "Libra":       { qual: "harmonizing, relational, and beauty-seeking",         soul: "deepens through fairness, partnership, and a love of aesthetic balance",   grow: "grace, diplomacy, and the art of meeting others halfway" },
+            "Scorpio":     { qual: "intense, transformative, and deeply searching",       soul: "is driven toward depth, psychological truth, and fearless transformation", grow: "penetrating insight, emotional courage, and regenerative power" },
+            "Sagittarius": { qual: "expansive, philosophical, and freedom-loving",        soul: "grows through learning, travel, and a hunger for larger meaning",          grow: "optimism, philosophical breadth, and a restless reaching toward truth" },
+            "Capricorn":   { qual: "disciplined, ambitious, and durably built",           soul: "unfolds through sustained effort, earned mastery, and serious ambition",   grow: "structure, patience, and the satisfaction of building something that lasts" },
+            "Aquarius":    { qual: "original, visionary, and collectively minded",        soul: "deepens through innovation, community, and a sense of larger purpose",     grow: "originality, humanitarian vision, and a willingness to think differently" },
+            "Pisces":      { qual: "compassionate, boundless, and spiritually inclined",  soul: "is drawn toward transcendence, empathy, and the dissolution of hard edges", grow: "spiritual sensitivity, imagination, and a deep reservoir of feeling" },
+          };
+          var PLANET_WHAT = {
+            "Sun":     "core identity, vitality, and sense of self",
+            "Moon":    "emotional inner world, instincts, and responsiveness",
+            "Mars":    "drive, courage, and initiative",
+            "Mercury": "mind, speech, and reasoning",
+            "Jupiter": "wisdom, growth, and good fortune",
+            "Venus":   "love, beauty, and desire for connection",
+            "Saturn":  "discipline, endurance, and long-term mastery",
+            "Rahu":    "karmic hunger, ambition, and the edges of growth",
+            "Ketu":    "spiritual depth, detachment, and past-life mastery",
+          };
+
+          var navInfo = NAV_SIGN[p.navamsa] || { qual: "nuanced and layered", soul: "carries a depth that unfolds gradually", grow: "personal evolution and inner richness" };
+          var planetWhat = PLANET_WHAT[p.name] || "energy and purpose";
+          var sameSign = (p.sign === p.navamsa);
+          var alignNote = sameSign
+            ? "same sign as the main chart — outer and inner layers are aligned and mutually reinforcing, which amplifies and confirms this quality"
+            : "a different sign from the main chart (" + p.sign + ") — the navamsa adds a " + navInfo.qual + " undertone that may feel more private or emerge more fully as you deepen into yourself over time";
+
+          var bullets = [
+            "At the soul level, your " + p.name + " " + navInfo.soul + " — this is the private, maturing quality that shapes how this planet operates beneath the surface.",
+            "The inner drive here is toward " + navInfo.grow + ", which means the more you live into your " + p.name + "'s full potential, the more " + navInfo.qual + " it becomes.",
+            sameSign
+              ? "Because your main chart and inner chart both place " + p.name + " in " + p.sign + ", this quality is doubled — what you feel on the surface and what runs deep are pointing in the same direction."
+              : "Your main chart places " + p.name + " in " + p.sign + ", while the inner chart places it in " + p.navamsa + " — these two qualities layer together, giving your " + p.name + " a more complex, two-toned expression than you might expect from the surface sign alone.",
+            "Over time — especially in relationships and moments of self-reckoning — the " + navInfo.qual + " inner quality tends to surface more clearly, revealing a depth in your " + p.name + " that others may only glimpse.",
+          ];
+          return buildSpecAccordion({
+            label: "Inner Chart",
+            titlePill: p.navamsa,
+            intro: "Your main chart shows where a planet lives and how it acts in daily life. The navamsa — a second, deeper chart — reveals the soul-level quality that same planet carries beneath the surface. Think of it as what your " + p.name + " is working toward at its core, especially in relationship, purpose, and the private experience you rarely put into words. It grows more prominent as you grow older.",
+            columns: [
+              { label: "planet", lead: p.name, desc: "your " + planetWhat },
+              { label: "main chart sign", lead: p.sign, desc: "how " + p.name + " operates visibly in your daily life" },
+              { label: "inner chart sign", lead: p.navamsa, desc: navInfo.qual },
+              { label: "alignment", lead: sameSign ? "Aligned" : "Layered", desc: alignNote }
+            ],
+            flavorHead: "What " + p.navamsa + " as the inner chart sign means for your " + p.name,
+            bullets: bullets
+          });
+        })();
+
+        // Life areas governed (houses ruled) accordion — closed by default
+        var accHousesEl = null;
+        if (p.housesOwned && p.housesOwned.length) {
+          accHousesEl = (function() {
+            var HOUSE_MEANINGS = {
+              1:  { label: "self, body, and identity",           zone: "how you show up in the world — your appearance, your physical vitality, and the first impression you leave on everyone you meet",          carry: "your overall sense of self and physical wellbeing move in step with how this planet is faring" },
+              2:  { label: "resources, voice, and family",       zone: "wealth, possessions, your relationship with food, how you speak, and your bonds with close family",                                         carry: "your financial security and the confidence of your voice are tied to how freely this planet can express itself" },
+              3:  { label: "courage, effort, and communication", zone: "your daily initiative, short journeys, sibling relationships, and the sheer willingness to try hard things",                               carry: "when this planet is strong, you find it easier to act boldly and speak up; when it's under pressure, taking initiative can feel harder" },
+              4:  { label: "home and inner life",                zone: "your sense of belonging — your home, your emotional foundations, your relationship with your mother, and your inner peace",                carry: "home, comfort, and the quality of your emotional roots are closely linked to this planet's condition in your chart" },
+              5:  { label: "creativity and romance",             zone: "creative expression, romantic love, the joy of life, intelligence, and (in traditional readings) children",                                 carry: "your capacity for joy, love, and creative fire rises and falls with how well this planet is placed and supported" },
+              6:  { label: "work, health, and service",          zone: "daily work, physical health, the obstacles you face and overcome, and your willingness to be of service",                                  carry: "your stamina, your relationship with work, and how well your body functions are all directly colored by this planet's strength" },
+              7:  { label: "relationships and partnership",      zone: "close one-on-one bonds — romantic partnerships, business partnerships, and the qualities you seek in others",                              carry: "how this planet performs shapes the texture of your most important relationships and what you attract in a partner" },
+              8:  { label: "depth and transformation",           zone: "crisis, deep change, shared resources, the hidden and taboo, and the transformations that remake you",                                     carry: "your capacity to navigate major life transitions and hidden matters is linked to how grounded and supported this planet is" },
+              9:  { label: "fortune and beliefs",                zone: "your luck, higher learning, philosophy, teachers, long journeys, and your sense of connection to something larger",                       carry: "good fortune, meaningful opportunities, and your sense of life's purpose are tied to how this planet moves through your chart" },
+              10: { label: "career and public life",             zone: "your professional path, public reputation, authority figures, and the work you become known for in the world",                            carry: "your career momentum and the reputation you build are closely tied to how this planet is performing at any given time" },
+              11: { label: "gains and networks",                 zone: "income, aspirations, friendships, communities, and the satisfaction of long-held goals coming to fruition",                               carry: "when this planet is well-supported, gains and meaningful connections tend to flow more naturally into your life" },
+              12: { label: "release and spirituality",           zone: "solitude, spiritual practice, foreign places, rest, and what you are slowly releasing or letting go of in this life",                    carry: "your relationship with rest, solitude, and the spiritual dimensions of life is shaped by where and how this planet sits" },
+            };
+            var PLANET_WHAT = {
+              "Sun":     "core identity, vitality, and sense of self",
+              "Moon":    "emotional inner world, instincts, and responsiveness",
+              "Mars":    "drive, courage, and initiative",
+              "Mercury": "mind, speech, and reasoning",
+              "Jupiter": "wisdom, growth, and good fortune",
+              "Venus":   "love, beauty, and desire for connection",
+              "Saturn":  "discipline, endurance, and long-term mastery",
+              "Rahu":    "karmic hunger, ambition, and the edges of growth",
+              "Ketu":    "spiritual depth, detachment, and past-life mastery",
+            };
+
+            var planetWhat = PLANET_WHAT[p.name] || "energy and purpose";
+            var houseLabel = p.housesOwned.map(ord).join(" & ") + " house";
+            var columns = [{ label: "planet", lead: p.name, desc: "your " + planetWhat }];
+            p.housesOwned.forEach(function(h) {
+              var hInfo = HOUSE_MEANINGS[h] || { label: "life area " + h, zone: "a significant zone of life", carry: "this area of life is connected to how this planet performs" };
+              columns.push({ label: ord(h) + " house", lead: hInfo.label, desc: hInfo.zone });
+            });
+
+            var governedLabel = p.housesOwned.length > 1
+              ? "the " + p.housesOwned.map(function(h){ return ord(h); }).join(" and ") + " houses"
+              : "the " + ord(p.housesOwned[0]) + " house";
+
+            var h0 = p.housesOwned[0];
+            var h1 = p.housesOwned[1];
+            var hInfo0 = HOUSE_MEANINGS[h0] || { label: "life area " + h0, carry: "this area is connected to this planet" };
+            var hInfo1 = h1 != null ? (HOUSE_MEANINGS[h1] || { label: "life area " + h1, carry: "this second area is also connected" }) : null;
+
+            var bullets = [
+              p.name + " isn't just active in the house it sits in — it also sets the tone for " + governedLabel + " because it holds the keys to " + (hInfo1 ? hInfo0.label + " and " + hInfo1.label : hInfo0.label) + " for your rising sign.",
+              hInfo0.carry + " — so the state of your " + p.name + " in any given period can ripple through " + hInfo0.label + " in very tangible ways.",
+              hInfo1
+                ? "Because " + p.name + " governs both the " + ord(h0) + " and " + ord(h1) + " houses, those two zones are woven together in your chart — events in one tend to echo through the other, and " + p.name + "'s overall condition is the common thread."
+                : "Even when no planets are transiting the " + ord(h0) + " house, " + p.name + " is always the background manager of that zone — its placements, transits, and periods directly activate or quiet this area of your life.",
+              "A well-supported " + p.name + " lifts " + (hInfo1 ? "both zones" : "this zone") + " — and when " + p.name + " faces pressure from transits or periods, " + (hInfo1 ? "these areas" : "this area") + " of life are often where you feel it first.",
+            ];
+
+            return buildSpecAccordion({
+              label: "Life areas governed by this sign",
+              titlePill: houseLabel,
+              intro: "Every planet in Vedic astrology acts as a governor — it holds the keys to one or two zones of your life depending on which signs it rules and where those signs fall in your chart. Your " + p.name + " — which represents " + planetWhat + " — carries " + (p.housesOwned.length > 1 ? "those " + p.housesOwned.length + " zones" : "that zone") + " with it wherever it goes. This means how " + p.name + " is doing in your chart directly shapes how those areas of life flow for you.",
+              columns: columns,
+              flavorHead: "What governing " + governedLabel + " means for your " + p.name,
+              bullets: bullets
+            });
+          })();
+        }
+
+        // Stack accordions in Figma order, then the strengthening card
+        if (accHousesEl) accStack.appendChild(accHousesEl);
+        accStack.appendChild(accNakEl);
+        accStack.appendChild(accNavEl);
+        detailEl.appendChild(accStack);
+
+        // Strengthening card is a separate sibling AFTER #planet-detail, not inside it.
+        // detailEl.innerHTML was cleared above, but the card lives outside, so remove any prior one.
+        var oldRemedy = byId("pd-remedy");
+        if (oldRemedy) oldRemedy.parentNode.removeChild(oldRemedy);
+        var remedyEl = remedySection(p);
+        if (detailEl.parentNode) detailEl.parentNode.insertBefore(remedyEl, detailEl.nextSibling);
+        else detailEl.appendChild(remedyEl);
+      }
+
+      function remedySection(p) {
+        var r = PLANET_REMEDIES[p.name];
+        var box = el("div", "remedy");
+        box.id = "pd-remedy";
+
+        // Header — title + subtitle
+        var head = el("div", "rem-head");
+        head.appendChild(el("h3", null, "Strengthening " + p.name + "'s energy in your life"));
+        head.appendChild(el("p", "rem-sub", "Chant this mantra to the deity below to strengthen the " + p.name + "'s energy in your life."));
+        box.appendChild(head);
+
+        // Deity / Supports
+        function rrow(k, v) { var row = el("div", "rrow"); row.appendChild(el("span", "rk", k)); row.appendChild(el("span", "rv", v)); return row; }
+        var rgrid = el("div", "rgrid");
+        rgrid.appendChild(rrow("Deity:", r.deity));
+        rgrid.appendChild(rrow("Supports:", r.governs));
+        box.appendChild(rgrid);
+
+        // Mantra box
+        var mbox = el("div", "mantra-box");
+        mbox.appendChild(el("div", "mantra", r.mantra));
+        mbox.appendChild(el("div", "mnote", "(Seed mantra — traditionally chanted 108 times, ideally on " + r.day + " (" + p.name + "'s day). Do this as devotion or meditation; it complements, and never replaces, real-world effort.)"));
+        box.appendChild(mbox);
+
+        // Chart-specific note (left-accent)
+        var dig = (p.dignity || "").toLowerCase();
+        var strainedDignity = dig.indexOf("debil") >= 0 || dig.indexOf("enemy") >= 0 || dig.indexOf("combust") >= 0;
+        var easedDignity = dig.indexOf("own") >= 0 || dig.indexOf("exalt") >= 0;
+        var hasIK = (typeof p.ishta === "number" && typeof p.kashta === "number" && (p.ishta || p.kashta));
+        var flag = el("div", "flag");
+        if (p.name === "Rahu" || p.name === "Ketu") {
+          flag.innerHTML = "As a lunar node, " + p.name + " has no ease/challenge score, but its mantra is a traditional way to steady its intense, karmic energy.";
+        } else if (strainedDignity || (hasIK && p.kashta > p.ishta)) {
+          flag.className = "flag strained";
+          flag.textContent = "In your chart this planet leans toward challenge" +
+            (hasIK ? " — its challenge score (" + p.kashta + ") outweighs its ease score (" + p.ishta + ")" : " — its placement is strained") +
+            ", making it a strong candidate for strengthening.";
+        } else if (easedDignity && (!hasIK || p.ishta >= p.kashta)) {
+          flag.className = "flag eased";
+          flag.textContent = "In your chart this planet is already fairly comfortable" +
+            (hasIK ? " (ease " + p.ishta + " vs. challenge " + p.kashta + ")" : "") +
+            ", so this is more about nurturing an existing strength than fixing a problem.";
+        } else {
+          flag.textContent = "In your chart this planet is mixed" +
+            (hasIK ? " (ease " + p.ishta + " vs. challenge " + p.kashta + ")" : "") +
+            ", so the mantra offers gentle, general support.";
+        }
+        box.appendChild(flag);
+
+        return box;
+      }
+
+      // ----- Full render for a chart -----
+      function render(chart) {
+        current = chart;
+
+        // Header
+        byId("title").textContent = chart.name;
+        var b = chart.birth;
+        byId("birthline").textContent = b.date + "  |  " + b.time + "  |  " + b.location;
+        byId("systemline").textContent =
+          chart.system.ayanamsa + " · " + chart.system.houseSystem + " houses · " + chart.system.source;
+        if (sel) sel.value = chart.id;
+
+        // Stats (inside #panel-overview)
+        var moon = chart.planets.find(function(p) { return p.name === "Moon"; });
+        var sun = chart.planets.find(function(p) { return p.name === "Sun"; });
+        var statsEl = byId("stats"); statsEl.innerHTML = "";
+
+        function firstSentence(text) {
+          if (!text) return "";
+          var m = text.match(/^[^.!?]+[.!?]/);
+          return m ? m[0] : text.slice(0, 120) + "…";
+        }
+        var moonMeaning = moon && moon.deepDive && moon.deepDive[0] ? firstSentence(moon.deepDive[0]) : "";
+        var sunMeaning  = sun  && sun.deepDive  && sun.deepDive[0]  ? firstSentence(sun.deepDive[0])  : "";
+        var ascMeaning  = chart.ascendant && chart.ascendant.deepDive && chart.ascendant.deepDive[0] ? firstSentence(chart.ascendant.deepDive[0]) : "";
+
+        var nkCard = chart.nakshatra;
+        [
+          { sign: chart.ascendant.sign, role: "Ascendant", house: null, theme: "Your Outer Lens", blurb: chart.ascendant.cardBlurb || ascMeaning, dignity: null },
+          { sign: moon ? moon.sign : "—", role: "Moon", house: moon ? moon.house : null, theme: "Emotional Inner World", blurb: (moon && moon.cardBlurb) || moonMeaning, dignity: moon ? moon.dignity : null },
+          { sign: nkCard.name, role: "Birth Star", house: null, theme: "Your Deeper Layer", blurb: nkCard.cardBlurb || nkCard.themes, dignity: null },
+          { sign: sun ? sun.sign : "—", role: "Sun", house: sun ? sun.house : null, theme: "Core Self & Vitality", blurb: (sun && sun.cardBlurb) || sunMeaning, dignity: sun ? sun.dignity : null }
+        ].forEach(function(c) {
+          var card = el("div", "stat summary-card");
+          card.appendChild(el("div", "sc-sign", c.sign));
+          var roleHtml = "<strong>" + c.role + "</strong>";
+          if (c.house) roleHtml += " (" + ord(c.house) + " House)";
+          roleHtml += " · " + c.theme;
+          card.appendChild(el("div", "sc-role", roleHtml));
+          if (c.blurb) card.appendChild(el("div", "sc-desc", c.blurb));
+          if (c.dignity) {
+            var badge = dignityBadgeEl(c.dignity);
+            if (badge) card.appendChild(badge);
+          }
+          statsEl.appendChild(card);
+        });
+
+        // Rasi charts
+        renderChart(byId("chart"));
+        renderChart(byId("chart2"), true);
+        byId("charthint").textContent = "Each chip shows a planet and its position. The highlighted box (ASC) is your rising sign.";
+
+        // Sign artwork (src/images/*.svg) + accent color (the SVG's own background), for persona cards.
+        var SIGN_ART = {
+          Aries:       { file: "Aries.svg",      color: "#FF3303" },
+          Taurus:      { file: "Taurus.svg",     color: "#9CC933" },
+          Gemini:      { file: "Gemini.svg",     color: "#FFCC02" },
+          Cancer:      { file: "Cancer.svg",     color: "#003EB9" },
+          Leo:         { file: "Leo.svg",        color: "#FF0329" },
+          Virgo:       { file: "Virgo.svg",      color: "#723700" },
+          Libra:       { file: "LIbra.svg",      color: "#FC7265" },
+          Scorpio:     { file: "Scorpio.svg",    color: "#930025" },
+          Sagittarius: { file: "Sagitarius.svg", color: "#AE1BAD" },
+          Capricorn:   { file: "Capricorn.svg",  color: "#003EB9" },
+          Aquarius:    { file: "Aquarius.svg",   color: "#0774D6" },
+          Pisces:      { file: "Pisces.svg",     color: "#00C3B6" }
+        };
+        // Assemble a persona card: left body + right sign image, with the sign color as accent.
+        function buildPersonaCard(card, body, sign) {
+          var art = SIGN_ART[sign];
+          if (art) card.style.setProperty("--sign-accent", art.color);
+          card.appendChild(body);
+          if (art) {
+            var imgWrap = el("div", "persona-image");
+            var img = document.createElement("img");
+            img.src = "src/Images/" + art.file;
+            img.alt = sign; img.setAttribute("aria-hidden", "true");
+            imgWrap.appendChild(img);
+            card.appendChild(imgWrap);
+          }
+        }
+
+        // Personality (rising sign)
+        var asc = chart.ascendant;
+        var personaEl = byId("persona-card"); personaEl.innerHTML = ""; personaEl.style.display = "";
+        if (asc && asc.deepDive) {
+          var pBody = el("div", "persona-body");
+          if (asc.theme) pBody.appendChild(el("div", "text-eyebrow", asc.theme));
+          var pHead = el("div", "detail-head");
+          var pTitle = el("span", "title", asc.sign + " ");
+          pTitle.appendChild(el("span", "rising", "(rising)"));
+          pHead.appendChild(pTitle);
+          pHead.appendChild(el("span", "pos", "Ascendant · " + asc.nakshatra));
+          pBody.appendChild(pHead);
+          if (asc.motto) pBody.appendChild(el("div", "motto", asc.motto));
+          var pdd = el("div", "dd");
+          asc.deepDive.forEach(function(para) { pdd.appendChild(el("p", null, para)); });
+          pBody.appendChild(pdd);
+          buildPersonaCard(personaEl, pBody, asc.sign);
+        } else { personaEl.style.display = "none"; }
+
+        // Moon portrait
+        var moonPortraitEl = byId("moon-portrait"); moonPortraitEl.innerHTML = "";
+        if (moon && moon.deepDive) {
+          var mBody = el("div", "persona-body");
+          mBody.appendChild(el("div", "text-eyebrow", "Emotional world"));
+          var mHead = el("div", "detail-head");
+          mHead.appendChild(el("span", "title", "Moon in " + moon.sign));
+          mHead.appendChild(el("span", "pos", "Your inner life &amp; instincts"));
+          mBody.appendChild(mHead);
+          if (moon.motto) mBody.appendChild(el("div", "motto", moon.motto));
+          var mdd = el("div", "dd");
+          mdd.appendChild(el("p", null, moon.deepDive[0]));
+          var mlink = el("p", null, "");
+          mlink.innerHTML = "<a href='#' class='accent' style='font-size:13px;font-weight:500' data-planet='Moon'>Full Moon reading in the Planets tab →</a>";
+          mlink.querySelector("a").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector('.tab[data-tab="planets"]').click();
+            var mbtn = Array.from(document.querySelectorAll(".pbtn")).find(function(b) { return b.dataset.name === "Moon"; });
+            if (mbtn) mbtn.click();
+            window.scrollTo(0, 0);
+          });
+          mdd.appendChild(mlink);
+          mBody.appendChild(mdd);
+          buildPersonaCard(moonPortraitEl, mBody, moon.sign);
+        }
+
+        // Sun portrait
+        var sunPortraitEl = byId("sun-portrait"); sunPortraitEl.innerHTML = "";
+        if (sun && sun.deepDive) {
+          var sBody = el("div", "persona-body");
+          sBody.appendChild(el("div", "text-eyebrow", "Core self"));
+          var sHead = el("div", "detail-head");
+          sHead.appendChild(el("span", "title", "Sun in " + sun.sign));
+          sHead.appendChild(el("span", "pos", "Your identity &amp; vitality"));
+          sBody.appendChild(sHead);
+          if (sun.motto) sBody.appendChild(el("div", "motto", sun.motto));
+          var sdd = el("div", "dd");
+          sdd.appendChild(el("p", null, sun.deepDive[0]));
+          var slink = el("p", null, "");
+          slink.innerHTML = "<a href='#' class='accent' style='font-size:13px;font-weight:500' data-planet='Sun'>Full Sun reading in the Planets tab →</a>";
+          slink.querySelector("a").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector('.tab[data-tab="planets"]').click();
+            var sbtn = Array.from(document.querySelectorAll(".pbtn")).find(function(b) { return b.dataset.name === "Sun"; });
+            if (sbtn) sbtn.click();
+            window.scrollTo(0, 0);
+          });
+          sdd.appendChild(slink);
+          sBody.appendChild(sdd);
+          buildPersonaCard(sunPortraitEl, sBody, sun.sign);
+        }
+
+        // Highlights
+        var hi = byId("highlights"); hi.innerHTML = "";
+        chart.highlights.forEach(function(h) {
+          var card = el("div", "theme-card");
+          card.appendChild(el("h3", null, h.title));
+          card.appendChild(el("p", null, h.body));
+          hi.appendChild(card);
+        });
+
+        // Nakshatra card
+        var nk = chart.nakshatra;
+        var nkEl = byId("nakshatra-card"); nkEl.innerHTML = "";
+        var nkHead = el("div", "nk-head");
+        nkHead.appendChild(el("h3", null, "Birth star: " + nk.name));
+        nkHead.appendChild(el("p", "nk-meta", "Ruled by " + nk.lord + " · deity " + nk.deity));
+        nkEl.appendChild(nkHead);
+        var nkBody = el("div", "nk-body");
+        nkBody.appendChild(el("p", "nk-intro", "Your birth star is the lunar mansion — one of 27 star-clusters — that your Moon was passing through when you were born. It adds a finer, more personal layer on top of your Moon sign."));
+        nkBody.appendChild(el("p", null, nk.themes));
+        nkEl.appendChild(nkBody);
+
+        // Planets tab
+        navEl = byId("planet-nav"); navEl.innerHTML = "";
+        detailEl = byId("planet-detail");
+        chart.planets.forEach(function(p, i) {
+          var btn = el("button", "pbtn" + (i === 0 ? " active" : ""), '<span class="pname">' + p.name + '</span><span class="pnum">' + (i + 1) + '</span>');
+          btn.dataset.name = p.name;
+          btn.addEventListener("click", function() {
+            navEl.querySelectorAll(".pbtn").forEach(function(x) { x.classList.remove("active"); });
+            btn.classList.add("active");
+            renderPlanet(p);
+          });
+          navEl.appendChild(btn);
+        });
+        renderPlanet(chart.planets[0]);
+
+        // Houses tab
+        var ht = byId("house-table");
+        ht.textContent = "";
+        var thead = el("thead");
+        var htr = el("tr");
+        [["#", "hcol-num"], ["sign", null], ["life area", null], ["planet", null]].forEach(function(c) {
+          var th = document.createElement("th");
+          if (c[1]) th.className = c[1];
+          th.textContent = c[0];
+          htr.appendChild(th);
+        });
+        thead.appendChild(htr);
+        ht.appendChild(thead);
+        var tb = el("tbody");
+        chart.houses.forEach(function(h) {
+          var tr = el("tr");
+          tr.appendChild(el("td", "hcol-num", String(h.num)));
+          var signTd = el("td", "hcol-sign");
+          var ssp = el("span", "hsign");
+          ssp.appendChild(el("span", "nm", h.sign));
+          ssp.appendChild(el("span", "glyph", SIGN_SYMBOL[h.sign] || ""));
+          signTd.appendChild(ssp);
+          tr.appendChild(signTd);
+          tr.appendChild(el("td", "hcol-area", h.theme));
+          var pTd = el("td", "hcol-planet");
+          var pw = el("div", "hplanets");
+          if (h.occupants.length) {
+            h.occupants.forEach(function(nm) {
+              var chip = el("span", "pchip");
+              var ab = el("span", "abbr"); ab.textContent = nm; chip.appendChild(ab);
+              pw.appendChild(chip);
+            });
+          } else {
+            pw.appendChild(el("span", "none", "—"));
+          }
+          pTd.appendChild(pw);
+          tr.appendChild(pTd);
+          tb.appendChild(tr);
+        });
+        ht.appendChild(tb);
+
+        var hg = byId("house-groups"); hg.textContent = "";
+        function planetDeg(name) {
+          var p = chart.planets.find(function(x) { return x.name === name; });
+          return p && p.degree ? p.degree.split("°")[0] : null;
+        }
+        HOUSE_GROUPS.forEach(function(group) {
+          var groupEl = el("div", "hgroup");
+          var gt = el("div", "hgroup-title");
+          var parts = group.title.split(" — ");
+          var lead = document.createElement("strong");
+          lead.textContent = parts[0];
+          gt.appendChild(lead);
+          if (parts.length > 1) gt.appendChild(txt(" — " + parts.slice(1).join(" — ")));
+          groupEl.appendChild(gt);
+
+          var cards = el("div", "hcards");
+          group.houses.forEach(function(num) {
+            var h = chart.houses.find(function(x) { return x.num === num; });
+            if (!h) return;
+            var card = el("div", "hcard");
+            card.id = "house-card-" + h.num;
+
+            var body = el("div", "hcard-body");
+            var head = el("div", "hcard-head");
+            var title = el("div", "hcard-title");
+            title.appendChild(txt("house "));
+            var tnum = document.createElement("strong"); tnum.textContent = String(h.num);
+            title.appendChild(tnum);
+            head.appendChild(title);
+            var sign = el("span", "hcard-sign");
+            sign.appendChild(el("span", "nm", h.sign));
+            sign.appendChild(el("span", "glyph", SIGN_SYMBOL[h.sign] || ""));
+            head.appendChild(sign);
+            body.appendChild(head);
+
+            body.appendChild(el("div", "hcard-theme", h.theme));
+
+            var planet = el("div", "hcard-planet");
+            planet.appendChild(el("span", "lbl", "planet:"));
+            if (h.occupants.length) {
+              var pw = el("div", "hplanets");
+              h.occupants.forEach(function(nm) {
+                var chip = el("span", "pchip");
+                var ab = el("span", "abbr"); ab.textContent = nm; chip.appendChild(ab);
+                var deg = planetDeg(nm);
+                if (deg) chip.appendChild(txt(" - " + deg + "°"));
+                pw.appendChild(chip);
+              });
+              planet.appendChild(pw);
+            } else {
+              var ruler = SIGN_RULER[h.sign] || "its ruling planet";
+              planet.appendChild(el("span", "none", "No planets sit here right now — this area plays out mainly through " + ruler + ", wherever that planet sits in your chart."));
+            }
+            body.appendChild(planet);
+
+            body.appendChild(el("p", "hcard-desc", h.meaning));
+            card.appendChild(body);
+
+            var art = SIGN_ART[h.sign];
+            var imgWrap = el("div", "hcard-image");
+            if (art) {
+              imgWrap.style.background = art.color;
+              var img = document.createElement("img");
+              img.src = "src/Images/" + art.file; img.alt = h.sign; img.setAttribute("aria-hidden", "true");
+              imgWrap.appendChild(img);
+            }
+            card.appendChild(imgWrap);
+
+            cards.appendChild(card);
+          });
+          groupEl.appendChild(cards);
+          hg.appendChild(groupEl);
+        });
+
+        // Panchanga tab
+        var panTab = document.querySelector('.tab[data-tab="panchanga"]');
+        var pan = chart.panchanga;
+        byId("panchanga-banner").innerHTML = "";
+        byId("panchanga-limbs").innerHTML = "";
+        if (pan) {
+          if (panTab) panTab.style.display = "";
+          byId("panchanga-intro").textContent = "Vedic astrology looks not just at where the planets were, but at the quality of the moment you were born — the day, the lunar phase, the star, and more. These five qualities together paint a picture of the cosmic mood at your birth and add subtle layers to your personality.";
+
+          // Summary banner — left: weekday + birth date/time + summary; right: sunrise/sunset
+          var vara = "";
+          pan.limbs.forEach(function(L) { if (/vara|weekday/i.test(L.k)) vara = L.v; });
+          var b = chart.birth || {};
+          var dateCol = el("div", "almanac-date");
+          if (vara) dateCol.appendChild(el("div", "weekday", vara));
+          var dg = el("div", "date-group");
+          if (b.date) dg.appendChild(el("div", "date", b.date));
+          if (b.time) dg.appendChild(el("div", "time", String(b.time).split(" ")[0]));
+          dateCol.appendChild(dg);
+          if (pan.summary) dateCol.appendChild(el("p", "summary", pan.summary));
+          byId("panchanga-banner").appendChild(dateCol);
+
+          if (pan.sunrise || pan.sunset) {
+            var suncol = el("div", "almanac-suntimes");
+            var sr = el("div", "suntime"); sr.appendChild(el("div", "t", pan.sunrise || "—")); sr.appendChild(el("div", "lbl", "Sunrise"));
+            var ss = el("div", "suntime"); ss.appendChild(el("div", "t", pan.sunset || "—")); ss.appendChild(el("div", "lbl", "Sunset"));
+            suncol.appendChild(sr);
+            suncol.appendChild(el("div", "divider"));
+            suncol.appendChild(ss);
+            byId("panchanga-banner").appendChild(suncol);
+          }
+
+          // Quality cards — one per limb, cycling the accent color on the left edge
+          pan.limbs.forEach(function(L, i) {
+            var info = panchangaInfo(L.k);
+            var c = el("div", "almanac-card");
+            c.style.borderLeftColor = ALMANAC_ACCENTS[i % ALMANAC_ACCENTS.length];
+            c.appendChild(el("div", "ac-label", info.label));
+            c.appendChild(el("div", "ac-title", L.v));
+            if (L.note) c.appendChild(el("p", "ac-body", L.note));
+            byId("panchanga-limbs").appendChild(c);
+          });
+        } else if (panTab) { panTab.style.display = "none"; }
+
+        // Ashtakavarga tab
+        var avTab = document.querySelector('.tab[data-tab="ashtakavarga"]');
+        var av = chart.ashtakavarga;
+        byId("av-takeaways").innerHTML = "";
+        if (av) {
+          if (avTab) avTab.style.display = "";
+          byId("av-intro").textContent = av.intro;
+
+          // Score tiers: high (green) >= 30, low (red) <= 22, neutral otherwise
+          function avTier(b) { return b >= 30 ? "high" : (b <= 22 ? "low" : ""); }
+
+          var bySign = {};
+          av.rows.forEach(function(r) { bySign[r.sign] = r; });
+
+          // Energy-map grid (reuses the South Indian .chart layout)
+          var avc = byId("av-chart"); avc.innerHTML = "";
+          SIGN_ORDER.forEach(function(sign) {
+            var pos = SIGN_POS[sign];
+            var r = bySign[sign]; if (!r) return;
+            var tier = avTier(r.bindus);
+            var cell = el("div", "ecell" + (tier ? " " + tier : ""));
+            cell.style.gridColumn = pos[0];
+            cell.style.gridRow = pos[1];
+            var top = el("div", "etop");
+            var sname = el("span", "esign");
+            sname.appendChild(el("span", null, sign));
+            sname.appendChild(el("span", "glyph", SIGN_SYMBOL[sign] || ""));
+            top.appendChild(sname);
+            top.appendChild(el("span", "ehouse", String(r.house)));
+            cell.appendChild(top);
+            cell.appendChild(el("div", "escore", String(r.bindus)));
+            cell.appendChild(el("div", "epts", "pts"));
+            cell.title = r.sign + " · " + ord(r.house) + " house · " + r.bindus + " points";
+            avc.appendChild(cell);
+          });
+          var avCenter = el("div", "center-cell");
+          avCenter.appendChild(el("div", "t", "Energy Map"));
+          avCenter.appendChild(el("div", "s", "Total - " + av.total + "   |   Avg. - " + av.average));
+          avc.appendChild(avCenter);
+
+          // Score table (sorted by house)
+          var avt = byId("av-table");
+          avt.innerHTML = "<thead><tr><th class='c'>#</th><th>sign</th><th class='c'>score</th><th>reading</th></tr></thead>";
+          var avtb = el("tbody");
+          av.rows.slice().sort(function(a, b) { return a.house - b.house; }).forEach(function(r) {
+            var tier = avTier(r.bindus);
+            var tr = el("tr");
+            tr.appendChild(el("td", "num", String(r.house)));
+            var sc = el("td", "sign");
+            sc.appendChild(el("span", null, r.sign));
+            sc.appendChild(el("span", "glyph", SIGN_SYMBOL[r.sign] || ""));
+            tr.appendChild(sc);
+            tr.appendChild(el("td", "score", "<span class='escore-chip" + (tier ? " " + tier : "") + "'>" + r.bindus + "</span>"));
+            tr.appendChild(el("td", "reading", r.note));
+            avtb.appendChild(tr);
+          });
+          avt.appendChild(avtb);
+
+          // Takeaways
+          av.takeaways.forEach(function(t) {
+            byId("av-takeaways").appendChild(el("p", null, t));
+          });
+        } else if (avTab) { avTab.style.display = "none"; }
+
+        // Reset to Overview tab on chart switch
+        document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+        document.querySelectorAll(".panel").forEach(function(p) { p.classList.remove("active"); });
+        document.querySelector('.tab[data-tab="overview"]').classList.add("active");
+        byId("panel-overview").classList.add("active");
+
+        // Footer
+        byId("footer").innerHTML =
+          "Data: " + chart.system.source + " (Swiss Ephemeris, " + chart.system.ayanamsa + "). " +
+          "Vedic astrology is a symbolic language describing tendencies, not fixed verdicts — you always have agency over how a placement expresses." +
+          "<br><br>Explore the full <a href='methods.html' style='color:var(--text)'>VedAstro calculation method catalog →</a>" +
+          " · <a href='share.html' style='color:var(--text)'>Create a share link →</a>";
+      }
+
+      // Tabs
+      document.querySelectorAll(".tab").forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+          document.querySelectorAll(".panel").forEach(function(p) { p.classList.remove("active"); });
+          tab.classList.add("active");
+          byId("panel-" + tab.dataset.tab).classList.add("active");
+        });
+      });
+
+      render(DATA[access.activeId]);
+    })();
+  </script>
+</body>
+</html>

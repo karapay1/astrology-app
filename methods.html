@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VedAstro Calculate Methods</title>
+  <style>
+    :root {
+      --bg:#0f1117; --bg-elev:#171a23; --bg-elev-2:#1e222d; --stroke:#2a2f3c; --stroke-soft:#232733;
+      --text:#e8eaf0; --text-2:#a9b0c0; --text-3:#6f7688; --accent:#c9a24b; --radius:12px; --maxw:1080px;
+    }
+    *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:32px 24px 80px;}
+    h1{font-family:"Iowan Old Style",Georgia,serif;font-size:28px;margin:0;}
+    .kicker{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:var(--accent);margin-bottom:8px;}
+    .sub{color:var(--text-3);font-size:14px;margin-top:6px;}
+    a{color:var(--accent);}
+    .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:22px 0 8px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--stroke-soft);}
+    input[type=search]{flex:1;min-width:220px;background:var(--bg-elev);border:1px solid var(--stroke);color:var(--text);
+      border-radius:999px;padding:10px 16px;font-size:14px;outline:none;}
+    input[type=search]:focus{border-color:var(--accent);}
+    select{background:var(--bg-elev);border:1px solid var(--stroke);color:var(--text);border-radius:8px;padding:9px 12px;font-size:14px;}
+    .count{color:var(--text-3);font-size:13px;white-space:nowrap;}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px;}
+    .gchip{font-size:12px;padding:4px 11px;border-radius:999px;border:1px solid var(--stroke);color:var(--text-2);
+      background:var(--bg-elev);cursor:pointer;}
+    .gchip:hover{color:var(--text);border-color:var(--text-3);}
+    .gchip.active{background:var(--accent);color:#1a1608;border-color:var(--accent);font-weight:600;}
+    table{width:100%;border-collapse:collapse;font-size:13.5px;}
+    th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--stroke-soft);vertical-align:top;}
+    th{color:var(--text-3);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;position:sticky;top:60px;background:var(--bg);}
+    tr:hover td{background:var(--bg-elev);}
+    .mname{font-weight:600;color:var(--text);}
+    .params{color:var(--text-3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;}
+    .ret{color:var(--accent);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;}
+    .src{color:var(--text-3);font-size:12px;}
+    .grp{color:var(--text-2);font-size:12px;white-space:nowrap;}
+    mark{background:rgba(201,162,75,.28);color:inherit;border-radius:2px;}
+    .empty{color:var(--text-3);padding:28px 0;text-align:center;}
+    .backlink{margin-bottom:18px;display:inline-block;font-size:13px;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="backlink" href="index.html">← Back to birth chart</a>
+    <div class="kicker">VedAstro · Calculation Library</div>
+    <h1>Calculate Methods</h1>
+    <div class="sub" id="sub"></div>
+
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search methods (e.g. nakshatra, shadbala, dasa, house lord)…" autofocus />
+      <select id="sort">
+        <option value="name">Sort: name</option>
+        <option value="group">Sort: group</option>
+        <option value="source">Sort: source file</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="chips" id="groups"></div>
+
+    <table>
+      <thead><tr><th>Method</th><th>Group</th><th>Returns</th><th>Parameters</th><th>Source</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">No methods match your search.</div>
+  </div>
+
+  <script src="data/calculate-methods.js"></script>
+  <script>
+    (function(){
+      var data = window.VEDIC_METHODS;
+      var all = data.methods.slice();
+      var groups = {};
+      all.forEach(function(m){ groups[m.group] = (groups[m.group]||0)+1; });
+      var groupNames = Object.keys(groups).sort(function(a,b){ return groups[b]-groups[a]; });
+
+      document.getElementById("sub").innerHTML =
+        data.total + " methods extracted from <code>" + data.generated_from + "</code>. " +
+        "Use these names with the VedAstro Calculate API or the MCP server.";
+
+      var state = { q:"", group:"", sort:"name" };
+      var qEl=document.getElementById("q"), rowsEl=document.getElementById("rows"),
+          countEl=document.getElementById("count"), emptyEl=document.getElementById("empty"),
+          sortEl=document.getElementById("sort"), groupsEl=document.getElementById("groups");
+
+      // group chips
+      function makeChip(label, key){
+        var c=document.createElement("span");
+        c.className="gchip"+(state.group===key?" active":"");
+        c.textContent = key==="" ? ("All ("+data.total+")") : (label+" ("+groups[key]+")");
+        c.onclick=function(){ state.group = (state.group===key?"":key); render(); };
+        return c;
+      }
+      function renderChips(){
+        groupsEl.innerHTML="";
+        groupsEl.appendChild(makeChip("All",""));
+        groupNames.forEach(function(g){ groupsEl.appendChild(makeChip(g,g)); });
+      }
+
+      function esc(s){ return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+      function hi(text, tokens){
+        text=esc(text);
+        if(!tokens || !tokens.length) return text;
+        try{
+          var pat=tokens.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}).join("|");
+          return text.replace(new RegExp("("+pat+")","ig"),"<mark>$1</mark>");
+        } catch(e){ return text; }
+      }
+
+      function render(){
+        var q=state.q.trim().toLowerCase();
+        var tokens=q.split(/\s+/).filter(Boolean);
+        var list=all.filter(function(m){
+          if(state.group && m.group!==state.group) return false;
+          if(!tokens.length) return true;
+          var hay=(m.name+" "+m.group+" "+m.returns+" "+m.params+" "+m.source).toLowerCase();
+          return tokens.every(function(t){ return hay.indexOf(t)>=0; });
+        });
+        list.sort(function(a,b){ return String(a[state.sort]).localeCompare(String(b[state.sort])) || a.name.localeCompare(b.name); });
+
+        countEl.textContent = list.length + " of " + data.total;
+        rowsEl.innerHTML="";
+        emptyEl.style.display = list.length ? "none" : "block";
+
+        var frag=document.createDocumentFragment();
+        list.slice(0, 600).forEach(function(m){
+          var tr=document.createElement("tr");
+          tr.innerHTML =
+            "<td class='mname'>"+hi(m.name,tokens)+"</td>"+
+            "<td class='grp'>"+hi(m.group,tokens)+"</td>"+
+            "<td class='ret'>"+hi(m.returns,tokens)+"</td>"+
+            "<td class='params'>"+(m.params?hi(m.params,tokens):"—")+"</td>"+
+            "<td class='src'>"+hi(m.source,tokens)+"</td>";
+          frag.appendChild(tr);
+        });
+        rowsEl.appendChild(frag);
+        if(list.length>600){
+          var tr=document.createElement("tr");
+          tr.innerHTML="<td colspan='5' class='src' style='text-align:center;padding:14px'>Showing first 600 of "+list.length+" — refine your search to see more.</td>";
+          rowsEl.appendChild(tr);
+        }
+        renderChips();
+      }
+
+      qEl.addEventListener("input", function(){ state.q=qEl.value; render(); });
+      sortEl.addEventListener("change", function(){ state.sort=sortEl.value; render(); });
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chart Compatibility</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Foreground */
+      --color-foreground-faint:         #706E68;
+      --color-foreground-subtle:        #6F4925;
+      --color-foreground-default:       #663100;
+      --color-foreground-intense:       #411F00;
+      --color-foreground-brand-default: #812781;
+      --color-foreground-brand-subtle:  #0774D6;
+      --color-foreground-inverse:       #F2EFEA;
+
+      /* Background */
+      --color-background-default:       #F2EFEA;
+      --color-background-subtle:        #EBE7E0;
+      --color-background-intense:       #D2CDC5;
+      --color-background-brand-subtle:  #FFCC02;
+      --color-background-brand-default: #B2C656;
+      --color-background-brand-intense: #FF3303;
+
+      /* Border */
+      --color-border-default:           #D2CDC5;
+      --color-border-intense:           #706E68;
+
+      /* Legacy aliases — keeps existing JS-referenced classes working */
+      --bg:        var(--color-background-default);
+      --bg-elev:   var(--color-background-subtle);
+      --bg-elev-2: var(--color-background-intense);
+      --stroke:    var(--color-border-default);
+      --stroke-soft: var(--color-border-default);
+      --text:      var(--color-foreground-intense);
+      --text-2:    var(--color-foreground-default);
+      --text-3:    var(--color-foreground-faint);
+      --accent:    var(--color-foreground-intense);
+      --good:      #2D6A4F;
+      --warn:      #8B5E2A;
+      --danger:    #8B3A34;
+      --info:      #0774D6;
+      --maxw: 1080px;
+
+      --font-display: "Bricolage Grotesque", Helvetica, Arial, sans-serif;
+      --font-base: "Geist", Helvetica, Arial, sans-serif;
+      --font-symbols: "Apple Symbols", "Symbols", sans-serif;
+
+      /* Font weights */
+      --text-weight-lt: 300;
+      --text-weight-reg: 400;
+      --text-weight-med: 500;
+      --text-weight-semi: 600;
+      --text-weight-bold: 700;
+      --text-weight-xbold: 800;
+
+      /* Line heights */
+      --text-line-height-compressed: 1.1;
+      --text-line-height-tight: 1.25;
+      --text-line-height-normal: 1.5;
+      --text-line-height-relaxed: 1.625;
+
+      /* Letter spacing */
+      --text-letter-spacing-tight: -0.008em;
+      --text-letter-spacing-cozy: -0.006em;
+      --text-letter-spacing-normal: -0.004em;
+
+      /* Spacing scale */
+      --spacing-1: 0.25rem;   /* 4px */
+      --spacing-2: 0.5rem;    /* 8px */
+      --spacing-3: 0.75rem;   /* 12px */
+      --spacing-4: 1rem;      /* 16px */
+      --spacing-5: 1.25rem;   /* 20px */
+      --spacing-6: 1.5rem;    /* 24px */
+      --spacing-7: 2rem;      /* 32px */
+      --spacing-8: 2.5rem;    /* 40px */
+      --spacing-9: 3rem;      /* 48px */
+      --spacing-12: 5rem;     /* 80px */
+
+      /* Border radius */
+      --border-radius-sm: 0.125rem;  /* 2px */
+
+      /* Type scale */
+      --text-size-3xs: 0.625rem;   /* 10px */
+      --text-size-xxs: 0.75rem;    /* 12px */
+      --text-size-xs: 0.875rem;    /* 14px */
+      --text-size-sm: 1rem;        /* 16px */
+      --text-size-md: 1.25rem;     /* 20px */
+      --text-size-lg: 1.5rem;      /* 24px */
+      --text-size-xl: 1.75rem;     /* 28px */
+      --text-size-2xl: 2.5rem;     /* 40px */
+    }
+    /* Breakpoint convention: 1080px (two-col → one-col) and 720px (smallest).
+       Custom properties can't be used inside @media, so these are literal px. */
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-base);
+      font-weight: var(--text-weight-reg);
+      line-height: var(--text-line-height-relaxed);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--spacing-8) var(--spacing-7) var(--spacing-12); }
+    @media (max-width: 720px) { .wrap { padding: var(--spacing-6) var(--spacing-4) var(--spacing-9); } }
+    h1 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); letter-spacing: var(--text-letter-spacing-tight); font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0; }
+    h2 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0; }
+    h3 { font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: var(--text-line-height-tight); color: var(--color-foreground-default); margin: 0 0 var(--spacing-2); }
+    p { margin: 0 0 var(--spacing-3); color: var(--color-foreground-default); font-weight: var(--text-weight-reg); }
+    .muted { color: var(--color-foreground-faint); font-size: var(--text-size-xs); }
+    .accent { color: var(--color-foreground-intense); }
+    a { color: var(--color-foreground-subtle); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header { border-bottom: 1px solid var(--color-border-default); padding-bottom: var(--spacing-6); margin-bottom: var(--spacing-8); }
+    .kicker { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 2px; font-size: var(--text-size-xxs); font-weight: var(--text-weight-bold); color: var(--color-foreground-subtle); margin-bottom: var(--spacing-2); }
+
+    /* pickers */
+    .pickers {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--spacing-4);
+      align-items: center;
+      margin-bottom: var(--spacing-8);
+    }
+    @media (max-width: 720px) { .pickers { grid-template-columns: 1fr; } .vs { display: none; } }
+    .picker-card {
+      background: var(--color-background-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-6);
+    }
+    .picker-card label { display: block; font-family: var(--font-base); font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: 1px; font-weight: var(--text-weight-semi); color: var(--color-foreground-faint); margin-bottom: var(--spacing-2); }
+    .picker-card select {
+      width: 100%;
+      background: var(--color-background-default);
+      color: var(--color-foreground-intense);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-3) var(--spacing-4);
+      font-size: var(--text-size-sm);
+      font-family: var(--font-base);
+      cursor: pointer;
+    }
+    .picker-card select:focus { outline: none; border-color: var(--color-border-intense); }
+    .vs { text-align: center; font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); color: var(--color-foreground-faint); }
+
+    /* empty state */
+    #empty {
+      text-align: center;
+      padding: var(--spacing-12) var(--spacing-6);
+      color: var(--color-foreground-faint);
+    }
+    #empty .big { font-family: var(--font-symbols); font-size: var(--text-size-2xl); color: var(--color-foreground-subtle); margin-bottom: var(--spacing-3); }
+
+    /* section */
+    .section { margin-bottom: var(--spacing-9); }
+    .section-header {
+      display: flex; flex-direction: column; align-items: flex-start; gap: var(--spacing-2);
+      border-bottom: 1px solid var(--color-border-default);
+      padding-bottom: var(--spacing-3);
+      margin-bottom: var(--spacing-6);
+    }
+    .section-header h2 { margin: 0; }
+    .section-header .sub { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-faint); }
+
+    /* summary banner */
+    .summary-banner {
+      background: var(--color-background-brand-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-7) var(--spacing-7);
+      margin-bottom: var(--spacing-8);
+    }
+    .summary-banner .headline { font-family: var(--font-display); font-size: var(--text-size-xl); font-weight: var(--text-weight-xbold); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin-bottom: var(--spacing-3); }
+    .summary-banner p { margin: 0; color: var(--color-foreground-default); font-size: var(--text-size-sm); line-height: 1.5; }
+
+    /* overlay grid */
+    .overlay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--spacing-4);
+    }
+    .overlay-card {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-6);
+    }
+    .overlay-card .planet-label {
+      display: flex; align-items: center; flex-wrap: wrap; gap: var(--spacing-2); margin-bottom: var(--spacing-3);
+    }
+    .overlay-card .pill {
+      font-family: var(--font-base); font-size: var(--text-size-xxs); font-weight: var(--text-weight-semi); padding: 2px 8px;
+      border-radius: var(--border-radius-sm); text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .pill-a { background: var(--color-background-brand-default); color: var(--color-foreground-intense); }
+    .pill-b { background: var(--color-background-brand-subtle); color: var(--color-foreground-intense); }
+    .overlay-card .planet-name { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-sm); color: var(--color-foreground-intense); }
+    .overlay-card .house-tag { font-family: var(--font-base); font-size: var(--text-size-xs); color: var(--color-foreground-faint); }
+    .overlay-card .reading { font-family: var(--font-base); font-size: var(--text-size-xs); color: var(--color-foreground-subtle); line-height: 1.5; }
+
+    /* aspect list */
+    .aspect-list { display: flex; flex-direction: column; gap: var(--spacing-3); }
+    .aspect-row {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-4) var(--spacing-6);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--spacing-4);
+      align-items: start;
+    }
+    .aspect-badge {
+      width: 44px; height: 44px; border-radius: var(--border-radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-symbols); font-size: var(--text-size-md); flex-shrink: 0;
+      background: var(--color-background-default); border: 2px solid var(--color-border-default);
+    }
+    .aspect-conj { color: var(--good); border-color: var(--color-background-brand-default); }
+    .aspect-opp  { color: var(--danger); border-color: var(--color-background-brand-intense); }
+    .aspect-tri  { color: var(--good); border-color: var(--color-background-brand-default); }
+    .aspect-sq   { color: var(--warn); border-color: var(--warn); }
+    .aspect-sxt  { color: var(--info); border-color: var(--info); }
+    .aspect-row .bodies { font-family: var(--font-display); font-weight: var(--text-weight-semi); font-size: var(--text-size-sm); color: var(--color-foreground-intense); margin-bottom: var(--spacing-1); }
+    .aspect-row .reading { font-family: var(--font-base); font-size: var(--text-size-xs); color: var(--color-foreground-subtle); line-height: 1.5; }
+
+    /* nakshatra row */
+    .nak-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--spacing-4);
+      align-items: center;
+      margin-bottom: var(--spacing-5);
+    }
+    @media (max-width: 720px) { .nak-row { grid-template-columns: 1fr; } .nak-arrow { display: none; } }
+    .nak-card {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-6);
+    }
+    .nak-card .name { font-family: var(--font-display); font-size: var(--text-size-lg); font-weight: var(--text-weight-xbold); line-height: 1.1; color: var(--color-foreground-intense); margin-bottom: var(--spacing-1); }
+    .nak-card .detail { font-family: var(--font-base); font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: 1px; color: var(--color-foreground-faint); margin-bottom: var(--spacing-3); }
+    .nak-card .desc { font-family: var(--font-base); font-size: var(--text-size-xs); color: var(--color-foreground-subtle); line-height: 1.5; }
+    .nak-arrow { text-align: center; font-family: var(--font-display); font-size: var(--text-size-lg); color: var(--color-foreground-faint); }
+    .nak-compat {
+      background: var(--color-background-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-6);
+      margin-top: var(--spacing-3);
+    }
+    .nak-compat p { color: var(--color-foreground-subtle); font-size: var(--text-size-xs); line-height: 1.5; margin: 0; }
+
+    /* element grid */
+    .element-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--spacing-3);
+    }
+    .element-card {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-sm);
+      padding: var(--spacing-4) var(--spacing-6);
+    }
+    .element-card .el-label { font-family: var(--font-base); font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: 1px; color: var(--color-foreground-faint); margin-bottom: var(--spacing-2); }
+    .element-card .el-value { font-family: var(--font-base); font-weight: var(--text-weight-semi); color: var(--color-foreground-intense); margin-bottom: var(--spacing-1); }
+    .el-fire   { color: #A03A1E; }
+    .el-earth  { color: #5B6E28; }
+    .el-air    { color: #0774D6; }
+    .el-water  { color: #2D6A4F; }
+    .element-card .el-note { font-family: var(--font-base); font-size: var(--text-size-xxs); color: var(--color-foreground-subtle); line-height: 1.5; }
+
+    /* back link */
+    .back { font-size: var(--text-size-xs); color: var(--color-foreground-faint); margin-bottom: var(--spacing-5); display: inline-block; }
+    .back a { color: var(--color-foreground-faint); }
+    .back:hover a { color: var(--color-foreground-subtle); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="back"><a href="index.html">← Back to charts</a></p>
+
+  <header>
+    <div class="kicker">Vedic Astrology</div>
+    <h1>Chart Compatibility</h1>
+    <p style="margin-top:var(--spacing-3);color:var(--color-foreground-subtle);font-size:var(--text-size-xs);line-height:1.5;">
+      Synastry — how two charts interact. Pick any two people to see how their planets
+      fall in each other's lives, what connections form between them, and the emotional
+      texture of the relationship.
+    </p>
+  </header>
+
+  <div class="pickers">
+    <div class="picker-card">
+      <label>Person A</label>
+      <select id="selA"><option value="">— choose —</option></select>
+    </div>
+    <div class="vs">×</div>
+    <div class="picker-card">
+      <label>Person B</label>
+      <select id="selB"><option value="">— choose —</option></select>
+    </div>
+  </div>
+
+  <div id="empty">
+    <div class="big">✦</div>
+    <div>Choose two people above to see their compatibility reading.</div>
+  </div>
+
+  <div id="report" style="display:none;"></div>
+
+</div>
+
+<script src="data/chart-data.js"></script>
+<script>
+(function() {
+
+// ─── data ────────────────────────────────────────────────────────────────────
+
+var DATA = window.VEDIC_DATA || {};
+var CHARTS = DATA.charts || {};
+
+var SIGN_ELEMENT = {
+  Aries:"Fire", Leo:"Fire", Sagittarius:"Fire",
+  Taurus:"Earth", Virgo:"Earth", Capricorn:"Earth",
+  Gemini:"Air", Libra:"Air", Aquarius:"Air",
+  Cancer:"Water", Scorpio:"Water", Pisces:"Water"
+};
+
+var SIGN_MODALITY = {
+  Aries:"Cardinal", Cancer:"Cardinal", Libra:"Cardinal", Capricorn:"Cardinal",
+  Taurus:"Fixed", Leo:"Fixed", Scorpio:"Fixed", Aquarius:"Fixed",
+  Gemini:"Mutable", Virgo:"Mutable", Sagittarius:"Mutable", Pisces:"Mutable"
+};
+
+// Zodiac order (0-indexed)
+var SIGNS = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo",
+             "Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
+
+// Nakshatra sequence (27)
+var NAKSHATRAS = [
+  "Ashwini","Bharani","Krittika","Rohini","Mrigashira","Ardra","Punarvasu",
+  "Pushya","Ashlesha","Magha","Purva Phalguni","Uttara Phalguni","Hasta",
+  "Chitra","Swati","Vishakha","Anuradha","Jyeshtha","Mula","Purva Ashadha",
+  "Uttara Ashadha","Shravana","Dhanishta","Shatabhisha","Purva Bhadrapada",
+  "Uttara Bhadrapada","Revati"
+];
+
+// Nakshatra compatibility groups (gana): Deva=divine, Manushya=human, Rakshasa=fierce
+var NAK_GANA = {
+  Ashwini:"Deva", Mrigashira:"Deva", Punarvasu:"Deva", Pushya:"Deva",
+  Hasta:"Deva", Swati:"Deva", Anuradha:"Deva", Shravana:"Deva",
+  Revati:"Deva",
+  Bharani:"Manushya", Rohini:"Manushya", Ardra:"Manushya",
+  "Purva Phalguni":"Manushya", "Uttara Phalguni":"Manushya",
+  "Purva Ashadha":"Manushya", "Uttara Ashadha":"Manushya",
+  "Purva Bhadrapada":"Manushya", "Uttara Bhadrapada":"Manushya",
+  Krittika:"Rakshasa", Ashlesha:"Rakshasa", Magha:"Rakshasa",
+  Chitra:"Rakshasa", Vishakha:"Rakshasa", Jyeshtha:"Rakshasa",
+  Mula:"Rakshasa", Dhanishta:"Rakshasa", Shatabhisha:"Rakshasa"
+};
+
+var GANA_NOTE = {
+  "Deva-Deva":    "Both nakshatras are Deva (divine) — this is the most naturally harmonious pairing. Your emotional rhythms and instincts tend to move in the same direction, making day-to-day relating feel easy and mutual.",
+  "Manushya-Manushya": "Both nakshatras are Manushya (human) — a solid, earthly compatibility. You understand each other's very human desires and motivations. Practical, warm, and relatable to one another.",
+  "Rakshasa-Rakshasa": "Both nakshatras are Rakshasa (fierce) — this pairing can be intensely magnetic. You both carry a certain edge or depth that others might find overwhelming, but you recognize it in each other. Can be powerfully bonding or powerfully combustible.",
+  "Deva-Manushya": "One Deva, one Manushya nakshatra — a workable mix with some difference in emotional style. The Deva partner may seem idealistic or refined to the Manushya; the Manushya may seem more grounded and pragmatic. Not difficult, just worth being conscious of.",
+  "Deva-Rakshasa": "Deva and Rakshasa nakshatras create some friction — the most challenging combination in this system. Doesn't mean incompatible, but emotional instincts can clash. Awareness and intentional communication bridge the gap.",
+  "Manushya-Rakshasa": "Manushya and Rakshasa nakshatras are a mixed pairing — there is some natural tension, but less than Deva-Rakshasa. The Rakshasa intensity can feel disruptive to the Manushya's relational ease, though it can also be exciting."
+};
+
+// ─── planet overlay readings ─────────────────────────────────────────────────
+
+// What it means when planetA lands in houseB of person B's chart.
+// Keys: "Planet_House" (e.g. "Sun_1", "Moon_7")
+var OVERLAY = {
+  Sun_1:  "{A}'s Sun lands in {B}'s 1st house — the house of identity and how {B} shows up in the world. {B} may feel more seen, more energised, more like themselves around {A}. {A} shines a light on {B}'s presence and can be a real confidence boost.",
+  Sun_2:  "{A}'s Sun illuminates {B}'s 2nd house — values, money, and voice. {A} can have a real influence on {B}'s financial thinking or help them find their voice. At its best this is generous and stabilising; watch for {A} subtly overriding {B}'s own values.",
+  Sun_3:  "{A}'s Sun energises {B}'s 3rd house — courage, communication, and learning. {A} encourages {B} to speak up, take initiative, and express themselves more boldly. Great for creative collaboration and shared learning.",
+  Sun_4:  "{A}'s Sun lights up {B}'s 4th house — home, family, and inner security. {A} has a strong presence in {B}'s private world and can bring warmth and vitality to {B}'s home life. {B} may feel 'at home' with {A} unusually quickly.",
+  Sun_5:  "{A}'s Sun falls in {B}'s 5th house of creativity, romance, and joy. This is one of the warmest placements for any relationship — {A} awakens {B}'s playful, creative, romantic side. A natural spark; excellent for creative partnerships.",
+  Sun_6:  "{A}'s Sun lands in {B}'s 6th house — daily work, health, and routines. {A} can be a motivating presence in {B}'s working life and may help {B} build better habits. The shadow: the relationship can sometimes feel task-oriented or duty-based rather than purely joyful.",
+  Sun_7:  "{A}'s Sun falls directly in {B}'s 7th house — the house of partnership itself. This is a classic indicator of a strong one-to-one bond. {B} sees {A} as a natural partner; {A}'s identity and purpose feel intertwined with the relationship. Can be intense in the best way.",
+  Sun_8:  "{A}'s Sun enters {B}'s 8th house of depth, transformation, and shared resources. This connection goes beneath the surface — {A} may trigger profound change in {B}, sometimes uncomfortably. A transformative bond that rarely stays shallow.",
+  Sun_9:  "{A}'s Sun illuminates {B}'s 9th house of beliefs, travel, and higher purpose. {A} can open {B}'s worldview — through philosophy, travel, education, or simply a different way of seeing things. An inspiring, expansive dynamic.",
+  Sun_10: "{A}'s Sun shines on {B}'s 10th house — career, public life, and reputation. {A} can be a significant support (or challenge) to {B}'s professional ambitions. {B} may gain visibility or momentum through knowing {A}.",
+  Sun_11: "{A}'s Sun activates {B}'s 11th house of networks, hopes, and gains. {A} brings energy into {B}'s social world and may open doors or connect {B} to new communities. A friendly, expansive placement.",
+  Sun_12: "{A}'s Sun enters {B}'s 12th house — the private, spiritual, behind-the-scenes zone. {A} may see sides of {B} that others don't, or the connection may feel more private or hidden. Can be deeply intimate; can also feel draining if {B}'s energy is being quietly absorbed.",
+
+  Moon_1:  "{A}'s Moon lands in {B}'s 1st house — {B} feels {A}'s emotional world immediately and viscerally. {A} senses {B}'s moods and needs intuitively. This creates strong emotional attunement — one of the most significant placements for genuine closeness.",
+  Moon_2:  "{A}'s Moon is in {B}'s 2nd house of money, food, and family values. {A} may nurture {B} through comfort, generosity, or by tending to {B}'s material needs. {B} feels emotionally safe around resources and family when {A} is present.",
+  Moon_3:  "{A}'s Moon activates {B}'s 3rd house of communication. {A}'s emotional style shapes how they communicate with {B}. Can create a warm, instinctive conversational bond; {A} may encourage {B} to express feelings more openly.",
+  Moon_4:  "{A}'s Moon in {B}'s 4th house is one of the most significant synastry placements. {A} feels deeply connected to {B}'s home, family, and private life. {B} may feel {A} is like family. Domestic and emotional life intertwine; extremely nurturing when positive.",
+  Moon_5:  "{A}'s Moon in {B}'s 5th house of joy and creativity. {A}'s emotional world lights up {B}'s playful, romantic, creative side. Warm, lighthearted, and emotionally spontaneous — this is a genuinely enjoyable pairing.",
+  Moon_6:  "{A}'s Moon in {B}'s 6th house. {A} may feel called to care for {B}, or {B}'s health and daily wellbeing is emotionally significant to {A}. At its best: deeply caring. The watch-out: the dynamic can tip into caretaker/patient if both aren't aware.",
+  Moon_7:  "{A}'s Moon in {B}'s 7th house — {A}'s emotional nature is deeply tied to this partnership. {B} meets {A}'s emotional needs directly; {A} may see {B} as their emotional home. One of the strongest indicators of deep partnership attraction.",
+  Moon_8:  "{A}'s Moon in {B}'s 8th house — emotional depth and transformation. {A} may stir {B}'s deepest feelings, old wounds, or unconscious material. This is an intensely intimate placement that can feel fated. Profound healing is possible; so is emotional turbulence.",
+  Moon_9:  "{A}'s Moon in {B}'s 9th house. {A}'s emotional nature resonates with {B}'s beliefs, philosophy, and sense of meaning. {B} may feel emotionally inspired by {A}'s worldview. A warm, expansive, spiritually resonant connection.",
+  Moon_10: "{A}'s Moon in {B}'s 10th house — {A}'s emotional presence is tied to {B}'s public role and career. {A} may support {B}'s public ambitions instinctively, or the connection feels significant in professional settings. {B} may sense {A} understands their mission.",
+  Moon_11: "{A}'s Moon in {B}'s 11th house — friendship, community, and hope. {A} feels emotionally at home in {B}'s social world. This placement is excellent for friendship-based romance or any partnership rooted in shared community.",
+  Moon_12: "{A}'s Moon in {B}'s 12th house — private, interior, and often spiritually felt. {A} may sense {B}'s hidden emotional life; {B} may feel understood at a level they can't always explain. Can be deeply healing and transcendent, or subtly draining.",
+
+  Mars_1:  "{A}'s Mars in {B}'s 1st house — {A}'s drive and energy land directly on how {B} presents to the world. Activating and sometimes challenging: {B} feels more energised around {A}, but can also feel prodded or pushed. High physical charge between them.",
+  Mars_2:  "{A}'s Mars in {B}'s 2nd house. {A} may actively help {B} build resources — or push {B} around money and values. Motivating when channelled well; can create conflict around finances or possessions if the energy isn't managed.",
+  Mars_3:  "{A}'s Mars in {B}'s 3rd house. {A} sharpens {B}'s communication and courage. Great for working together on ideas, debate, or projects requiring initiative. Can make discussions heated — productively or otherwise.",
+  Mars_4:  "{A}'s Mars in {B}'s 4th house. {A}'s energy enters {B}'s private, domestic world. Can be protective and activating, or feel intrusive — it depends on how {A} directs that drive. Strong physical presence in the home.",
+  Mars_5:  "{A}'s Mars in {B}'s 5th house — creative and romantic activation. {A} ignites {B}'s passion, creative instincts, and playful energy. One of the strongest placements for romantic and sexual chemistry. High energy, high fun.",
+  Mars_6:  "{A}'s Mars in {B}'s 6th house. {A} motivates {B} in work, health, and daily discipline. {A} can be a great accountability partner or fitness companion. The shadow: {A} may unconsciously create conflict in {B}'s routines.",
+  Mars_7:  "{A}'s Mars in {B}'s 7th house — partnership is charged with drive and intensity. {B} finds {A} assertive, magnetic, even bold. Great chemistry for working together toward shared goals; requires mutual respect to keep the energy constructive.",
+  Mars_8:  "{A}'s Mars in {B}'s 8th house — deep, intense, and potentially transformative. {A} activates {B}'s most private zones: shared money, psychological depth, and sexuality. Powerful and potentially consuming. A bond that tends not to stay surface-level.",
+  Mars_9:  "{A}'s Mars in {B}'s 9th house. {A} energises {B}'s beliefs, philosophy, and sense of adventure. Can inspire {B} to act on their convictions or embark on new learning. Debate about beliefs is likely — and can be stimulating or combative.",
+  Mars_10: "{A}'s Mars in {B}'s 10th house. {A} is actively invested in {B}'s career and public standing — can be a powerful motivator or collaborator. {B} may feel {A} pushes them professionally. Excellent for business partnerships.",
+  Mars_11: "{A}'s Mars in {B}'s 11th house. {A} activates {B}'s social world, ambitions, and group goals. {A} may bring energy and action to {B}'s community or help {B} pursue their aspirations. Good for shared projects and social ventures.",
+  Mars_12: "{A}'s Mars in {B}'s 12th house. {A}'s drive can operate behind the scenes of {B}'s life — subtly motivating hidden action or surfacing {B}'s suppressed desires. Can feel draining if {A}'s energy activates {B}'s anxieties; healing when directed toward spiritual or creative retreat.",
+
+  Mercury_1: "{A}'s Mercury in {B}'s 1st house. {A}'s way of thinking and speaking lands directly on how {B} comes across. {B} may find {A} helps them articulate something they already sensed about themselves. Strong intellectual rapport.",
+  Mercury_2: "{A}'s Mercury in {B}'s 2nd house. Conversations about money, values, and practical planning flow naturally. {A} can help {B} think through finances or voice what they value. Good for business discussions.",
+  Mercury_3: "{A}'s Mercury in {B}'s 3rd house — their natural home. {A} and {B} communicate with ease and curiosity. Endless conversation, shared interests, mutual intellectual stimulation. One of the best placements for genuine mental connection.",
+  Mercury_4: "{A}'s Mercury in {B}'s 4th house. {A}'s thinking is connected to {B}'s home life and emotional roots. {B} may find {A} easy to talk to about private matters or family. Good for domestic planning; {A} may help {B} process and express feelings.",
+  Mercury_5: "{A}'s Mercury in {B}'s 5th house of creativity and joy. {A}'s words and ideas spark {B}'s playful, creative side. Witty, fun, mentally engaging — this placement makes the relationship feel light and stimulating.",
+  Mercury_6: "{A}'s Mercury in {B}'s 6th house. {A} is mentally engaged with {B}'s work, health, and daily routines. Practical communication flows well here. {A} may give {B} useful advice about organisation, health, or work — as long as it doesn't tip into criticism.",
+  Mercury_7: "{A}'s Mercury in {B}'s 7th house. {A} is intellectually engaged in this partnership — the relationship involves a lot of thinking, talking, and negotiating. Strong communication within the relationship itself; {B} feels heard and thought about.",
+  Mercury_8: "{A}'s Mercury in {B}'s 8th house. Deep conversations about taboo, psychological, or hidden subjects come naturally. {A} may help {B} articulate what they usually keep private. Mentally penetrating; can unlock transformation through words.",
+  Mercury_9: "{A}'s Mercury in {B}'s 9th house. {A}'s thinking resonates with {B}'s philosophy and sense of meaning. Conversations about beliefs, travel, and big ideas are natural. {A} may act as a teacher or guide to {B}'s intellectual and spiritual growth.",
+  Mercury_10: "{A}'s Mercury in {B}'s 10th house. {A} is mentally engaged with {B}'s career and public role. {A} may offer advice, connections, or ideas that affect {B}'s professional direction. Good for strategic collaboration.",
+  Mercury_11: "{A}'s Mercury in {B}'s 11th house. {A} is mentally connected to {B}'s social world and future goals. Shared ideas flow into community or collaborative ventures. Excellent for friendship-based connection and group work.",
+  Mercury_12: "{A}'s Mercury in {B}'s 12th house. {A} thinks about and articulates things {B} usually keeps hidden — which can feel either liberating or intrusive. Dreams, unconscious material, and private thoughts can surface in conversation. Good for therapy, creative work, or spiritual dialogue.",
+
+  Jupiter_1: "{A}'s Jupiter in {B}'s 1st house is one of the most auspicious overlays. {A} genuinely sees the best in {B} and reflects it back. {B} feels more expansive, more themselves, more optimistic around {A}. This is the 'good for you' placement.",
+  Jupiter_2: "{A}'s Jupiter expands {B}'s 2nd house — wealth, self-worth, and values. {A} may bring financial opportunity to {B} or help {B} feel more secure and abundant. {B}'s sense of their own value tends to grow in this relationship.",
+  Jupiter_3: "{A}'s Jupiter in {B}'s 3rd house of communication and learning. {A} broadens {B}'s mind and encourages them to speak, write, and share. {B} may find conversations with {A} genuinely expansive — like suddenly seeing more possibilities.",
+  Jupiter_4: "{A}'s Jupiter in {B}'s 4th house. {A} brings warmth, generosity, and growth to {B}'s home and inner world. {B} may feel emotionally safe and sheltered with {A}. Excellent for domestic harmony and family life.",
+  Jupiter_5: "{A}'s Jupiter in {B}'s 5th house — one of the best placements for romantic joy, creative growth, and generosity. {A} genuinely delights in {B}'s creativity and warmth. {B} feels encouraged to play, create, and love more freely.",
+  Jupiter_6: "{A}'s Jupiter in {B}'s 6th house. {A} brings optimism and perspective to {B}'s work and daily life. {B} may feel {A} helps them work through obstacles with less stress. Good for collaborative work — though watch for over-promising.",
+  Jupiter_7: "{A}'s Jupiter in {B}'s 7th house is a classic partnership blessing. {B} sees {A} as a natural ally and may feel genuinely fortunate to have them in their life. This placement signals mutual respect and a relationship that tends to grow rather than shrink both people.",
+  Jupiter_8: "{A}'s Jupiter in {B}'s 8th house. {A} may bring wisdom and expansion to {B}'s experiences of loss, change, and depth. {B} may grow spiritually through this connection. Shared resources may expand over time. A quietly significant bond.",
+  Jupiter_9: "{A}'s Jupiter in {B}'s 9th house — their natural home. {A} resonates with {B}'s deepest beliefs, philosophy, and sense of purpose. {B} feels genuinely inspired by {A}'s worldview. This placement has a teacher-student quality that can be profoundly meaningful.",
+  Jupiter_10: "{A}'s Jupiter in {B}'s 10th house. {A} actively supports {B}'s career and public standing — perhaps through opportunities, mentorship, or simply belief. {B} may experience visible growth in their professional life through knowing {A}.",
+  Jupiter_11: "{A}'s Jupiter in {B}'s 11th house. {A} expands {B}'s social world, networks, and sense of possibility. {B} may meet influential people or find new communities through {A}. Generosity and goodwill flow between them.",
+  Jupiter_12: "{A}'s Jupiter in {B}'s 12th house. {A} brings grace and perspective to {B}'s inner spiritual life, dreams, and hidden fears. {B} may feel quietly protected by {A} at a level that's hard to explain. A deeply spiritually supportive placement.",
+
+  Venus_1: "{A}'s Venus in {B}'s 1st house — {A} genuinely appreciates {B} and finds them beautiful or magnetic. {B} feels seen and valued as themselves. Warmth and affection flow naturally; {B} tends to feel more attractive and charming in {A}'s presence.",
+  Venus_2: "{A}'s Venus in {B}'s 2nd house. {A} adds beauty, pleasure, and appreciation to {B}'s material world. Shared enjoyment of food, comfort, art, and the good things in life. Financial generosity may flow from {A} to {B}.",
+  Venus_3: "{A}'s Venus in {B}'s 3rd house. {A}'s way of communicating is charming and pleasing to {B}. Conversations are warm and affectionate. Good for creative collaborations involving writing, ideas, or the arts.",
+  Venus_4: "{A}'s Venus in {B}'s 4th house. {A} brings beauty and harmony to {B}'s home and emotional life. {B} finds {A}'s presence at home deeply soothing. Strong domestic compatibility; the home may become a shared creative or aesthetic project.",
+  Venus_5: "{A}'s Venus in {B}'s 5th house — one of the strongest romantic overlays. {A} is drawn to {B}'s joy, creativity, and warmth; {B} feels delighted by {A}. Excellent for romance, play, and artistic partnership. Naturally affectionate and lighthearted.",
+  Venus_6: "{A}'s Venus in {B}'s 6th house. {A} may genuinely enjoy helping {B} in practical, daily ways — and does it gracefully. Affection can show through acts of service. The watch-out: the relationship can feel more like a working partnership than a romantic one if both people don't consciously tend the warmth.",
+  Venus_7: "{A}'s Venus in {B}'s 7th house — the classic romance and partnership placement. {B} sees {A} as an ideal partner; {A} brings beauty, harmony, and love into the zone of {B}'s life most associated with relationship. One of the most significant overlays for lasting romantic connection.",
+  Venus_8: "{A}'s Venus in {B}'s 8th house. {A}'s affection opens up {B}'s depths — this connection tends to be intense, intimate, and transformative. {B} may feel {A} touches something private and essential. Deeply bonding; sexually significant.",
+  Venus_9: "{A}'s Venus in {B}'s 9th house. {A} finds {B}'s beliefs and worldview beautiful and inspiring. {B} feels {A} shares or expands their sense of meaning. A relationship with a philosophical or spiritual dimension — travel, learning, and adventure together.",
+  Venus_10: "{A}'s Venus in {B}'s 10th house. {A} may bring grace, support, or social charm to {B}'s public life and career. {B} may seem more appealing professionally through the relationship. Good for joint creative or public work.",
+  Venus_11: "{A}'s Venus in {B}'s 11th house. {A} adds warmth and beauty to {B}'s social world. The connection may feel friendship-like at its core — comfortable, easy, and expansive. Good for shared communities and group creativity.",
+  Venus_12: "{A}'s Venus in {B}'s 12th house. {A}'s love enters {B}'s private, hidden world. {B} may feel deeply understood at a level they rarely show others. The relationship has a private, even secret quality. At its best: unconditional; at its shadow: one-sided or hard to make visible.",
+
+  Saturn_1: "{A}'s Saturn in {B}'s 1st house. {A} may feel like a grounding force in {B}'s life — or a limiting one. {B} may feel more responsible, more serious, or even more self-conscious around {A}. At its best: {A} helps {B} build structure and stay real; at its shadow: {B} can feel inhibited.",
+  Saturn_2: "{A}'s Saturn in {B}'s 2nd house. {A} brings discipline and seriousness to {B}'s finances and values. {B} may be more careful or conservative around money in this relationship. Good for long-term financial planning together; can feel restrictive if {B} is more spontaneous by nature.",
+  Saturn_3: "{A}'s Saturn in {B}'s 3rd house. {A} may slow or structure {B}'s communication. {B} might choose words more carefully around {A}, which can be maturing or inhibiting depending on the relationship. Serious, substantive conversations.",
+  Saturn_4: "{A}'s Saturn in {B}'s 4th house. {A} has a serious, stabilising presence in {B}'s home and emotional life. {B} may feel {A} is responsible and reliable in private — or that {A} adds weight to an area of life that wants to feel light. Long-lasting domestic bonds.",
+  Saturn_5: "{A}'s Saturn in {B}'s 5th house. {A}'s energy can feel heavy in the zone of play, romance, and creativity. {B} may feel more serious or less spontaneous than usual. This is a karmic placement — the relationship may involve lessons around joy, expression, or romantic expectations.",
+  Saturn_6: "{A}'s Saturn in {B}'s 6th house. {A} brings discipline and structure to {B}'s work and daily life. {B} may work harder or be more diligent when {A} is in the picture. Good for building something together that requires sustained effort.",
+  Saturn_7: "{A}'s Saturn in {B}'s 7th house — a significant karmic overlay for partnership. The relationship has longevity and seriousness; {B} takes this commitment seriously. The growth edge: ensuring the relationship feels like a bond rather than an obligation. Strong for long-term partnership when the mutual respect is real.",
+  Saturn_8: "{A}'s Saturn in {B}'s 8th house. {A} brings discipline and caution to {B}'s zone of transformation and shared resources. {B} may find {A} makes them more careful and strategic about joint finances. Can slow transformation — or make it more deliberate.",
+  Saturn_9: "{A}'s Saturn in {B}'s 9th house. {A} may challenge or structure {B}'s beliefs and worldview. {B} may feel {A} is conservative or questioning about their philosophy. At its best: a grounding force for {B}'s ideals. At its shadow: can feel critical of {B}'s faith or sense of purpose.",
+  Saturn_10: "{A}'s Saturn in {B}'s 10th house. {A} has a significant, serious presence in {B}'s career and public role. {B} may work harder, aim higher, or feel more accountable professionally through knowing {A}. A strong indicator of long-term professional partnership.",
+  Saturn_11: "{A}'s Saturn in {B}'s 11th house. {A} brings structure and discipline to {B}'s social world and aspirations. {B}'s goals may become more realistic or more seriously pursued. The friendship has an element of reliability and long-term loyalty.",
+  Saturn_12: "{A}'s Saturn in {B}'s 12th house. {A} may help {B} build structure around their spiritual life, retreat, or inner world — or {A}'s presence in this zone can feel limiting or heavy. A karmic placement with a quiet depth to it.",
+
+  Rahu_1:  "{A}'s Rahu in {B}'s 1st house. {A} is intensely fascinating to {B} — there's an almost magnetic, fated quality to how {B} perceives {A}. {A} may trigger {B}'s growth in unexpected ways. Unusual, electric, and hard to ignore.",
+  Rahu_5:  "{A}'s Rahu in {B}'s 5th house. {A} triggers {B}'s creative and romantic obsessions. There's a pull here that can feel compelling and destabilising at the same time. Strong romantic magnetism, with an undercurrent of the unexpected.",
+  Rahu_7:  "{A}'s Rahu in {B}'s 7th house. There is something fated and compelling about this connection as a partnership. {B} may feel drawn to {A} in a way that's hard to fully explain. Powerful attraction; can feel like a karmic bond.",
+  Rahu_10: "{A}'s Rahu in {B}'s 10th house. {A} may have an unusual or destabilising influence on {B}'s career and public life — triggering ambition and unconventional moves. Can be highly activating for {B}'s professional growth.",
+
+  Ketu_1:  "{A}'s Ketu in {B}'s 1st house. {A} may see through {B}'s surface persona — sometimes uncomfortably so. There's a deep, almost past-life familiarity between them. {B} may feel {A} knows them too well, which can feel liberating or unsettling.",
+  Ketu_4:  "{A}'s Ketu in {B}'s 4th house. There may be a deep, unspoken familiarity around home and family — like they've shared a domestic life before in some way. {B} may feel {A} touches something very ancient in their emotional life.",
+  Ketu_7:  "{A}'s Ketu in {B}'s 7th house. There is a strong karmic quality to this partnership — a feeling of having known each other before, or of unfinished business. Deep familiarity; {B} may feel {A} is both deeply known and elusive.",
+  Ketu_12: "{A}'s Ketu in {B}'s 12th house. {A} resonates with {B}'s spiritual and hidden world in a profound way. Past-life or soulmate quality; a connection that can feel both deeply restful and deeply strange."
+};
+
+function overlayKey(planetName, house) {
+  return planetName + "_" + house;
+}
+
+// Default reading when we don't have a specific one
+function defaultOverlay(planetName, house, nameA, nameB) {
+  var HOUSE_THEMES = {
+    1:"identity and self-presentation", 2:"money and values", 3:"communication and courage",
+    4:"home and emotional security", 5:"creativity and romance", 6:"work and daily routine",
+    7:"partnerships and close relationships", 8:"transformation and shared depth",
+    9:"beliefs and higher purpose", 10:"career and public role",
+    11:"networks and aspirations", 12:"spirituality and the inner life"
+  };
+  return nameA + "’s " + planetName + " activates " + nameB + "’s "
+    + house + ordinal(house) + " house — the zone of " + (HOUSE_THEMES[house] || "this area of life")
+    + ". This is worth exploring in context with the rest of the chart.";
+}
+
+function ordinal(n) {
+  var s = ["th","st","nd","rd"], v = n % 100;
+  return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
+// ─── aspect engine ────────────────────────────────────────────────────────────
+
+var ASPECT_ORBS = { conj:8, opp:7, tri:6, sq:5, sxt:4 };
+
+function signIndex(sign) { return SIGNS.indexOf(sign); }
+
+function signDist(s1, s2) {
+  var a = signIndex(s1), b = signIndex(s2);
+  if (a < 0 || b < 0) return 999;
+  var d = Math.abs(a - b);
+  return d > 6 ? 12 - d : d;
+}
+
+function aspectType(s1, s2) {
+  var d = signDist(s1, s2);
+  if (d === 0) return "conj";
+  if (d === 6) return "opp";
+  if (d === 4 || d === 8) return "tri";
+  if (d === 3 || d === 9) return "sq";
+  if (d === 2 || d === 10) return "sxt";
+  return null;
+}
+
+var ASPECT_LABEL = { conj:"Conjunction", opp:"Opposition", tri:"Trine", sq:"Square", sxt:"Sextile" };
+var ASPECT_BADGE_CLS = { conj:"aspect-conj", opp:"aspect-opp", tri:"aspect-tri", sq:"aspect-sq", sxt:"aspect-sxt" };
+var ASPECT_SHORT = { conj:"☌", opp:"☍", tri:"△", sq:"□", sxt:"⚹" };
+
+// Key planet pairings for synastry
+var ASPECT_READINGS = {
+  "Sun-Moon": {
+    conj: "Sun and Moon together — one of the most significant synastry aspects. {A}'s core identity and {B}'s emotional inner world align naturally. {A} may feel {B} truly 'gets' them; {B} feels nourished by {A}'s warmth and purpose.",
+    opp:  "Sun and Moon in opposition — a classic attraction of complementary forces. {A}'s purpose and {B}'s emotional needs pull in different directions, creating a productive tension that can feel magnetic. Balance is the ongoing work.",
+    tri:  "Sun trine Moon — one of the most harmonious synastry aspects. {A}'s identity and {B}'s emotional nature flow together with very little friction. There's an ease here that makes the relationship feel natural and mutually sustaining.",
+    sq:   "Sun square Moon — {A}'s core self and {B}'s emotional needs are at cross-purposes. This creates friction that can be growth-oriented: the relationship asks both people to stretch. Not incompatible, but it requires conscious attention.",
+    sxt:  "Sun sextile Moon — a supportive, harmonious contact. {A}'s identity and {B}'s emotional world complement each other without pressure. Easy, mutually encouraging energy."
+  },
+  "Moon-Moon": {
+    conj: "Moons conjunct — emotional resonance at its most direct. Both people feel things in a similar way, at a similar rhythm. There's a deep instinctive understanding that rarely needs explaining.",
+    opp:  "Moons in opposition — you feel things differently and on different timescales. This can create profound complementarity (you balance each other emotionally) or friction (you each find the other's emotional style alien).",
+    tri:  "Moons trine — emotional ease and natural harmony. Your feeling-worlds are compatible in style and rhythm. You understand each other's needs intuitively and don't often step on each other emotionally.",
+    sq:   "Moons square — your emotional instincts pull in different directions. What feels safe and nurturing to one can feel confining or alien to the other. Growth comes from learning to hold space for very different emotional styles.",
+    sxt:  "Moons sextile — a gentle, supportive emotional link. You don't always feel the same way, but you naturally make space for each other's feelings without judgment."
+  },
+  "Sun-Venus": {
+    conj: "{A}'s Sun conjunct {B}'s Venus — {B} genuinely finds {A} beautiful, charming, and attractive. This is one of the warmest synastry contacts: {B} lights up around {A}, and {A} feels appreciated and loved. A classic romantic indicator.",
+    opp:  "{A}'s Sun opposite {B}'s Venus — strong attraction between you, with an element of 'opposites attract.' You find each other beautiful and compelling, but your fundamental ways of relating may need conscious bridging.",
+    tri:  "{A}'s Sun trine {B}'s Venus — warmth, affection, and appreciation flow easily. {B} genuinely likes who {A} is; {A} feels seen and valued. Excellent for lasting affection.",
+    sq:   "{A}'s Sun square {B}'s Venus — attraction is present but the relationship style may clash. {B} may find {A}'s core personality difficult to fully embrace, or {A} may feel {B}'s affection conditional. Worth naming directly.",
+    sxt:  "{A}'s Sun sextile {B}'s Venus — friendly, warm appreciation. {B} likes {A} and enjoys their company. A gentle, pleasant contact that supports general goodwill."
+  },
+  "Venus-Mars": {
+    conj: "Venus and Mars conjunct — classic romantic and physical chemistry. One person's ability to love and attract meets the other's drive and desire. Intense magnetic pull; one of the defining indicators of romantic chemistry.",
+    opp:  "Venus and Mars in opposition — strong attraction with an edge. The feminine and masculine energies here are in dialogue across a polarity — powerfully compelling, and requiring that both people bring their best selves to the dynamic.",
+    tri:  "Venus trine Mars — desire and affection flow harmoniously. There's a natural ease to the romantic and physical dimension of this relationship; both people feel at home in the dynamic.",
+    sq:   "Venus square Mars — attraction mixed with friction. Desire is present, but so is an undercurrent of conflict between how one person loves and how the other initiates. The tension can be exciting or exhausting depending on how it's handled.",
+    sxt:  "Venus sextile Mars — a gentle romantic compatibility. Desire and affection are in conversation with each other; the energy is warm and flirtatious without being overwhelming."
+  },
+  "Saturn-Moon": {
+    conj: "{A}'s Saturn conjunct {B}'s Moon — one of the most significant karmic overlays. {A} can be a stabilising anchor for {B}'s emotional life, but may also (consciously or not) restrict {B}'s emotional expression. The relationship requires conscious nurturing; at its best it is deeply loyal.",
+    opp:  "{A}'s Saturn opposite {B}'s Moon — emotional needs and structural reality in tension. {B} may feel {A} is too serious or unavailable emotionally; {A} may feel {B}'s needs are demanding. A growthful but weighty contact.",
+    tri:  "{A}'s Saturn trine {B}'s Moon — structure and emotional security in harmony. {A} grounds {B} without suppressing them; {B} feels safe within the boundaries {A} provides. Stable and sustaining.",
+    sq:   "{A}'s Saturn square {B}'s Moon — {A}'s discipline or seriousness clashes with {B}'s emotional needs. {B} may feel unseen or constricted. Growth comes from {A} learning to soften and {B} learning to communicate needs clearly.",
+    sxt:  "{A}'s Saturn sextile {B}'s Moon — gentle stabilising influence. {A} helps {B} feel grounded without overwhelming them. A quietly reliable contact."
+  },
+  "Jupiter-Sun": {
+    conj: "{A}'s Jupiter conjunct {B}'s Sun — one of the most expansive, positive synastry contacts. {A} genuinely believes in {B} and that belief is contagious. {B} may grow in confidence, ambition, and possibility around {A}. Profoundly encouraging.",
+    opp:  "{A}'s Jupiter opposite {B}'s Sun — expansion and identity in dialogue. {A} may broaden {B}'s worldview in ways that challenge {B}'s sense of self. Growth-oriented, sometimes destabilising, ultimately expansive.",
+    tri:  "{A}'s Jupiter trine {B}'s Sun — natural mutual encouragement and expansion. {A} brings good fortune and perspective to {B}'s core purpose. One of the most auspicious contacts for lasting goodwill and growth.",
+    sq:   "{A}'s Jupiter square {B}'s Sun — enthusiasm and identity at cross-purposes. {A}'s expansive energy may overwhelm or conflict with {B}'s sense of direction. Worth channelling consciously.",
+    sxt:  "{A}'s Jupiter sextile {B}'s Sun — gentle good fortune and encouragement. {A} brings optimism and support to {B}'s identity and goals. A quietly positive contact."
+  }
+};
+
+function getAspectReading(nameA, pA, nameB, pB, aType) {
+  var key1 = pA.name + "-" + pB.name;
+  var key2 = pB.name + "-" + pA.name;
+  var reading = null;
+  if (ASPECT_READINGS[key1] && ASPECT_READINGS[key1][aType]) {
+    reading = ASPECT_READINGS[key1][aType];
+    reading = reading.replace(/{A}/g, nameA).replace(/{B}/g, nameB);
+  } else if (ASPECT_READINGS[key2] && ASPECT_READINGS[key2][aType]) {
+    reading = ASPECT_READINGS[key2][aType];
+    reading = reading.replace(/{A}/g, nameB).replace(/{B}/g, nameA);
+  }
+  return reading;
+}
+
+// ─── synastry engine ──────────────────────────────────────────────────────────
+
+var IMPORTANT_PLANETS = ["Sun", "Moon", "Venus", "Mars", "Jupiter", "Saturn"];
+
+function buildReport(cA, cB) {
+  var nameA = cA.name, nameB = cB.name;
+
+  // 1. Planet overlays: each of A's planets into B's houses, and vice versa
+  var overlaysAtoB = computeOverlays(cA, cB, nameA, nameB);
+  var overlaysBtoA = computeOverlays(cB, cA, nameB, nameA);
+
+  // 2. Cross-chart aspects (A's planets vs B's planets)
+  var aspects = computeAspects(cA, cB, nameA, nameB);
+
+  // 3. Nakshatra compatibility
+  var nakCompat = computeNakCompat(cA, cB);
+
+  // 4. Elemental breakdown
+  var elements = computeElements(cA, cB, nameA, nameB);
+
+  // 5. Summary headline
+  var summary = buildSummary(cA, cB, aspects, nakCompat);
+
+  return { nameA, nameB, overlaysAtoB, overlaysBtoA, aspects, nakCompat, elements, summary };
+}
+
+function computeOverlays(source, target, nameA, nameB) {
+  var out = [];
+  (source.planets || []).forEach(function(p) {
+    if (!IMPORTANT_PLANETS.includes(p.name)) return;
+    var house = p.house; // where this planet lands in SOURCE's chart
+    // In synastry we use the target's ascendant to determine which house
+    // the source planet falls in. With whole-sign houses:
+    // house = 1 + (signIndex(planet.sign) - signIndex(target.ascendant.sign) + 12) % 12
+    var targetAscSign = target.ascendant && target.ascendant.sign;
+    var targetHouse = house; // fallback to own house
+    if (targetAscSign) {
+      targetHouse = ((signIndex(p.sign) - signIndex(targetAscSign) + 12) % 12) + 1;
+    }
+    var key = overlayKey(p.name, targetHouse);
+    var text = OVERLAY[key];
+    if (!text) {
+      text = defaultOverlay(p.name, targetHouse, nameA, nameB);
+    } else {
+      text = text.replace(/{A}/g, nameA).replace(/{B}/g, nameB);
+    }
+    out.push({ planet: p, house: targetHouse, text: text });
+  });
+  return out;
+}
+
+function computeAspects(cA, cB, nameA, nameB) {
+  var out = [];
+  (cA.planets || []).forEach(function(pA) {
+    if (!IMPORTANT_PLANETS.includes(pA.name)) return;
+    (cB.planets || []).forEach(function(pB) {
+      if (!IMPORTANT_PLANETS.includes(pB.name)) return;
+      var aType = aspectType(pA.sign, pB.sign);
+      if (!aType) return;
+      var reading = getAspectReading(nameA, pA, nameB, pB, aType);
+      out.push({ pA, pB, aType, nameA, nameB, reading });
+    });
+  });
+  // Sort: Sun/Moon contacts first, then by aspect type weight
+  var weight = { conj:0, opp:1, tri:2, sq:3, sxt:4 };
+  var planetWeight = function(n) { return ["Sun","Moon","Venus","Mars"].indexOf(n) >= 0 ? 0 : 1; };
+  out.sort(function(a, b) {
+    var pa = planetWeight(a.pA.name) + planetWeight(a.pB.name);
+    var pb = planetWeight(b.pA.name) + planetWeight(b.pB.name);
+    if (pa !== pb) return pa - pb;
+    return (weight[a.aType] || 5) - (weight[b.aType] || 5);
+  });
+  return out;
+}
+
+function computeNakCompat(cA, cB) {
+  var nakA = cA.nakshatra && cA.nakshatra.name;
+  var nakB = cB.nakshatra && cB.nakshatra.name;
+  var ganaA = nakA && NAK_GANA[nakA];
+  var ganaB = nakB && NAK_GANA[nakB];
+  var combo = null, note = null;
+  if (ganaA && ganaB) {
+    var pair = [ganaA, ganaB].sort().join("-");
+    combo = ganaA + " + " + ganaB;
+    note = GANA_NOTE[ganaA + "-" + ganaB] || GANA_NOTE[ganaB + "-" + ganaA] || null;
+  }
+  return { nakA, nakB, ganaA, ganaB, combo, note,
+    themesA: cA.nakshatra && cA.nakshatra.themes,
+    themesB: cB.nakshatra && cB.nakshatra.themes };
+}
+
+function computeElements(cA, cB, nameA, nameB) {
+  var count = {};
+  function tally(chart, who) {
+    (chart.planets || []).forEach(function(p) {
+      if (!IMPORTANT_PLANETS.includes(p.name)) return;
+      var el = SIGN_ELEMENT[p.sign];
+      if (!el) return;
+      count[el] = count[el] || { A:0, B:0 };
+      count[el][who]++;
+    });
+  }
+  tally(cA, "A"); tally(cB, "B");
+  var all = ["Fire","Earth","Air","Water"];
+  return all.map(function(el) {
+    var c = count[el] || { A:0, B:0 };
+    var total = c.A + c.B;
+    var note = elementNote(el, c.A, c.B, nameA, nameB);
+    return { el, countA: c.A, countB: c.B, total, note };
+  }).filter(function(e) { return e.total > 0; });
+}
+
+function elementNote(el, a, b, nameA, nameB) {
+  var notes = {
+    Fire:  { high:"High fire energy between you — enthusiasm, warmth, and momentum come easily. Watch for burnout or competition.",
+              mixed:"Fire energy between you, contributed differently. The higher-fire person may need to slow down; the other may need to be pulled forward.",
+              low:"Low fire in this pairing — deliberate, careful, and often deep. You may need to consciously inject enthusiasm and spontaneity." },
+    Earth: { high:"Strong earth energy — practical, grounded, and reliable together. You build real things and keep your feet on the ground.",
+              mixed:"Earth energy is present but unequal — one person anchors the other in practical reality.",
+              low:"Low earth energy — ideas and feelings abound, but grounding them in practical action may need extra attention." },
+    Air:   { high:"High air energy — mentally alive, communicative, and full of ideas. The risk is too much analysis and not enough feeling or action.",
+              mixed:"Air energy contributes to the mental connection. One person may be more idea-oriented than the other.",
+              low:"Low air energy — your connection tends to be felt and done rather than talked about. Direct communication about ideas may take more effort." },
+    Water: { high:"High water energy — deep emotional attunement and intuitive connection. You feel each other easily. Watch for emotional overwhelm.",
+              mixed:"Water energy flows between you unevenly — one person may carry more of the emotional depth in the relationship.",
+              low:"Low water energy — emotional directness is not your default mode. Feelings may go unspoken; consciously creating emotional safety helps." }
+  };
+  var tier = (a + b >= 3) ? "high" : (a + b >= 1) ? "mixed" : "low";
+  return (notes[el] && notes[el][tier]) || "";
+}
+
+function buildSummary(cA, cB, aspects, nakCompat) {
+  var nameA = cA.name, nameB = cB.name;
+  // Count harmonious vs challenging aspects
+  var harm = aspects.filter(function(a) { return a.aType === "conj" || a.aType === "tri" || a.aType === "sxt"; }).length;
+  var chal = aspects.filter(function(a) { return a.aType === "opp" || a.aType === "sq"; }).length;
+  // Key planet contacts
+  var hasSunMoon = aspects.some(function(a) {
+    return (a.pA.name === "Sun" && a.pB.name === "Moon") || (a.pA.name === "Moon" && a.pB.name === "Sun");
+  });
+  var hasVenusMars = aspects.some(function(a) {
+    return (a.pA.name === "Venus" && a.pB.name === "Mars") || (a.pA.name === "Mars" && a.pB.name === "Venus");
+  });
+
+  var headline = nameA + " × " + nameB;
+  var body = "";
+  if (harm > chal * 1.5) {
+    body = "The overall synastry leans harmonious — more supportive contacts than challenging ones. There's a natural ease to this connection, and the points of friction are likely to feel productive rather than exhausting.";
+  } else if (chal > harm * 1.5) {
+    body = "The synastry has more friction than ease — this is a growth-oriented connection that will ask both people to stretch. That doesn't mean it lacks depth or meaning; some of the most significant relationships show this pattern.";
+  } else {
+    body = "The synastry is a balanced mix of harmony and tension — some things flow naturally between you and others require effort. This tends to make for a genuinely interesting, layered connection.";
+  }
+  if (hasSunMoon) body += " There is a Sun-Moon contact between you — one of the most meaningful indicators of natural compatibility and emotional attunement.";
+  if (hasVenusMars) body += " A Venus-Mars contact is present — a classic indicator of attraction and romantic chemistry.";
+  if (nakCompat.ganaA && nakCompat.ganaB) {
+    if (nakCompat.ganaA === nakCompat.ganaB) {
+      body += " Your birth stars share the same gana (" + nakCompat.ganaA + "), adding a layer of instinctive emotional harmony.";
+    }
+  }
+  return { headline, body };
+}
+
+// ─── rendering ────────────────────────────────────────────────────────────────
+
+function el(tag, cls, text) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function renderReport(report) {
+  var wrap = document.getElementById("report");
+  wrap.innerHTML = "";
+
+  // Summary banner
+  var banner = el("div", "summary-banner");
+  banner.appendChild(el("div", "headline accent", report.nameA + " × " + report.nameB));
+  var bp = el("p"); bp.textContent = report.summary.body; banner.appendChild(bp);
+  wrap.appendChild(banner);
+
+  // Section: Overlays A→B
+  wrap.appendChild(renderOverlaySection(
+    report.nameA + "’s planets in " + report.nameB + "’s chart",
+    "How " + report.nameA + "’s energy lands in " + report.nameB + "’s life",
+    report.overlaysAtoB, "a", report.nameA
+  ));
+
+  // Section: Overlays B→A
+  wrap.appendChild(renderOverlaySection(
+    report.nameB + "’s planets in " + report.nameA + "’s chart",
+    "How " + report.nameB + "’s energy lands in " + report.nameA + "’s life",
+    report.overlaysBtoA, "b", report.nameB
+  ));
+
+  // Section: Aspects
+  if (report.aspects.length) {
+    var sec = el("div", "section");
+    var sh = el("div", "section-header");
+    sh.appendChild(el("h2", null, "Planet connections"));
+    sh.appendChild(el("span", "sub", "Aspects between " + report.nameA + " and " + report.nameB + "’s charts"));
+    sec.appendChild(sh);
+    var list = el("div", "aspect-list");
+    report.aspects.forEach(function(a) {
+      list.appendChild(renderAspect(a));
+    });
+    sec.appendChild(list);
+    wrap.appendChild(sec);
+  }
+
+  // Section: Nakshatra
+  wrap.appendChild(renderNakSection(report.nakCompat, report.nameA, report.nameB));
+
+  // Section: Elements
+  wrap.appendChild(renderElementSection(report.elements, report.nameA, report.nameB));
+}
+
+function renderOverlaySection(title, subtitle, overlays, who, name) {
+  var sec = el("div", "section");
+  var sh = el("div", "section-header");
+  sh.appendChild(el("h2", null, title));
+  sh.appendChild(el("span", "sub", subtitle));
+  sec.appendChild(sh);
+  if (!overlays.length) {
+    sec.appendChild(el("p", "muted", "No planet data available."));
+    return sec;
+  }
+  var grid = el("div", "overlay-grid");
+  overlays.forEach(function(ov) {
+    var card = el("div", "overlay-card");
+    var label = el("div", "planet-label");
+    var pill = el("span", "pill pill-" + who, name);
+    var pname = el("span", "planet-name", ov.planet.name);
+    var htag = el("span", "house-tag", " in " + name + "’s " + ordinal(ov.house) + " house");
+    label.appendChild(pill);
+    label.appendChild(pname);
+    label.appendChild(htag);
+    card.appendChild(label);
+    card.appendChild(el("div", "reading", ov.text));
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+function renderAspect(a) {
+  var row = el("div", "aspect-row");
+  var badge = el("div", "aspect-badge " + (ASPECT_BADGE_CLS[a.aType] || ""), ASPECT_SHORT[a.aType] || a.aType);
+  row.appendChild(badge);
+  var body = el("div");
+  body.appendChild(el("div", "bodies",
+    a.nameA + "’s " + a.pA.name + " " + ASPECT_LABEL[a.aType] + " " + a.nameB + "’s " + a.pB.name
+  ));
+  var reading = a.reading || (a.nameA + "’s " + a.pA.name + " and " + a.nameB + "’s " + a.pB.name +
+    " form a " + ASPECT_LABEL[a.aType] + " — worth examining in context with other contacts.");
+  body.appendChild(el("div", "reading", reading));
+  row.appendChild(body);
+  return row;
+}
+
+function renderNakSection(nak, nameA, nameB) {
+  var sec = el("div", "section");
+  var sh = el("div", "section-header");
+  sh.appendChild(el("h2", null, "Birth star connection"));
+  sh.appendChild(el("span", "sub", "Nakshatra — the emotional signature of each person"));
+  sec.appendChild(sh);
+
+  var row = el("div", "nak-row");
+
+  var cardA = el("div", "nak-card");
+  cardA.appendChild(el("div", "name", nak.nakA || "—"));
+  cardA.appendChild(el("div", "detail", nameA + "’s birth star · " + (nak.ganaA || "")));
+  if (nak.themesA) cardA.appendChild(el("div", "desc", nak.themesA));
+  row.appendChild(cardA);
+
+  row.appendChild(el("div", "nak-arrow", "↔"));
+
+  var cardB = el("div", "nak-card");
+  cardB.appendChild(el("div", "name", nak.nakB || "—"));
+  cardB.appendChild(el("div", "detail", nameB + "’s birth star · " + (nak.ganaB || "")));
+  if (nak.themesB) cardB.appendChild(el("div", "desc", nak.themesB));
+  row.appendChild(cardB);
+
+  sec.appendChild(row);
+
+  if (nak.note) {
+    var compat = el("div", "nak-compat");
+    var heading = el("h3"); heading.textContent = nak.combo || "Gana compatibility"; compat.appendChild(heading);
+    compat.appendChild(el("p", null, nak.note));
+    sec.appendChild(compat);
+  }
+  return sec;
+}
+
+function renderElementSection(elements, nameA, nameB) {
+  var sec = el("div", "section");
+  var sh = el("div", "section-header");
+  sh.appendChild(el("h2", null, "Elemental balance"));
+  sh.appendChild(el("span", "sub", "How the four elements are distributed across key planets"));
+  sec.appendChild(sh);
+  var elCls = { Fire:"el-fire", Earth:"el-earth", Air:"el-air", Water:"el-water" };
+  var elSymbol = { Fire:"🜂", Earth:"🜃", Air:"🜁", Water:"🜄" };
+  var grid = el("div", "element-row");
+  elements.forEach(function(e) {
+    var card = el("div", "element-card");
+    card.appendChild(el("div", "el-label", e.el));
+    var val = el("div", "el-value " + (elCls[e.el] || ""), e.el);
+    val.textContent = (e.countA > 0 ? nameA + "\xd7" + e.countA : "") +
+      (e.countA > 0 && e.countB > 0 ? "  " : "") +
+      (e.countB > 0 ? nameB + "\xd7" + e.countB : "");
+    val.style.fontSize = "15px";
+    card.appendChild(val);
+    card.appendChild(el("div", "el-note", e.note));
+    grid.appendChild(card);
+  });
+  sec.appendChild(grid);
+  return sec;
+}
+
+// ─── init ─────────────────────────────────────────────────────────────────────
+
+function populate() {
+  var selA = document.getElementById("selA");
+  var selB = document.getElementById("selB");
+  Object.keys(CHARTS).forEach(function(id) {
+    var c = CHARTS[id];
+    var oA = document.createElement("option"); oA.value = id; oA.textContent = c.name; selA.appendChild(oA);
+    var oB = document.createElement("option"); oB.value = id; oB.textContent = c.name; selB.appendChild(oB);
+  });
+}
+
+function onChange() {
+  var idA = document.getElementById("selA").value;
+  var idB = document.getElementById("selB").value;
+  var empty = document.getElementById("empty");
+  var report = document.getElementById("report");
+  if (!idA || !idB || idA === idB) {
+    empty.style.display = "";
+    report.style.display = "none";
+    if (idA && idB && idA === idB) {
+      empty.querySelector("div:last-child").textContent = "Please choose two different people.";
+    } else {
+      empty.querySelector("div:last-child").textContent = "Choose two people above to see their compatibility reading.";
+    }
+    return;
+  }
+  var cA = CHARTS[idA], cB = CHARTS[idB];
+  var data = buildReport(cA, cB);
+  empty.style.display = "none";
+  report.style.display = "";
+  renderReport(data);
+}
+
+populate();
+document.getElementById("selA").addEventListener("change", onChange);
+document.getElementById("selB").addEventListener("change", onChange);
+
+})();
+</script>
+</body>
+</html>

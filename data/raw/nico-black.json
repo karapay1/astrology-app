@@ -1,0 +1,3695 @@
+{
+  "name": "Nico Black",
+  "date": "13/04/2022",
+  "time": "09:28",
+  "tz": "-04:00",
+  "location": "Melbourne, Florida, USA",
+  "ayanamsa": "RAMAN",
+  "results": {
+    "Planet_Sun": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Sun"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsAspecting": [
+            "Saturn"
+          ],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Saturn"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [
+            "Saturn"
+          ],
+          "DasaPeriodAshtakavargaStrength": "75.2",
+          "DispositorConjunctWith": [
+            "Saturn"
+          ],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "11, 4",
+          "HousePlanetOccupiesBasedOnLongitudes": "House12",
+          "HousePlanetOccupiesBasedOnSign": "House12",
+          "HousesInAspect": "House6",
+          "HousesOwnedByPlanet": "",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "True",
+          "IsPlanetAspectedByEnemyPlanets": "False",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "False",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "True",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "True",
+          "IsPlanetBeneficLordForLagna": "True",
+          "IsPlanetBeneficToLagna": "True",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "True",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "True",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "False",
+          "IsPlanetHemmedByMalefics": "True",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "True",
+          "IsPlanetInFriendlyDrekkana": "True",
+          "IsPlanetInFriendSign": "True",
+          "IsPlanetInGandanta": "True",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "True",
+          "IsPlanetInKendra": "False",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "False",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "True",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "False",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "False",
+          "IsPlanetMaleficLordForLagna": "False",
+          "IsPlanetMaleficToLagna": "False",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "True",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "True",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "9° 46' 29",
+              "TotalDegrees": "9.774722222222222"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 48,
+            "AfterTrikonaTotal": 15,
+            "FinalTotal": 11,
+            "Raw": {
+              "Aries": 2,
+              "Taurus": 4,
+              "Gemini": 2,
+              "Cancer": 4,
+              "Leo": 6,
+              "Virgo": 3,
+              "Libra": 5,
+              "Scorpio": 4,
+              "Sagittarius": 4,
+              "Capricorn": 5,
+              "Aquarius": 5,
+              "Pisces": 4
+            },
+            "AfterTrikona": {
+              "Aries": 0,
+              "Taurus": 1,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 4,
+              "Virgo": 0,
+              "Libra": 3,
+              "Scorpio": 0,
+              "Sagittarius": 2,
+              "Capricorn": 2,
+              "Aquarius": 3,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 0,
+              "Taurus": 1,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 4,
+              "Virgo": 0,
+              "Libra": 1,
+              "Scorpio": 0,
+              "Sagittarius": 2,
+              "Capricorn": 0,
+              "Aquarius": 3,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "MuditaDelighted",
+          "PlanetAyanaBala": "96.43767438271605",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "23° 51' 54",
+              "TotalDegrees": "23.865"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 32' 8",
+              "TotalDegrees": "3.5355555555555553"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "21° 12' 47",
+              "TotalDegrees": "21.213055555555556"
+            }
+          },
+          "PlanetConstellation": "Aswini - 1",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: debts, diseases, enemies, miseries, sorrows, illness and disappointments.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "8° 50' 20",
+              "TotalDegrees": "8.838888888888889"
+            }
+          },
+          "PlanetDeclination": "14.575069753086419",
+          "PlanetDigBala": "39.038148148148146",
+          "PlanetDignity": "Exalted",
+          "PlanetDrekkanaBala": "15",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 39' 5",
+              "TotalDegrees": "2.651388888888889"
+            }
+          },
+          "PlanetDrikBala": "13.590659722222226",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "10° 36' 23",
+              "TotalDegrees": "10.606388888888889"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Aries",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "23° 36' 14",
+            "TotalDegrees": "23.60388888888889"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 39' 5",
+              "TotalDegrees": "2.651388888888889"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "2.799",
+          "PlanetIshtaScore": "46.443602987607534",
+          "PlanetKalaBala": "150.5673040123457",
+          "PlanetKashtaScore": "8.200774531405676",
+          "PlanetKendraBala": "15",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 21' 19",
+              "TotalDegrees": "5.355277777777777"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Ketu"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Mars"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Sama",
+          "PlanetNaisargikaBala": "60",
+          "PlanetNathonnathaBala": "40.455555555555556",
+          "PlanetNatureScore": "1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "7° 57' 17",
+              "TotalDegrees": "7.954722222222222"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "0° 53' 2",
+            "TotalDegrees": "0.8838888888888888"
+          },
+          "PlanetOchchaBala": "56.9612962962963",
+          "PlanetOjayugmarasyamsaBala": "30",
+          "PlanetOwnAshtakvargaBindu": "2",
+          "PlanetPakshaBala": "13.67407407407407",
+          "PlanetPowerPercentage": "87.83022731927095",
+          "PlanetRasiD1Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "0° 53' 2",
+              "TotalDegrees": "0.8838888888888888"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "6° 11' 14",
+              "TotalDegrees": "6.187222222222222"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Aries",
+          "PlanetSaptavargajaBala": "157.5",
+          "PlanetsAspectingPlanet": [
+            "Saturn"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "0° 0' 0",
+            "TotalDegrees": "0"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "23° 36' 14",
+            "TotalDegrees": "23.60388888888889"
+          },
+          "PlanetShadbalaPinda": "537.66",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "23° 2' 0",
+              "TotalDegrees": "23.033333333333335"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 8' 32",
+              "TotalDegrees": "14.142222222222221"
+            }
+          },
+          "PlanetsInAspect": [],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "0.9799425188666658",
+          "PlanetSthanaBala": "274.46129629629627",
+          "PlanetStrength": "537.66",
+          "PlanetTemporaryFriendList": [
+            "Mars",
+            "Venus",
+            "Saturn",
+            "Jupiter"
+          ],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "26° 31' 0",
+              "TotalDegrees": "26.516666666666666"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 40' 40",
+              "TotalDegrees": "17.677777777777777"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "8° 53' 34",
+              "TotalDegrees": "8.892777777777777"
+            }
+          },
+          "ResidentialStrength": "0.5481145973732878",
+          "SignsPlanetIsAspecting": "Libra",
+          "SwissEphemeris": "{ Longitude = 23.604086390642017, Latitude = 0.00011631770853735081, DistanceAU = 1.002646214142345, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Moon": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Moon"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [
+            "Venus"
+          ],
+          "AllPhysicallyHarmfulPlanetsAspecting": [
+            "Mars",
+            "Saturn"
+          ],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Mars",
+            "Venus",
+            "Saturn"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Saturn"
+          ],
+          "BeneficPlanetsAspectingPlanet": [
+            "Mars",
+            "Saturn"
+          ],
+          "DasaPeriodAshtakavargaStrength": "28",
+          "DispositorConjunctWith": [],
+          "DispositorFromLagna": "12",
+          "DispositorFromMoon": "9",
+          "DispositorFromOwnHouses": "9",
+          "HousePlanetOccupiesBasedOnLongitudes": "House5",
+          "HousePlanetOccupiesBasedOnSign": "House4",
+          "HousesInAspect": "House10",
+          "HousesOwnedByPlanet": "House3, House4",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "True",
+          "IsPlanetAspectedByEnemyPlanets": "True",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "True",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "True",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "False",
+          "IsPlanetBeneficLordForLagna": "False",
+          "IsPlanetBeneficToLagna": "False",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "False",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "False",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "False",
+          "IsPlanetInKendra": "True",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "True",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "False",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "False",
+          "IsPlanetMaleficLordForLagna": "True",
+          "IsPlanetMaleficToLagna": "False",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "False",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [
+            "Venus"
+          ],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "23° 46' 30",
+              "TotalDegrees": "23.775"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 49,
+            "AfterTrikonaTotal": 10,
+            "FinalTotal": 9,
+            "Raw": {
+              "Aries": 4,
+              "Taurus": 2,
+              "Gemini": 7,
+              "Cancer": 4,
+              "Leo": 3,
+              "Virgo": 2,
+              "Libra": 7,
+              "Scorpio": 4,
+              "Sagittarius": 4,
+              "Capricorn": 4,
+              "Aquarius": 5,
+              "Pisces": 3
+            },
+            "AfterTrikona": {
+              "Aries": 1,
+              "Taurus": 0,
+              "Gemini": 2,
+              "Cancer": 1,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 2,
+              "Scorpio": 1,
+              "Sagittarius": 1,
+              "Capricorn": 2,
+              "Aquarius": 0,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 1,
+              "Taurus": 0,
+              "Gemini": 2,
+              "Cancer": 1,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 2,
+              "Scorpio": 0,
+              "Sagittarius": 1,
+              "Capricorn": 2,
+              "Aquarius": 0,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "KshuditaStarved",
+          "PlanetAyanaBala": "14.34988657407408",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Virgo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "26° 15' 53",
+              "TotalDegrees": "26.264722222222222"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "19° 26' 48",
+              "TotalDegrees": "19.446666666666665"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "26° 40' 48",
+              "TotalDegrees": "26.68"
+            }
+          },
+          "PlanetConstellation": "Pubba - 2",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: brothers and sisters, intelligence, cousins and other immediate relations, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders, occupation, profession, temporal honours, foreign travels, self-respect, knowledge and dignity and means of livelihood.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "18° 37' 0",
+              "TotalDegrees": "18.616666666666667"
+            }
+          },
+          "PlanetDeclination": "12.520090740740736",
+          "PlanetDigBala": "52.712222222222216",
+          "PlanetDignity": "Neutral",
+          "PlanetDrekkanaBala": "0",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "29° 35' 6",
+              "TotalDegrees": "29.585"
+            }
+          },
+          "PlanetDrikBala": "-0.4583333333333428",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "28° 20' 24",
+              "TotalDegrees": "28.34"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Pisces",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "162° 34' 54",
+            "TotalDegrees": "162.58166666666668"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "29° 35' 6",
+              "TotalDegrees": "29.585"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "0.762",
+          "PlanetIshtaScore": "32.910030721423645",
+          "PlanetKalaBala": "126.54618287037039",
+          "PlanetKashtaScore": "22.37752120808695",
+          "PlanetKendraBala": "60",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Gemini",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 28' 0",
+              "TotalDegrees": "14.466666666666667"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Venus"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Sun"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Sama",
+          "PlanetNaisargikaBala": "51.43",
+          "PlanetNathonnathaBala": "19.544444444444444",
+          "PlanetNatureScore": "-1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Virgo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "28° 45' 18",
+              "TotalDegrees": "28.755"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "139° 51' 42",
+            "TotalDegrees": "139.86166666666668"
+          },
+          "PlanetOchchaBala": "23.37935185185185",
+          "PlanetOjayugmarasyamsaBala": "15",
+          "PlanetOwnAshtakvargaBindu": "3",
+          "PlanetPakshaBala": "92.65185185185186",
+          "PlanetPowerPercentage": "0",
+          "PlanetRasiD1Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "19° 51' 42",
+              "TotalDegrees": "19.861666666666668"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "19° 1' 54",
+              "TotalDegrees": "19.031666666666666"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Sagittarius",
+          "PlanetSaptavargajaBala": "37.5",
+          "PlanetsAspectingPlanet": [
+            "Mars",
+            "Venus",
+            "Saturn"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "4° 54' 29",
+            "TotalDegrees": "4.908055555555555"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "162° 34' 54",
+            "TotalDegrees": "162.58166666666668"
+          },
+          "PlanetShadbalaPinda": "366.11",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "21° 42' 0",
+              "TotalDegrees": "21.7"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Gemini",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 47' 12",
+              "TotalDegrees": "17.786666666666665"
+            }
+          },
+          "PlanetsInAspect": [
+            "Mars",
+            "Venus",
+            "Saturn"
+          ],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "13.114060448734735",
+          "PlanetSthanaBala": "135.87935185185185",
+          "PlanetStrength": "366.11",
+          "PlanetTemporaryFriendList": [],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Gemini",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "25° 51' 0",
+              "TotalDegrees": "25.85"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "7° 14' 0",
+              "TotalDegrees": "7.233333333333333"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Virgo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 26' 44",
+              "TotalDegrees": "3.4455555555555555"
+            }
+          },
+          "ResidentialStrength": "0.23356737610882986",
+          "SignsPlanetIsAspecting": "Aquarius",
+          "SwissEphemeris": "{ Longitude = 162.58171153689972, Latitude = 4.908212649631773, DistanceAU = 0.00257841881790122, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Mars": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Mars"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [
+            "Saturn"
+          ],
+          "AllMaleficPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [
+            "Saturn"
+          ],
+          "AllPlanetsInBadAspectToPlanet": [],
+          "AllPlanetsInEnemyConjunctionWith": [
+            "Saturn"
+          ],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [],
+          "DasaPeriodAshtakavargaStrength": "85.6",
+          "DispositorConjunctWith": [
+            "Mars"
+          ],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "2, 1",
+          "HousePlanetOccupiesBasedOnLongitudes": "House10",
+          "HousePlanetOccupiesBasedOnSign": "House10",
+          "HousesInAspect": "House1, House4, House5",
+          "HousesOwnedByPlanet": "House12, House7",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "False",
+          "IsPlanetAspectedByEnemyPlanets": "False",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "False",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "False",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "True",
+          "IsPlanetBeneficLordForLagna": "True",
+          "IsPlanetBeneficToLagna": "True",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "True",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "True",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "False",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "False",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "True",
+          "IsPlanetInEnemySign": "True",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "False",
+          "IsPlanetInKendra": "True",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "True",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "True",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "False",
+          "IsPlanetMaleficLordForLagna": "False",
+          "IsPlanetMaleficToLagna": "False",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "True",
+          "IsPlanetReceivingBadAspects": "False",
+          "IsPlanetReceivingHarmfulConjunctions": "True",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 15' 0",
+              "TotalDegrees": "4.25"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 39,
+            "AfterTrikonaTotal": 15,
+            "FinalTotal": 14,
+            "Raw": {
+              "Aries": 0,
+              "Taurus": 3,
+              "Gemini": 3,
+              "Cancer": 2,
+              "Leo": 5,
+              "Virgo": 5,
+              "Libra": 3,
+              "Scorpio": 2,
+              "Sagittarius": 4,
+              "Capricorn": 4,
+              "Aquarius": 6,
+              "Pisces": 2
+            },
+            "AfterTrikona": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 5,
+              "Virgo": 2,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 4,
+              "Capricorn": 1,
+              "Aquarius": 3,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 5,
+              "Virgo": 2,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 4,
+              "Capricorn": 0,
+              "Aquarius": 3,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "KshuditaStarved",
+          "PlanetAyanaBala": "8.736492283950609",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 32' 59",
+              "TotalDegrees": "14.549722222222222"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "24° 22' 40",
+              "TotalDegrees": "24.377777777777776"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "26° 15' 59",
+              "TotalDegrees": "26.26638888888889"
+            }
+          },
+          "PlanetConstellation": "Dhanishta - 4",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: losses, expenditure, waste, extravagance, sympathy, divine knowledge, Moksha and the state after death, wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness, beginning of life, childhood, health, environment, personality, the physical body and character, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders, children, grandfather, intelligence, emotions and fame.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "0° 56' 39",
+              "TotalDegrees": "0.9441666666666667"
+            }
+          },
+          "PlanetDeclination": "-17.010806172839512",
+          "PlanetDigBala": "57.3012037037037",
+          "PlanetDignity": "Enemy",
+          "PlanetDrekkanaBala": "15",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "18° 17' 0",
+              "TotalDegrees": "18.283333333333335"
+            }
+          },
+          "PlanetDrikBala": "0.27944444444444727",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "13° 7' 59",
+              "TotalDegrees": "13.133055555555556"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Aries",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "328° 48' 53",
+            "TotalDegrees": "328.8147222222222"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "18° 17' 0",
+              "TotalDegrees": "18.283333333333335"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "2.233",
+          "PlanetIshtaScore": "35.63602908756418",
+          "PlanetKalaBala": "41.955010802469126",
+          "PlanetKashtaScore": "10.10424656411851",
+          "PlanetKendraBala": "60",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 46' 39",
+              "TotalDegrees": "3.7775"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Mars"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Saturn"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Chara",
+          "PlanetNaisargikaBala": "17.14",
+          "PlanetNathonnathaBala": "19.544444444444444",
+          "PlanetNatureScore": "-1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "24° 50' 59",
+              "TotalDegrees": "24.849722222222223"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "306° 5' 41",
+            "TotalDegrees": "306.09472222222223"
+          },
+          "PlanetOchchaBala": "57.301759259259256",
+          "PlanetOjayugmarasyamsaBala": "15",
+          "PlanetOwnAshtakvargaBindu": "6",
+          "PlanetPakshaBala": "13.67407407407407",
+          "PlanetPowerPercentage": "8.975015359410188",
+          "PlanetRasiD1Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "6° 5' 40",
+              "TotalDegrees": "6.094444444444444"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "12° 39' 40",
+              "TotalDegrees": "12.661111111111111"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Pisces",
+          "PlanetSaptavargajaBala": "97.5",
+          "PlanetsAspectingPlanet": [
+            "Moon"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "-1° 21' 16",
+            "TotalDegrees": "-1.3544444444444443"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "328° 48' 53",
+            "TotalDegrees": "328.8147222222222"
+          },
+          "PlanetShadbalaPinda": "383.64",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 39' 59",
+              "TotalDegrees": "5.666388888888889"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "7° 30' 39",
+              "TotalDegrees": "7.510833333333333"
+            }
+          },
+          "PlanetsInAspect": [
+            "Rahu",
+            "Moon"
+          ],
+          "PlanetsInConjunction": [
+            "Saturn"
+          ],
+          "PlanetSpeed": "0.7558737037227959",
+          "PlanetSthanaBala": "244.80175925925926",
+          "PlanetStrength": "383.64",
+          "PlanetTemporaryFriendList": [
+            "Jupiter",
+            "Sun",
+            "Mercury"
+          ],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 49' 59",
+              "TotalDegrees": "2.8330555555555557"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 53' 19",
+              "TotalDegrees": "1.888611111111111"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "27° 59' 53",
+              "TotalDegrees": "27.998055555555556"
+            }
+          },
+          "ResidentialStrength": "0.5431862706684429",
+          "SignsPlanetIsAspecting": "Taurus, Virgo, Leo",
+          "SwissEphemeris": "{ Longitude = 328.814858137106, Latitude = -1.3545065893563013, DistanceAU = 1.730266659887657, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Mercury": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Mercury"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsAspecting": [
+            "Saturn"
+          ],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Saturn"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [
+            "Saturn"
+          ],
+          "DasaPeriodAshtakavargaStrength": "100",
+          "DispositorConjunctWith": [
+            "Saturn"
+          ],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "11, 4",
+          "HousePlanetOccupiesBasedOnLongitudes": "House12",
+          "HousePlanetOccupiesBasedOnSign": "House12",
+          "HousesInAspect": "House6",
+          "HousesOwnedByPlanet": "House2, House5",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "True",
+          "IsPlanetAspectedByEnemyPlanets": "False",
+          "IsPlanetAspectedByFriendPlanets": "True",
+          "IsPlanetAspectedByMaleficPlanets": "False",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "True",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "True",
+          "IsPlanetBeneficLordForLagna": "True",
+          "IsPlanetBeneficToLagna": "True",
+          "IsPlanetCombust": "True",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "False",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "False",
+          "IsPlanetHemmedByMalefics": "True",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "True",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "True",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "False",
+          "IsPlanetInKendra": "False",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "False",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "True",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "False",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "False",
+          "IsPlanetMaleficLordForLagna": "False",
+          "IsPlanetMaleficToLagna": "False",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "False",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "True",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "12° 47' 14",
+              "TotalDegrees": "12.787222222222223"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 54,
+            "AfterTrikonaTotal": 27,
+            "FinalTotal": 22,
+            "Raw": {
+              "Aries": 2,
+              "Taurus": 5,
+              "Gemini": 4,
+              "Cancer": 0,
+              "Leo": 6,
+              "Virgo": 6,
+              "Libra": 5,
+              "Scorpio": 3,
+              "Sagittarius": 6,
+              "Capricorn": 3,
+              "Aquarius": 7,
+              "Pisces": 7
+            },
+            "AfterTrikona": {
+              "Aries": 0,
+              "Taurus": 2,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 4,
+              "Virgo": 3,
+              "Libra": 1,
+              "Scorpio": 3,
+              "Sagittarius": 4,
+              "Capricorn": 0,
+              "Aquarius": 3,
+              "Pisces": 7
+            },
+            "AfterEkadhipatya": {
+              "Aries": 0,
+              "Taurus": 1,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 4,
+              "Virgo": 3,
+              "Libra": 1,
+              "Scorpio": 3,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 3,
+              "Pisces": 7
+            }
+          },
+          "PlanetAvasta": "MuditaDelighted",
+          "PlanetAyanaBala": "52.51534567901235",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 40' 20",
+              "TotalDegrees": "1.6722222222222223"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "19° 8' 11",
+              "TotalDegrees": "19.136388888888888"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "24° 49' 11",
+              "TotalDegrees": "24.81972222222222"
+            }
+          },
+          "PlanetConstellation": "Aswini - 4",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: family, face, right eye, food, wealth, literary gift, and manner and source of death, self-acquisition and optimism, children, grandfather, intelligence, emotions and fame, debts, diseases, enemies, miseries, sorrows, illness and disappointments.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 50' 29",
+              "TotalDegrees": "2.841388888888889"
+            }
+          },
+          "PlanetDeclination": "18.012276543209875",
+          "PlanetDigBala": "49.31472222222222",
+          "PlanetDignity": "Friendly",
+          "PlanetDrekkanaBala": "15",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "6° 51' 8",
+              "TotalDegrees": "6.852222222222222"
+            }
+          },
+          "PlanetDrikBala": "13.012986111111111",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "27° 24' 35",
+              "TotalDegrees": "27.40972222222222"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Leo",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "35° 0' 16",
+            "TotalDegrees": "35.004444444444445"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "6° 51' 8",
+              "TotalDegrees": "6.852222222222222"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "-0.929",
+          "PlanetIshtaScore": "19.331564074449485",
+          "PlanetKalaBala": "293.8412716049383",
+          "PlanetKashtaScore": "31.025446257141205",
+          "PlanetKendraBala": "15",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "11° 21' 59",
+              "TotalDegrees": "11.366388888888888"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Ketu"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Mars"
+          },
+          "PlanetMasaBala": "30",
+          "PlanetMotionName": "Atichara",
+          "PlanetNaisargikaBala": "25.7",
+          "PlanetNathonnathaBala": "60",
+          "PlanetNatureScore": "2",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "20° 33' 26",
+              "TotalDegrees": "20.557222222222222"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "12° 17' 4",
+            "TotalDegrees": "12.284444444444444"
+          },
+          "PlanetOchchaBala": "9.094722222222222",
+          "PlanetOjayugmarasyamsaBala": "15",
+          "PlanetOwnAshtakvargaBindu": "2",
+          "PlanetPakshaBala": "46.32592592592593",
+          "PlanetPowerPercentage": "100",
+          "PlanetRasiD1Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "12° 17' 3",
+              "TotalDegrees": "12.284166666666666"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Gemini",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "25° 59' 20",
+              "TotalDegrees": "25.988888888888887"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Gemini",
+          "PlanetSaptavargajaBala": "84.375",
+          "PlanetsAspectingPlanet": [
+            "Saturn"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "0° 47' 44",
+            "TotalDegrees": "0.7955555555555556"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "35° 0' 16",
+            "TotalDegrees": "35.004444444444445"
+          },
+          "PlanetShadbalaPinda": "561.43",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 2' 59",
+              "TotalDegrees": "17.049722222222222"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "16° 32' 47",
+              "TotalDegrees": "16.546388888888888"
+            }
+          },
+          "PlanetsInAspect": [],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "1.9920558056284376",
+          "PlanetSthanaBala": "138.46972222222223",
+          "PlanetStrength": "561.43",
+          "PlanetTemporaryFriendList": [
+            "Mars",
+            "Venus",
+            "Saturn",
+            "Jupiter"
+          ],
+          "PlanetTribhagaBala": "60",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "8° 31' 29",
+              "TotalDegrees": "8.524722222222222"
+            }
+          },
+          "PlanetVaraBala": "45",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 40' 59",
+              "TotalDegrees": "5.683055555555556"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "8° 53' 34",
+              "TotalDegrees": "8.892777777777777"
+            }
+          },
+          "ResidentialStrength": "0.8086356868583966",
+          "SignsPlanetIsAspecting": "Libra",
+          "SwissEphemeris": "{ Longitude = 35.00458426893254, Latitude = 0.7956189544560623, DistanceAU = 1.2175496402836288, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Jupiter": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Jupiter"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [],
+          "BeneficPlanetsAspectingPlanet": [],
+          "DasaPeriodAshtakavargaStrength": "43.2",
+          "DispositorConjunctWith": [],
+          "DispositorFromLagna": "11",
+          "DispositorFromMoon": "8",
+          "DispositorFromOwnHouses": "4, 1",
+          "HousePlanetOccupiesBasedOnLongitudes": "House11",
+          "HousePlanetOccupiesBasedOnSign": "House11",
+          "HousesInAspect": "House3, House5, House7",
+          "HousesOwnedByPlanet": "House8, House11",
+          "IsPlanetAfflicted": "False",
+          "IsPlanetAspectedByBeneficPlanets": "False",
+          "IsPlanetAspectedByEnemyPlanets": "False",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "False",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "False",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "False",
+          "IsPlanetBeneficLordForLagna": "False",
+          "IsPlanetBeneficToLagna": "False",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "False",
+          "IsPlanetFortified": "True",
+          "IsPlanetFunctionalMalefic": "True",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "False",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "True",
+          "IsPlanetInKendra": "False",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "False",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "True",
+          "IsPlanetInOwnSign": "True",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "True",
+          "IsPlanetInWaterySign": "True",
+          "IsPlanetMaleficForLagna": "True",
+          "IsPlanetMaleficLordForLagna": "True",
+          "IsPlanetMaleficToLagna": "True",
+          "IsPlanetMarakaToLagna": "True",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "False",
+          "IsPlanetReceivingBadAspects": "False",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "6° 17' 59",
+              "TotalDegrees": "6.299722222222222"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 56,
+            "AfterTrikonaTotal": 8,
+            "FinalTotal": 8,
+            "Raw": {
+              "Aries": 5,
+              "Taurus": 5,
+              "Gemini": 6,
+              "Cancer": 4,
+              "Leo": 3,
+              "Virgo": 5,
+              "Libra": 4,
+              "Scorpio": 4,
+              "Sagittarius": 6,
+              "Capricorn": 5,
+              "Aquarius": 5,
+              "Pisces": 4
+            },
+            "AfterTrikona": {
+              "Aries": 2,
+              "Taurus": 0,
+              "Gemini": 2,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 3,
+              "Capricorn": 0,
+              "Aquarius": 1,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 2,
+              "Taurus": 0,
+              "Gemini": 2,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 3,
+              "Capricorn": 0,
+              "Aquarius": 1,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "",
+          "PlanetAyanaBala": "19.708363040123466",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "9° 46' 48",
+              "TotalDegrees": "9.78"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 53' 36",
+              "TotalDegrees": "5.8933333333333335"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 21' 35",
+              "TotalDegrees": "5.3597222222222225"
+            }
+          },
+          "PlanetConstellation": "Poorvabhadra - 4",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: longevity, legacies and gifts and unearned wealth, cause of death, disgrace, degradation and details pertaining to death, means of gains, elder brother and freedom from misery, brothers and sisters, intelligence, cousins and other immediate relations, children, grandfather, intelligence, emotions and fame, wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 44' 0",
+              "TotalDegrees": "14.733333333333333"
+            }
+          },
+          "PlanetDeclination": "-8.233309567901228",
+          "PlanetDigBala": "35.711111111111116",
+          "PlanetDignity": "OwnSign",
+          "PlanetDrekkanaBala": "15",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 25' 12",
+              "TotalDegrees": "4.42"
+            }
+          },
+          "PlanetDrikBala": "-7.706874999999998",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 40' 48",
+              "TotalDegrees": "17.68"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Pisces",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "354° 11' 37",
+            "TotalDegrees": "354.1936111111111"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 25' 12",
+              "TotalDegrees": "4.42"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "-2.22",
+          "PlanetIshtaScore": "13.100252451322802",
+          "PlanetKalaBala": "166.48984452160494",
+          "PlanetKashtaScore": "45.77279300984096",
+          "PlanetKendraBala": "30",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "28° 56' 0",
+              "TotalDegrees": "28.933333333333334"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Jupiter"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Jupiter"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Atichara",
+          "PlanetNaisargikaBala": "34.28",
+          "PlanetNathonnathaBala": "40.455555555555556",
+          "PlanetNatureScore": "1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "13° 15' 36",
+              "TotalDegrees": "13.26"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "331° 28' 25",
+            "TotalDegrees": "331.4736111111111"
+          },
+          "PlanetOchchaBala": "18.824444444444445",
+          "PlanetOjayugmarasyamsaBala": "0",
+          "PlanetOwnAshtakvargaBindu": "4",
+          "PlanetPakshaBala": "46.32592592592593",
+          "PlanetPowerPercentage": "51.51034200286711",
+          "PlanetRasiD1Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 28' 24",
+              "TotalDegrees": "1.4733333333333334"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "10° 18' 48",
+              "TotalDegrees": "10.313333333333333"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Virgo",
+          "PlanetSaptavargajaBala": "165",
+          "PlanetsAspectingPlanet": [],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "-1° 1' 49",
+            "TotalDegrees": "-1.0302777777777778"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "354° 11' 37",
+            "TotalDegrees": "354.1936111111111"
+          },
+          "PlanetShadbalaPinda": "466.72",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "28° 24' 0",
+              "TotalDegrees": "28.4"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "23° 34' 24",
+              "TotalDegrees": "23.573333333333334"
+            }
+          },
+          "PlanetsInAspect": [
+            "Ketu"
+          ],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "0.22577424804778193",
+          "PlanetSthanaBala": "228.82444444444445",
+          "PlanetStrength": "466.72",
+          "PlanetTemporaryFriendList": [
+            "Sun",
+            "Mercury",
+            "Mars",
+            "Venus",
+            "Saturn"
+          ],
+          "PlanetTribhagaBala": "60",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 12' 0",
+              "TotalDegrees": "14.2"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "29° 28' 0",
+              "TotalDegrees": "29.466666666666665"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 26' 44",
+              "TotalDegrees": "3.4455555555555555"
+            }
+          },
+          "ResidentialStrength": "0.8887391270276624",
+          "SignsPlanetIsAspecting": "Cancer, Scorpio, Virgo",
+          "SwissEphemeris": "{ Longitude = 354.19382205407635, Latitude = -1.030420224463987, DistanceAU = 5.822626988700591, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Venus": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Venus"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Moon"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [],
+          "DasaPeriodAshtakavargaStrength": "37.2",
+          "DispositorConjunctWith": [
+            "Mars"
+          ],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "2, 1",
+          "HousePlanetOccupiesBasedOnLongitudes": "House11",
+          "HousePlanetOccupiesBasedOnSign": "House10",
+          "HousesInAspect": "House4",
+          "HousesOwnedByPlanet": "House1, House6",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "False",
+          "IsPlanetAspectedByEnemyPlanets": "True",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "False",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "False",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "False",
+          "IsPlanetBeneficLordForLagna": "False",
+          "IsPlanetBeneficToLagna": "False",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "False",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "True",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "True",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "False",
+          "IsPlanetInKendra": "True",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "True",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "True",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "True",
+          "IsPlanetMaleficLordForLagna": "True",
+          "IsPlanetMaleficToLagna": "True",
+          "IsPlanetMarakaToLagna": "True",
+          "IsPlanetNeutralForLagna": "True",
+          "IsPlanetPhysicallyHarmful": "False",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "True",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "24° 11' 15",
+              "TotalDegrees": "24.1875"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 52,
+            "AfterTrikonaTotal": 13,
+            "FinalTotal": 11,
+            "Raw": {
+              "Aries": 4,
+              "Taurus": 3,
+              "Gemini": 6,
+              "Cancer": 4,
+              "Leo": 3,
+              "Virgo": 5,
+              "Libra": 5,
+              "Scorpio": 5,
+              "Sagittarius": 7,
+              "Capricorn": 3,
+              "Aquarius": 3,
+              "Pisces": 4
+            },
+            "AfterTrikona": {
+              "Aries": 1,
+              "Taurus": 0,
+              "Gemini": 3,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 2,
+              "Libra": 2,
+              "Scorpio": 1,
+              "Sagittarius": 4,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 1,
+              "Taurus": 0,
+              "Gemini": 2,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 2,
+              "Libra": 2,
+              "Scorpio": 0,
+              "Sagittarius": 4,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "KshuditaStarved",
+          "PlanetAyanaBala": "12.692697530864194",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "8° 30' 44",
+              "TotalDegrees": "8.512222222222222"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 29' 0",
+              "TotalDegrees": "3.4833333333333334"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "20° 53' 59",
+              "TotalDegrees": "20.899722222222223"
+            }
+          },
+          "PlanetConstellation": "Satabhisha - 3",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: beginning of life, childhood, health, environment, personality, the physical body and character, debts, diseases, enemies, miseries, sorrows, illness and disappointments, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "8° 42' 30",
+              "TotalDegrees": "8.708333333333334"
+            }
+          },
+          "PlanetDeclination": "-13.845841975308645",
+          "PlanetDigBala": "5.957592592592593",
+          "PlanetDignity": "Neutral",
+          "PlanetDrekkanaBala": "0",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Gemini",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 36' 44",
+              "TotalDegrees": "17.612222222222222"
+            }
+          },
+          "PlanetDrikBala": "-7.826527777777782",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "10° 26' 59",
+              "TotalDegrees": "10.449722222222222"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Leo",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "338° 35' 28",
+            "TotalDegrees": "338.5911111111111"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Gemini",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 36' 44",
+              "TotalDegrees": "17.612222222222222"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "1.301",
+          "PlanetIshtaScore": "38.4803345747008",
+          "PlanetKalaBala": "99.47417901234567",
+          "PlanetKashtaScore": "19.59679080552901",
+          "PlanetKendraBala": "60",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 50' 0",
+              "TotalDegrees": "4.833333333333333"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Rahu"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Saturn"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Atichara",
+          "PlanetNaisargikaBala": "42.85",
+          "PlanetNathonnathaBala": "40.455555555555556",
+          "PlanetNatureScore": "-1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "22° 50' 15",
+              "TotalDegrees": "22.8375"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "315° 52' 16",
+            "TotalDegrees": "315.87111111111113"
+          },
+          "PlanetOchchaBala": "46.29037037037037",
+          "PlanetOjayugmarasyamsaBala": "0",
+          "PlanetOwnAshtakvargaBindu": "3",
+          "PlanetPakshaBala": "46.32592592592593",
+          "PlanetPowerPercentage": "12.860946139668245",
+          "PlanetRasiD1Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "15° 52' 15",
+              "TotalDegrees": "15.870833333333334"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "21° 5' 45",
+              "TotalDegrees": "21.095833333333335"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Taurus",
+          "PlanetSaptavargajaBala": "112.5",
+          "PlanetsAspectingPlanet": [
+            "Moon"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "0° 12' 36",
+            "TotalDegrees": "-0.21"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "338° 35' 28",
+            "TotalDegrees": "338.5911111111111"
+          },
+          "PlanetShadbalaPinda": "391.23",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Virgo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "22° 15' 0",
+              "TotalDegrees": "22.25"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "13° 56' 0",
+              "TotalDegrees": "13.933333333333334"
+            }
+          },
+          "PlanetsInAspect": [
+            "Moon"
+          ],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "1.0965613457837793",
+          "PlanetSthanaBala": "218.79037037037037",
+          "PlanetStrength": "391.23",
+          "PlanetTemporaryFriendList": [
+            "Jupiter",
+            "Sun",
+            "Mercury"
+          ],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "26° 7' 30",
+              "TotalDegrees": "26.125"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 25' 0",
+              "TotalDegrees": "17.416666666666668"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Pisces",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 26' 44",
+              "TotalDegrees": "3.4455555555555555"
+            }
+          },
+          "ResidentialStrength": "0.008416268317529974",
+          "SignsPlanetIsAspecting": "Leo",
+          "SwissEphemeris": "{ Longitude = 338.59121110164824, Latitude = -0.21016640267692355, DistanceAU = 0.8661838560268432, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Saturn": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Saturn"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [
+            "Mars"
+          ],
+          "AllMaleficPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsAspecting": [],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [
+            "Mars"
+          ],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Moon"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [
+            "Mars"
+          ],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [],
+          "DasaPeriodAshtakavargaStrength": "38.8",
+          "DispositorConjunctWith": [
+            "Mars"
+          ],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "2, 1",
+          "HousePlanetOccupiesBasedOnLongitudes": "House10",
+          "HousePlanetOccupiesBasedOnSign": "House10",
+          "HousesInAspect": "House4, House7, House12",
+          "HousesOwnedByPlanet": "House9, House10",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "False",
+          "IsPlanetAspectedByEnemyPlanets": "True",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "False",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "False",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "True",
+          "IsPlanetBeneficLordForLagna": "True",
+          "IsPlanetBeneficToLagna": "True",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "True",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "True",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "False",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "False",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "True",
+          "IsPlanetInGopuraAmsha": "True",
+          "IsPlanetInKendra": "True",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "True",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "True",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "True",
+          "IsPlanetInOwnSign": "True",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "True",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "False",
+          "IsPlanetMaleficLordForLagna": "False",
+          "IsPlanetMaleficToLagna": "False",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "True",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "True",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "True",
+          "MaleficPlanetsAspectingPlanet": [],
+          "PlanetAbdaBala": "15",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "17° 23' 59",
+              "TotalDegrees": "17.399722222222223"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 39,
+            "AfterTrikonaTotal": 15,
+            "FinalTotal": 10,
+            "Raw": {
+              "Aries": 3,
+              "Taurus": 2,
+              "Gemini": 3,
+              "Cancer": 6,
+              "Leo": 2,
+              "Virgo": 1,
+              "Libra": 3,
+              "Scorpio": 3,
+              "Sagittarius": 4,
+              "Capricorn": 6,
+              "Aquarius": 4,
+              "Pisces": 2
+            },
+            "AfterTrikona": {
+              "Aries": 1,
+              "Taurus": 1,
+              "Gemini": 0,
+              "Cancer": 4,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 1,
+              "Sagittarius": 2,
+              "Capricorn": 5,
+              "Aquarius": 1,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 1,
+              "Taurus": 1,
+              "Gemini": 0,
+              "Cancer": 4,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 2,
+              "Capricorn": 1,
+              "Aquarius": 1,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "GarvitaProud, KshuditaStarved",
+          "PlanetAyanaBala": "53.134390432098776",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "10° 26' 24",
+              "TotalDegrees": "10.44"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 32' 48",
+              "TotalDegrees": "1.5466666666666666"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "9° 16' 48",
+              "TotalDegrees": "9.28"
+            }
+          },
+          "PlanetConstellation": "Dhanishta - 3",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: father, righteousness, preceptor, grandchildren, intuition, religion, sympathy, fame, charities, leadership, journeys and communications with spirits, occupation, profession, temporal honours, foreign travels, self-respect, knowledge and dignity and means of livelihood, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders, wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness, losses, expenditure, waste, extravagance, sympathy, divine knowledge, Moksha and the state after death.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 52' 0",
+              "TotalDegrees": "3.8666666666666667"
+            }
+          },
+          "PlanetDeclination": "-18.507512345679018",
+          "PlanetDigBala": "34.65101851851852",
+          "PlanetDignity": "Moolatrikona",
+          "PlanetDrekkanaBala": "0",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 9' 36",
+              "TotalDegrees": "1.16"
+            }
+          },
+          "PlanetDrikBala": "5.200034722222226",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 38' 24",
+              "TotalDegrees": "4.64"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Aquarius",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "323° 6' 25",
+            "TotalDegrees": "323.1069444444444"
+          },
+          "PlanetHoraBala": "60",
+          "PlanetHoraD2Signs": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 9' 36",
+              "TotalDegrees": "1.16"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "-0.688",
+          "PlanetIshtaScore": "24.795981150139497",
+          "PlanetKalaBala": "161.3529089506173",
+          "PlanetKashtaScore": "35.106471201587844",
+          "PlanetKendraBala": "60",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Aries",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "15° 28' 0",
+              "TotalDegrees": "15.466666666666667"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Mars"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Saturn"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Chara",
+          "PlanetNaisargikaBala": "8.57",
+          "PlanetNathonnathaBala": "19.544444444444444",
+          "PlanetNatureScore": "1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 28' 48",
+              "TotalDegrees": "3.48"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "300° 23' 13",
+            "TotalDegrees": "300.38694444444445"
+          },
+          "PlanetOchchaBala": "26.537685185185186",
+          "PlanetOjayugmarasyamsaBala": "30",
+          "PlanetOwnAshtakvargaBindu": "4",
+          "PlanetPakshaBala": "13.67407407407407",
+          "PlanetPowerPercentage": "80.7648986278927",
+          "PlanetRasiD1Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "0° 23' 12",
+              "TotalDegrees": "0.38666666666666666"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 42' 24",
+              "TotalDegrees": "2.7066666666666666"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Aquarius",
+          "PlanetSaptavargajaBala": "174.375",
+          "PlanetsAspectingPlanet": [
+            "Moon"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "0° 58' 28",
+            "TotalDegrees": "-0.9744444444444444"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "323° 6' 25",
+            "TotalDegrees": "323.1069444444444"
+          },
+          "PlanetShadbalaPinda": "523.86",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "23° 12' 0",
+              "TotalDegrees": "23.2"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "6° 11' 12",
+              "TotalDegrees": "6.1866666666666665"
+            }
+          },
+          "PlanetsInAspect": [
+            "Sun",
+            "Mercury",
+            "Ketu",
+            "Moon"
+          ],
+          "PlanetsInConjunction": [
+            "Mars"
+          ],
+          "PlanetSpeed": "0.07788159388249136",
+          "PlanetSthanaBala": "290.9126851851852",
+          "PlanetStrength": "523.86",
+          "PlanetTemporaryFriendList": [
+            "Jupiter",
+            "Sun",
+            "Mercury"
+          ],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "11° 36' 0",
+              "TotalDegrees": "11.6"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "7° 44' 0",
+              "TotalDegrees": "7.733333333333333"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "27° 59' 53",
+              "TotalDegrees": "27.998055555555556"
+            }
+          },
+          "ResidentialStrength": "0.8652299976490871",
+          "SignsPlanetIsAspecting": "Aries, Scorpio, Leo",
+          "SwissEphemeris": "{ Longitude = 323.10699127259335, Latitude = -0.9745237510107737, DistanceAU = 10.352880285617754, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Rahu": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Rahu"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [
+            "Ketu"
+          ],
+          "AllPhysicallyHarmfulPlanetsAspecting": [
+            "Mars",
+            "Ketu"
+          ],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Mars",
+            "Ketu"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [
+            "Mars"
+          ],
+          "DasaPeriodAshtakavargaStrength": "50",
+          "DispositorConjunctWith": [],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "10, 5",
+          "HousePlanetOccupiesBasedOnLongitudes": "House1",
+          "HousePlanetOccupiesBasedOnSign": "House1",
+          "HousesInAspect": "House7",
+          "HousesOwnedByPlanet": "",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "True",
+          "IsPlanetAspectedByEnemyPlanets": "False",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "True",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "True",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "False",
+          "IsPlanetBeneficLordForLagna": "False",
+          "IsPlanetBeneficToLagna": "False",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "True",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "True",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "False",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "False",
+          "IsPlanetInKendra": "False",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "False",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "True",
+          "IsPlanetInUpachaya": "False",
+          "IsPlanetInWaterySign": "False",
+          "IsPlanetMaleficForLagna": "True",
+          "IsPlanetMaleficLordForLagna": "False",
+          "IsPlanetMaleficToLagna": "True",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "True",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [
+            "Ketu"
+          ],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 3' 45",
+              "TotalDegrees": "2.0625"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 0,
+            "AfterTrikonaTotal": 0,
+            "FinalTotal": 0,
+            "Raw": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            },
+            "AfterTrikona": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "",
+          "PlanetAyanaBala": "0",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "7° 14' 14",
+              "TotalDegrees": "7.237222222222222"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 31' 0",
+              "TotalDegrees": "5.516666666666667"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 6' 0",
+              "TotalDegrees": "3.1"
+            }
+          },
+          "PlanetConstellation": "Krithika - 2",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "13° 47' 30",
+              "TotalDegrees": "13.791666666666666"
+            }
+          },
+          "PlanetDeclination": "22.149907407407408",
+          "PlanetDigBala": "0",
+          "PlanetDignity": "Friendly",
+          "PlanetDrekkanaBala": "0",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 8' 15",
+              "TotalDegrees": "4.1375"
+            }
+          },
+          "PlanetDrikBala": "0",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "16° 33' 0",
+              "TotalDegrees": "16.55"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Taurus",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "54° 5' 58",
+            "TotalDegrees": "54.099444444444444"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 8' 15",
+              "TotalDegrees": "4.1375"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "0",
+          "PlanetIshtaScore": "0",
+          "PlanetKalaBala": "0",
+          "PlanetKashtaScore": "0",
+          "PlanetKendraBala": "60",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "25° 9' 59",
+              "TotalDegrees": "25.16638888888889"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Sun"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Venus"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Vakra",
+          "PlanetNaisargikaBala": "0",
+          "PlanetNathonnathaBala": "19.544444444444444",
+          "PlanetNatureScore": "-1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "12° 24' 45",
+              "TotalDegrees": "12.4125"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "31° 22' 46",
+            "TotalDegrees": "31.379444444444445"
+          },
+          "PlanetOchchaBala": "53.79314814814814",
+          "PlanetOjayugmarasyamsaBala": "0",
+          "PlanetOwnAshtakvargaBindu": "0",
+          "PlanetPakshaBala": "0",
+          "PlanetPowerPercentage": "12.860946139668245",
+          "PlanetRasiD1Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 22' 45",
+              "TotalDegrees": "1.3791666666666667"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "9° 39' 15",
+              "TotalDegrees": "9.654166666666667"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Scorpio",
+          "PlanetSaptavargajaBala": "0",
+          "PlanetsAspectingPlanet": [
+            "Mars",
+            "Ketu"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "0° 0' 0",
+            "TotalDegrees": "0"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "54° 5' 58",
+            "TotalDegrees": "54.099444444444444"
+          },
+          "PlanetShadbalaPinda": "391.23",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "22° 45' 0",
+              "TotalDegrees": "22.75"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "22° 4' 0",
+              "TotalDegrees": "22.066666666666666"
+            }
+          },
+          "PlanetsInAspect": [
+            "Ketu"
+          ],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "-0.05298407458063668",
+          "PlanetSthanaBala": "0",
+          "PlanetStrength": "391.23",
+          "PlanetTemporaryFriendList": [
+            "Moon",
+            "Mars",
+            "Venus",
+            "Saturn",
+            "Jupiter",
+            "Sun",
+            "Mercury"
+          ],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "11° 22' 30",
+              "TotalDegrees": "11.375"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "27° 35' 0",
+              "TotalDegrees": "27.583333333333332"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 20' 25",
+              "TotalDegrees": "14.340277777777779"
+            }
+          },
+          "ResidentialStrength": "0.26873648246246434",
+          "SignsPlanetIsAspecting": "Scorpio",
+          "SwissEphemeris": "{ Longitude = 54.09960979762412, Latitude = 0, DistanceAU = 0.0025695552897999903, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "Planet_Ketu": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "AllPlanetData",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "planetName",
+            "Type": "PlanetName",
+            "Value": {
+              "Name": "Ketu"
+            }
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "AllPlanetData": {
+          "AllBeneficPlanetsInGoodConjunctionWith": [],
+          "AllHarmfulPlanetsInBadConjunctionWith": [],
+          "AllMaleficPlanetsAspecting": [
+            "Jupiter",
+            "Rahu"
+          ],
+          "AllPhysicallyHarmfulPlanetsAspecting": [
+            "Saturn",
+            "Rahu"
+          ],
+          "AllPhysicallyHarmfulPlanetsConjunctWith": [],
+          "AllPlanetsInBadAspectToPlanet": [
+            "Saturn",
+            "Rahu"
+          ],
+          "AllPlanetsInEnemyConjunctionWith": [],
+          "AllPlanetsInFriendConjunctionWith": [],
+          "AspectReceivedByDispositor": [
+            "Moon"
+          ],
+          "BeneficPlanetsAspectingPlanet": [
+            "Saturn"
+          ],
+          "DasaPeriodAshtakavargaStrength": "50",
+          "DispositorConjunctWith": [
+            "Saturn"
+          ],
+          "DispositorFromLagna": "10",
+          "DispositorFromMoon": "7",
+          "DispositorFromOwnHouses": "11, 4",
+          "HousePlanetOccupiesBasedOnLongitudes": "House7",
+          "HousePlanetOccupiesBasedOnSign": "House7",
+          "HousesInAspect": "House1",
+          "HousesOwnedByPlanet": "",
+          "IsPlanetAfflicted": "True",
+          "IsPlanetAspectedByBeneficPlanets": "True",
+          "IsPlanetAspectedByEnemyPlanets": "False",
+          "IsPlanetAspectedByFriendPlanets": "False",
+          "IsPlanetAspectedByMaleficPlanets": "True",
+          "IsPlanetAspectedByPhysicallyHarmfulPlanets": "True",
+          "IsPlanetAspectingOwnHouse": "False",
+          "IsPlanetBenefic": "False",
+          "IsPlanetBeneficLordForLagna": "False",
+          "IsPlanetBeneficToLagna": "False",
+          "IsPlanetCombust": "False",
+          "IsPlanetConjunctWithBeneficPlanets": "False",
+          "IsPlanetConjunctWithEnemyPlanets": "False",
+          "IsPlanetConjunctWithFriendPlanets": "False",
+          "IsPlanetConjunctWithMaleficPlanets": "False",
+          "IsPlanetConjunctWithPhysicallyHarmfulPlanets": "False",
+          "IsPlanetDebilitated": "False",
+          "IsPlanetDefeatedInPlanetaryWar": "False",
+          "IsPlanetExalted": "False",
+          "IsPlanetExaltedDegree": "False",
+          "IsPlanetExaltedSign": "True",
+          "IsPlanetFortified": "False",
+          "IsPlanetFunctionalMalefic": "True",
+          "IsPlanetHemmedByMalefics": "False",
+          "IsPlanetInBeneficSign": "True",
+          "IsPlanetInEnemyHouse": "False",
+          "IsPlanetInEnemySign": "False",
+          "IsPlanetInFriendHouse": "False",
+          "IsPlanetInFriendlyDrekkana": "False",
+          "IsPlanetInFriendSign": "False",
+          "IsPlanetInGandanta": "False",
+          "IsPlanetInGarvitaAvasta": "False",
+          "IsPlanetInGopuraAmsha": "False",
+          "IsPlanetInKendra": "True",
+          "IsPlanetInKshobhitaAvasta": "False",
+          "IsPlanetInKshuditaAvasta": "False",
+          "IsPlanetInLajjitaAvasta": "False",
+          "IsPlanetInMoolatrikona": "False",
+          "IsPlanetInMuditaAvasta": "False",
+          "IsPlanetInOwnHouse": "False",
+          "IsPlanetInOwnSign": "False",
+          "IsPlanetInTrashitaAvasta": "False",
+          "IsPlanetInTrikona": "False",
+          "IsPlanetInUpachaya": "False",
+          "IsPlanetInWaterySign": "True",
+          "IsPlanetMaleficForLagna": "True",
+          "IsPlanetMaleficLordForLagna": "False",
+          "IsPlanetMaleficToLagna": "True",
+          "IsPlanetMarakaToLagna": "False",
+          "IsPlanetNeutralForLagna": "False",
+          "IsPlanetPhysicallyHarmful": "True",
+          "IsPlanetReceivingBadAspects": "True",
+          "IsPlanetReceivingHarmfulConjunctions": "False",
+          "IsPlanetRetrograde": "False",
+          "IsPlanetStrongInShadbala": "True",
+          "IsPlanetVargottama": "False",
+          "IsPlanetWeak": "False",
+          "IsPlanetYogakarakaToLagna": "False",
+          "MaleficPlanetsAspectingPlanet": [
+            "Jupiter",
+            "Rahu"
+          ],
+          "PlanetAbdaBala": "0",
+          "PlanetAkshavedamshaD45Sign": {
+            "Name": "Libra",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "2° 3' 45",
+              "TotalDegrees": "2.0625"
+            }
+          },
+          "PlanetAshtakavargaReductions": {
+            "RawTotal": 0,
+            "AfterTrikonaTotal": 0,
+            "FinalTotal": 0,
+            "Raw": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            },
+            "AfterTrikona": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            },
+            "AfterEkadhipatya": {
+              "Aries": 0,
+              "Taurus": 0,
+              "Gemini": 0,
+              "Cancer": 0,
+              "Leo": 0,
+              "Virgo": 0,
+              "Libra": 0,
+              "Scorpio": 0,
+              "Sagittarius": 0,
+              "Capricorn": 0,
+              "Aquarius": 0,
+              "Pisces": 0
+            }
+          },
+          "PlanetAvasta": "",
+          "PlanetAyanaBala": "0",
+          "PlanetBhamshaD27Sign": {
+            "Name": "Aquarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "7° 14' 14",
+              "TotalDegrees": "7.237222222222222"
+            }
+          },
+          "PlanetChaturthamshaD4Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "5° 31' 0",
+              "TotalDegrees": "5.516666666666667"
+            }
+          },
+          "PlanetChaturvimshamshaD24Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "3° 6' 0",
+              "TotalDegrees": "3.1"
+            }
+          },
+          "PlanetConstellation": "Vishhaka - 4",
+          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: beginning of life, childhood, health, environment, personality, the physical body and character.",
+          "PlanetDashamamshaD10Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "13° 47' 30",
+              "TotalDegrees": "13.791666666666666"
+            }
+          },
+          "PlanetDeclination": "-22.149907407407408",
+          "PlanetDigBala": "0",
+          "PlanetDignity": "OwnSign",
+          "PlanetDrekkanaBala": "0",
+          "PlanetDrekkanaD3Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 8' 15",
+              "TotalDegrees": "4.1375"
+            }
+          },
+          "PlanetDrikBala": "0",
+          "PlanetDwadashamshaD12Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "16° 33' 0",
+              "TotalDegrees": "16.55"
+            }
+          },
+          "PlanetDwadashamshaSignOLD": "Scorpio",
+          "PlanetEphemerisLongitude": {
+            "DegreeMinuteSecond": "234° 5' 58",
+            "TotalDegrees": "234.09944444444446"
+          },
+          "PlanetHoraBala": "0",
+          "PlanetHoraD2Signs": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "4° 8' 15",
+              "TotalDegrees": "4.1375"
+            }
+          },
+          "PlanetIshtaKashtaScoreDegree": "0",
+          "PlanetIshtaScore": "0",
+          "PlanetKalaBala": "0",
+          "PlanetKashtaScore": "0",
+          "PlanetKendraBala": "60",
+          "PlanetKhavedamshaD40Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "25° 9' 59",
+              "TotalDegrees": "25.16638888888889"
+            }
+          },
+          "PlanetLordOfConstellation": {
+            "Name": "Jupiter"
+          },
+          "PlanetLordOfZodiacSign": {
+            "Name": "Mars"
+          },
+          "PlanetMasaBala": "0",
+          "PlanetMotionName": "Vakra",
+          "PlanetNaisargikaBala": "0",
+          "PlanetNathonnathaBala": "19.544444444444444",
+          "PlanetNatureScore": "-1",
+          "PlanetNavamshaD9Sign": {
+            "Name": "Cancer",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "12° 24' 45",
+              "TotalDegrees": "12.4125"
+            }
+          },
+          "PlanetNirayanaLongitude": {
+            "DegreeMinuteSecond": "211° 22' 46",
+            "TotalDegrees": "211.37944444444443"
+          },
+          "PlanetOchchaBala": "53.79314814814814",
+          "PlanetOjayugmarasyamsaBala": "0",
+          "PlanetOwnAshtakvargaBindu": "0",
+          "PlanetPakshaBala": "0",
+          "PlanetPowerPercentage": "8.975015359410188",
+          "PlanetRasiD1Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "1° 22' 45",
+              "TotalDegrees": "1.3791666666666667"
+            }
+          },
+          "PlanetSaptamshaD7Sign": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "9° 39' 15",
+              "TotalDegrees": "9.654166666666667"
+            }
+          },
+          "PlanetSaptamshaSignOLD": "Taurus",
+          "PlanetSaptavargajaBala": "0",
+          "PlanetsAspectingPlanet": [
+            "Jupiter",
+            "Saturn",
+            "Rahu"
+          ],
+          "PlanetSayanaLatitude": {
+            "DegreeMinuteSecond": "0° 0' 0",
+            "TotalDegrees": "0"
+          },
+          "PlanetSayanaLongitude": {
+            "DegreeMinuteSecond": "234° 5' 58",
+            "TotalDegrees": "234.09944444444446"
+          },
+          "PlanetShadbalaPinda": "383.64",
+          "PlanetShashtyamshaD60Sign": {
+            "Name": "Capricorn",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "22° 45' 0",
+              "TotalDegrees": "22.75"
+            }
+          },
+          "PlanetShodashamshaD16Sign": {
+            "Name": "Leo",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "22° 4' 0",
+              "TotalDegrees": "22.066666666666666"
+            }
+          },
+          "PlanetsInAspect": [
+            "Rahu"
+          ],
+          "PlanetsInConjunction": [],
+          "PlanetSpeed": "-0.05298407458063668",
+          "PlanetSthanaBala": "0",
+          "PlanetStrength": "383.64",
+          "PlanetTemporaryFriendList": [
+            "Mars",
+            "Venus",
+            "Saturn",
+            "Moon"
+          ],
+          "PlanetTribhagaBala": "0",
+          "PlanetTrimshamshaD30Sign": {
+            "Name": "Taurus",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "11° 22' 30",
+              "TotalDegrees": "11.375"
+            }
+          },
+          "PlanetVaraBala": "0",
+          "PlanetVimshamshaD20Sign": {
+            "Name": "Sagittarius",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "27° 35' 0",
+              "TotalDegrees": "27.583333333333332"
+            }
+          },
+          "PlanetZodiacSignBasedOnHouseLongitudes": {
+            "Name": "Scorpio",
+            "DegreesIn": {
+              "DegreeMinuteSecond": "14° 20' 25",
+              "TotalDegrees": "14.340277777777779"
+            }
+          },
+          "ResidentialStrength": "0.26873648246246434",
+          "SignsPlanetIsAspecting": "Taurus",
+          "SwissEphemeris": "{ Longitude = 54.09960979762412, Latitude = 0, DistanceAU = 0.0025695552897999903, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+        }
+      }
+    },
+    "LagnaSignName": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "LagnaSignName",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "LagnaSignName": "Taurus"
+      }
+    },
+    "MoonSignName": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "MoonSignName",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "MoonSignName": "Leo"
+      }
+    },
+    "SarvashtakavargaChart": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "SarvashtakavargaChart",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "birthTime",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "SarvashtakavargaChart": {
+          "Sun": {
+            "Total": 43,
+            "Rows": [
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              4,
+              5,
+              3,
+              5,
+              7
+            ]
+          },
+          "Moon": {
+            "Total": 36,
+            "Rows": [
+              2,
+              2,
+              3,
+              7,
+              1,
+              2,
+              3,
+              5,
+              2,
+              2,
+              5,
+              2
+            ]
+          },
+          "Mars": {
+            "Total": 49,
+            "Rows": [
+              5,
+              3,
+              4,
+              3,
+              3,
+              4,
+              4,
+              4,
+              6,
+              7,
+              2,
+              4
+            ]
+          },
+          "Mercury": {
+            "Total": 46,
+            "Rows": [
+              3,
+              3,
+              1,
+              5,
+              2,
+              6,
+              6,
+              1,
+              2,
+              5,
+              5,
+              7
+            ]
+          },
+          "Jupiter": {
+            "Total": 36,
+            "Rows": [
+              2,
+              1,
+              1,
+              2,
+              3,
+              4,
+              2,
+              4,
+              2,
+              4,
+              7,
+              4
+            ]
+          },
+          "Venus": {
+            "Total": 40,
+            "Rows": [
+              3,
+              3,
+              3,
+              4,
+              4,
+              2,
+              3,
+              4,
+              3,
+              6,
+              3,
+              2
+            ]
+          },
+          "Saturn": {
+            "Total": 42,
+            "Rows": [
+              2,
+              4,
+              4,
+              4,
+              3,
+              3,
+              4,
+              4,
+              4,
+              6,
+              1,
+              3
+            ]
+          },
+          "Ascendant": {
+            "Total": 45,
+            "Rows": [
+              7,
+              1,
+              5,
+              3,
+              5,
+              5,
+              2,
+              6,
+              1,
+              2,
+              2,
+              6
+            ]
+          },
+          "Sarvashtakavarga": {
+            "Total": 337,
+            "Rows": [
+              26,
+              20,
+              24,
+              31,
+              24,
+              28,
+              27,
+              32,
+              25,
+              35,
+              30,
+              35
+            ]
+          }
+        }
+      }
+    },
+    "LunarDay": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "LunarDay",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "LunarDay": {
+          "Name": "Dwadasi",
+          "Paksha": "Sukla",
+          "Date": "12/30",
+          "Day": "12/15",
+          "Phase": "BrightHalf"
+        }
+      }
+    },
+    "LordOfWeekday": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "LordOfWeekday",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "LordOfWeekday": {
+          "Name": "Mercury"
+        }
+      }
+    },
+    "HoraAtBirth": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "HoraAtBirth",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "HoraAtBirth": "3"
+      }
+    },
+    "NithyaYoga": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "NithyaYoga",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "NithyaYoga": {
+          "Name": "Vriddha",
+          "Description": "Growth"
+        }
+      }
+    },
+    "LunarMonth": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "LunarMonth",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "inputTime",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          },
+          {
+            "Name": "ignoreLeapMonth",
+            "Type": "Boolean",
+            "Value": "False"
+          }
+        ]
+      },
+      "Payload": {
+        "LunarMonth": "Chaitra"
+      }
+    },
+    "SunriseTime": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "SunriseTime",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "SunriseTime": {
+          "StdTime": "07:03 13/04/2022 -04:00",
+          "Location": {
+            "Name": "Melbourne, FL, United States",
+            "Longitude": -80.604,
+            "Latitude": 28.08
+          }
+        }
+      }
+    },
+    "SunsetTime": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "SunsetTime",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "Melbourne, FL, United States",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "SunsetTime": {
+          "StdTime": "19:42 13/04/2022 -04:00",
+          "Location": {
+            "Name": "Melbourne, FL, United States",
+            "Longitude": -80.604,
+            "Latitude": 28.08
+          }
+        }
+      }
+    }
+  }
+}

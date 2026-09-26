@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary · Vedic Astrology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-foreground-faint:         #706E68;
+      --color-foreground-subtle:        #6F4925;
+      --color-foreground-default:       #663100;
+      --color-foreground-intense:       #411F00;
+      --color-foreground-brand-default: #812781;
+      --color-foreground-brand-subtle:  #0774D6;
+      --color-foreground-inverse:       #F2EFEA;
+      --color-background-default:       #F2EFEA;
+      --color-background-subtle:        #EBE7E0;
+      --color-background-intense:       #D2CDC5;
+      --color-border-default:           #D2CDC5;
+      --color-border-intense:           #706E68;
+      --font-display: "Bricolage Grotesque", Helvetica, Arial, sans-serif;
+      --font-base: "Geist", Helvetica, Arial, sans-serif;
+      --maxw: 1080px;
+
+      --spacing-1: 0.25rem;
+      --spacing-2: 0.5rem;
+      --spacing-3: 0.75rem;
+      --spacing-4: 1rem;
+      --spacing-5: 1.25rem;
+      --spacing-6: 1.5rem;
+      --spacing-7: 2rem;
+      --spacing-8: 2.5rem;
+      --spacing-9: 3rem;
+      --spacing-10: 3.5rem;
+      --spacing-11: 4rem;
+      --spacing-12: 5rem;
+
+      --text-size-xxs: 0.75rem;
+      --text-size-xs:  0.875rem;
+      --text-size-sm:  1rem;
+      --text-size-md:  1.25rem;
+      --text-size-lg:  1.5rem;
+      --text-size-xl:  1.75rem;
+      --text-size-2xl: 2.5rem;
+
+      --text-weight-lt:    300;
+      --text-weight-reg:   400;
+      --text-weight-med:   500;
+      --text-weight-bold:  600;
+      --text-weight-xbold: 700;
+
+      --text-line-height-compressed: 1.1;
+      --text-line-height-tight:      1.25;
+      --text-line-height-normal:     1.5;
+      --text-line-height-relaxed:    1.625;
+
+      --border-radius-sm: 2px;
+      --border-radius-md: 4px;
+      --border-radius-lg: 6px;
+      --border-radius-xl: 8px;
+      --border-radius-2xl: 10px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--color-background-default);
+      color: var(--color-foreground-default);
+      font-family: var(--font-base);
+      font-weight: var(--text-weight-lt);
+      line-height: var(--text-line-height-relaxed);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px var(--spacing-12);
+    }
+    @media (max-width: 640px) { .wrap { padding: 0 18px var(--spacing-12); } }
+
+    /* ── Nav ── */
+    .backlink {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-base);
+      font-size: var(--text-size-xs);
+      font-weight: var(--text-weight-med);
+      color: var(--color-foreground-brand-subtle);
+      text-decoration: none;
+      padding: var(--spacing-9) 0 0;
+      margin-bottom: var(--spacing-7);
+      display: block;
+    }
+    .backlink:hover { text-decoration: underline; }
+
+    /* ── Page header ── */
+    .kicker {
+      font-family: var(--font-display);
+      font-size: var(--text-size-xxs);
+      font-weight: var(--text-weight-bold);
+      color: var(--color-foreground-faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-2);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-2xl);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-intense);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--spacing-3);
+    }
+    .sub {
+      font-family: var(--font-base);
+      font-size: var(--text-size-md);
+      font-weight: var(--text-weight-lt);
+      color: var(--color-foreground-subtle);
+      margin: 0 0 var(--spacing-8);
+      line-height: var(--text-line-height-normal);
+    }
+
+    /* ── Jump nav ── */
+    .jump-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-9);
+      padding-bottom: var(--spacing-7);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+    .jump-nav a {
+      font-family: var(--font-display);
+      font-size: var(--text-size-xs);
+      font-weight: var(--text-weight-med);
+      color: var(--color-foreground-brand-subtle);
+      text-decoration: none;
+      padding: 4px 10px;
+      background: var(--color-background-subtle);
+      border-radius: var(--border-radius-2xl);
+      border: 1px solid var(--color-border-default);
+      transition: background 0.15s;
+    }
+    .jump-nav a:hover {
+      background: var(--color-background-intense);
+      color: var(--color-foreground-intense);
+    }
+
+    /* ── Section heading ── */
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-size-xl);
+      font-weight: var(--text-weight-xbold);
+      color: var(--color-foreground-intense);
+      line-height: var(--text-line-height-tight);
+      margin: var(--spacing-10) 0 var(--spacing-5);
+      padding-bottom: var(--spacing-3);
+      border-bottom: 2px solid var(--color-background-intense);
+    }
+
+    /* ── Entry cards ── */
+    .entry {
+      margin-bottom: var(--spacing-6);
+      padding: var(--spacing-6);
+      background: var(--color-background-subtle);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-xl);
+    }
+    .entry-term {
+      font-family: var(--font-display);
+      font-size: var(--text-size-md);
+      font-weight: var(--text-weight-xbold);
+      color: var(--color-foreground-intense);
+      line-height: var(--text-line-height-tight);
+      margin: 0 0 4px;
+    }
+    .entry-term .transliteration {
+      font-weight: var(--text-weight-reg);
+      font-style: italic;
+      color: var(--color-foreground-subtle);
+      font-size: var(--text-size-sm);
+    }
+    .entry-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: var(--text-size-xxs);
+      font-weight: var(--text-weight-bold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-foreground-brand-default);
+      background: #F7EDFF;
+      border-radius: var(--border-radius-2xl);
+      padding: 2px 8px;
+      margin-bottom: var(--spacing-3);
+    }
+    .entry-body {
+      font-size: var(--text-size-xs);
+      line-height: var(--text-line-height-relaxed);
+      color: var(--color-foreground-default);
+      font-weight: var(--text-weight-lt);
+    }
+    .entry-body p { margin: 0 0 10px; }
+    .entry-body p:last-child { margin-bottom: 0; }
+    .entry-body strong {
+      font-weight: var(--text-weight-bold);
+      color: var(--color-foreground-intense);
+    }
+
+    /* ── Nakshatra grid ── */
+    .nakshatra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-5);
+    }
+    .nak-card {
+      background: var(--color-background-default);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--border-radius-xl);
+      padding: var(--spacing-4) var(--spacing-5);
+    }
+    .nak-card-name {
+      font-family: var(--font-display);
+      font-size: var(--text-size-sm);
+      font-weight: var(--text-weight-bold);
+      color: var(--color-foreground-intense);
+      margin: 0 0 2px;
+    }
+    .nak-card-detail {
+      font-size: var(--text-size-xxs);
+      color: var(--color-foreground-subtle);
+      line-height: 1.5;
+      font-weight: var(--text-weight-reg);
+    }
+    .nak-card-meaning {
+      font-size: var(--text-size-xs);
+      color: var(--color-foreground-default);
+      font-weight: var(--text-weight-lt);
+      margin-top: 6px;
+    }
+
+    /* ── Shadbala table ── */
+    .table-wrap { overflow-x: auto; margin-top: var(--spacing-4); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-size-xs);
+    }
+    th {
+      font-family: var(--font-display);
+      font-weight: var(--text-weight-bold);
+      font-size: var(--text-size-xxs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-foreground-faint);
+      text-align: left;
+      padding: var(--spacing-2) var(--spacing-3);
+      border-bottom: 2px solid var(--color-border-default);
+    }
+    td {
+      padding: var(--spacing-2) var(--spacing-3);
+      border-bottom: 1px solid var(--color-border-default);
+      color: var(--color-foreground-default);
+      font-weight: var(--text-weight-lt);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { font-weight: var(--text-weight-med); color: var(--color-foreground-intense); }
+
+    /* ── Footer ── */
+    .page-footer {
+      margin-top: var(--spacing-12);
+      padding-top: var(--spacing-7);
+      border-top: 1px solid var(--color-border-default);
+      font-size: var(--text-size-xxs);
+      color: var(--color-foreground-faint);
+      font-weight: var(--text-weight-reg);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="backlink" href="index.html">← Back to birth chart</a>
+
+    <div class="kicker">Reference</div>
+    <h1>Vedic Astrology Glossary</h1>
+    <p class="sub">Plain-English definitions for the Sanskrit and Indian terms used across this site — with a bit of history behind each one.</p>
+
+    <!-- Jump nav -->
+    <nav class="jump-nav" aria-label="Jump to section">
+      <a href="#chart-basics">Chart basics</a>
+      <a href="#nakshatras">Nakshatras</a>
+      <a href="#planets">Planets &amp; strength</a>
+      <a href="#signs">Signs &amp; modalities</a>
+      <a href="#timing">Timing systems</a>
+      <a href="#almanac">Panchanga</a>
+      <a href="#measurement">Units &amp; measurement</a>
+    </nav>
+
+
+    <!-- ═══════════════════════════════ CHART BASICS ═══════════════════════════════ -->
+    <h2 class="section-heading" id="chart-basics">Chart Basics</h2>
+
+    <div class="entry" id="jyotish">
+      <div class="entry-term">Jyotish <span class="transliteration">(jyo-TEESH)</span></div>
+      <span class="entry-tag">System</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The Sanskrit name for the Indian system of astrology. It translates roughly as "science of light" — <em>jyoti</em> means light, and <em>ish</em> refers to the divine. It is one of the six Vedangas (limbs of the Vedas), the body of ancient knowledge that supports the study of sacred texts.</p>
+        <p><strong>History:</strong> Jyotish is one of the oldest astrological traditions in the world, with roots going back at least 3,000 years in the Vedic literature of India. Unlike Western astrology, which moved toward a solar and psychological focus over time, Jyotish retained a strong emphasis on karma, dharma (life purpose), and the precise positions of the moon. It uses the sidereal zodiac — fixed against the actual star constellations — rather than the seasonal (tropical) zodiac used in the West.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="lagna">
+      <div class="entry-term">Lagna / Ascendant <span class="transliteration">(LAHG-nuh)</span></div>
+      <span class="entry-tag">Chart structure</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The zodiac sign rising on the eastern horizon at the exact moment of your birth. It changes roughly every two hours as the Earth rotates, which is why birth time matters so much in Vedic astrology. The Lagna becomes the first house of your chart, and every other house follows from it.</p>
+        <p><strong>What it means:</strong> Your Lagna is not your sun sign. While the sun sign describes your core identity, the Lagna describes how you come across to the world — your appearance, personality, and the lens through which you experience life. In Jyotish, the Lagna is often considered more significant than the sun sign.</p>
+        <p><strong>History:</strong> The word <em>lagna</em> comes from the Sanskrit root meaning "to join" or "to attach" — it marks the point where the sky meets the horizon, where heaven and earth touch. Ancient Vedic astrologers called it the most important point in the chart, the "body" of the person.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="rashi">
+      <div class="entry-term">Rashi <span class="transliteration">(RAH-shee)</span></div>
+      <span class="entry-tag">Chart structure</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> A zodiac sign. There are 12 rashis, the same 12 signs used in Western astrology (Aries through Pisces), though their boundaries are shifted backward by about 23–24 degrees from the Western signs because Jyotish uses the sidereal zodiac.</p>
+        <p><strong>History:</strong> The word rashi means "heap" or "mass" in Sanskrit, referring to a cluster of stars. The 12-sign zodiac reached India through contact with Babylonian and Greek astronomy around 300–200 BCE, and was fully integrated into Vedic thought by the early centuries CE. Indian astronomers adapted the Greek signs to their own cosmological framework, linking each sign to a ruling planet (<em>swami</em>), element, and modality.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="bhava">
+      <div class="entry-term">Bhava <span class="transliteration">(BHA-vuh)</span></div>
+      <span class="entry-tag">Chart structure</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> A house in the birth chart. There are 12 bhavas, each governing a different area of life — the 1st bhava covers self and body, the 7th covers marriage and partnerships, the 10th covers career and public life, and so on. This site uses <strong>whole-sign houses</strong>, where each bhava is exactly one complete sign.</p>
+        <p><strong>History:</strong> The word <em>bhava</em> means "becoming" or "state of being." The house system reflects the ancient Indian understanding that life unfolds across distinct domains, and that the planets moving through these domains trigger corresponding events and experiences.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="ayanamsa">
+      <div class="entry-term">Ayanamsa <span class="transliteration">(ah-YAH-nahm-suh)</span></div>
+      <span class="entry-tag">Technical</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The correction factor applied to convert a tropical (Western) planetary position into a sidereal (Vedic) position. The two zodiacs diverge because of a slow wobble in Earth's axis called precession — the tropical zodiac drifts forward over centuries while the sidereal zodiac stays anchored to the fixed stars. As of 2024, the difference is roughly 23–24 degrees. This site uses the <strong>Raman ayanamsa</strong> (also called B.V. Raman), one of several competing values used by different schools of Jyotish.</p>
+        <p><strong>History:</strong> Indian astronomers tracked precession as early as the 4th century CE. The word comes from <em>ayana</em> (movement/solstice) and <em>amsha</em> (portion/degree). There are multiple ayanamsa systems in use today — Lahiri (official Indian government standard), Raman, Krishnamurti, and others — and they differ by a degree or two, which can shift a planet into a different sign for someone born on a cusp.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════ NAKSHATRAS ═══════════════════════════════ -->
+    <h2 class="section-heading" id="nakshatras">Nakshatras — Lunar Mansions</h2>
+
+    <div class="entry" id="nakshatra">
+      <div class="entry-term">Nakshatra <span class="transliteration">(nak-SHA-truh)</span></div>
+      <span class="entry-tag">Lunar zodiac</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> One of 27 lunar mansions — divisions of the sky that the moon passes through over the course of a month. Each nakshatra spans exactly 13 degrees and 20 minutes of the zodiac. Your <strong>birth nakshatra</strong> (also called <em>janma nakshatra</em>) is the one the moon occupied when you were born. Every nakshatra has a ruling planet, a presiding deity, a symbol, and a set of themes that color how its energy expresses.</p>
+        <p><strong>Why 27?</strong> The moon takes about 27.3 days to orbit Earth, so 27 nakshatras give one per day. (A 28th, Abhijit, is sometimes included.) This lunar zodiac predates the 12-sign solar zodiac and is unique to the Indian tradition — it's one of the oldest and most sophisticated features of Jyotish.</p>
+        <p><strong>History:</strong> The nakshatras appear in the Rigveda, one of the oldest texts in the world (c. 1500–1200 BCE). They were the original Indian framework for tracking the sky, long before the 12-sign zodiac arrived from Babylon and Greece. Each nakshatra carries rich mythology, and its deity and symbol often describe the psychological or karmic quality of that portion of the sky.</p>
+        <p><strong>On this site:</strong> Nico's ascendant falls in <a href="#rohini">Rohini</a> nakshatra within Taurus — Rohini adds specific nuance beyond what Taurus alone describes.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="pada">
+      <div class="entry-term">Pada <span class="transliteration">(PAH-duh)</span></div>
+      <span class="entry-tag">Lunar zodiac</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> A quarter of a nakshatra. Each nakshatra is divided into 4 padas of 3 degrees 20 minutes each. The pada a planet occupies further refines its expression — each pada corresponds to one of the 12 signs, cycling through Aries, Taurus, Gemini, Cancer repeatedly across all 27 nakshatras.</p>
+        <p>The word <em>pada</em> means "foot" or "step" in Sanskrit — as in one step along the path of a nakshatra.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:var(--text-size-sm);font-weight:var(--text-weight-bold);color:var(--color-foreground-intense);margin:var(--spacing-7) 0 var(--spacing-4);">All 27 Nakshatras</h3>
+    <div class="nakshatra-grid">
+
+      <div class="nak-card" id="ashwini">
+        <div class="nak-card-name">1. Ashwini</div>
+        <div class="nak-card-detail">Aries 0°–13°20' · Ruler: Ketu · Deity: Ashwini Kumaras (twin healers)</div>
+        <div class="nak-card-meaning">The horse-headed healers. Themes of swift beginnings, healing energy, and pioneering spirit. The first nakshatra — associated with fresh starts and rapid movement.</div>
+      </div>
+
+      <div class="nak-card" id="bharani">
+        <div class="nak-card-name">2. Bharani</div>
+        <div class="nak-card-detail">Aries 13°20'–26°40' · Ruler: Venus · Deity: Yama (god of death and dharma)</div>
+        <div class="nak-card-meaning">The bearer. Themes of transformation, birth and death cycles, restraint, and carrying burdens. Associated with the creative and destructive power of Venus.</div>
+      </div>
+
+      <div class="nak-card" id="krittika">
+        <div class="nak-card-name">3. Krittika</div>
+        <div class="nak-card-detail">Aries 26°40'–Taurus 10° · Ruler: Sun · Deity: Agni (fire god)</div>
+        <div class="nak-card-meaning">The cutters (the Pleiades). Themes of purification, sharp clarity, willpower, and burning away the unnecessary. Strong and fierce energy.</div>
+      </div>
+
+      <div class="nak-card" id="rohini">
+        <div class="nak-card-name">4. Rohini ✦</div>
+        <div class="nak-card-detail">Taurus 10°–23°20' · Ruler: Moon · Deity: Brahma (creator)</div>
+        <div class="nak-card-meaning">The red one (the star Aldebaran). Themes of beauty, fertility, creativity, sensuality, and growth. Considered the most beloved of the nakshatras — the moon's favorite. <strong>Nico's ascendant is in Rohini.</strong></div>
+      </div>
+
+      <div class="nak-card" id="mrigashira">
+        <div class="nak-card-name">5. Mrigashira</div>
+        <div class="nak-card-detail">Taurus 23°20'–Gemini 6°40' · Ruler: Mars · Deity: Soma (moon deity)</div>
+        <div class="nak-card-meaning">The deer's head. Themes of searching, curiosity, gentle sensitivity, and restless seeking. The deer searches the forest — this nakshatra is always looking for something more.</div>
+      </div>
+
+      <div class="nak-card" id="ardra">
+        <div class="nak-card-name">6. Ardra</div>
+        <div class="nak-card-detail">Gemini 6°40'–20° · Ruler: Rahu · Deity: Rudra (storm god, fierce Shiva)</div>
+        <div class="nak-card-meaning">The moist one / the teardrop. Themes of storms, destruction followed by renewal, raw power, and emotional intensity. Associated with Sirius, the brightest star.</div>
+      </div>
+
+      <div class="nak-card" id="punarvasu">
+        <div class="nak-card-name">7. Punarvasu</div>
+        <div class="nak-card-detail">Gemini 20°–Cancer 3°20' · Ruler: Jupiter · Deity: Aditi (mother of the gods)</div>
+        <div class="nak-card-meaning">The return of light / the good again. Themes of renewal, optimism, return after difficulty, and nourishment. A nakshatra of recovery and good fortune.</div>
+      </div>
+
+      <div class="nak-card" id="pushya">
+        <div class="nak-card-name">8. Pushya</div>
+        <div class="nak-card-detail">Cancer 3°20'–16°40' · Ruler: Saturn · Deity: Brihaspati (priest of the gods / Jupiter)</div>
+        <div class="nak-card-meaning">The nourisher. Often considered the most auspicious nakshatra. Themes of nourishment, care, community, spiritual wisdom, and abundance. Steady and giving.</div>
+      </div>
+
+      <div class="nak-card" id="ashlesha">
+        <div class="nak-card-name">9. Ashlesha</div>
+        <div class="nak-card-detail">Cancer 16°40'–30° · Ruler: Mercury · Deity: Nagas (serpent deities)</div>
+        <div class="nak-card-meaning">The entwiner. Themes of serpent wisdom, kundalini energy, hidden knowledge, psychological depth, and intensity. Can be clinging or transformative.</div>
+      </div>
+
+      <div class="nak-card" id="magha">
+        <div class="nak-card-name">10. Magha</div>
+        <div class="nak-card-detail">Leo 0°–13°20' · Ruler: Ketu · Deity: Pitrs (ancestral spirits)</div>
+        <div class="nak-card-meaning">The great one / the throne. Themes of ancestry, royal dignity, pride, leadership, and connection to lineage. The soul of the ancestors resides here.</div>
+      </div>
+
+      <div class="nak-card" id="purva-phalguni">
+        <div class="nak-card-name">11. Purva Phalguni</div>
+        <div class="nak-card-detail">Leo 13°20'–26°40' · Ruler: Venus · Deity: Bhaga (god of fortune and pleasure)</div>
+        <div class="nak-card-meaning">The former reddish one / the fruit of the tree. Themes of pleasure, creativity, rest, romance, and enjoyment of life's gifts. Prosperous and indulgent.</div>
+      </div>
+
+      <div class="nak-card" id="uttara-phalguni">
+        <div class="nak-card-name">12. Uttara Phalguni</div>
+        <div class="nak-card-detail">Leo 26°40'–Virgo 10° · Ruler: Sun · Deity: Aryaman (patron of contracts and friendship)</div>
+        <div class="nak-card-meaning">The latter reddish one. Themes of commitment, marriage, social contracts, patronage, and duty to others. More serious than its predecessor — pleasure grounded in obligation.</div>
+      </div>
+
+      <div class="nak-card" id="hasta">
+        <div class="nak-card-name">13. Hasta</div>
+        <div class="nak-card-detail">Virgo 10°–23°20' · Ruler: Moon · Deity: Savitar (sun god of skill and craft)</div>
+        <div class="nak-card-meaning">The hand. Themes of dexterity, skill, craft, humor, and cleverness. People with strong Hasta placements are often good with their hands and quick-witted.</div>
+      </div>
+
+      <div class="nak-card" id="chitra">
+        <div class="nak-card-name">14. Chitra</div>
+        <div class="nak-card-detail">Virgo 23°20'–Libra 6°40' · Ruler: Mars · Deity: Vishvakarma (divine architect)</div>
+        <div class="nak-card-meaning">The brilliant / the jewel (star Spica). Themes of beauty, artistry, architecture, and the drive to create something dazzling. The star Spica is one of the brightest in the sky.</div>
+      </div>
+
+      <div class="nak-card" id="swati">
+        <div class="nak-card-name">15. Swati</div>
+        <div class="nak-card-detail">Libra 6°40'–20° · Ruler: Rahu · Deity: Vayu (wind god)</div>
+        <div class="nak-card-meaning">The independent one / the sword (star Arcturus). Themes of independence, freedom, flexibility, and trade. Like a young plant in the wind — resilient but needing room.</div>
+      </div>
+
+      <div class="nak-card" id="vishakha">
+        <div class="nak-card-name">16. Vishakha</div>
+        <div class="nak-card-detail">Libra 20°–Scorpio 3°20' · Ruler: Jupiter · Deities: Indra and Agni</div>
+        <div class="nak-card-meaning">The forked / the goal-oriented. Themes of ambition, determination, duality, and achievement. Associated with the Y-fork — someone standing at a crossroads who knows exactly where they are going.</div>
+      </div>
+
+      <div class="nak-card" id="anuradha">
+        <div class="nak-card-name">17. Anuradha</div>
+        <div class="nak-card-detail">Scorpio 3°20'–16°40' · Ruler: Saturn · Deity: Mitra (god of friendship and contracts)</div>
+        <div class="nak-card-meaning">The follower of Radha / the star of success. Themes of friendship, devotion, organization, and success through cooperation. Deep loyalty and the ability to work with others.</div>
+      </div>
+
+      <div class="nak-card" id="jyeshtha">
+        <div class="nak-card-name">18. Jyeshtha</div>
+        <div class="nak-card-detail">Scorpio 16°40'–30° · Ruler: Mercury · Deity: Indra (king of the gods)</div>
+        <div class="nak-card-meaning">The eldest / the chief (star Antares). Themes of seniority, protection, responsibility, and power. The king who has earned their position through experience.</div>
+      </div>
+
+      <div class="nak-card" id="mula">
+        <div class="nak-card-name">19. Mula</div>
+        <div class="nak-card-detail">Sagittarius 0°–13°20' · Ruler: Ketu · Deity: Nirriti (goddess of dissolution)</div>
+        <div class="nak-card-meaning">The root. Themes of getting to the root of things, research, dissolution, and transformation. Associated with uprooting — painful but necessary for growth.</div>
+      </div>
+
+      <div class="nak-card" id="purva-ashadha">
+        <div class="nak-card-name">20. Purva Ashadha</div>
+        <div class="nak-card-detail">Sagittarius 13°20'–26°40' · Ruler: Venus · Deity: Apas (water deities)</div>
+        <div class="nak-card-meaning">The undefeated (early). Themes of invincibility, purification, and early victory. Like water — persistent, cleansing, and impossible to stop permanently.</div>
+      </div>
+
+      <div class="nak-card" id="uttara-ashadha">
+        <div class="nak-card-name">21. Uttara Ashadha</div>
+        <div class="nak-card-detail">Sagittarius 26°40'–Capricorn 10° · Ruler: Sun · Deity: Vishvadevas (universal gods)</div>
+        <div class="nak-card-meaning">The undefeated (later). Themes of lasting victory, righteousness, and final triumph. Where Purva Ashadha wins quickly, Uttara Ashadha wins for keeps.</div>
+      </div>
+
+      <div class="nak-card" id="shravana">
+        <div class="nak-card-name">22. Shravana</div>
+        <div class="nak-card-detail">Capricorn 10°–23°20' · Ruler: Moon · Deity: Vishnu (the preserver)</div>
+        <div class="nak-card-meaning">The listener (the star Altair). Themes of learning, listening, connection across distances, and preservation. Associated with the three footsteps of Vishnu spanning the universe.</div>
+      </div>
+
+      <div class="nak-card" id="dhanishtha">
+        <div class="nak-card-name">23. Dhanishtha</div>
+        <div class="nak-card-detail">Capricorn 23°20'–Aquarius 6°40' · Ruler: Mars · Deity: Ashta Vasus (eight elemental gods)</div>
+        <div class="nak-card-meaning">The wealthiest / the drum. Themes of abundance, music, rhythm, and fame. A nakshatra of gifts given freely and received openly.</div>
+      </div>
+
+      <div class="nak-card" id="shatabhisha">
+        <div class="nak-card-name">24. Shatabhisha</div>
+        <div class="nak-card-detail">Aquarius 6°40'–20° · Ruler: Rahu · Deity: Varuna (god of cosmic order and healing)</div>
+        <div class="nak-card-meaning">The hundred healers / the hundred stars. Themes of healing, mysticism, solitude, and hidden knowledge. The healer who works alone, with secret remedies.</div>
+      </div>
+
+      <div class="nak-card" id="purva-bhadrapada">
+        <div class="nak-card-name">25. Purva Bhadrapada</div>
+        <div class="nak-card-detail">Aquarius 20°–Pisces 3°20' · Ruler: Jupiter · Deity: Aja Ekapada (one-footed serpent)</div>
+        <div class="nak-card-meaning">The former lucky feet. Themes of intense energy, transformation, two-sided nature, and burning intensity. The fire before the storm.</div>
+      </div>
+
+      <div class="nak-card" id="uttara-bhadrapada">
+        <div class="nak-card-name">26. Uttara Bhadrapada</div>
+        <div class="nak-card-detail">Pisces 3°20'–16°40' · Ruler: Saturn · Deity: Ahir Budhnya (serpent of the deep)</div>
+        <div class="nak-card-meaning">The latter lucky feet. Themes of depth, wisdom, rain, and serpent-like patience. Deep waters that nourish — a nakshatra of accumulated spiritual wisdom.</div>
+      </div>
+
+      <div class="nak-card" id="revati">
+        <div class="nak-card-name">27. Revati</div>
+        <div class="nak-card-detail">Pisces 16°40'–30° · Ruler: Mercury · Deity: Pushan (nourishing sun, guide of souls)</div>
+        <div class="nak-card-meaning">The wealthy / the guide. The final nakshatra — themes of completion, safe passage, protection of travelers, and the end of cycles. The shepherd who guides souls home.</div>
+      </div>
+
+    </div><!-- /nakshatra-grid -->
+
+
+    <!-- ═══════════════════════════════ PLANETS & STRENGTH ═══════════════════════════════ -->
+    <h2 class="section-heading" id="planets">Planets &amp; Planetary Strength</h2>
+
+    <div class="entry" id="graha">
+      <div class="entry-term">Graha <span class="transliteration">(GRAH-huh)</span></div>
+      <span class="entry-tag">Planets</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The Sanskrit word for planet, literally meaning "to seize" or "to grasp." Jyotish uses nine grahas: the seven visible planets of classical astronomy (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn) plus the two lunar nodes, Rahu and Ketu. The grahas are understood as forces that "seize" or influence human experience — not just inert balls of rock and gas.</p>
+        <p><strong>History:</strong> Indian planetary astronomy was among the most sophisticated in the ancient world. Indian mathematicians and astronomers like Aryabhata (5th century CE) calculated planetary positions with remarkable accuracy. The graha system integrates both astronomical reality and symbolic/mythological meaning.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="rahu-ketu">
+      <div class="entry-term">Rahu &amp; Ketu</div>
+      <span class="entry-tag">Planets</span>
+      <div class="entry-body">
+        <p><strong>What they are:</strong> The north and south nodes of the Moon — the two points where the Moon's orbit crosses the ecliptic (the Sun's apparent path). They are always exactly opposite each other in the sky. Rahu is the north node; Ketu is the south node. They are not physical bodies but mathematically calculated points.</p>
+        <p><strong>What they mean:</strong> Rahu represents worldly desire, obsession, the future, and karmic hunger — what the soul is reaching toward in this life. Ketu represents release, past-life mastery, detachment, and spirituality — what the soul is letting go of. Together they describe the main axis of karmic growth in a chart.</p>
+        <p><strong>History:</strong> In Hindu mythology, Rahu and Ketu are the severed head and tail of the demon Svarbhanu, who was cut in two by Vishnu after stealing a sip of the nectar of immortality. They are blamed for eclipses (when they swallow the Sun or Moon) and are considered powerful, unconventional forces in any chart.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="shadbala">
+      <div class="entry-term">Shadbala <span class="transliteration">(SHAHD-buh-luh)</span></div>
+      <span class="entry-tag">Strength system</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The six-factor system for measuring a planet's total strength in a chart. <em>Shad</em> means six; <em>bala</em> means strength. Each of the six factors is calculated independently and then combined into a total score measured in <a href="#rupa">rupas</a>. A planet with a high Shadbala score is powerful and able to deliver its significations clearly; a weak planet struggles to manifest its positive qualities.</p>
+        <p><strong>History:</strong> Shadbala is described in classical Jyotish texts including the Brihat Parashara Hora Shastra, attributed to the sage Parashara (considered the father of Jyotish). It represents one of the most mathematically sophisticated approaches to planetary evaluation in any astrological tradition.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Sanskrit name</th>
+                <th>What it measures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Positional strength</td>
+                <td>Sthana Bala</td>
+                <td>Strength from the planet's zodiac sign placement — is it in its own sign, exaltation, or an uncomfortable sign?</td>
+              </tr>
+              <tr>
+                <td>Directional strength</td>
+                <td>Dig Bala</td>
+                <td>Strength from the planet's house position — each planet has a "best" house where it is most directionally powerful.</td>
+              </tr>
+              <tr>
+                <td>Temporal strength</td>
+                <td>Kala Bala</td>
+                <td>Strength from the time of birth — day vs. night, season, the lunar month, the day of the week, and the hora (planetary hour).</td>
+              </tr>
+              <tr>
+                <td>Motional strength</td>
+                <td>Chesta Bala</td>
+                <td>Strength from the planet's speed and direction of movement — planets in direct motion, especially those moving quickly, score higher.</td>
+              </tr>
+              <tr>
+                <td>Natural strength</td>
+                <td>Naisargika Bala</td>
+                <td>A fixed, inherent strength assigned to each planet — the Sun is always strongest, Saturn always weakest in this factor regardless of chart position.</td>
+              </tr>
+              <tr>
+                <td>Aspectual strength</td>
+                <td>Drig Bala</td>
+                <td>Strength or weakness added by the aspects (glances) of other planets — a Jupiter aspect adds strength; a Saturn aspect can reduce it.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry" id="ashtakavarga">
+      <div class="entry-term">Ashtakavarga <span class="transliteration">(ash-tuh-KAH-vur-guh)</span></div>
+      <span class="entry-tag">Strength system</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> A system for measuring the receptivity of each sign (house) in a chart. The 7 traditional planets plus the Ascendant each cast votes — called <a href="#bindu">bindus</a> — for or against each of the 12 signs. The total bindus in each sign show how welcoming or hostile that sign is for planets transiting through it.</p>
+        <p><strong>Interpreting the scores:</strong> A sign with <strong>30 or more bindus</strong> is considered strong — planets transiting it tend to give good results. A sign with <strong>below 25 bindus</strong> is considered weak — transits through it may be difficult or unproductive. Scores between 25–29 are average.</p>
+        <p><strong>History:</strong> <em>Ashta</em> means eight (seven planets + the ascendant); <em>varga</em> means category or division. The system comes from the Brihat Parashara Hora Shastra. It is primarily a predictive tool — astrologers use it to judge when transiting planets will give good or bad results based on which sign they are moving through.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="bindu">
+      <div class="entry-term">Bindu <span class="transliteration">(BIN-doo)</span></div>
+      <span class="entry-tag">Measurement</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> A "point" or vote in the Ashtakavarga system. Each planet casts bindus (positive votes) or no-votes into signs based on its relationship to those signs. The count of bindus in a sign indicates how favorable that sign's energy is for receiving a planet in transit.</p>
+        <p>The word <em>bindu</em> in Sanskrit means "drop" or "point" — the same word is used in art for the dot above certain letters, in yoga for the sacred dot of consciousness, and in sacred geometry for the center point of a mandala.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="uccha-neecha">
+      <div class="entry-term">Uccha &amp; Neecha — Exaltation &amp; Debilitation</div>
+      <span class="entry-tag">Sign dignity</span>
+      <div class="entry-body">
+        <p><strong>Uccha</strong> (OOH-chuh) means "high" — a planet in its exaltation sign is at its peak dignity, expressing its most positive qualities. For example, Jupiter is exalted in Cancer; the Moon is exalted in Taurus.</p>
+        <p><strong>Neecha</strong> (KNEE-chuh) means "low" — a planet in debilitation is in the sign directly opposite its exaltation, where it functions least comfortably. Debilitated planets often indicate challenges in the areas that planet rules, though they can still produce results, especially if other factors in the chart support them.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="swakshetra">
+      <div class="entry-term">Swakshetra — Own Sign</div>
+      <span class="entry-tag">Sign dignity</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> When a planet is placed in the sign it rules — its home sign. <em>Swa</em> means "own" and <em>kshetra</em> means "field" or "sign." A planet in swakshetra is comfortable and relatively strong, like being at home — it can act naturally and express its qualities without impediment.</p>
+        <p>Each planet rules one or two signs: the Sun rules Leo, the Moon rules Cancer, Mars rules Aries and Scorpio, Mercury rules Gemini and Virgo, Jupiter rules Sagittarius and Pisces, Venus rules Taurus and Libra, Saturn rules Capricorn and Aquarius. Rahu and Ketu do not have traditional rulerships in classical Jyotish.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════ SIGNS & MODALITIES ═══════════════════════════════ -->
+    <h2 class="section-heading" id="signs">Signs &amp; Modalities</h2>
+
+    <div class="entry" id="modalities">
+      <div class="entry-term">Modalities — Cardinal, Fixed, Mutable</div>
+      <span class="entry-tag">Sign quality</span>
+      <div class="entry-body">
+        <p><strong>What they are:</strong> A way of categorizing the 12 signs by their mode of action — how they approach change, projects, and life. Each modality contains four signs, one from each element.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Modality</th><th>Sanskrit name</th><th>Signs</th><th>Character</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cardinal / Movable</td>
+                <td>Chara</td>
+                <td>Aries, Cancer, Libra, Capricorn</td>
+                <td>Initiating, action-oriented, good at starting things, restless, seeks change</td>
+              </tr>
+              <tr>
+                <td>Fixed</td>
+                <td>Sthira</td>
+                <td>Taurus, Leo, Scorpio, Aquarius</td>
+                <td>Stable, persistent, determined, resistant to change, builds and maintains</td>
+              </tr>
+              <tr>
+                <td>Mutable / Dual</td>
+                <td>Dwisvabhava</td>
+                <td>Gemini, Virgo, Sagittarius, Pisces</td>
+                <td>Adaptable, versatile, transitional, blends qualities, connects different modes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:12px;"><strong>On this site:</strong> Kara and Sebastian have Aquarius ascendants (fixed), Nico and Andrew have Taurus ascendants (fixed), and Thor has a Virgo ascendant (mutable).</p>
+      </div>
+    </div>
+
+    <div class="entry" id="elements">
+      <div class="entry-term">Elements — Fire, Earth, Air, Water</div>
+      <span class="entry-tag">Sign quality</span>
+      <div class="entry-body">
+        <p>The 12 signs are also grouped into four elements (<em>tattvas</em>), each containing three signs:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Element</th><th>Sanskrit</th><th>Signs</th><th>Qualities</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Fire</td><td>Agni</td><td>Aries, Leo, Sagittarius</td><td>Energy, inspiration, courage, enthusiasm</td></tr>
+              <tr><td>Earth</td><td>Prithvi</td><td>Taurus, Virgo, Capricorn</td><td>Practicality, stability, material focus, groundedness</td></tr>
+              <tr><td>Air</td><td>Vayu</td><td>Gemini, Libra, Aquarius</td><td>Intellect, communication, social connection, ideas</td></tr>
+              <tr><td>Water</td><td>Jala</td><td>Cancer, Scorpio, Pisces</td><td>Emotion, intuition, sensitivity, depth</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry" id="trines">
+      <div class="entry-term">Trikonas — Trines</div>
+      <span class="entry-tag">House grouping</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The 1st, 5th, and 9th houses form a trine group called a <em>trikona</em>. These are considered the most auspicious houses in the chart — the 1st house represents the self, the 5th represents creativity and past-life merit (<em>purva punya</em>), and the 9th represents dharma and fortune.</p>
+        <p>Planets in or ruling trikonas generally bring good results. Planets that rule both a trikona and a <em>kendra</em> (angular house: 1st, 4th, 7th, 10th) are called <strong>raja yoga karakas</strong> — kings among planets — because they can generate significant success and recognition.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════ TIMING SYSTEMS ═══════════════════════════════ -->
+    <h2 class="section-heading" id="timing">Timing Systems</h2>
+
+    <div class="entry" id="dasha">
+      <div class="entry-term">Dasha <span class="transliteration">(DAH-shuh)</span></div>
+      <span class="entry-tag">Timing</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> A planetary period system — one of Jyotish's most powerful predictive tools. The most common system is <strong>Vimshottari Dasha</strong>, which divides life into a 120-year cycle of planetary rulership. Each planet rules a period of years (the Sun rules 6 years, the Moon 10, Mars 7, Rahu 18, Jupiter 16, Saturn 19, Mercury 17, Ketu 7, Venus 20). The period you're in at birth is determined by your birth nakshatra.</p>
+        <p><strong>History:</strong> The word <em>dasha</em> means "state" or "condition" — you are said to be in the "condition of" whichever planet rules your current period. The Vimshottari system totals 120 years because that was considered the maximum human lifespan. Within each main period (mahadasha), there are sub-periods (antardashas) of each planet, allowing very fine-grained timing.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="transit">
+      <div class="entry-term">Gochar — Transit <span class="transliteration">(GO-chur)</span></div>
+      <span class="entry-tag">Timing</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The current movement of planets through the zodiac as they pass over the positions in your birth chart. <em>Gochar</em> means "movement of the cow" — the planets are like cows moving through the fields of the zodiac, and their effects depend on which sign they are currently in and how that relates to your natal chart.</p>
+        <p>Jyotish typically evaluates transits primarily against the <strong>natal Moon sign</strong> rather than the Ascendant, unlike Western astrology. The combination of dasha period and current gochar gives astrologers a layered picture of what life themes are active at any given time.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="yoga">
+      <div class="entry-term">Yoga (planetary) <span class="transliteration">(YO-guh)</span></div>
+      <span class="entry-tag">Chart pattern</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> In Jyotish, a yoga is a specific combination or configuration of planets in a chart that produces a particular outcome. There are hundreds of named yogas. Some are auspicious (Raja Yoga — royal combination, indicating status and success), some challenging (Kemadruma Yoga — the Moon with no planets adjacent, indicating loneliness), and many are neutral or technical.</p>
+        <p><strong>Important:</strong> This is different from the physical/spiritual practice of yoga. In Sanskrit, <em>yoga</em> means "union" or "combination" — so a planetary yoga is simply a union of planets in a particular way.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════ PANCHANGA ═══════════════════════════════ -->
+    <h2 class="section-heading" id="almanac">Panchanga — The Vedic Almanac</h2>
+
+    <div class="entry" id="panchanga">
+      <div class="entry-term">Panchanga <span class="transliteration">(pahn-CHAHNG-guh)</span></div>
+      <span class="entry-tag">Almanac</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The traditional Vedic almanac used daily for auspicious timing, ritual, and understanding the quality of any given day. <em>Pancha</em> means five; <em>anga</em> means limb — the Panchanga has five elements that together describe the "body" of time for a given day.</p>
+        <p><strong>History:</strong> The Panchanga is still published annually in India and consulted for everything from weddings and business openings to travel and medical procedures. It is the bridge between the astronomical and the auspicious — raw celestial data translated into practical guidance.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Element</th><th>Sanskrit</th><th>What it is</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lunar day</td>
+                <td>Tithi</td>
+                <td>The phase of the moon — one of 30 tithis in a lunar month (15 waxing, 15 waning). Each tithi has its own quality and traditional uses.</td>
+              </tr>
+              <tr>
+                <td>Day of week</td>
+                <td>Vara</td>
+                <td>Each day is ruled by a planet: Sunday (Sun), Monday (Moon), Tuesday (Mars), Wednesday (Mercury), Thursday (Jupiter), Friday (Venus), Saturday (Saturn).</td>
+              </tr>
+              <tr>
+                <td>Lunar mansion</td>
+                <td>Nakshatra</td>
+                <td>Which of the 27 nakshatras the Moon is currently transiting — gives the "flavor" of the day.</td>
+              </tr>
+              <tr>
+                <td>Sun-Moon angle</td>
+                <td>Yoga</td>
+                <td>One of 27 astronomical combinations produced by adding the Sun's and Moon's longitudes — each has a name and auspiciousness level.</td>
+              </tr>
+              <tr>
+                <td>Half-day period</td>
+                <td>Karana</td>
+                <td>Half of a tithi — 11 named karanas that cycle through the month, each governing roughly 6-hour periods and their traditional uses.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry" id="tithi">
+      <div class="entry-term">Tithi <span class="transliteration">(TIT-hee)</span></div>
+      <span class="entry-tag">Almanac</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The lunar day — one of 30 phases of the moon in a lunar month. A tithi is not a solar day (24 hours) but an angular measurement: each tithi spans 12 degrees of separation between the Sun and Moon. Because the moon moves faster or slower at different times, tithis vary in length and can sometimes be two solar days long or skip entirely.</p>
+        <p>The most important tithis are Amavasya (new moon, tithi 30/0) and Purnima (full moon, tithi 15) — these are widely observed in Hindu practice for rituals, fasting, and ancestral offerings.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════ MEASUREMENT ═══════════════════════════════ -->
+    <h2 class="section-heading" id="measurement">Units &amp; Measurement</h2>
+
+    <div class="entry" id="rupa">
+      <div class="entry-term">Rupa <span class="transliteration">(ROO-puh)</span></div>
+      <span class="entry-tag">Unit</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> The unit of measurement used for Shadbala planet strength scores. A rupa literally means "form" or "image" in Sanskrit. One rupa equals 60 shashtiamsas (sixtieths). On this site's planet strength charts, each planet's total Shadbala is expressed in rupas — the higher the number, the stronger the planet.</p>
+        <p><strong>Minimum strength thresholds:</strong> Classical texts give required strengths for each planet. The Sun needs at least 6.5 rupas, the Moon 6.0, Mars 5.0, Mercury 7.0, Jupiter 6.5, Venus 5.5, and Saturn 5.0 to be considered adequately strong.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="degree">
+      <div class="entry-term">Degree — Amsha</div>
+      <span class="entry-tag">Unit</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> Planetary positions in Jyotish are measured in degrees, minutes, and seconds within a sign, exactly as in Western astronomy. A sign spans 30 degrees. A planet at "Taurus 15°" is halfway through Taurus. Degrees are sometimes called <em>amsha</em> in Sanskrit (meaning "portion"), though that word also refers to divisional charts.</p>
+        <p>Precise degrees matter enormously in Jyotish — a planet at 29° of a sign vs. 1° of the next sign can be in different nakshatras, have different dignity, and behave quite differently.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="divisional-charts">
+      <div class="entry-term">Varga — Divisional Charts <span class="transliteration">(VUR-guh)</span></div>
+      <span class="entry-tag">Chart type</span>
+      <div class="entry-body">
+        <p><strong>What it is:</strong> Subdivisions of the zodiac used to examine specific life areas in greater detail. The main chart (showing planets in their actual sign positions) is called the Rashi chart or D-1. Dividing each sign into smaller portions produces additional charts — the D-9 (Navamsha, dividing each sign into ninths) is the most important secondary chart and reveals the soul's deeper nature and marriage. The D-2 (Hora) shows wealth; the D-10 (Dashamsha) shows career.</p>
+        <p><em>Varga</em> means "category" or "division" in Sanskrit.</p>
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      Vedic Astrology Reference · Jyotish terms explained in plain English · <a href="index.html" style="color:var(--color-foreground-brand-subtle);">Back to birth chart</a>
+    </footer>
+
+  </div><!-- /wrap -->
+</body>
+</html>
