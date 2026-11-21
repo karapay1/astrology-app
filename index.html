@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vedic Birth Chart</title>
+  <title>Vedic Astrology Birth Chart</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    // Motion on unless the visitor prefers reduced motion. Set before first paint so nothing flashes.
+    if (window.matchMedia && !matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("motion");
+  </script>
   <style>
+    /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V5 — overview rebuilt as full-bleed chapter bands from Figma 361:2157; all copy from chart data */
     :root {
       /* Foreground */
-      --color-foreground-faint:         #706E68;
+      --color-foreground-faint:         #6A6862;  /* 4.52:1 on background-subtle */
       --color-foreground-subtle:        #6F4925;
       --color-foreground-default:       #663100;
       --color-foreground-intense:       #411F00;
       --color-foreground-brand-default: #812781;
       --color-foreground-brand-subtle:  #0774D6;
       --color-foreground-inverse:       #F2EFEA;
+      --color-foreground-on-bright:     #1F0F00;  /* text on Aries & Leo red — 5.08:1 / 4.70:1 */
+      --color-foreground-on-color:      #FFFFFF;  /* text on saturated sign colours (≥4.5:1 on Aquarius, Cancer, Capricorn, Virgo, Scorpio, Sagittarius) */
 
       /* Background */
       --color-background-default:       #F2EFEA;
@@ -25,6 +32,7 @@
       --color-background-brand-subtle:  #FFCC02;
       --color-background-brand-default: #B2C656;
       --color-background-brand-intense: #FF3303;
+      --color-background-brand-accent:  #812781;  /* themes band — same purple as foreground-brand-default */
 
       /* Border */
       --color-border-default:           #D2CDC5;
@@ -91,6 +99,12 @@
       --spacing-11: 4rem;     /* 64px */
       --spacing-12: 5rem;     /* 80px */
 
+      /* Motion */
+      --motion-ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+      --motion-reveal: 700ms;
+      --motion-stagger: 80ms;
+      --shadow-band: rgba(65, 31, 0, 0.22);   /* foreground-intense at 22% — edge of a band sliding over the last */
+
       /* Border radius */
       --border-radius-sm: 0.125rem;  /* 2px */
       --border-radius-md: 0.25rem;   /* 4px */
@@ -113,6 +127,7 @@
       --text-size-3xl: 3rem;       /* 48px */
       --text-size-4xl: 3.75rem;    /* 60px */
       --text-size-5xl: 4.5rem;     /* 72px */
+      --text-size-name: 8.75rem;   /* 140px — the person's name in the hero only */
     }
     /* ─── TEXT STYLES ─── */
     .text-display {
@@ -191,7 +206,17 @@
     ul, li { line-height: var(--text-line-height-spacious); }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; overflow-x: clip; }
+    /* Focus rings — shown only while navigating by keyboard (html.kbd is set by script on keydown) */
+    :focus { outline: none; }
+    html.kbd :focus-visible { outline: 2px solid var(--color-foreground-intense); outline-offset: 2px; }
+    html.kbd .tab:focus-visible, html.kbd .pbtn:focus-visible, html.kbd .chart .cell:focus-visible { outline-offset: -3px; }
+    /* Inline text link used inside cards */
+    .text-link { font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-med);
+      color: var(--color-foreground-intense); text-decoration: underline; text-underline-offset: 3px;
+      background: none; border: none; padding: 0; cursor: pointer; }
+    .text-link:hover { color: var(--color-foreground-default); }
+    .summary-card .sc-link { margin-bottom: var(--spacing-4); align-self: flex-start; }
     body {
       background: var(--bg);
       color: var(--text);
@@ -200,7 +225,7 @@
       line-height: var(--text-line-height-relaxed);
       -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 0 var(--spacing-12); }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0; }
     h1 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); letter-spacing: var(--text-letter-spacing-tight); font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); }
     h2 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0 0 var(--spacing-3); }
     h3 { font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: var(--text-line-height-tight); color: var(--color-foreground-default); margin: 0; }
@@ -215,112 +240,269 @@
          • 1080px — desktop → tablet: two-column layouts collapse to
                     one column, the Compatibility tab collapses to its
                     icon, and page gutters appear.
-         • 720px  — tablet → mobile: smallest tier (tighter padding,
+         • 768px  — tablet → mobile: smallest tier (tighter padding,
                     single-column grids, stacked cards).
        (CSS custom properties can't be used inside @media, so these
        are a documented convention, not variables.)
     ──────────────────────────────────────────────────────────── */
-    @media (max-width: 720px) { .inner { padding: 0 18px; } }
+    @media (max-width: 768px) { .inner { padding: 0 18px; } }
     /* Keep a 24px edge gutter on all page content below the max content width */
     @media (max-width: 1080px) {
       .wrap { padding-left: var(--spacing-6); padding-right: var(--spacing-6); }
       .site-header { padding-left: 0; padding-right: 0; }
     }
 
-    /* ─── SITE HEADER: logo + picker row ─── */
+    /* ─── TOP BAR: logo + tabs in one row (Figma 361:2157) ─── */
+    .topbar {
+      display: flex; align-items: stretch; gap: var(--spacing-6);
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--color-border-default);
+      margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);          /* full bleed */
+      padding-left: max(var(--spacing-6), calc(50vw - var(--maxw) / 2));
+      padding-right: max(var(--spacing-6), calc(50vw - var(--maxw) / 2));
+    }
     .site-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: var(--spacing-9) var(--spacing-7) 0;   /* 48px top · 32px sides */
-      margin-bottom: var(--spacing-8);                 /* 40px gap down to nav */
-      background: var(--bg);
+      flex: none; padding: 0; background: var(--bg);
     }
     .site-logo {
       font-family: var(--font-display);
-      font-size: var(--text-size-md);                  /* 20px */
-      font-weight: var(--text-weight-xbold);           /* 800 */
-      line-height: var(--text-line-height-compressed); /* 1.1 */
+      font-size: var(--text-size-md);                  /* 20px · heading-md */
+      font-weight: var(--text-weight-xbold);
+      line-height: var(--text-line-height-compressed);
       color: var(--color-foreground-intense);
-      text-decoration: none;
+      text-decoration: none; white-space: nowrap;
     }
-    .picker { display: flex; align-items: center; gap: var(--spacing-3); }  /* 12px */
+    .picker { display: flex; align-items: center; gap: var(--spacing-3); }
     .picker label {
       font-family: var(--font-base);
-      font-size: 12px; font-weight: var(--text-weight-med);
+      font-size: var(--text-size-xxs); font-weight: var(--text-weight-med);
       line-height: var(--text-line-height-normal);
-      color: var(--color-foreground-faint);
-      text-transform: none; letter-spacing: normal;
+      color: var(--color-foreground-default);
     }
     .picker select {
       -webkit-appearance: none; appearance: none;
       background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' stroke='%23663100' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right var(--spacing-4) center;
       color: var(--color-foreground-default);
-      border: 1px solid var(--color-border-default); border-radius: 0;
-      padding: var(--spacing-2) calc(var(--spacing-4) + 20px) var(--spacing-2) var(--spacing-4);  /* room for chevron */
-      min-width: 240px;
+      border: 1px solid var(--color-border-intense); border-radius: 0;
+      padding: var(--spacing-2) calc(var(--spacing-4) + 20px) var(--spacing-2) var(--spacing-4);
+      min-width: 200px;
       font-size: var(--text-size-xs);                  /* 14px */
       font-family: var(--font-base); cursor: pointer;
       font-weight: var(--text-weight-semi);
       line-height: var(--text-line-height-normal);
     }
-    .picker select:focus { outline: none; border-color: var(--color-foreground-default); }
-    @media (max-width: 720px) { .site-header { padding: 28px 0 0; } }
+    .picker select:focus { border-color: var(--color-foreground-default); }
 
-    /* ─── HERO ─── */
+    /* ─── FULL-BLEED BANDS ─── break out of .wrap to the viewport edges */
+    .bleed { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+    .band-inner { max-width: var(--maxw); margin: 0 auto; }
+    @media (max-width: 1080px) { .band-inner { padding-left: var(--spacing-6); padding-right: var(--spacing-6); } }
+    @media (max-width: 768px)  { .band-inner { padding-left: var(--spacing-5); padding-right: var(--spacing-5); } }
+
+    /* ─── HERO ─── yellow band: name + picker, birth line, story, three signs, chapter index */
     header.hero {
-      background: var(--bg);
+      background: var(--color-background-brand-subtle);
+      padding: var(--spacing-9) 0 var(--spacing-10);   /* 48 · 56 */
     }
-    .hero-main {
-      display: flex;
-      align-items: stretch;
-      margin-bottom: var(--spacing-7);
-      /* full content width — aligns with the stats boxes below & the tab bar above */
-    }
-    .hero-copy {
-      flex: 1 1 0; min-width: 0;
-      background: var(--color-background-brand-subtle);   /* #ffcc02 */
-      display: flex; flex-direction: column; justify-content: space-between;
-      gap: var(--spacing-6);
-      padding: 60px var(--spacing-6) var(--spacing-4);    /* 60 · 24 · 16 */
-    }
-    .hero-info { display: flex; flex-direction: column; gap: var(--spacing-2); }
+    .hero-namerow { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--spacing-4) var(--spacing-6); flex-wrap: wrap; }
     header.hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(44px, 6vw, 72px);                  /* --text-size-5xl */
+      font-size: var(--text-size-name);                 /* the one new size: 140px */
       font-weight: var(--text-weight-xbold);
-      line-height: var(--text-line-height-compressed);    /* 1.1 */
-      letter-spacing: -1px;
+      line-height: 1; letter-spacing: var(--text-letter-spacing-compressed);
       color: var(--color-foreground-intense);
-      margin: 0;
+      margin: 0; min-width: 0; overflow-wrap: anywhere;
     }
+    .hero-namerow .picker { padding-top: var(--spacing-4); }
     .hero-birth {
       font-family: var(--font-base);
-      font-size: var(--text-size-md);                     /* 20px */
+      font-size: var(--text-size-lg);                   /* 24px */
       font-weight: var(--text-weight-reg);
-      line-height: 1.3;
-      color: var(--color-foreground-subtle);
+      line-height: var(--text-line-height-tight);
+      color: var(--color-foreground-default);
+      margin-top: var(--spacing-4);
     }
     .hero-system {
       font-family: var(--font-base);
-      font-size: 10px;
-      font-weight: var(--text-weight-reg);
+      font-size: var(--text-size-xxs);                  /* 12px · body-sm */
       line-height: var(--text-line-height-normal);
-      color: var(--color-foreground-subtle);
+      color: var(--color-foreground-default);
+      margin-top: var(--spacing-2);
     }
-    .hero-image-cell {
-      flex: 1 1 0; min-width: 0;
-      overflow: hidden;
-      align-self: stretch;
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+      gap: var(--spacing-8); align-items: start;
+      margin-top: var(--spacing-9);
     }
-    .hero-image-cell img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+    .hero-story p {
+      font-family: var(--font-base); font-size: var(--text-size-lg);   /* 24px */
+      line-height: var(--text-line-height-cozy); font-weight: var(--text-weight-reg);
+      color: var(--color-foreground-intense); margin: 0 0 var(--spacing-5);
     }
+    .hero-story p:last-child { margin-bottom: 0; }
+    .hero-signs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--spacing-3); }
+    .hero-signs li { line-height: normal; }
+    .hero-sign {
+      display: flex; align-items: center; gap: var(--spacing-5);
+      border: 1px solid var(--color-foreground-intense);
+      text-decoration: none; color: var(--color-foreground-intense);
+      background: var(--color-background-brand-subtle);
+      transition: background .12s;
+    }
+    .hero-sign:hover { background: var(--color-background-default); }
+    .hero-sign .tile { flex: none; width: 120px; height: 120px; background: var(--band); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-sign .tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .hero-sign .cap { display: flex; flex-direction: column; gap: var(--spacing-1); min-width: 0; }
+    .hero-sign .role { font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: var(--text-line-height-tight); color: var(--color-foreground-default); }
+    .hero-sign .sign { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); line-height: var(--text-line-height-tight); overflow-wrap: anywhere; }
+    .chapter-index { margin-top: var(--spacing-9); border-top: 2px solid var(--color-foreground-intense); }
+    .chapter-index ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .chapter-index li { line-height: normal; }
+    .chapter-index a {
+      display: flex; flex-direction: column; gap: var(--spacing-1);
+      padding: var(--spacing-4) var(--spacing-4) 0 0;
+      text-decoration: none; color: var(--color-foreground-intense);
+      font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-med); line-height: var(--text-line-height-normal);
+      white-space: nowrap;
+    }
+    .chapter-index a .n { font-size: var(--text-size-xxs); font-weight: var(--text-weight-reg); color: var(--color-foreground-default); }
+    .chapter-index a:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+    /* Inner tabs: compact hero — name, picker and birth line only */
+    body:not([data-tab="overview"]) .hero-body { display: none; }
+    body:not([data-tab="overview"]) header.hero { padding: var(--spacing-8) 0; margin-bottom: var(--spacing-9); }
+    body:not([data-tab="overview"]) header.hero h1 { font-size: var(--text-size-5xl); }
     @media (max-width: 1080px) {
-      .hero-main { flex-direction: column; }
-      .hero-copy { padding: 40px 24px 24px; }
-      .hero-image-cell { width: 100%; min-height: 220px; }
+      header.hero h1 { font-size: var(--text-size-5xl); }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-story p { font-size: var(--text-size-md); }
+      .chapter-index ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
-    @media (max-width: 720px) {
-      .hero-copy { padding: 28px 18px 20px; }
+    @media (max-width: 768px) {
+      header.hero { padding: var(--spacing-7) 0 var(--spacing-8); }
+      header.hero h1, body:not([data-tab="overview"]) header.hero h1 { font-size: var(--text-size-2xl); }
+      .hero-birth { font-size: var(--text-size-md); }
+      .hero-story p { font-size: var(--text-size-sm); line-height: var(--text-line-height-normal); }
+      .hero-sign .tile { width: 88px; height: 88px; }
+      .hero-sign .sign { font-size: var(--text-size-lg); }
+      .chapter-index ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* ─── OVERVIEW BANDS ─── 01 Rising · 02 Moon · 03 Sun · 04 Birth star · 05 Themes · 06 Chart · Keep reading */
+    .band { background: var(--band, var(--color-background-default)); color: var(--color-foreground-intense); padding: var(--spacing-12) 0; scroll-margin-top: 60px; }
+    .band.ink-light { color: var(--color-foreground-on-color); }
+    .band.paper { background: var(--color-background-subtle); }
+    .band.plain { background: var(--color-background-default); }
+    .band.themes { background: var(--color-background-brand-accent); color: var(--color-foreground-on-color); }
+    .band.keep { background: var(--color-foreground-intense); color: var(--color-foreground-inverse); }
+    .band .eyebrow { font-family: var(--font-display); font-weight: var(--text-weight-bold); font-size: var(--text-size-sm); line-height: var(--text-line-height-compressed); color: inherit; margin: 0 0 var(--spacing-3); }
+    .band .band-title {
+      font-family: var(--font-display); font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-5xl); line-height: var(--text-line-height-compressed);
+      letter-spacing: var(--text-letter-spacing-tight);
+      color: inherit; margin: 0; overflow-wrap: anywhere; min-width: 0;
+    }
+    .band .band-sub { font-family: var(--font-base); font-weight: var(--text-weight-med); font-size: var(--text-size-md); line-height: var(--text-line-height-tight); color: inherit; margin: var(--spacing-3) 0 0; }
+    .band .motto { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: var(--text-line-height-tight); color: inherit; margin: var(--spacing-6) 0 var(--spacing-5); }
+    .band .band-body p { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: var(--text-line-height-normal); color: inherit; margin: 0 0 var(--spacing-4); max-width: 620px; }
+    .band .band-body p:last-child { margin-bottom: 0; }
+    .band .status-badge-wrap { margin-top: var(--spacing-4); }
+    .band .band-link { display: inline-block; margin-top: var(--spacing-6); color: inherit; font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-semi); text-decoration: underline; text-underline-offset: 3px; }
+    .band .band-link:hover { text-decoration-thickness: 2px; }
+    html.kbd .band a:focus-visible, html.kbd .hero a:focus-visible { outline-color: currentColor; }
+
+    /* Sign bands: text + art, alternating sides */
+    .sign-band .band-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: var(--spacing-9); align-items: center; }
+    .sign-band.art-left .band-inner { grid-template-columns: minmax(0, 400px) minmax(0, 1fr); }
+    .sign-band.art-left .band-art { order: -1; }
+    .band-art { display: flex; align-items: center; justify-content: center; background: var(--band); }
+    .band-art img { width: 100%; max-width: 400px; height: auto; display: block; }
+    /* Aries & Leo: foreground-intense only reaches ~4:1 on the red, so these bands use a deeper ink */
+    .band.ink-deep { color: var(--color-foreground-on-bright); }
+    /* Status badge on a coloured band: solid chip, no border */
+    .band .status-badge {
+      display: inline-flex; align-items: center; gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-3);
+      border: none;
+      color: var(--color-foreground-on-color);
+      background: var(--color-foreground-default);
+      font-family: var(--font-base); font-weight: var(--text-weight-semi);
+      font-size: var(--text-size-xxs); line-height: 1.5;
+      cursor: default; -webkit-user-select: none; user-select: none;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .band .status-badge-wrap:hover .status-badge,
+    .band .status-badge-wrap:focus-within .status-badge {
+      background: var(--color-foreground-intense);
+      color: var(--color-foreground-on-color);
+    }
+
+    /* Birth star */
+    .nk-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-9); margin-top: var(--spacing-7); align-items: start; }
+    .nk-grid .motto { margin-top: 0; }
+    .nk-facts { display: flex; flex-wrap: wrap; gap: var(--spacing-5) var(--spacing-8); margin: var(--spacing-6) 0 0; }
+    .nk-facts div { display: flex; flex-direction: column; gap: var(--spacing-1); }
+    .nk-facts dt { font-family: var(--font-base); font-size: var(--text-size-xs); line-height: var(--text-line-height-normal); color: var(--color-foreground-default); }
+    .nk-facts dd { margin: 0; font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: var(--text-line-height-tight); }
+
+    /* Signature themes */
+    .theme-rows { list-style: none; margin: var(--spacing-8) 0 0; padding: 0; border-top: 1px solid currentColor; }
+    .theme-rows li {
+      display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-6);
+      padding: var(--spacing-6) 0; border-bottom: 1px solid currentColor; line-height: normal;
+    }
+    .theme-rows .n { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); line-height: var(--text-line-height-tight); }
+    .theme-rows h3 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: var(--text-line-height-tight); color: inherit; margin: 0; }
+    .theme-rows p { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: var(--text-line-height-normal); color: inherit; margin: 0; }
+
+    /* Your chart */
+    .chart-band .band-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: var(--spacing-9); align-items: center; }
+    .chart-band .band-body { margin-top: var(--spacing-5); }
+    .chart-legend { list-style: none; margin: var(--spacing-5) 0 0; padding: 0; }
+    .chart-legend li { font-family: var(--font-base); font-size: var(--text-size-xs); line-height: var(--text-line-height-loose); color: var(--color-foreground-default); }
+    .chart-legend a { color: var(--color-foreground-intense); font-weight: var(--text-weight-semi); text-underline-offset: 3px; }
+    .chart-hint { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xxs); line-height: var(--text-line-height-normal); color: var(--color-foreground-faint); margin: var(--spacing-2) 0 0; }
+    a.pchip { text-decoration: none; cursor: pointer; }
+    a.pchip:hover { background: var(--color-background-brand-subtle); }
+    .cell.has-planets { cursor: pointer; }
+    .cell.has-planets:hover { background: var(--color-background-subtle); }
+
+    /* Keep reading */
+    .keep .eyebrow { font-size: var(--text-size-md); font-weight: var(--text-weight-xbold); margin-bottom: var(--spacing-6); }
+    .keep-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-border-intense); }
+    .keep-rows li { line-height: normal; border-bottom: 1px solid var(--color-border-intense); }
+    .keep-rows a {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 32px; gap: var(--spacing-6); align-items: center;
+      padding: var(--spacing-5) 0; color: inherit; text-decoration: none;
+    }
+    .keep-rows .k { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-3xl); line-height: var(--text-line-height-tight); white-space: nowrap; }
+    .keep-rows .d { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-md); line-height: var(--text-line-height-tight); }
+    .keep-rows .arr { justify-self: end; transition: transform .15s; }
+    .keep-rows a:hover .arr { transform: translateX(4px); }
+    .keep-rows a:hover .k { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+
+    @media (max-width: 1080px) {
+      .band { padding: var(--spacing-10) 0; }
+      .band .band-title { font-size: var(--text-size-3xl); }
+      .sign-band .band-inner, .sign-band.art-left .band-inner, .chart-band .band-inner, .nk-grid { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-7); }
+      .sign-band.art-left .band-art { order: 0; }
+      .band-art img { max-width: 280px; }
+      .theme-rows li { grid-template-columns: 56px minmax(0, 1fr); }
+      .theme-rows li p { grid-column: 2; }
+      .keep-rows a { grid-template-columns: minmax(0, 1fr) 32px; }
+      .keep-rows .d { grid-column: 1; grid-row: 2; font-size: var(--text-size-sm); }
+      .keep-rows .arr { grid-column: 2; grid-row: 1 / 3; }
+    }
+    @media (max-width: 768px) {
+      .band { padding: var(--spacing-9) 0; }
+      .band .band-title { font-size: var(--text-size-2xl); }
+      .band .band-sub { font-size: var(--text-size-sm); }
+      .band-art img { max-width: 200px; }
+      .theme-rows li { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-2); }
+      .theme-rows li p { grid-column: 1; }
+      .keep-rows .k { font-size: var(--text-size-xl); }
     }
 
     /* ─── STATS ─── dramatic scale */
@@ -361,9 +543,7 @@
     /* ─── STICKY NAV ─── sits flush above the hero ─── */
     nav.tabs {
       display: flex; align-items: stretch; flex-wrap: nowrap; gap: 0;
-      border-top: 1px solid var(--color-border-default);
-      border-bottom: 1px solid var(--color-border-default);
-      position: sticky; top: 0; z-index: 50;
+      flex: 1 1 auto; min-width: 0;
       background: var(--bg);
       padding: 0;
       min-height: 60px;
@@ -379,7 +559,7 @@
       font-family: var(--font-display); font-weight: var(--text-weight-med);
       font-size: var(--text-size-sm);                 /* 16px */
       line-height: var(--text-line-height-normal);
-      text-transform: capitalize; letter-spacing: normal;
+      text-transform: none; letter-spacing: normal;
       padding: var(--spacing-5) var(--spacing-6);      /* 20px 24px */
       cursor: pointer; text-decoration: none;
       transition: color .12s, box-shadow .12s;
@@ -387,8 +567,9 @@
     /* Compatibility tab: icon + label; collapses to icon only on mobile */
     .tab-compat { gap: var(--spacing-2); }             /* 8px between icon and label */
     .tab-compat-icon { flex: none; width: 21px; height: 18px; display: block; }
-    @media (max-width: 1080px) { .tab-compat-label { display: none; } }
-    .tab:first-child { border-left: 1px solid var(--color-border-default); }
+    .tab-compat-label { display: none; }            /* icon only in the top bar; label returns in the mobile menu */
+    .tablist { display: contents; }                  /* tabs stay direct flex items of nav.tabs */
+    .tablist > .tab:first-child { border-left: 1px solid var(--color-border-default); }
     .tab:hover {
       color: var(--color-foreground-intense);
       outline: 3px solid var(--color-background-brand-subtle);
@@ -400,8 +581,48 @@
       border-radius: var(--border-radius-sm);          /* 2px */
       box-shadow: inset 0 0 10px 10px var(--color-background-brand-subtle);
     }
-    .tab:last-child { margin-left: auto; border: 1px solid var(--color-border-default); }
-    @media (max-width: 720px) { nav.tabs { padding: 0; } .tab { padding: 14px 12px; font-size: var(--text-size-xs); } }
+    .tab-compat { margin-left: auto; border: 1px solid var(--color-border-default); }
+    /* Edge fade when the tab row overflows (tablet widths). Classes set by JS. */
+    @media (min-width: 769px) {
+      nav.tabs.fade-right { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 64px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 64px), transparent); }
+      nav.tabs.fade-left { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 64px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 64px), transparent); }
+      nav.tabs.fade-left.fade-right { -webkit-mask-image: linear-gradient(to right, transparent, #000 64px, #000 calc(100% - 64px), transparent); mask-image: linear-gradient(to right, transparent, #000 64px, #000 calc(100% - 64px), transparent); }
+    }
+    /* Hamburger + full-page menu (mobile only) */
+    .menu-toggle {
+      display: none; align-items: center; justify-content: center;
+      width: 44px; height: 44px; padding: 0; flex: none;
+      background: none; border: 1px solid var(--color-border-default);
+      color: var(--color-foreground-intense); cursor: pointer;
+    }
+    .menu-head { display: none; }
+    @media (max-width: 768px) {
+      .topbar { padding-top: var(--spacing-3); padding-bottom: var(--spacing-3); }
+      .site-header { flex: 1 1 auto; gap: var(--spacing-4); }
+      .site-header .site-logo { flex: 1 1 0; min-width: 0; white-space: normal; }
+      .menu-toggle { display: flex; }
+      .hero-namerow .picker { flex: 1 1 100%; padding-top: 0; }
+      .picker select { flex: 1 1 auto; min-width: 0; width: 100%; }
+
+      nav.tabs { display: none; }
+      body.menu-open { overflow: hidden; }
+      body.menu-open nav.tabs {
+        display: flex; flex-direction: column;
+        position: fixed; inset: 0; z-index: 100;
+        min-height: 0; overflow-y: auto; border: none;
+        padding: 28px var(--spacing-6) var(--spacing-6);
+        background: var(--bg);
+      }
+      .menu-head { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-4); margin-bottom: var(--spacing-7); }
+      nav.tabs .tab, nav.tabs .tablist > .tab:first-child, nav.tabs .tab-compat {
+        justify-content: flex-start; margin: 0;
+        border: none; border-bottom: 1px solid var(--color-border-default);
+        padding: var(--spacing-5) var(--spacing-4);
+        font-size: var(--text-size-lg);
+      }
+      nav.tabs .tablist > .tab:first-child { border-top: 1px solid var(--color-border-default); }
+      nav.tabs .tab-compat-label { display: inline; }
+    }
 
     .panel { display: none; }
     .panel.active { display: block; }
@@ -435,7 +656,7 @@
     .cell .signname .glyph { font-family: var(--font-symbols); font-weight: var(--text-weight-reg); }
     .cell .asc-tag {
       font-family: var(--font-base); font-weight: var(--text-weight-reg);
-      font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: .5px;
+      font-size: var(--text-size-xxs);
       color: var(--color-foreground-faint); margin-top: -4px;
     }
     .cell .planets { display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; }
@@ -535,7 +756,7 @@
     }
     .persona-card a { color: var(--color-foreground-intense) !important; }
     .persona-card .dd p:last-child { margin-bottom: 0; }
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       .persona-card { flex-direction: column-reverse; }
       .persona-image { flex: none; width: 100%; height: 220px; padding: 24px; }
       .persona-body { padding: 28px 22px; }
@@ -616,12 +837,15 @@
     .pd-subhead { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-md); line-height: 1.1; color: var(--color-foreground-subtle); margin: 0; }
     .pd-body { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
     .pd-badge-wrap { align-self: flex-start; }
+    .pd-context { display: flex; flex-direction: column; gap: var(--spacing-2); }
+    .pd-context .pd-subhead, .pd-context .pd-body { font-size: var(--text-size-xs); }
+    .pd-context .pd-subhead { line-height: var(--text-line-height-normal); }
 
     .pd-divider { border: none; border-top: 1px solid var(--color-border-default); margin: 0; height: 0; align-self: stretch; }
     .pd-readwrap { display: flex; flex-direction: column; gap: var(--spacing-7); }
     .pd-readhead { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: 1.1; color: var(--color-foreground-intense); margin: 0; }
     .pd-readbody { display: flex; flex-direction: column; gap: var(--spacing-4); }
-    .pd-motto { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-default); margin: 0; }
+    .pd-motto { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); line-height: var(--text-line-height-tight); color: inherit; margin: var(--spacing-6) 0 var(--spacing-5); }   /* callout — matches .band .motto */
 
     .pd-imagecol { flex: 0 0 397px; align-self: stretch; display: flex; flex-direction: column; }
     @media (max-width: 1080px){ .pd-imagecol { flex-basis: 40%; } }
@@ -657,7 +881,7 @@
     .pd-titlepill-text { font-family: var(--font-display); font-weight: var(--text-weight-reg); font-size: var(--text-size-2xl); letter-spacing: -0.4px; line-height: 1.1; color: var(--color-foreground-intense); }
 
     .pd-infogrid { display: flex; gap: var(--spacing-6); background: var(--color-background-subtle); padding: 16px; }
-    @media (max-width: 720px){ .pd-infogrid { flex-direction: column; gap: 16px; } }
+    @media (max-width: 768px){ .pd-infogrid { flex-direction: column; gap: 16px; } }
     .pd-infocol { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 4px; }
     .pd-infolabel { font-family: var(--font-base); font-weight: var(--text-weight-semi); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-subtle); }
     .pd-infodiv { height: 1px; background: var(--color-border-default); width: 100%; }
@@ -748,7 +972,7 @@
 
     .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; margin-bottom: 8px;
       border-top: 1px solid var(--stroke); }
-    @media (max-width: 720px){ .facts { grid-template-columns: 1fr; } }
+    @media (max-width: 768px){ .facts { grid-template-columns: 1fr; } }
     .fact { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--stroke-soft); padding: 9px 0; font-size: 13px; }
     .fact .k { color: var(--text-3); font-weight: var(--text-weight-reg); }
     .fact .val { color: var(--text); text-align: right; font-weight: var(--text-weight-med); }
@@ -806,7 +1030,7 @@
     /* ─── TABLES ─── */
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--stroke-soft); }
-    th { color: var(--text-3); font-weight: var(--text-weight-bold); font-size: 9px; text-transform: uppercase; letter-spacing: 2px; }
+    th { color: var(--text-3); font-weight: var(--text-weight-bold); font-size: 9px; }
     td.center, th.center { text-align: center; }
     tr:hover td { background: var(--bg-elev); }
 
@@ -836,7 +1060,7 @@
 
     /* clickable chart cells (houses page) */
     .chart .cell.clickable { cursor: pointer; }
-    .chart .cell.clickable:hover, .chart .cell.clickable:focus-visible { background: var(--color-background-subtle); outline: none; }
+    .chart .cell.clickable:hover, .chart .cell.clickable:focus-visible { background: var(--color-background-subtle); }
 
     /* house translation cards */
     .hgroup { margin-bottom: var(--spacing-8); }
@@ -861,7 +1085,7 @@
     .hcard-desc { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); margin: 0; }
     .hcard-image { flex: 0 0 320px; align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 320px; }
     .hcard-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    @media (max-width: 720px){ .hcard { flex-direction: column-reverse; } .hcard-image { flex: none; width: 100%; height: 180px; min-height: 0; } .hcard-body { padding: var(--spacing-6); } }
+    @media (max-width: 768px){ .hcard { flex-direction: column-reverse; } .hcard-image { flex: none; width: 100%; height: 180px; min-height: 0; } .hcard-body { padding: var(--spacing-6); } }
 
     /* ─── ENERGY MAP (ashtakavarga) ─── */
     /* Two-column layout: score table on the left, energy-map grid on the right */
@@ -920,7 +1144,7 @@
     .emap-mean-title { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); line-height: 1.1; color: var(--color-foreground-intense); margin: var(--spacing-7) 0 var(--spacing-6); }
     .emap-takeaways { display: flex; flex-direction: column; gap: var(--spacing-7); border: 1px solid var(--color-border-default); padding: 48px 64px; }
     .emap-takeaways p { margin: 0; font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-sm); line-height: 1.5; color: var(--color-foreground-subtle); }
-    @media (max-width: 720px) { .emap-takeaways { padding: var(--spacing-6); } }
+    @media (max-width: 768px) { .emap-takeaways { padding: var(--spacing-6); } }
 
     /* ─── PANCHANGA (birth almanac) ─── */
     /* Summary banner: birth date/time on the left, sunrise/sunset on the right */
@@ -972,7 +1196,17 @@
     .tab-intro p { color: var(--text-2); font-size: 13.5px; margin: 0 0 10px; font-weight: var(--text-weight-lt); }
     .tab-intro p:last-child { margin-bottom: 0; }
 
-    .footer-note { margin: var(--spacing-8) var(--spacing-7) 0; padding-top: var(--spacing-5); border-top: 1px solid var(--stroke); color: var(--text-3); font-size: 12.5px; font-weight: var(--text-weight-lt); }
+    .footer-note {
+      position: relative; z-index: 1; background: var(--bg);          /* sits above the stacked hero */
+      margin: var(--spacing-8) calc(50% - 50vw) 0;
+      padding: var(--spacing-5) max(var(--spacing-6), calc(50vw - var(--maxw) / 2)) var(--spacing-12);
+      color: var(--text-3); font-size: 12.5px; font-weight: var(--text-weight-lt);
+    }
+    .footer-note::before { content: ""; display: block; height: 1px; background: var(--stroke); margin-bottom: var(--spacing-5); }
+    body[data-tab="overview"] .footer-note { margin-top: 0; }
+    body[data-tab="overview"] .footer-note::before { display: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: var(--spacing-2) var(--spacing-6); margin-top: var(--spacing-4); }
+    .footer-links .text-link { font-size: inherit; white-space: nowrap; }
     .tab-sub { color: var(--text-3); font-size: var(--text-size-xs); margin: -6px 0 24px; font-weight: var(--text-weight-lt); }
 
     /* ─── OVERVIEW PERSONA accent strip between header and stats ─── */
@@ -985,77 +1219,158 @@
       border-bottom: 2px solid var(--text);
       position: sticky; top: 0; z-index: 50;
     }
+
+    /* Planet picker dropdown — replaces the planet tab row on mobile */
+    .planet-select {
+      display: none; width: 100%;
+      -webkit-appearance: none; appearance: none;
+      background: var(--color-background-default) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' stroke='%23663100' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right var(--spacing-5) center;
+      border: 1px solid var(--color-border-default); border-radius: 0;
+      padding: var(--spacing-4) calc(var(--spacing-5) + 20px) var(--spacing-4) var(--spacing-5);
+      font-family: var(--font-display); font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-md); line-height: 1.1;
+      color: var(--color-foreground-intense); cursor: pointer;
+    }
+    .planet-select:focus { border-color: var(--color-foreground-default); }
+
+
+    /* ─── MOTION ───────────────────────────────────────────────
+       All of it is gated on html.motion (set in <head> only when the
+       visitor hasn't asked for reduced motion), and every hidden state
+       is applied to elements JS has tagged — if the script fails,
+       nothing stays invisible.
+         1. Stacking: hero + overview bands are sticky; each band slides
+            over the one before. JS sets --stick per band so tall bands
+            scroll to their bottom edge before they pin.
+         2. Reveal: tagged text and art fade up as they enter the viewport,
+            staggered within each batch.
+         3. Scroll-linked (progressive): sign art drifts as it passes, and a
+            reading-progress hairline runs under the top bar on Overview.
+    ──────────────────────────────────────────────────────────── */
+    html.motion body[data-tab="overview"] header.hero.stack,
+    html.motion .band.stack { position: sticky; top: var(--stick, 0px); }
+    html.motion .band.stack { box-shadow: 0 -12px 32px -12px var(--shadow-band); }
+    .band-anchor { height: 0; }
+
+    html.motion [data-reveal] {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity var(--motion-reveal) var(--motion-ease-out), transform var(--motion-reveal) var(--motion-ease-out);
+    }
+    html.motion [data-reveal="art"] { transform: translateY(32px) scale(0.94); }
+    html.motion [data-reveal].in { opacity: 1; transform: none; }
+
+    html.motion .panel.active { animation: panel-in 320ms var(--motion-ease-out); }
+    @keyframes panel-in { from { opacity: 0; } }
+
+    @supports (animation-timeline: view()) {
+      html.motion .band-art img { animation: art-drift linear both; animation-timeline: view(); }
+      @keyframes art-drift {
+        from { transform: translateY(40px) rotate(-5deg); }
+        to   { transform: translateY(-40px) rotate(5deg); }
+      }
+      html.motion body[data-tab="overview"] .topbar::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+        background: var(--color-foreground-intense);
+        transform-origin: left center; transform: scaleX(0);
+        animation: read-progress linear both; animation-timeline: scroll(root);
+      }
+      @keyframes read-progress { to { transform: scaleX(1); } }
+    }
+
+    /* ─── MOBILE (≤768px) ─── */
+    @media (max-width: 768px) {
+      /* overview stat squares stack into one column */
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--stroke); }
+      .stat:last-child { border-bottom: none; }
+
+      /* planets: dropdown instead of tabs, text full width without art */
+      .planet-nav { display: none; }
+      .planet-select { display: block; }
+      .pd-imagecol { display: none; }
+      .pd-glyph { font-size: var(--text-size-2xl); }
+      .pd-in-text { font-size: var(--text-size-xl); }
+
+      /* everything set at --text-size-2xl steps down to --text-size-xl */
+      h1, h2, .section-titles h2, .text-heading-2xl, .sig-title,
+      .persona-card .detail-head .title,
+      .pd-pill-name, .pd-titlepill-text, .pd-acc-summary::after,
+      .hcard-title,
+      .almanac-suntimes .suntime .t, .almanac-card .ac-title { font-size: var(--text-size-xl); }
+    }
   </style>
 </head>
-<body>
+<body data-tab="overview">
   <div class="wrap">
-    <div class="site-header">
-      <a class="site-logo" href="#">Vedic Astrology Birthchart</a>
-      <div class="picker" id="picker" style="display:none">
-        <label for="chartsel">Viewing</label>
-        <select id="chartsel"></select>
+    <div class="topbar">
+      <div class="site-header">
+        <a class="site-logo" href="#">Vedic Astrology Birth Chart</a>
+        <button class="menu-toggle" id="menu-open" type="button" aria-label="Open menu" aria-controls="main-tabs" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+        </button>
       </div>
+
+      <nav class="tabs" id="main-tabs" aria-label="Chart sections">
+        <div class="menu-head">
+          <span class="site-logo">Vedic Astrology Birth Chart</span>
+          <button class="menu-toggle" id="menu-close" type="button" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+          </button>
+        </div>
+        <div class="tablist" role="tablist" aria-label="Chart sections">
+          <button class="tab active" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button>
+          <button class="tab" role="tab" id="tab-planets" aria-controls="panel-planets" aria-selected="false" tabindex="-1" data-tab="planets">Planets</button>
+          <button class="tab" role="tab" id="tab-houses" aria-controls="panel-houses" aria-selected="false" tabindex="-1" data-tab="houses">Houses</button>
+          <button class="tab" role="tab" id="tab-panchanga" aria-controls="panel-panchanga" aria-selected="false" tabindex="-1" data-tab="panchanga">Birth almanac</button>
+          <button class="tab" role="tab" id="tab-ashtakavarga" aria-controls="panel-ashtakavarga" aria-selected="false" tabindex="-1" data-tab="ashtakavarga">Energy map</button>
+        </div>
+        <a class="tab tab-compat" href="compatibility.html" aria-label="Compatibility">
+          <img class="tab-compat-icon" src="src/Images/Compatibility icon.svg" alt="" aria-hidden="true" />
+          <span class="tab-compat-label">Compatibility</span>
+        </a>
+      </nav>
     </div>
 
-    <nav class="tabs" id="main-tabs">
-      <button class="tab active" data-tab="overview">Overview</button>
-      <button class="tab" data-tab="planets">Planets</button>
-      <button class="tab" data-tab="houses">Houses</button>
-      <button class="tab" data-tab="panchanga">Birth almanac</button>
-      <button class="tab" data-tab="ashtakavarga">Energy map</button>
-      <a class="tab tab-compat" href="compatibility.html" aria-label="Compatibility">
-        <img class="tab-compat-icon" src="src/Images/Compatibility icon.svg" alt="" aria-hidden="true" />
-        <span class="tab-compat-label">Compatibility ↗</span>
-      </a>
-    </nav>
-
-    <header class="hero">
-      <div class="hero-main">
-        <div class="hero-copy">
-          <div class="hero-info">
-            <h1 id="title"></h1>
-            <div class="hero-birth" id="birthline"></div>
+    <header class="hero bleed stack">
+      <div class="band-inner">
+        <div class="hero-namerow">
+          <h1 id="title"></h1>
+          <div class="picker" id="picker" style="display:none">
+            <label for="chartsel">Viewing</label>
+            <select id="chartsel"></select>
           </div>
-          <div class="hero-system" id="systemline"></div>
         </div>
-        <div class="hero-image-cell">
-          <img src="src/Images/hero-image.jpg" alt="" aria-hidden="true" />
+        <div class="hero-birth" id="birthline"></div>
+        <div class="hero-system" id="systemline"></div>
+        <div class="hero-body" id="hero-body">
+          <div class="hero-grid">
+            <div class="hero-story" id="story"></div>
+            <ul class="hero-signs" id="hero-signs"></ul>
+          </div>
+          <nav class="chapter-index" aria-label="On this page">
+            <ol id="chapter-index"></ol>
+          </nav>
         </div>
       </div>
     </header>
 
-    <section class="panel active" id="panel-overview">
-      <div class="stats" id="stats"></div>
-      <div class="panel-inner">
-        <div class="persona-card" id="persona-card"></div>
-        <div class="persona-card" id="moon-portrait"></div>
-        <div class="persona-card" id="sun-portrait"></div>
-        <div class="split" style="border-top:1px solid var(--color-border-default);padding-top:var(--spacing-11)">
-          <div>
-            <h2 class="sig-title">Signature themes</h2>
-            <div class="theme-stack" id="highlights"></div>
-            <div class="theme-card" id="nakshatra-card"></div>
-          </div>
-          <div class="chart-col">
-            <div class="chart" id="chart"></div>
-            <p class="muted" style="font-size:11px;margin-top:8px" id="charthint"></p>
-          </div>
-        </div>
-      </div>
+    <section class="panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+      <div id="overview-bands"></div>
     </section>
 
-    <section class="panel" id="panel-planets">
+    <section class="panel" id="panel-planets" role="tabpanel" aria-labelledby="tab-planets">
       <div class="panel-inner">
         <div class="section-titles">
           <h2>Planets and positioning</h2>
           <p class="tab-sub">Each planet governs a different energy in your life. Click any planet below to explore what it means for you specifically.</p>
         </div>
         <div class="planet-nav" id="planet-nav"></div>
+        <select class="planet-select" id="planet-select" aria-label="Choose a planet"></select>
         <div id="planet-detail"></div>
       </div>
     </section>
 
-    <section class="panel" id="panel-houses">
+    <section class="panel" id="panel-houses" role="tabpanel" aria-labelledby="tab-houses">
       <div class="panel-inner">
         <div class="section-titles">
           <h2>The twelve houses</h2>
@@ -1070,12 +1385,12 @@
             <div class="chart" id="chart2"></div>
           </div>
         </div>
-        <h3 class="houses-subtitle houses-translation-head">House Translation</h3>
+        <h3 class="houses-subtitle houses-translation-head">House translation</h3>
         <div id="house-groups"></div>
       </div>
     </section>
 
-    <section class="panel" id="panel-panchanga">
+    <section class="panel" id="panel-panchanga" role="tabpanel" aria-labelledby="tab-panchanga">
       <div class="panel-inner">
         <div class="section-titles">
           <h2>Your birth almanac</h2>
@@ -1086,7 +1401,7 @@
       </div>
     </section>
 
-    <section class="panel" id="panel-ashtakavarga">
+    <section class="panel" id="panel-ashtakavarga" role="tabpanel" aria-labelledby="tab-ashtakavarga">
       <div class="panel-inner">
         <div class="section-titles">
           <h2>Where energy flows in your life</h2>
@@ -1375,7 +1690,13 @@
         return;
       }
 
-      // ----- Picker -----
+      // ----- Compatibility: owner view always; shared links only when ticked in share.html -----
+      var compatHref = "compatibility.html" + location.search;
+      var compatTab = document.querySelector(".tab-compat");
+      if (access.compat) compatTab.href = compatHref;
+      else compatTab.remove();
+
+      // ----- Picker: only when the link opens more than one chart -----
       var sel = byId("chartsel");
       if (allowed.length > 1) {
         allowed.forEach(function(id) {
@@ -1408,13 +1729,27 @@
           if (isAsc) cell.appendChild(el("div", "asc-tag", "Ascendant"));
 
           var pc = el("div", "planets");
-          current.planets.filter(function(p) { return p.sign === sign; }).forEach(function(p) {
+          var inSign = current.planets.filter(function(p) { return p.sign === sign; });
+          inSign.forEach(function(p) {
             var deg = p.degree ? p.degree.split("°")[0] : "";
-            var chipEl = el("span", "pchip", "<span class='abbr'>" + p.abbr + "</span> - " + deg + "°");
+            var linkMode = clickable === "planets";
+            var chipEl = el(linkMode ? "a" : "span", "pchip", "<span class='abbr'>" + p.abbr + "</span> - " + deg + "°");
             chipEl.title = p.name + " · " + p.sign + " " + p.degree + " · " + ord(p.house) + " house";
+            if (linkMode) {
+              chipEl.href = "#planets/" + p.name.toLowerCase();
+              chipEl.setAttribute("aria-label", p.name + " in " + p.sign + ", " + ord(p.house) + " house. Open in Planets");
+            }
             pc.appendChild(chipEl);
           });
           cell.appendChild(pc);
+          // Overview chart: clicking anywhere in a sign box opens its first planet
+          if (clickable === "planets" && inSign.length) {
+            cell.classList.add("has-planets");
+            cell.addEventListener("click", function(e) {
+              if (e.target.closest("a")) return;
+              location.hash = "#planets/" + inSign[0].name.toLowerCase();
+            });
+          }
 
           var houseNum = ((ZODIAC.indexOf(sign) - ascIdx + 12) % 12) + 1;
           var hn = el("div", "house-no");
@@ -1422,7 +1757,7 @@
           hn.appendChild(el("span", "lbl", "house"));
           cell.appendChild(hn);
 
-          if (clickable) {
+          if (clickable === true) {
             cell.classList.add("clickable");
             cell.setAttribute("role", "button");
             cell.setAttribute("tabindex", "0");
@@ -1512,32 +1847,29 @@
         eye.appendChild(signRow);
         cat.appendChild(eye);
 
-        // Context and role
-        var ctx = el("div", "pd-block");
-        ctx.appendChild(el("h3", "pd-subhead", "Context and role"));
-        var roleNarrative = roleToNarrative(p);
-        if (roleNarrative) ctx.appendChild(el("p", "pd-body", roleNarrative));
-        cat.appendChild(ctx);
-
-        // Placement notes + plain-English identity
-        planetContextNote(p).forEach(function(note) { cat.appendChild(el("p", "pd-body", note)); });
-        var identity = PLANET_IDENTITY[p.name];
-        if (identity) cat.appendChild(el("p", "pd-body", identity));
-
         // Dignity badge
         var digBadge = dignityBadgeEl(p.dignity);
         if (digBadge) { var badgeWrap = el("div", "pd-badge-wrap"); badgeWrap.appendChild(digBadge); cat.appendChild(badgeWrap); }
 
-        // Divider → Your reading → divider
+        // Divider → reading → divider
         var readWrap = el("div", "pd-readwrap");
         readWrap.appendChild(el("hr", "pd-divider"));
-        readWrap.appendChild(el("h2", "pd-readhead", "Your reading"));
         var readBody = el("div", "pd-readbody dd");
         if (p.motto) readBody.appendChild(el("p", "pd-motto", p.motto));
         (p.deepDive || []).forEach(function(para) { readBody.appendChild(el("p", "pd-body", para)); });
         readWrap.appendChild(readBody);
         cat.appendChild(readWrap);
         cat.appendChild(el("hr", "pd-divider"));
+
+        // Context and role — below the reading, small print
+        var ctx = el("div", "pd-context");
+        ctx.appendChild(el("h3", "pd-subhead", "Context and role"));
+        var roleNarrative = roleToNarrative(p);
+        if (roleNarrative) ctx.appendChild(el("p", "pd-body", roleNarrative));
+        planetContextNote(p).forEach(function(note) { ctx.appendChild(el("p", "pd-body", note)); });
+        var identity = PLANET_IDENTITY[p.name];
+        if (identity) ctx.appendChild(el("p", "pd-body", identity));
+        cat.appendChild(ctx);
 
         textCol.appendChild(cat);
         row.appendChild(textCol);
@@ -1639,7 +1971,7 @@
             "Together, this means your " + p.name + " shines through " + nakInfo.theme.split(",")[0] + " — the most personal layer of how this planet's energy moves through your life."
           ];
           return buildSpecAccordion({
-            label: "Birth Star",
+            label: "Birth star",
             open: true,
             titlePill: p.nakshatra,
             intro: "A birth star (nakshatra) zooms past your broad zodiac sign to reveal the precise flavor, style, and motivation behind how a planet behaves in your life. For your " + p.name + " — which represents " + planetWhat + " — sitting in the " + (isSelf ? "" : p.nakshatraLord + "-ruled star of ") + p.nakshatra + " infuses this energy with " + nakInfo.theme + ". This means the way " + p.name + " shows up for you is shaped at its core by that specific quality.",
@@ -1698,7 +2030,7 @@
             "Over time — especially in relationships and moments of self-reckoning — the " + navInfo.qual + " inner quality tends to surface more clearly, revealing a depth in your " + p.name + " that others may only glimpse.",
           ];
           return buildSpecAccordion({
-            label: "Inner Chart",
+            label: "Inner chart",
             titlePill: p.navamsa,
             intro: "Your main chart shows where a planet lives and how it acts in daily life. The navamsa — a second, deeper chart — reveals the soul-level quality that same planet carries beneath the surface. Think of it as what your " + p.name + " is working toward at its core, especially in relationship, purpose, and the private experience you rarely put into words. It grows more prominent as you grow older.",
             columns: [
@@ -1858,180 +2190,233 @@
           chart.system.ayanamsa + " · " + chart.system.houseSystem + " houses · " + chart.system.source;
         if (sel) sel.value = chart.id;
 
-        // Stats (inside #panel-overview)
+        // ----- Overview: guided story built only from the chart's own copy -----
         var moon = chart.planets.find(function(p) { return p.name === "Moon"; });
         var sun = chart.planets.find(function(p) { return p.name === "Sun"; });
-        var statsEl = byId("stats"); statsEl.innerHTML = "";
-
-        function firstSentence(text) {
-          if (!text) return "";
-          var m = text.match(/^[^.!?]+[.!?]/);
-          return m ? m[0] : text.slice(0, 120) + "…";
+        var asc = chart.ascendant;
+        var nk = chart.nakshatra;
+        function sentenceCase(t) { return t ? t.charAt(0).toUpperCase() + t.slice(1).toLowerCase() : ""; }
+        function pad2(n) { return n < 10 ? "0" + n : String(n); }
+        function signImg(sign) {
+          var art = SIGN_ART[sign]; if (!art) return null;
+          var img = document.createElement("img");
+          img.src = "src/Images/" + art.file; img.alt = ""; img.setAttribute("aria-hidden", "true");
+          return img;
         }
-        var moonMeaning = moon && moon.deepDive && moon.deepDive[0] ? firstSentence(moon.deepDive[0]) : "";
-        var sunMeaning  = sun  && sun.deepDive  && sun.deepDive[0]  ? firstSentence(sun.deepDive[0])  : "";
-        var ascMeaning  = chart.ascendant && chart.ascendant.deepDive && chart.ascendant.deepDive[0] ? firstSentence(chart.ascendant.deepDive[0]) : "";
+        // Text colour per sign band: dark ink or white, whichever passes 4.5:1.
+        // Aries and Leo pass with neither, so they get a deeper ink (--color-foreground-on-bright).
+        var LIGHT_INK = { Cancer: 1, Capricorn: 1, Virgo: 1, Scorpio: 1, Sagittarius: 1, Aquarius: 1 };
+        var DEEP_INK = { Aries: 1, Leo: 1 };
 
-        var nkCard = chart.nakshatra;
+        // Hero: story paragraphs + three sign tiles
+        var storyEl = byId("story"); storyEl.innerHTML = "";
+        var story = Array.isArray(chart.story) ? chart.story : (chart.story ? [chart.story] : []);
+        story.forEach(function(para) { storyEl.appendChild(el("p", null, para)); });
+
+        var chapters = [];
+        var signsEl = byId("hero-signs"); signsEl.innerHTML = "";
         [
-          { sign: chart.ascendant.sign, role: "Ascendant", house: null, theme: "Your Outer Lens", blurb: chart.ascendant.cardBlurb || ascMeaning, dignity: null },
-          { sign: moon ? moon.sign : "—", role: "Moon", house: moon ? moon.house : null, theme: "Emotional Inner World", blurb: (moon && moon.cardBlurb) || moonMeaning, dignity: moon ? moon.dignity : null },
-          { sign: nkCard.name, role: "Birth Star", house: null, theme: "Your Deeper Layer", blurb: nkCard.cardBlurb || nkCard.themes, dignity: null },
-          { sign: sun ? sun.sign : "—", role: "Sun", house: sun ? sun.house : null, theme: "Core Self & Vitality", blurb: (sun && sun.cardBlurb) || sunMeaning, dignity: sun ? sun.dignity : null }
-        ].forEach(function(c) {
-          var card = el("div", "stat summary-card");
-          card.appendChild(el("div", "sc-sign", c.sign));
-          var roleHtml = "<strong>" + c.role + "</strong>";
-          if (c.house) roleHtml += " (" + ord(c.house) + " House)";
-          roleHtml += " · " + c.theme;
-          card.appendChild(el("div", "sc-role", roleHtml));
-          if (c.blurb) card.appendChild(el("div", "sc-desc", c.blurb));
-          if (c.dignity) {
-            var badge = dignityBadgeEl(c.dignity);
-            if (badge) card.appendChild(badge);
+          { role: "Rising", sign: asc && asc.sign, anchor: "rising" },
+          { role: "Moon", sign: moon && moon.sign, anchor: "moon" },
+          { role: "Sun", sign: sun && sun.sign, anchor: "sun" }
+        ].forEach(function(r) {
+          if (!r.sign) return;
+          var li = document.createElement("li");
+          var a = el("a", "hero-sign"); a.href = "#overview/" + r.anchor;
+          var art = SIGN_ART[r.sign];
+          var tile = el("span", "tile");
+          if (art) { tile.style.setProperty("--band", art.color); tile.appendChild(signImg(r.sign)); }
+          a.appendChild(tile);
+          var cap = el("span", "cap");
+          cap.appendChild(el("span", "role", r.role));
+          cap.appendChild(el("span", "sign", r.sign));
+          a.appendChild(cap);
+          li.appendChild(a); signsEl.appendChild(li);
+        });
+
+        var bandsEl = byId("overview-bands"); bandsEl.innerHTML = "";
+        function band(cls, anchor, eyebrowText) {
+          var mark = el("div", "band-anchor");      // non-sticky marker: routes scroll to the band's flow position
+          mark.setAttribute("data-anchor", anchor);
+          bandsEl.appendChild(mark);
+          var sec = el("section", "band bleed stack " + cls);
+          sec.id = "ov-" + anchor;
+          var inner = el("div", "band-inner");
+          sec.appendChild(inner);
+          chapters.push({ anchor: anchor, label: eyebrowText });
+          var n = pad2(chapters.length);
+          return { sec: sec, inner: inner, eyebrow: el("div", "eyebrow", n + " · " + eyebrowText) };
+        }
+        function signBand(o) {
+          var art = SIGN_ART[o.sign];
+          var b = band("sign-band" + (o.artLeft ? " art-left" : "") + (DEEP_INK[o.sign] ? " ink-deep" : (LIGHT_INK[o.sign] ? " ink-light" : "")), o.anchor, o.eyebrow);
+          if (art) b.sec.style.setProperty("--band", art.color);
+          var text = el("div", "band-text");
+          text.appendChild(b.eyebrow);
+          var h = el("h2", "band-title"); h.textContent = o.title; text.appendChild(h);
+          if (o.sub) text.appendChild(el("p", "band-sub", o.sub));
+          if (o.dignity) { var badge = dignityBadgeEl(o.dignity); if (badge) text.appendChild(badge); }
+          if (o.motto) { var m = el("p", "motto"); m.textContent = o.motto; text.appendChild(m); }
+          var body = el("div", "band-body");
+          o.paras.forEach(function(t) { if (t) { var p = el("p"); p.textContent = t; body.appendChild(p); } });
+          text.appendChild(body);
+          if (o.link) { var a = el("a", "band-link", o.link.label + " →"); a.href = o.link.href; text.appendChild(a); }
+          b.inner.appendChild(text);
+          if (art) {
+            var artBox = el("div", "band-art");
+            artBox.style.setProperty("--band", art.color);
+            artBox.appendChild(signImg(o.sign));
+            b.inner.appendChild(artBox);
           }
-          statsEl.appendChild(card);
+          bandsEl.appendChild(b.sec);
+        }
+
+        // 01 Rising — the full ascendant reading lives here and only here
+        if (asc) signBand({
+          anchor: "rising", eyebrow: "Rising sign", sign: asc.sign,
+          title: asc.sign + " rising", sub: "Your outer lens",
+          motto: asc.motto, paras: asc.deepDive || [asc.cardBlurb]
+        });
+        // 02 Moon / 03 Sun — summary from the planet's own copy, with a route into Planets
+        [[moon, "moon", true], [sun, "sun", false]].forEach(function(x) {
+          var p = x[0]; if (!p) return;
+          signBand({
+            anchor: x[1], eyebrow: p.name, sign: p.sign, artLeft: x[2],
+            title: p.name + " in " + p.sign, sub: sentenceCase(p.theme),
+            dignity: p.dignity, motto: p.motto,
+            paras: [p.cardBlurb, p.deepDive && p.deepDive[0]],
+            link: { href: "#planets/" + p.name.toLowerCase(), label: "See your " + p.name + " in Planets" }
+          });
+        });
+
+        // 04 Birth star
+        if (nk) {
+          var bs = band("paper", "birth-star", "Birth star");
+          bs.inner.appendChild(bs.eyebrow);
+          var nh = el("h2", "band-title"); nh.textContent = nk.name; bs.inner.appendChild(nh);
+          var ng = el("div", "nk-grid");
+          var nl = el("div"); var nm = el("p", "motto"); nm.textContent = nk.cardBlurb || ""; nl.appendChild(nm);
+          var nr = el("div");
+          var nb = el("div", "band-body"); var np = el("p"); np.textContent = nk.themes || ""; nb.appendChild(np); nr.appendChild(nb);
+          var facts = el("dl", "nk-facts");
+          [["Ruled by", nk.lord], ["Deity", (nk.deity || "").split(" (")[0]], ["Quarter", moon && moon.pada ? moon.pada + " of 4" : null]]
+            .forEach(function(f) {
+              if (!f[1]) return;
+              var d = el("div"); var dt = el("dt"); dt.textContent = f[0]; var dd = el("dd"); dd.textContent = f[1];
+              d.appendChild(dt); d.appendChild(dd); facts.appendChild(d);
+            });
+          nr.appendChild(facts);
+          ng.appendChild(nl); ng.appendChild(nr);
+          bs.inner.appendChild(ng);
+          bandsEl.appendChild(bs.sec);
+        }
+
+        // 05 Signature themes — one row per chart.highlights entry
+        if (chart.highlights && chart.highlights.length) {
+          var th = band("themes", "themes", "Themes");
+          th.inner.appendChild(th.eyebrow);
+          th.inner.appendChild(el("h2", "band-title", "Signature themes"));
+          var rows = el("ol", "theme-rows");
+          chart.highlights.forEach(function(h, i) {
+            var li = el("li");
+            li.appendChild(el("span", "n", pad2(i + 1)));
+            var t = el("h3"); t.textContent = h.title; li.appendChild(t);
+            var bp = el("p"); bp.textContent = h.body; li.appendChild(bp);
+            rows.appendChild(li);
+          });
+          th.inner.appendChild(rows);
+          bandsEl.appendChild(th.sec);
+        }
+
+        // 06 Your chart — every planet chip links to its Planets page
+        var cb = band("plain chart-band", "chart", "Your chart");
+        var ct = el("div");
+        ct.appendChild(cb.eyebrow);
+        ct.appendChild(el("h2", "band-title", "The whole picture"));
+        var cbody = el("div", "band-body");
+        cbody.appendChild(el("p", null, "Your birth chart in the South Indian style. The signs stay in fixed boxes and the planets move into them. Your rising sign, " + asc.sign + ", is the highlighted box. Select a planet to read about it."));
+        ct.appendChild(cbody);
+        var legend = el("ul", "chart-legend");
+        var bySign = {};
+        chart.planets.forEach(function(p) { (bySign[p.sign] = bySign[p.sign] || []).push(p); });
+        Object.keys(bySign)
+          .sort(function(x, y) { return bySign[x][0].house - bySign[y][0].house; })
+          .forEach(function(sg) {
+            var li = el("li");
+            bySign[sg].forEach(function(p, i) {
+              if (i) li.appendChild(txt(" · "));
+              var a = el("a"); a.href = "#planets/" + p.name.toLowerCase(); a.textContent = p.abbr; a.title = p.name;
+              li.appendChild(a);
+            });
+            li.appendChild(txt(" in " + sg + " — your " + ord(bySign[sg][0].house) + " house"));
+            legend.appendChild(li);
+          });
+        ct.appendChild(legend);
+        cb.inner.appendChild(ct);
+        var ccol = el("div");
+        var chartBox = el("div", "chart"); chartBox.id = "chart";
+        ccol.appendChild(chartBox);
+        ccol.appendChild(el("p", "chart-hint", "Each chip shows a planet and its position. The highlighted box (ASC) is your rising sign."));
+        cb.inner.appendChild(ccol);
+        bandsEl.appendChild(cb.sec);
+
+        // Keep reading
+        var kr = el("section", "band bleed stack keep");
+        var kin = el("div", "band-inner");
+        kin.appendChild(el("h2", "eyebrow", "Keep reading"));
+        var NUM = ["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve"];
+        var krRows = el("ul", "keep-rows");
+        [
+          { k: "Planets", href: "#planets", d: "Where each of your " + (NUM[chart.planets.length] || chart.planets.length) + " planets sits, and what it does for you", show: true },
+          { k: "Houses", href: "#houses", d: "The twelve areas of your life and what fills them", show: true },
+          { k: "Birth almanac", href: "#panchanga", d: "The Vedic day, Moon phase and hour you were born into", show: !!chart.panchanga },
+          { k: "Energy map", href: "#ashtakavarga", d: "Which parts of your life have the most support", show: !!chart.ashtakavarga },
+          { k: "Compatibility", href: compatHref, d: "Put your chart next to someone else's", show: access.compat }
+        ].forEach(function(r) {
+          if (!r.show) return;
+          var li = el("li"); var a = el("a"); a.href = r.href;
+          a.appendChild(el("span", "k", r.k));
+          a.appendChild(el("span", "d", r.d));
+          a.appendChild(el("span", "arr", '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/></svg>'));
+          li.appendChild(a); krRows.appendChild(li);
+        });
+        kin.appendChild(krRows);
+        kr.appendChild(kin);
+        bandsEl.appendChild(kr);
+
+        // Chapter index in the hero
+        var ci = byId("chapter-index"); ci.innerHTML = "";
+        var CH_LABEL = { rising: "Rising sign" };
+        chapters.forEach(function(c, i) {
+          var li = el("li"); var a = el("a"); a.href = "#overview/" + c.anchor;
+          a.appendChild(el("span", "n", pad2(i + 1)));
+          var t = el("span", "t"); t.textContent = CH_LABEL[c.anchor] || c.label; a.appendChild(t);
+          li.appendChild(a); ci.appendChild(li);
         });
 
         // Rasi charts
-        renderChart(byId("chart"));
+        renderChart(byId("chart"), "planets");
         renderChart(byId("chart2"), true);
-        byId("charthint").textContent = "Each chip shows a planet and its position. The highlighted box (ASC) is your rising sign.";
-
-        // Sign artwork (src/images/*.svg) + accent color (the SVG's own background), for persona cards.
-        var SIGN_ART = {
-          Aries:       { file: "Aries.svg",      color: "#FF3303" },
-          Taurus:      { file: "Taurus.svg",     color: "#9CC933" },
-          Gemini:      { file: "Gemini.svg",     color: "#FFCC02" },
-          Cancer:      { file: "Cancer.svg",     color: "#003EB9" },
-          Leo:         { file: "Leo.svg",        color: "#FF0329" },
-          Virgo:       { file: "Virgo.svg",      color: "#723700" },
-          Libra:       { file: "LIbra.svg",      color: "#FC7265" },
-          Scorpio:     { file: "Scorpio.svg",    color: "#930025" },
-          Sagittarius: { file: "Sagitarius.svg", color: "#AE1BAD" },
-          Capricorn:   { file: "Capricorn.svg",  color: "#003EB9" },
-          Aquarius:    { file: "Aquarius.svg",   color: "#0774D6" },
-          Pisces:      { file: "Pisces.svg",     color: "#00C3B6" }
-        };
-        // Assemble a persona card: left body + right sign image, with the sign color as accent.
-        function buildPersonaCard(card, body, sign) {
-          var art = SIGN_ART[sign];
-          if (art) card.style.setProperty("--sign-accent", art.color);
-          card.appendChild(body);
-          if (art) {
-            var imgWrap = el("div", "persona-image");
-            var img = document.createElement("img");
-            img.src = "src/Images/" + art.file;
-            img.alt = sign; img.setAttribute("aria-hidden", "true");
-            imgWrap.appendChild(img);
-            card.appendChild(imgWrap);
-          }
-        }
-
-        // Personality (rising sign)
-        var asc = chart.ascendant;
-        var personaEl = byId("persona-card"); personaEl.innerHTML = ""; personaEl.style.display = "";
-        if (asc && asc.deepDive) {
-          var pBody = el("div", "persona-body");
-          if (asc.theme) pBody.appendChild(el("div", "text-eyebrow", asc.theme));
-          var pHead = el("div", "detail-head");
-          var pTitle = el("span", "title", asc.sign + " ");
-          pTitle.appendChild(el("span", "rising", "(rising)"));
-          pHead.appendChild(pTitle);
-          pHead.appendChild(el("span", "pos", "Ascendant · " + asc.nakshatra));
-          pBody.appendChild(pHead);
-          if (asc.motto) pBody.appendChild(el("div", "motto", asc.motto));
-          var pdd = el("div", "dd");
-          asc.deepDive.forEach(function(para) { pdd.appendChild(el("p", null, para)); });
-          pBody.appendChild(pdd);
-          buildPersonaCard(personaEl, pBody, asc.sign);
-        } else { personaEl.style.display = "none"; }
-
-        // Moon portrait
-        var moonPortraitEl = byId("moon-portrait"); moonPortraitEl.innerHTML = "";
-        if (moon && moon.deepDive) {
-          var mBody = el("div", "persona-body");
-          mBody.appendChild(el("div", "text-eyebrow", "Emotional world"));
-          var mHead = el("div", "detail-head");
-          mHead.appendChild(el("span", "title", "Moon in " + moon.sign));
-          mHead.appendChild(el("span", "pos", "Your inner life &amp; instincts"));
-          mBody.appendChild(mHead);
-          if (moon.motto) mBody.appendChild(el("div", "motto", moon.motto));
-          var mdd = el("div", "dd");
-          mdd.appendChild(el("p", null, moon.deepDive[0]));
-          var mlink = el("p", null, "");
-          mlink.innerHTML = "<a href='#' class='accent' style='font-size:13px;font-weight:500' data-planet='Moon'>Full Moon reading in the Planets tab →</a>";
-          mlink.querySelector("a").addEventListener("click", function(e) {
-            e.preventDefault();
-            document.querySelector('.tab[data-tab="planets"]').click();
-            var mbtn = Array.from(document.querySelectorAll(".pbtn")).find(function(b) { return b.dataset.name === "Moon"; });
-            if (mbtn) mbtn.click();
-            window.scrollTo(0, 0);
-          });
-          mdd.appendChild(mlink);
-          mBody.appendChild(mdd);
-          buildPersonaCard(moonPortraitEl, mBody, moon.sign);
-        }
-
-        // Sun portrait
-        var sunPortraitEl = byId("sun-portrait"); sunPortraitEl.innerHTML = "";
-        if (sun && sun.deepDive) {
-          var sBody = el("div", "persona-body");
-          sBody.appendChild(el("div", "text-eyebrow", "Core self"));
-          var sHead = el("div", "detail-head");
-          sHead.appendChild(el("span", "title", "Sun in " + sun.sign));
-          sHead.appendChild(el("span", "pos", "Your identity &amp; vitality"));
-          sBody.appendChild(sHead);
-          if (sun.motto) sBody.appendChild(el("div", "motto", sun.motto));
-          var sdd = el("div", "dd");
-          sdd.appendChild(el("p", null, sun.deepDive[0]));
-          var slink = el("p", null, "");
-          slink.innerHTML = "<a href='#' class='accent' style='font-size:13px;font-weight:500' data-planet='Sun'>Full Sun reading in the Planets tab →</a>";
-          slink.querySelector("a").addEventListener("click", function(e) {
-            e.preventDefault();
-            document.querySelector('.tab[data-tab="planets"]').click();
-            var sbtn = Array.from(document.querySelectorAll(".pbtn")).find(function(b) { return b.dataset.name === "Sun"; });
-            if (sbtn) sbtn.click();
-            window.scrollTo(0, 0);
-          });
-          sdd.appendChild(slink);
-          sBody.appendChild(sdd);
-          buildPersonaCard(sunPortraitEl, sBody, sun.sign);
-        }
-
-        // Highlights
-        var hi = byId("highlights"); hi.innerHTML = "";
-        chart.highlights.forEach(function(h) {
-          var card = el("div", "theme-card");
-          card.appendChild(el("h3", null, h.title));
-          card.appendChild(el("p", null, h.body));
-          hi.appendChild(card);
-        });
-
-        // Nakshatra card
-        var nk = chart.nakshatra;
-        var nkEl = byId("nakshatra-card"); nkEl.innerHTML = "";
-        var nkHead = el("div", "nk-head");
-        nkHead.appendChild(el("h3", null, "Birth star: " + nk.name));
-        nkHead.appendChild(el("p", "nk-meta", "Ruled by " + nk.lord + " · deity " + nk.deity));
-        nkEl.appendChild(nkHead);
-        var nkBody = el("div", "nk-body");
-        nkBody.appendChild(el("p", "nk-intro", "Your birth star is the lunar mansion — one of 27 star-clusters — that your Moon was passing through when you were born. It adds a finer, more personal layer on top of your Moon sign."));
-        nkBody.appendChild(el("p", null, nk.themes));
-        nkEl.appendChild(nkBody);
 
         // Planets tab
         navEl = byId("planet-nav"); navEl.innerHTML = "";
         detailEl = byId("planet-detail");
+        var planetSel = byId("planet-select");
+        planetSel.textContent = "";
         chart.planets.forEach(function(p, i) {
           var btn = el("button", "pbtn" + (i === 0 ? " active" : ""), '<span class="pname">' + p.name + '</span><span class="pnum">' + (i + 1) + '</span>');
           btn.dataset.name = p.name;
+          btn.dataset.slug = p.name.toLowerCase();
           btn.addEventListener("click", function() {
             navEl.querySelectorAll(".pbtn").forEach(function(x) { x.classList.remove("active"); });
             btn.classList.add("active");
+            planetSel.value = String(i);
             renderPlanet(p);
           });
           navEl.appendChild(btn);
+          var opt = document.createElement("option");
+          opt.value = String(i); opt.textContent = (i + 1) + ". " + p.name;
+          planetSel.appendChild(opt);
         });
         renderPlanet(chart.planets[0]);
 
@@ -2230,7 +2615,7 @@
             avc.appendChild(cell);
           });
           var avCenter = el("div", "center-cell");
-          avCenter.appendChild(el("div", "t", "Energy Map"));
+          avCenter.appendChild(el("div", "t", "Energy map"));
           avCenter.appendChild(el("div", "s", "Total - " + av.total + "   |   Avg. - " + av.average));
           avc.appendChild(avCenter);
 
@@ -2258,31 +2643,178 @@
           });
         } else if (avTab) { avTab.style.display = "none"; }
 
-        // Reset to Overview tab on chart switch
-        document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
-        document.querySelectorAll(".panel").forEach(function(p) { p.classList.remove("active"); });
-        document.querySelector('.tab[data-tab="overview"]').classList.add("active");
-        byId("panel-overview").classList.add("active");
+        // Re-apply the current route (tab + planet) for the newly rendered chart
+        applyRoute(false);
 
         // Footer
         byId("footer").innerHTML =
           "Data: " + chart.system.source + " (Swiss Ephemeris, " + chart.system.ayanamsa + "). " +
           "Vedic astrology is a symbolic language describing tendencies, not fixed verdicts — you always have agency over how a placement expresses." +
-          "<br><br>Explore the full <a href='methods.html' style='color:var(--text)'>VedAstro calculation method catalog →</a>" +
-          " · <a href='share.html' style='color:var(--text)'>Create a share link →</a>";
+          "<span class='footer-links'><a class='text-link' href='glossary.html'>Glossary of terms</a>" +
+          "<a class='text-link' href='share.html'>Create a share link</a></span>";
+        setupMotion();
       }
 
-      // Tabs
-      document.querySelectorAll(".tab").forEach(function(tab) {
+      // Planet dropdown (mobile) drives the same buttons as the planet tab row
+      byId("planet-select").addEventListener("change", function() {
+        var b = byId("planet-nav").querySelectorAll(".pbtn")[Number(this.value)];
+        if (b) b.click();
+      });
+
+      // Mobile full-page menu
+      var menuOpenBtn = byId("menu-open");
+      function setMenu(open) {
+        document.body.classList.toggle("menu-open", open);
+        menuOpenBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) byId("menu-close").focus(); else menuOpenBtn.focus();
+      }
+      menuOpenBtn.addEventListener("click", function() { setMenu(true); });
+      byId("menu-close").addEventListener("click", function() { setMenu(false); });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && document.body.classList.contains("menu-open")) setMenu(false);
+      });
+
+      // ----- Tabs + hash routing (#planets, #planets/moon, #overview/rising|moon|sun|birth-star|themes|chart) -----
+      var TAB_NAMES = ["overview", "planets", "houses", "panchanga", "ashtakavarga"];
+      var tabBtns = Array.prototype.slice.call(document.querySelectorAll('.tab[role="tab"]'));
+
+      function showTab(name) {
+        tabBtns.forEach(function(t) {
+          var on = t.dataset.tab === name;
+          t.classList.toggle("active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          t.tabIndex = on ? 0 : -1;
+        });
+        document.querySelectorAll(".panel").forEach(function(p) { p.classList.toggle("active", p.id === "panel-" + name); });
+        document.body.setAttribute("data-tab", name);
+        var active = byId("tab-" + name);
+        if (active && active.scrollIntoView) active.scrollIntoView({ block: "nearest", inline: "nearest" });
+      }
+      function parseRoute() {
+        var parts = location.hash.replace(/^#/, "").split("/");
+        var tab = TAB_NAMES.indexOf(parts[0]) >= 0 ? parts[0] : "overview";
+        return { tab: tab, sub: parts[1] || null };
+      }
+      function applyRoute(scroll) {
+        var r = parseRoute();
+        var btn = byId("tab-" + r.tab);
+        if (!btn || btn.style.display === "none") r = { tab: "overview", sub: null };
+        showTab(r.tab);
+        if (r.tab === "planets" && r.sub) {
+          var pb = byId("planet-nav").querySelector('.pbtn[data-slug="' + r.sub + '"]');
+          if (pb) pb.click();
+        }
+        if (scroll === false) return;
+        if (r.tab === "overview" && r.sub) {
+          var target = document.querySelector('[data-anchor="' + r.sub + '"]');
+          if (target) {
+            var y = target.getBoundingClientRect().top + window.pageYOffset - document.querySelector(".topbar").offsetHeight;
+            window.scrollTo({ top: y, behavior: MOTION ? "smooth" : "auto" });
+            return;
+          }
+        }
+        window.scrollTo(0, 0);
+      }
+      function go(hash) {
+        if (location.hash === hash) applyRoute();
+        else location.hash = hash;   // triggers hashchange → applyRoute
+      }
+      window.addEventListener("hashchange", function() { applyRoute(); });
+
+      tabBtns.forEach(function(tab, i) {
         tab.addEventListener("click", function() {
-          document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
-          document.querySelectorAll(".panel").forEach(function(p) { p.classList.remove("active"); });
-          tab.classList.add("active");
-          byId("panel-" + tab.dataset.tab).classList.add("active");
+          if (document.body.classList.contains("menu-open")) {
+            document.body.classList.remove("menu-open");
+            menuOpenBtn.setAttribute("aria-expanded", "false");
+          }
+          go("#" + tab.dataset.tab);
+        });
+        // Arrow-key navigation between tabs (WAI-ARIA tabs pattern)
+        tab.addEventListener("keydown", function(e) {
+          var visible = tabBtns.filter(function(t) { return t.style.display !== "none"; });
+          var idx = visible.indexOf(tab), next = null;
+          if (e.key === "ArrowRight" || e.key === "ArrowDown") next = visible[(idx + 1) % visible.length];
+          else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = visible[(idx - 1 + visible.length) % visible.length];
+          else if (e.key === "Home") next = visible[0];
+          else if (e.key === "End") next = visible[visible.length - 1];
+          if (!next) return;
+          e.preventDefault();
+          next.focus();
+          next.click();
         });
       });
 
+      // Keep the URL in sync when a planet is picked directly
+      byId("planet-nav").addEventListener("click", function(e) {
+        var b = e.target.closest(".pbtn");
+        if (!b || !b.dataset.slug) return;
+        var h = "#planets/" + b.dataset.slug;
+        if (location.hash !== h) history.replaceState(null, "", location.pathname + location.search + h);
+      });
+
+      // Tab-row edge fade: show a fade on whichever side has more tabs to scroll to
+      var navTabs = byId("main-tabs");
+      function updateTabFade() {
+        var max = navTabs.scrollWidth - navTabs.clientWidth;
+        navTabs.classList.toggle("fade-left", max > 1 && navTabs.scrollLeft > 1);
+        navTabs.classList.toggle("fade-right", max > 1 && navTabs.scrollLeft < max - 1);
+      }
+      navTabs.addEventListener("scroll", updateTabFade, { passive: true });
+      window.addEventListener("resize", updateTabFade);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateTabFade);
+
+      // Keyboard-detected focus rings: on with Tab/arrow keys, off on mouse/touch
+      var docEl = document.documentElement;
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Tab" || e.key.indexOf("Arrow") === 0 || e.key === "Home" || e.key === "End") docEl.classList.add("kbd");
+      });
+      document.addEventListener("pointerdown", function() { docEl.classList.remove("kbd"); });
+
+      // ----- Motion: stacking bands + reveal on scroll (see MOTION in the CSS) -----
+      var MOTION = document.documentElement.classList.contains("motion");
+      var topbarEl = document.querySelector(".topbar");
+      function updateStack() {
+        if (!MOTION) return;
+        var vh = window.innerHeight, tb = topbarEl.offsetHeight;
+        document.querySelectorAll(".stack").forEach(function(s) {
+          s.style.setProperty("--stick", Math.min(tb, vh - s.offsetHeight) + "px");
+        });
+      }
+      var REVEAL_UNITS = [
+        "header.hero h1", "header.hero .picker", ".hero-birth", ".hero-system", ".hero-story p", ".hero-signs li", ".chapter-index",
+        ".band .eyebrow", ".band-title", ".band-sub", ".band .status-badge-wrap", ".band .motto", ".band-body p", ".band-link",
+        ".band-art", ".pd-motto", ".nk-facts > div", ".theme-rows li", ".chart-legend", ".chart-band .chart", ".chart-hint", ".keep-rows li"
+      ].join(", ");
+      var revealIO = MOTION ? new IntersectionObserver(function(entries) {
+        var n = 0;
+        entries.forEach(function(e) {
+          if (!e.isIntersecting) return;
+          e.target.style.transitionDelay = Math.min(n++, 6) * 80 + "ms";
+          e.target.classList.add("in");
+          revealIO.unobserve(e.target);
+        });
+      }, { rootMargin: "0px 0px -8% 0px" }) : null;
+      function setupMotion() {
+        if (!MOTION) return;
+        document.querySelectorAll(REVEAL_UNITS).forEach(function(n) {
+          if (n.hasAttribute("data-reveal")) return;
+          n.setAttribute("data-reveal", n.classList.contains("band-art") ? "art" : "");
+          revealIO.observe(n);
+        });
+        updateStack();
+        // Sign art loads after layout; re-measure band heights once it does
+        document.querySelectorAll(".band-art img, .hero-sign img").forEach(function(img) {
+          if (!img.complete) img.addEventListener("load", updateStack, { once: true });
+        });
+      }
+      if (MOTION) {
+        window.addEventListener("resize", updateStack);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateStack);
+        if (window.ResizeObserver) new ResizeObserver(updateStack).observe(byId("overview-bands"));
+      }
+
       render(DATA[access.activeId]);
+      updateTabFade();
     })();
   </script>
 </body>

@@ -1,8 +1,30 @@
 # How to add a new person's birth chart
 
-This guide tells you everything you need to create a fully-styled chart entry
-for the `data/chart-data.js` file from scratch — calculation, data structure,
-and writing style.
+This guide covers everything needed to add a chart to the site: fetching the
+numbers, filling in the data object, and writing the copy. Section 4 (writing
+style) is the part most often skipped. Read it before writing a word.
+
+---
+
+## 0. How charts get made
+
+```
+fetch-chart.js  ──►  data/raw/<id>.json  ──►  data/chart-data.js  ──►  index.html
+ (VedAstro API)       (raw numbers)           (numbers + copy)         (the site)
+                                                     │
+                                                     └──►  export-md.js  ──►  charts/<Name>.md
+```
+
+- **The site reads only `data/chart-data.js`.** `index.html`, `share.html` and
+  `compatibility.html` all load it as a plain script. Nothing else is read at
+  runtime.
+- **`data/raw/<id>.json` is the source of truth for numbers.** Every degree,
+  score and placement in `chart-data.js` comes from here.
+- **The copy is written by hand** (or by an agent following this guide) and
+  goes straight into `chart-data.js`.
+- **`charts/*.md` files are generated output**, made by
+  `node scripts/export-md.js`. Never edit them and never build a chart from
+  them. Re-run the script after any change to `chart-data.js`.
 
 ---
 
@@ -12,499 +34,459 @@ and writing style.
 |-------|---------|
 | Full name | Kara Black |
 | Date of birth | 1 September 1987 |
-| **Exact** time of birth | 19:22 (7:22 PM) — time zone or city |
+| **Exact** time of birth | 19:22 (7:22 PM), local clock time |
 | City of birth | Scranton, PA, USA |
 
-The time must be exact (not "around 7 pm"). Without it the Ascendant, house
-cusps, and Moon position can be wrong.
+The time must be exact, not "around 7 pm." Without it the Ascendant, the
+houses and the Moon position can all be wrong.
 
 ---
 
 ## 2. Pull the raw numbers from VedAstro
 
-Use the **VedAstro Calculate API** at `https://api.vedastro.org`. The ayanamsa
-must be **LAHIRI** and the house system is **whole-sign**.
-
-> ⚠️ VedAstro's geocoder can misfire. Always confirm the latitude/longitude it
-> resolved. "Scranton, PA, USA" was once resolved to Bradford (UK) — using
-> plain "Scranton" fixed it.
-
-### Useful API endpoints (replace `{...}` with actual values)
+Run `scripts/fetch-chart.js`. It POSTs to `vedastro.zaishi.net`, uses the
+**Raman** ayanamsa (the project standard, also used by the VedAstro MCP tools)
+and saves `data/raw/<id>.json`. Houses are **whole-sign**.
 
 ```
-# Planet positions (all 9 Vedic planets + Rahu/Ketu)
-https://api.vedastro.org/api/Calculate/AllPlanetData/Location/{City}/Time/{HH:MM}/{DD}/{MMM}/{YYYY}/{+HH:MM}/Ayanamsa/LAHIRI
-
-# Ascendant
-https://api.vedastro.org/api/Calculate/LagnaSign/...
-
-# Shadbala (planetary strength in Rupas)
-https://api.vedastro.org/api/Calculate/PlanetShadbalaPinda/...
-
-# Ashtakavarga (bindu grid)
-https://api.vedastro.org/api/Calculate/AshtakavargaTable/...
-
-# Panchanga limbs
-https://api.vedastro.org/api/Calculate/Tithi/...  (and Vara, NithyaYoga, Karana, etc.)
+node scripts/fetch-chart.js --name "Jane Smith" \
+  --date "15/06/1990" --time "08:30" --tz "+05:30" \
+  --location "19.0760,72.8777"
 ```
 
-The `methods.html` file in this repo is a searchable index of all 1,190
-available `Calculate` methods if you need something else.
+Set `VEDASTRO_API_KEY` to skip the free tier's 5-calls-a-minute throttle. The
+key only works in the `x-api-key` header, which the script handles.
 
-### Source of truth: always use the JSON file
+> ⚠️ **Pass coordinates, never a place name.** VedAstro's geocoder fails
+> silently: it returns `Name: "Empty"` at lat 4.59, lon 101 (Malaysia) and
+> computes the whole chart there. "Long Branch, NJ" hit exactly this. Always
+> use `--location "LAT,LON"`, then confirm the echoed location in
+> `results.LagnaSignName.Input.Parameters[0].Value.Location`.
+>
+> ⚠️ **Match the timezone to the season.** Use standard time in winter and
+> daylight time in summer for the birth place. New Jersey is −05:00 (EST)
+> roughly Nov–Mar and −04:00 (EDT) roughly Apr–Oct. One hour off shifts the
+> Ascendant and every house.
+>
+> ⚠️ **The legacy host is broken.** `api.vedastro.org` (GET) now returns the
+> same demo chart for every request. Don't use it or any URL built for it.
 
-Once a chart has been fetched with `scripts/fetch-chart.js`, the raw data is
-saved to `data/raw/<id>.json`. **That JSON file is the authoritative source of
-truth for every numerical value.** Never build a chart entry from a
-`charts/*.md` summary file — those are narrative documents derived from the
-JSON and may omit, round, or paraphrase values. Always read the JSON directly
-when building or updating a `data/chart-data.js` entry.
+`methods.html` in this repo indexes all 1,190 VedAstro `Calculate` methods if
+you need something the script doesn't fetch.
 
-If a JSON file does not yet exist for the person, run `fetch-chart.js` first
-(see the script's `--help` for usage). Do not proceed from a `.md` file alone.
-
-### What to record from the API
+### What to take from the JSON
 
 For each of the 9 planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn,
-Rahu, Ketu):
+Rahu, Ketu): sign, degree, house, retrograde, nakshatra and pada, nakshatra
+lord, sign lord, dignity, houses owned, houses aspected, navamsa (D-9),
+shadbala, and ishta/kashta.
 
-- Sign (rashi)
-- Degree (e.g. 15° 18')
-- House (1–12, whole-sign)
-- Retrograde (yes / no — Rahu and Ketu are always retrograde by convention)
-- Nakshatra and pada (1–4)
-- Nakshatra lord
-- Sign lord (which planet rules that sign)
-- Dignity (own / exalted / friendly / neutral / enemy / debilitated / combust)
-- Houses owned (lordship — which house numbers this planet rules for this
-  ascendant)
-- Houses aspected (Vedic aspects from this house position)
-- Navamsa sign (D-9)
-- Shadbala (in Rupas)
-- Ishta phala and Kashta phala (ease and challenge scores — not available for
-  Rahu/Ketu)
-- Benefic or malefic classification for this ascendant
+**Rahu and Ketu get no strength scores.** Shadbala and ishta/kashta are only
+defined for the seven visible planets. The API still returns a
+`PlanetShadbalaPinda` for the nodes, but it is a copy of another planet's value
+(usually the lord of the sign they sit in). Leave `shadbala`, `ishta` and
+`kashta` off the Rahu and Ketu objects entirely; the site hides the strength
+bar when they are missing.
 
-For the ascendant:
-- Sign, degree, nakshatra
+Take `dignity` from the API flags (`IsPlanetExalted`, `IsPlanetInOwnSign`,
+`IsPlanetInFriendSign`, `IsPlanetInEnemySign`, `IsPlanetDebilitated`), and add
+"/ combust" only when `IsPlanetCombust` is `"True"`. Don't judge combustion by eye.
 
-For the 12 houses:
-- Sign on each house cusp (whole-sign: the house sign = its number in the wheel
-  relative to the ascendant)
-- Which planets (if any) occupy each house
+The `role` string must agree with `housesOwned`. Call a planet yogakaraka
+only if it rules both a kendra (1, 4, 7, 10) and a trikona (5, 9) for this
+rising sign. Don't write "yogakaraka influence" for anything weaker.
 
-For the panchanga:
-- Sunrise and sunset times
-- Tithi (lunar day) and paksha (waxing/waning)
-- Vara (weekday / weekday ruler)
-- Nakshatra + pada
-- Nithya yoga name
-- Karana name
-- Hora lord (planetary hour at birth time)
-- Lunar month name
-- Ayanamsa value (e.g. 23° 41' 04″)
+For the ascendant: sign, degree, nakshatra.
 
-For ashtakavarga:
-- Sarvashtakavarga total (sum across 12 signs)
-- Per-sign (= per-house) bindu count (0–56 range in sarva)
+For the 12 houses: the sign on each house and its occupants.
+
+For the panchanga: sunrise, sunset, tithi and paksha, weekday, nakshatra and
+pada, nithya yoga, karana, hora lord, lunar month, ayanamsa value.
+
+For ashtakavarga: the points per sign and the total.
+
+House lordship and Sarvashtakavarga are computed locally (whole-sign rulers
+and the classical tables), because the API's versions are unreliable.
 
 ---
 
 ## 3. The data structure (`data/chart-data.js`)
 
-Every chart is an object added to the `charts` map in `data/chart-data.js`.
-The key must be a short lowercase id matching the `id` field (e.g. `"kara"`,
-`"thor"`, `"mom"`).
+Every chart is an object in the `charts` map. The key is a short lowercase id
+that matches the `id` field. The comments show **where each field appears on
+the site**, which matters for the writing rules in section 4.
 
 ```js
-window.VEDIC_DATA = {
-  charts: {
-    kara: { /* existing */ },
-    NEWID: {
-      id: "NEWID",
-      name: "Full Name",
-      birth: {
-        date: "DD Mmm YYYY",      // "01 Sep 1987"
-        time: "HH:MM",             // "19:22"
-        place: "City, State, Country",
-        lat: 00.0000,
-        lon: -00.0000,
-        tz: "GMT-04:00",
-        system: "Lahiri · Whole sign · VedAstro"
-      },
+NEWID: {
+  id: "NEWID",
+  name: "First name",
+  birth: {
+    date: "01 September 1987",
+    time: "19:22 (7:22 PM)",
+    location: "Scranton, PA, USA",
+    coordinates: "41.4087° N, 75.6621° W",
+    timezone: "GMT−04:00",
+  },
+  system: {
+    ayanamsa: "Raman (sidereal)",
+    houseSystem: "Whole sign",
+    source: "VedAstro · Swiss Ephemeris",
+  },
 
-      // --- ASCENDANT ---
-      ascendant: {
-        sign: "Aquarius",
-        degree: "11° 12'",
-        nakshatra: "Shatabhisha",
-        theme: "The water-bearer who gathers and stores knowledge",
-        motto: "One short resonant phrase about this ascendant",
-        deepDive: [
-          // Paragraph 1 = LEAD PORTRAIT (see §4): one tight, cohesive statement —
-          //   outer-lens function + concrete sign traits + where their power
-          //   shines. No literal symbol ("the pot that pours water").
-          // Paragraphs 2–5 = deeper reading, same clarity rules: temperament,
-          //   career/ambition tendencies, social style, key growth areas.
-          "Paragraph 1 ...",
-          "Paragraph 2 ...",
-          "Paragraph 3 ..."
-        ]
-      },
+  // Overview, top of the page, under "Your story". See §4 "The story".
+  story: [
+    "Paragraph 1 ...",
+    "Paragraph 2 ...",
+  ],
 
-      shadbalaRange: { min: 289, max: 537 }, // min/max from this chart's planets
+  ascendant: {
+    sign: "Aquarius", degree: "12° 39'", nakshatra: "Shatabhisha",
+    theme: "Personality",           // eyebrow label, keep as-is
+    motto: "...",                   // Overview rising-sign card, under the title
+    cardBlurb: "...",               // Overview summary card
+    deepDive: [ "...", "...", "...", "..." ],  // Overview rising-sign card, ALL 4 shown
+  },
 
-      // --- PLANETS (array of 9) ---
-      planets: [
-        {
-          name: "Sun",           // exact spelling used everywhere
-          abbr: "Su",
-          sign: "Leo",
-          degree: "15° 18'",
-          house: 7,
-          retrograde: false,
-          nakshatra: "Purva Phalguni",
-          pada: 1,
-          nakshatraLord: "Venus",
-          signLord: "Sun",
-          housesOwned: [7],      // array of house numbers this planet rules
-          dignity: "Own sign",   // see dignity values below
-          benefic: true,         // true = functional benefic for this ascendant
-          navamsa: "Leo",
-          shadbala: 445.38,
-          ishta: 26,             // null for Rahu/Ketu
-          kashta: 31,            // null for Rahu/Ketu
-          aspectsHouses: [1],    // houses aspected from this house position
-          aspectsSigns: ["Aquarius"],
-          role: "Lord of the 7th (partnership / maraka)",
-          theme: "External Persona · Leo — generous, and lives to express itself",
-          motto: "One short phrase",
-          deepDive: [
-            // Paragraph 1 = LEAD PORTRAIT (see §4): fuse the three beats into one
-            //   tight statement — what this planet drives + concrete planet-in-sign
-            //   traits + the house focused as a lived outcome ("your power shines
-            //   when…"). Keep dignity OUT of the prose (it renders as a status tag).
-            // Paragraphs 2–4 = deeper reading, same clarity rules: the core
-            //   personality energy, what the placement feels like in real life
-            //   (explain a strained/exalted placement WITHOUT leaning on the
-            //   Sanskrit label), and a practical growth edge.
-            "Paragraph 1 ...",
-            "Paragraph 2 ...",
-            "Paragraph 3 ..."
-          ],
-          // --- Remedy section ---
-          remedyCandidate: true,  // true if challenge score > ease score (or for nodes)
-          deity: "Surya, the Sun god",
-          remedySupports: "vitality, confidence, health, authority",
-          mantra: "Om Hraam Hreem Hraum Sah Suryaya Namah",
-          mantraDay: "Sunday"
-        },
-        // ... repeat for all 9 planets
-      ],
+  shadbalaRange: { min: 290, max: 550 },  // bar scale on the Planets tab: lowest of the
+                                          // 7 planets' shadbala rounded down to the
+                                          // nearest 10, highest rounded up
 
-      // --- HOUSES (array of 12) ---
-      houses: [
-        {
-          num: 1,
-          sign: "Aquarius",
-          theme: "Self, body, temperament",
-          occupants: [],          // planet name strings, e.g. ["Sun", "Mars"]
-          meaning: "Plain-English paragraph about what this house in this sign
-                    means for the person, and what any occupants bring here."
-        },
-        // ... houses 2–12
-      ],
+  planets: [
+    {
+      name: "Sun", abbr: "Su", sign: "Leo", degree: "16° 45'", house: 7,
+      retrograde: false, nakshatra: "Purva Phalguni", pada: 2, nakshatraLord: "Venus",
+      signLord: "Sun", housesOwned: [7], dignity: "Own sign", benefic: true,
+      navamsa: "Virgo", shadbala: 403.65, ishta: 25.6, kashta: 31.2,
+      aspectsHouses: [1], aspectsSigns: ["Aquarius"],
+      role: "Lord of the 7th (partnership / maraka)",  // technical, facts panel only
+      theme: "Core Self & Vitality",  // Planets-tab eyebrow, see label table in §4
+      motto: "...",                   // Planets tab
+      cardBlurb: "...",               // Sun and Moon ONLY: Overview summary card
+      deepDive: [ "...", "...", "..." ],  // Planets tab shows all 3
+      // Rahu and Ketu: no shadbala, ishta or kashta (see §2)
+    },
+    // ... all 9 planets
+  ],
 
-      // --- SIGNATURE HIGHLIGHTS (shown on Overview tab) ---
-      highlights: [
-        {
-          title: "A four-planet Leo stellium in the 7th",
-          body: "One or two sentences about why this cluster matters and what it
-                 means in real life for this person."
-        },
-        // 3–5 highlights total. Pick the most defining patterns:
-        //   - major stelliums or conjunctions
-        //   - the chart ruler's placement
-        //   - yogakaraka or raja yoga if present
-        //   - the Rahu/Ketu axis theme
-        //   - any standout dignity (exalted or severely debilitated planet)
-      ],
+  houses: [
+    { num: 1, sign: "Aquarius", theme: "Self, body, temperament", occupants: [],
+      meaning: "..." },             // Houses tab
+    // ... all 12
+  ],
 
-      // --- NAKSHATRA (birth star — the Moon's nakshatra) ---
-      nakshatra: {
-        name: "Jyeshtha",
-        lord: "Mercury",
-        deity: "Indra",
-        themes: "One sentence describing this person through the lens of their
-                 birth star. E.g.: '\"The eldest.\" Seniority, protectiveness,
-                 hidden strength, and responsibility that arrives early — a
-                 natural (if sometimes reluctant) leader who guards others and
-                 prefers depth to surface.'"
-      },
+  highlights: [                     // Overview, "Signature themes"
+    { title: "...", body: "..." },  // 4–6 of these
+  ],
 
-      // --- PANCHANGA (birth almanac) ---
-      panchanga: {
-        summary: "One sentence readable summary of the birth day quality, e.g.:
-                  'Born on a Tuesday, waxing 9th lunar day, Vishkambha yoga,
-                   Saturn ruling the birth hour.'",
-        sunrise: "06:32",
-        sunset: "19:31",
-        ayanamsa: "23° 41' 04″ (Lahiri)",
-        limbs: [
-          {
-            label: "Vara (weekday)",
-            value: "Tuesday",
-            note: "Plain-English sentence about what this weekday ruler adds to
-                   the birth chart. E.g.: 'The day is ruled by Mars — courage,
-                   drive, initiative and heat. It reinforces the strong Mars
-                   theme already in your chart, giving your baseline temperament
-                   a dynamic, action-first flavor.'"
-          },
-          {
-            label: "Tithi (lunar day)",
-            value: "Navami · Shukla Paksha",
-            note: "..."
-          },
-          {
-            label: "Nakshatra (star)",
-            value: "Jyeshtha · pada 3",
-            note: "..."
-          },
-          {
-            label: "Nithya Yoga",
-            value: "Vishkambha — \"supporting pillar\"",
-            note: "..."
-          },
-          {
-            label: "Karana (half-tithi)",
-            value: "Balava",
-            note: "..."
-          },
-          {
-            label: "Hora lord (birth hour)",
-            value: "Saturn",
-            note: "..."
-          },
-          {
-            label: "Lunar month",
-            value: "Bhaadrapada",
-            note: "..."
-          }
-        ]
-      },
+  nakshatra: {                      // the Moon's nakshatra
+    name: "Jyeshtha", lord: "Mercury", deity: "Indra (king of the gods)",
+    cardBlurb: "...",               // Overview summary card
+    themes: "...",                  // Overview birth-star card
+  },
 
-      // --- ASHTAKAVARGA ---
-      ashtakavarga: {
-        total: 337,
-        average: 28,
-        intro: "One or two sentences pointing to the most striking feature of
-                this person's ashtakavarga map — e.g. which house scores highest
-                and what that signals.",
-        rows: [
-          // 12 rows, one per house
-          { house: 1, sign: "Aquarius", bindus: 29,
-            note: "Plain-English sentence for this house's score." },
-          { house: 2, sign: "Pisces",   bindus: 27, note: "..." },
-          // ... houses 3–12
-        ],
-        takeaways: [
-          // 3–5 bullet-style strings that summarise the most important patterns
-          // in the bindu map. E.g.:
-          "The 5th house's chart-high 36 bindus is a standout: creativity, intelligence and matters of the heart are exceptionally well supported.",
-          "The 9th (Libra, 20) and 7th (Leo, 23) score lowest — fortune and partnership reward patience and cultivation.",
-          "For timing: transiting Jupiter and Saturn tend to give better results moving through high-bindu signs."
-        ]
-      }
-    }
-  }
-};
+  panchanga: {                      // Birth almanac tab
+    summary: "...",
+    sunrise: "06:32", sunset: "19:31",
+    ayanamsa: "22° 13' 50″ (Raman)",
+    limbs: [
+      { k: "Vara (weekday)", v: "Tuesday", note: "..." },
+      // Tithi, Nakshatra, Nithya Yoga, Karana, Hora lord, Lunar month
+    ],
+  },
+
+  ashtakavarga: {                   // Energy map tab
+    total: 337, average: 28,
+    intro: "...",
+    rows: [ { house: 1, sign: "Aquarius", bindus: 29, note: "..." }, /* 12 rows */ ],
+    takeaways: [ "...", "...", "..." ],  // "What does this mean for you", 3–4 items
+  },
+}
 ```
 
-### Dignity values (use exactly these strings)
+**Not needed:** `remedyCandidate`, `deity`, `remedySupports`, `mantra` and
+`mantraDay` appear in some charts, but neither the site nor `export-md.js`
+reads them. Both use their own built-in remedy table (see §6). Leave them out
+of new charts.
 
-| String | Meaning |
-|--------|---------|
+### Dignity values
+
+Use one of these base strings, optionally followed by `(combust)`,
+`(near-combust)` or `(retrograde)`, or joined with ` / combust`.
+
+| Base string | Meaning |
+|-------------|---------|
 | `"Own sign"` | Planet in the sign it rules |
+| `"Moolatrikona"` | Planet in its special strong sign |
 | `"Exalted"` | Planet in its sign of maximum strength |
 | `"Friendly sign"` | Planet in a sign ruled by a friend |
-| `"Neutral"` | Planet in a sign with neutral relationship |
+| `"Neutral"` | Planet in a sign with a neutral relationship |
 | `"Enemy sign"` | Planet in a sign ruled by an enemy |
 | `"Debilitated"` | Planet in its sign of minimum strength |
-| `"Combust"` | Planet too close to the Sun (within ~6–8°) |
-| `"Friendly (near-combust)"` | Friendly sign but within combust range |
-| `"Enemy sign / combust"` | Both enemy and combust |
-| `"North lunar node"` | Rahu (always use this) |
-| `"South lunar node"` | Ketu (always use this) |
+| `"North lunar node"` | Rahu (always) |
+| `"South lunar node"` | Ketu (always) |
+
+The site turns these into status badges automatically (`dignityBadgeContent`
+in `index.html`): Strong · Home Field, Exalted · High Comfort, Comfortable ·
+Supported, Neutral · Workable Placement, Challenged · Friction, Strained ·
+Works Harder, Overshadowed · Merged with the Sun.
 
 ---
 
-## 4. Writing style guidelines
+## 4. Writing style
 
-The goal is a personal portrait, not a reference manual. The old style stacked
-facts — *"Sun in Pisces. Sun governs identity. Pisces is empathetic. Resources
-and voice. Neutral placement."* — a bag of ingredients that never tells you what
-cake you're baking. The new style fuses those facts into one clear, actionable
-portrait.
+The copy should read like a skilled astrologer talking to one person they
+know well. The old copy was produced from a template, and it shows: every
+planet opens the same way, every motto is three adjectives and a dash, and the
+same few words ("quietly", "genuinely", "real") turn up in every paragraph.
+Read across ten charts, it sounds generated.
 
-### The cohesive-portrait formula
+The rules below exist to stop that. When they conflict with sounding natural,
+sound natural, then check the hard limits.
 
-Write every placement as one flowing statement built from three linked beats:
+### Each field has one job
 
-1. **Function** — what this planet drives (core identity, emotional world, drive,
-   communication, etc.).
-2. **Expression** — how the sign colors that function, in *concrete traits*.
-   Never translate the sign's symbol literally.
-3. **Direction** — what the house focuses it on, phrased as a lived outcome:
-   *when* and *where* the person's power shines, peace flourishes, confidence
-   lands. This replaces the old lordship "math" ("rules the 7th, sits in the 2nd").
+A placement shows up in more than one place: the summary card on the Overview,
+then the motto and reading on the Planets tab (or the rising-sign card for the
+ascendant). If they say the same thing, the site repeats itself. Each field
+must add something the others don't.
 
-> **Before (fragmented):** "Sun in Pisces. Sun governs identity. Pisces is
-> empathetic. Resources and voice. Neutral placement."
->
-> **After (cohesive):** "The Sun drives your core identity, confidence, and
-> vitality. In visionary Pisces, that self-expression turns empathetic, intuitive,
-> and soulful — and because it's focused on your 2nd house of voice and values,
-> your power shines brightest when you speak from the heart and share your vision
-> with the world."
+| Field | Its job | Length |
+|-------|---------|--------|
+| `story` | The chart's central theme and its main tension. The first thing the person reads. | 2 paragraphs, 70–110 words total |
+| `cardBlurb` | The hook. The single most recognizable thing about this placement. | 2 sentences, under 45 words |
+| `motto` | One concrete line about the person's life. Not a summary of the card. | Under 12 words |
+| `deepDive[0]` | The opening of the reading. **New information**: how it shows up day to day. Must not restate the card. | 2–3 sentences |
+| `deepDive[1–2]` | The deeper reading: a real-life example, what a strong or strained placement feels like, and one thing to work on. | 3–5 sentences each |
+| `highlights` | The 4–6 patterns behind the story, each with a plain-English title. | 1–2 sentences each |
+| `nakshatra.cardBlurb` / `themes` | The card is the hook; `themes` goes further. `themes` must not repeat the card. | 2 sentences / 3–4 sentences |
+| `houses[].meaning` | What this area of life is like for them. | 2–3 full sentences |
 
-### Two levels of depth
+Before moving on from a placement, read its `cardBlurb`, `motto` and
+`deepDive[0]` together. If two of them make the same point, rewrite one.
 
-- **Lead portrait** — the Overview cards, and the *first* paragraph of every
-  planet's `deepDive`. The tight 2–3 sentence cohesive version above. This is
-  what most readers actually see; make it land on its own.
-- **Deeper reading** — the remaining `deepDive` paragraphs, shown in the
-  Planets-tab accordions. May run longer, but follows the same rules: fuse facts
-  into meaning, no jargon, no literal symbols.
+### The story
 
-### Placement Status tag (dignity)
+The story is the narrative the rest of the chart hangs on. Find it from
+**where the chart's weight sits**, in this order:
 
-Keep dignity **out of the prose.** The app renders it as a separate status tag
-derived from the `dignity` field. Use these plain translations so every chart
-reads consistently:
+1. **The most crowded house.** Three or more planets in one house is almost
+   always the headline.
+2. **The chart ruler** (lord of the 1st house): where it sits and how strong
+   it is.
+3. **The luck planet** (the yogakaraka, or the 9th-house lord if there is no
+   yogakaraka): where it sits and whether it's comfortable or strained.
+   Check the yogakaraka against the rule in §2 rather than trusting `role`.
+4. **Ashtakavarga**: the highest- and lowest-scoring houses, as supporting
+   evidence.
 
-| `dignity` value | Status tag |
-|-----------------|-----------|
-| Own sign | Strong · At Home |
-| Exalted | Exalted · High Comfort |
-| Friendly sign | Comfortable · Supported |
-| Neutral | Neutral · Workable |
-| Enemy sign | Strained · Works Harder |
-| Debilitated | Challenged · Growth Through Effort |
-| Combust | Overshadowed · Merged with the Sun |
+Don't build the story from the strongest planet alone. That produces the same
+story for every chart with a strong Saturn.
 
-The deeper reading may still *explain* what a strained or exalted placement feels
-like in real life — it just shouldn't lean on the Sanskrit label to do it.
+Name **one central theme** and **one tension**. Write it in plain language with
+no planet jargon beyond planet and house names. Then, in the 2–3 planet
+readings that make up the story, add one sentence that links back to it. Leave
+the other planet readings alone. Don't bend every planet to fit the theme.
 
-### Standard heading & role labels
+The story and the highlights must not overlap. The story is the theme; the
+highlights are the specific patterns that support it.
 
-Heading: `Sign + Body (House)` — e.g. "Taurus Moon (4th House)".
-Subhead: the heading followed by a plain role label:
+### Vary the shape
 
-| Body | Role label |
-|------|-----------|
-| Ascendant | Your Outer Lens |
-| Sun | Core Purpose |
-| Moon | Emotional Inner World |
-| Birth star (nakshatra) | Your Birth Star |
-| Any other planet | that planet's function (e.g. "Drive & Courage" for Mars) |
+- **No two planet readings in a chart may open with the same structure.** Bad:
+  "Mars drives your energy…" / "Mercury drives your thinking…" / "Jupiter
+  drives your growth…". Open with the person, a situation, a contrast, a habit,
+  or the planet. Change it up each time.
+- **Never open a reading by defining the planet** ("Mars is your drive,
+  courage and initiative", "Rahu marks where…"). The theme label above the
+  text already does that.
+- **The planet → sign → house order is a checklist, not a sentence template.**
+  Each reading should cover what the planet drives, how the sign colors it,
+  and where the house points it. Cover them in any order, and fold them into
+  what the person does rather than stating each one.
+- **Mix sentence lengths.** Short sentences land. Use them after a long one.
+- **Mottos are statements, not adjective lists.** Write a short sentence about
+  their life, a habit, or how others see them.
 
 ### Voice
 
-- Warm, direct, second-person ("you", "your").
-- No Sanskrit jargon in the narrative — technical terms live in the facts table
-  and the status tag, not the portrait.
-- No "this could mean..." hedging. State the tendency, then give the nuance.
-- Plain sentences. No bullet lists inside portrait paragraphs.
+- Warm and direct, in second person ("you", "your").
+- Commit. State the tendency, then the nuance. No "this could mean…" and no
+  "you may or may not feel…".
+- Show, don't announce. Instead of "This is a powerful placement," describe
+  what it lets them do.
+- Concrete over abstract. "You'll rewrite an email four times before sending
+  it" beats "you value precision in communication."
+- No bullet lists inside prose fields.
 
-### For highlights
+### Jargon
 
-Pick 4–6 patterns that define this chart. Each should answer: *"What does this
-mean for this specific person's life?"* — not just what the yoga is called.
+Technical terms belong in the facts panel and the status badge, never in
+prose. That includes highlight titles, house meanings and ashtakavarga notes.
 
-### For house meanings
+| Don't write | Write |
+|-------------|-------|
+| lagna, lagna lord | rising sign, chart ruler |
+| kendra, trikona | (say what the house is about) |
+| yogakaraka | the planet that brings you luck and joy |
+| combust | very close to the Sun, overshadowed by it |
+| stellium | four planets in one house |
+| maraka, dusthana | (leave out) |
+| bindus | points |
+| debilitated, exalted, own sign | (leave to the badge, or describe how it feels) |
+| "rules the 7th, sits in the 2nd" | what that means for their life |
 
-If a house has occupants, lead with what those planets bring to that life area.
-If empty, note that the ruling planet (sign lord) carries the house's themes
-elsewhere, and name where that planet sits.
+Don't write "In Vedic astrology, X means…". Just say what it means. Don't
+translate a sign's symbol literally ("the water-bearer who pours"). If you use
+an image, it must turn into a concrete trait in the same sentence.
 
-### Avoid
+### Hard limits
 
-- **Literal symbol translation** — "the water-bearer who gathers and pours water,"
-  "the red one." Lead with traits (inventive, magnetic, grounded). Imagery is fine
-  only if it *immediately* cashes out into a concrete trait.
-- **Fragmented fact-stacking** — "Sun governs X. Sign is Y. Neutral placement."
-- **Lordship math in prose** — "rules the 7th sitting in the 2nd." Say what it
-  means for their life instead.
-- Degrees, nakshatra padas, or shadbala numbers in the narrative — those stay in
-  the facts table.
-- "This is a powerful placement" (show it); "you may or may not feel…" (commit).
-- Phrases like "in Vedic astrology, X means…" — just say what X means.
-- Any text that assumes the reader knows what a house, sign, or planet is.
+Check these before finishing a chart. `node scripts/lint-copy.js <id>` checks
+most of them automatically. If you change a rule here, change it in the lint
+too.
 
-### Worked rewrites (Overview cards)
+**Em dashes (—)**
+- None in `motto`, `cardBlurb`, `story` or highlight titles.
+- At most one per paragraph anywhere else.
+- Under 20 in the whole chart. The current charts average about 75.
+- Replace with a period first, then a comma or colon. Usually two sentences
+  read better than one sentence joined by a dash.
 
-**Aquarius Ascendant**
+**Banned words.** Delete them. If the sentence feels empty without one, the
+sentence needs a fact.
+- quietly, genuinely, genuine, truly, deeply, really, unusually, remarkably,
+  literally, simply, actually, incredibly
+- "real" as an intensifier ("real strength", "a real gift")
 
-> ~~Your rising sign is Aquarius, and everything about you is shaped by that
-> symbol: the pot that gathers, holds and pours out water.~~
+**Banned phrases**
+- "growth edge", "the key is", "here is the key", "here is the single most
+  important thing", "in plain terms", "the good news", "the invitation is"
+- "shines brightest", "comes alive", "lands strongest"
+- "Sitting in your Nth house of…" to open a sentence
+
+**Banned sentence shapes**
+- Contrast reveals: "This is not X; it is Y." "Not X, but Y." "X, not Y."
+  State Y and give the reason.
+- Self-answered questions: "The result? …"
+
+**Caps**
+- "rather than": at most 3 per chart. The current charts average 12.
+- Lists of three ("warm, generous, and magnetic"): at most one per paragraph.
+- Sentences starting with "Because": at most 2 per chart.
+
+### Theme labels (planet eyebrows)
+
+Use exactly these. They are also the role labels on the Overview cards.
+
+| Body | `theme` |
+|------|---------|
+| Sun | Core Self & Vitality |
+| Moon | Emotional Inner World |
+| Mars | Drive & Courage |
+| Mercury | Mind & Communication |
+| Jupiter | Wisdom & Growth |
+| Venus | Love & Beauty |
+| Saturn | Discipline & Endurance |
+| Rahu | What You're Reaching For |
+| Ketu | What You Already Know |
+
+### Highlights
+
+Pick 4–6 patterns that support the story. Each title is plain English and says
+what it means: "Four planets in your house of partnership," not "A four-planet
+Leo stellium in the 7th." Each body answers *what does this mean for this
+person's life?*
+
+### House meanings
+
+Write full sentences in second person. Don't use the "Gemini 5th: playful,
+versatile…" fragment style. If the house has occupants, lead with what they
+bring to that area of life. If it's empty, say where its ruling planet sits
+and how that carries the house's themes elsewhere.
+
+### Worked example: Kara
+
+**Story** (built from four planets in the 7th, the luck planet Venus strained
+there, and the chart ruler Saturn strong in the 10th)
+
+> Four of your nine planets sit in your house of partnership, your Sun among
+> them. You come most alive beside someone else: a partner, a close friend, a
+> collaborator. Your work and your sense of self grow fastest when you share
+> them.
 >
-> **Aquarius Ascendant · Your Outer Lens**
-> You meet the world as an open-minded visionary — inventive, distinct, and
-> community-minded. Your power shines brightest when you bring people together
-> around fresh, meaningful ideas.
+> Venus is there too. It governs your home, your peace and your luck, and it is
+> the weakest planet in your chart. Love is where you shine, and it is also
+> where good things need deliberate care. Your strongest planet, Saturn,
+> anchors your career and gives you steady ground to build the rest on.
 
-**Taurus Moon**
+**Moon: card, motto and reading, each doing a different job**
 
-> ~~Your Moon is exalted in Taurus — the very best sign the Moon can occupy — and
-> it sits in your 4th house of home, mother, inner peace and emotional roots.~~
+> ~~Card: "Your emotional core runs deep and private — you feel intensely…"~~
+> ~~Motto: "Deep, loyal, and quietly intense — you feel everything and show little."~~
+> ~~Reading: "Your emotional world runs deep, private, and intense — you feel everything strongly…"~~
 >
-> **Taurus Moon (4th House) · Emotional Inner World**
-> Your emotional core is naturally serene, steady, and grounded. Sitting in your
-> 4th house of home, your peace flourishes when you build a cozy sanctuary and
-> nurture reliable bonds.
-> *Placement Status: Exalted · High Comfort*
-
-**Rohini Birth Star**
-
-> ~~"The red one" — the Moon's most beloved nakshatra, associated with fertility,
-> magnetism and growth…~~
+> **Card:** Your feelings run deep and you keep them close. Your Moon sits in
+> your house of career, so your mood follows your work: when the job means
+> something, you're steady.
 >
-> **Rohini Nakshatra · Your Birth Star**
-> Guided by magnetism and growth, your inner world thrives on beauty, warmth, and
-> life's simple pleasures. You have a natural charm that draws people in and helps
-> whatever you tend to flourish.
-
-**Pisces Sun**
-
-> ~~Your Sun rules the 7th house of partnership… and it sits in your 2nd house of
-> speech, resources and family.~~
+> **Motto:** You feel everything. Your colleagues rarely see it.
 >
-> **Pisces Sun (2nd House) · Core Purpose**
-> Driven by deep empathy and vision, your core identity is soulful and intuitive.
-> Focused on your 2nd house of voice and values, your confidence shines when you
-> speak from the heart and share your vision.
-> *Placement Status: Neutral · Workable*
+> **Reading:** You'd rather lead than be led, and a heavy-handed boss can make
+> you miserable. What you want underneath is recognition, from the wider world
+> and from your own people. You have the charisma to earn it.
+
+**Ascendant motto**
+
+> ~~Inventive, independent, and endlessly curious — you lead with the mind.~~
+>
+> You'd rather understand how a thing works than own it.
+
+**A planet opening**
+
+> ~~Mars is your drive, courage, and initiative, and in Leo it makes you strong,
+> confident, and daring — real willpower, and very little rattles you.~~
+>
+> Very little rattles you. Your Mars is in bold, warm Leo, and it sits in your
+> house of partnership, so your fire comes out most around the people you're
+> closest to. You fall fast, and you fight for the people you love.
 
 ---
 
-## 5. Quick checklist before adding the chart
+## 5. Checklist before adding the chart
 
-- [ ] Confirmed birth time is exact, not approximate
-- [ ] Confirmed VedAstro resolved the correct coordinates
-- [ ] Cross-checked Moon nakshatra against at least one other calculator
-- [ ] All 9 planets filled in (including Rahu and Ketu)
-- [ ] All 12 houses filled in
-- [ ] `id` in the object matches the key in the `charts` map
-- [ ] `shadbalaRange` reflects the actual min/max from this chart's shadbala values
-- [ ] Ashtakavarga total adds up (sum of the 12 bindu values = `total`)
-- [ ] DeepDive paragraphs written in second person, no Sanskrit jargon
-- [ ] Remedy section filled for all planets (day, mantra, deity, supports)
-- [ ] `charts/FIRSTNAME.md` source document written (optional but recommended —
-      use `charts/Kara.md` as the template)
+**Data**
+- [ ] Birth time is exact, not approximate
+- [ ] Fetched with coordinates, and the echoed location in the raw JSON matches
+- [ ] Timezone matches the season (standard or daylight time)
+- [ ] All 9 planets and all 12 houses filled in
+- [ ] `id` matches the key in the `charts` map
+- [ ] `shadbalaRange` brackets the 7 planets' shadbala (rounded to 10s)
+- [ ] Rahu and Ketu have no `shadbala`, `ishta` or `kashta`
+- [ ] Each `role` matches `housesOwned`; "combust" only where the API says so
+- [ ] The 12 ashtakavarga values add up to `total`
+
+**Copy**
+- [ ] `story` written, built from where the chart's weight sits
+- [ ] For Sun, Moon and ascendant: card, motto and `deepDive[0]` each make a
+      different point
+- [ ] No two planet readings open with the same structure
+- [ ] Em dashes: none in mottos, cards, story or highlight titles; under 20 total
+- [ ] No banned words, phrases or sentence shapes (§4 Hard limits)
+- [ ] No jargon in prose, highlight titles, house meanings or ashtakavarga notes
+- [ ] Theme labels match the table in §4
+
+**After saving**
+- [ ] `node scripts/lint-copy.js <id>` shows no errors
+- [ ] Run `node scripts/export-md.js` to regenerate `charts/*.md`
+- [ ] Open `index.html` and read the Overview from top to bottom
 
 ---
 
 ## 6. Reference: planet mantras and deities
+
+The site's remedy section comes from `PLANET_REMEDIES` in `index.html`, and
+`export-md.js` keeps its own copy. This table is for reference only. Don't
+copy it into chart data.
 
 | Planet | Deity | Supports | Mantra | Day |
 |--------|-------|----------|--------|-----|
@@ -520,53 +502,25 @@ elsewhere, and name where that planet sits.
 
 ---
 
-## 7. Example prompt for generating interpretations
+## 7. Brief for an agent writing a chart
 
-Once you have the raw numbers, paste this into a new Claude chat along with
-the full planet/house data:
+In Claude Code, the `write-chart` project skill (`.claude/skills/write-chart/`)
+runs this whole process and loads the guide automatically. For any other
+agent, give it this brief along with the raw JSON:
 
 ```
-You are writing a personal Vedic astrology portrait for [Name].
+Write the chart entry for [Name] in data/chart-data.js.
 
-Birth details: [date, time, place]
-Ascendant: [sign, degree, nakshatra]
-[paste full planet list and house list]
-
-Write the chart entry in the style described below. Every section should be
-warm, personal, plain-English — no Sanskrit jargon in the narrative, no hedging,
-no generic phrases. Write in second person ("you", "your"). Aim for the depth
-and specificity of a skilled human astrologer talking directly to this person.
-
-Write every placement as a COHESIVE PORTRAIT, not a list of facts. Fuse three
-beats into flowing prose: (1) what the planet drives, (2) how the sign colors it
-in concrete traits — never translate the symbol literally, (3) what the house
-focuses it on, phrased as a lived outcome ("your power shines when…"). Keep
-dignity out of the prose — it renders as a separate status tag.
-
-For each planet's deepDive:
-- Paragraph 1 (the lead): the tight 2–3 sentence cohesive portrait above.
-- Paragraphs 2–4 (deeper reading): the core personality energy, what the
-  placement feels like in real life (explain a strained/exalted placement
-  without leaning on the Sanskrit term), and a practical growth edge.
-
-For the ascendant deepDive:
-- Paragraph 1 (the lead): outer-lens function + concrete traits + where their
-  power shines.
-- Following paragraphs: temperament, career/ambition, social style, and key
-  growth areas.
-
-For houses:
-- If occupied: what those planets bring to that zone
-- If empty: where the ruling planet sits and how that redirects the house's energy
-
-For highlights: 4–6 defining patterns, each with a title and one or two sentences
-on what it means for this person's actual life.
-
-Output as a filled-in JSON object matching the chart-data.js structure in
-the Vedic-astrology repo (see CHART-GUIDE.md for the full schema).
+1. Read CHART-GUIDE.md in full. Section 3 is the data shape; section 4 is the
+   writing style, and its hard limits are requirements, not suggestions.
+2. Take every number from data/raw/[id].json. Never guess a value.
+3. Before writing any planet copy, decide the story (§4 "The story"): find
+   where the chart's weight sits, and name one central theme and one tension.
+4. Write the story first, then the ascendant, Sun and Moon, then the other
+   planets, then houses, highlights, nakshatra, panchanga and ashtakavarga.
+5. Run node scripts/lint-copy.js [id] and fix every error. Rerun until clean.
+   Don't swap in synonyms; rewrite the sentence from the fact underneath it.
+6. Check the chart against the §5 checklist and fix anything that fails.
+7. Run node scripts/export-md.js.
+8. Report the story you used and the lint result before and after.
 ```
-
----
-
-*See `charts/Kara.md` for a complete worked example of a finished chart in
-narrative form, and `data/chart-data.js` for the actual data objects.*

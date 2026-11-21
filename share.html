@@ -3,86 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create a Share Link · Vedic Charts</title>
+  <title>Create a share link · Vedic Astrology Birth Chart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* Tokens — kept in sync with index.html */
     :root {
-      --bg:#0f1117; --bg-elev:#171a23; --bg-elev-2:#1e222d; --stroke:#2a2f3c; --stroke-soft:#232733;
-      --text:#e8eaf0; --text-2:#a9b0c0; --text-3:#6f7688; --accent:#c9a24b; --accent-soft:#3a3320;
-      --good:#5bbf8f; --radius:12px; --maxw:820px;
+      --color-foreground-faint:         #6A6862;  /* 4.52:1 on background-subtle */
+      --color-foreground-subtle:        #6F4925;
+      --color-foreground-default:       #663100;
+      --color-foreground-intense:       #411F00;
+      --color-foreground-inverse:       #F2EFEA;
+      --color-background-default:       #F2EFEA;
+      --color-background-subtle:        #EBE7E0;
+      --color-background-intense:       #D2CDC5;
+      --color-background-brand-subtle:  #FFCC02;
+      --color-border-default:           #D2CDC5;
+      --color-border-intense:           #706E68;
+      --good:      #2D6A4F;
+      --maxw: 1080px;
+
+      --font-display: "Bricolage Grotesque", Helvetica, Arial, sans-serif;
+      --font-base: "Geist", Helvetica, Arial, sans-serif;
+
+      --text-weight-reg: 400;
+      --text-weight-med: 500;
+      --text-weight-semi: 600;
+      --text-weight-xbold: 800;
+      --text-line-height-compressed: 1.1;
+      --text-line-height-tight: 1.25;
+      --text-line-height-normal: 1.5;
+      --text-letter-spacing-tight: -0.008em;
+
+      --spacing-1: 0.25rem; --spacing-2: 0.5rem; --spacing-3: 0.75rem; --spacing-4: 1rem;
+      --spacing-5: 1.25rem; --spacing-6: 1.5rem; --spacing-7: 2rem; --spacing-8: 2.5rem;
+      --spacing-9: 3rem; --spacing-12: 5rem;
+
+      --text-size-xxs: 0.75rem; --text-size-xs: 0.875rem; --text-size-sm: 1rem;
+      --text-size-md: 1.25rem; --text-size-lg: 1.5rem; --text-size-xl: 1.75rem; --text-size-2xl: 2.5rem;
     }
-    * { box-sizing:border-box; }
-    html,body { margin:0; padding:0; }
-    body { background:var(--bg); color:var(--text); line-height:1.6;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
-    .wrap { max-width:var(--maxw); margin:0 auto; padding:32px 24px 80px; }
-    h1,h2 { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; font-weight:600; }
-    h1 { font-size:28px; margin:0 0 6px; }
-    h2 { font-size:16px; margin:26px 0 12px; }
-    p { color:var(--text-2); margin:0 0 12px; }
-    a { color:var(--accent); }
-    .kicker { text-transform:uppercase; letter-spacing:2px; font-size:11px; color:var(--accent); margin-bottom:8px; }
-    .note { background:var(--accent-soft); border:1px solid #5a4a2a; border-radius:var(--radius); padding:12px 16px; font-size:13px; color:var(--text-2); }
-    .card { background:var(--bg-elev); border:1px solid var(--stroke-soft); border-radius:var(--radius); padding:18px 20px; margin-bottom:16px; }
-    .chartrow { display:flex; align-items:center; gap:12px; padding:10px 4px; border-bottom:1px solid var(--stroke-soft); }
-    .chartrow:last-child { border-bottom:none; }
-    .chartrow input[type=checkbox] { width:18px; height:18px; accent-color:var(--accent); cursor:pointer; }
-    .chartrow .nm { font-weight:600; }
-    .chartrow .meta { color:var(--text-3); font-size:13px; }
-    label.fld { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--text-3); margin:0 0 6px; }
-    input[type=text], select { width:100%; background:var(--bg-elev-2); color:var(--text); border:1px solid var(--stroke);
-      border-radius:8px; padding:10px 12px; font-size:14px; font-family:inherit; }
-    input[type=text]:focus, select:focus { outline:none; border-color:var(--accent); }
-    .btn { background:var(--accent); color:#1a1608; border:none; border-radius:8px; padding:11px 18px; font-size:14px;
-      font-weight:600; cursor:pointer; }
-    .btn.secondary { background:var(--bg-elev-2); color:var(--text); border:1px solid var(--stroke); }
-    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .out { margin-top:8px; }
-    .out textarea { width:100%; min-height:76px; background:var(--bg-elev-2); color:var(--text); border:1px solid var(--stroke);
-      border-radius:8px; padding:10px 12px; font-size:13px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; resize:vertical; }
-    .muted { color:var(--text-3); font-size:13px; }
-    .ok { color:var(--good); }
+    /* Breakpoints: 1080px and 768px — same as index.html */
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--color-background-default); color: var(--color-foreground-intense);
+      font-family: var(--font-base); font-weight: var(--text-weight-reg); line-height: 1.625; -webkit-font-smoothing: antialiased; }
+    :focus { outline: none; }
+    html.kbd :focus-visible { outline: 2px solid var(--color-foreground-intense); outline-offset: 2px; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 0 var(--spacing-12); }
+    @media (max-width: 1080px) { .wrap { padding-left: var(--spacing-6); padding-right: var(--spacing-6); } }
+
+    .site-header { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-4);
+      padding: var(--spacing-9) 0 var(--spacing-6); border-bottom: 1px solid var(--color-border-default); margin-bottom: var(--spacing-8); }
+    @media (max-width: 768px) { .site-header { padding-top: 28px; } }
+    .site-logo { font-family: var(--font-display); font-size: var(--text-size-md); font-weight: var(--text-weight-xbold);
+      line-height: var(--text-line-height-compressed); color: var(--color-foreground-intense); text-decoration: none; }
+    .text-link { font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-med);
+      color: var(--color-foreground-intense); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+    .text-link:hover { color: var(--color-foreground-default); }
+
+    .section-titles { display: flex; flex-direction: column; gap: var(--spacing-2); margin-bottom: var(--spacing-7); max-width: 720px; }
+    h1 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); letter-spacing: var(--text-letter-spacing-tight);
+      font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0; }
+    @media (max-width: 768px) { h1 { font-size: var(--text-size-xl); } }
+    .tab-sub { font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-faint); margin: 0; }
+    h2 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg);
+      line-height: var(--text-line-height-compressed); color: var(--color-foreground-intense); margin: 0 0 var(--spacing-5); }
+    p { margin: 0 0 var(--spacing-3); color: var(--color-foreground-default); }
+
+    .note { background: var(--color-background-brand-subtle); padding: var(--spacing-4) var(--spacing-5);
+      font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-default); margin-bottom: var(--spacing-7); max-width: 720px; }
+    .note strong { color: var(--color-foreground-intense); font-weight: var(--text-weight-semi); }
+
+    .steps { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-border-default); margin-bottom: var(--spacing-7); }
+    .card { background: var(--color-background-default); padding: var(--spacing-7); }
+    .card + .card { border-top: 1px solid var(--color-border-default); }
+    @media (max-width: 768px) { .card { padding: var(--spacing-6); } }
+
+    .chartrow { display: flex; align-items: center; gap: var(--spacing-3); padding: var(--spacing-3) 0;
+      border-bottom: 1px solid var(--color-border-default); cursor: pointer; }
+    .chartrow:first-child { border-top: 1px solid var(--color-border-default); }
+    .chartrow input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--color-foreground-intense); cursor: pointer; flex: none; }
+    .chartrow .nm { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-sm); line-height: 1.25; color: var(--color-foreground-intense); }
+    .chartrow .meta { color: var(--color-foreground-faint); font-size: var(--text-size-xs); line-height: 1.5; }
+
+    label.fld { display: block; font-size: var(--text-size-xs); font-weight: var(--text-weight-semi); line-height: 1.5;
+      color: var(--color-foreground-subtle); margin: 0 0 var(--spacing-2); }
+    input[type=text], select, .out textarea { width: 100%; background: var(--color-background-default); color: var(--color-foreground-intense);
+      border: 1px solid var(--color-border-default); border-radius: 0; padding: var(--spacing-3) var(--spacing-4);
+      font-size: var(--text-size-xs); font-family: var(--font-base); }
+    select { -webkit-appearance: none; appearance: none; cursor: pointer; font-weight: var(--text-weight-semi);
+      background: var(--color-background-default) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' stroke='%23663100' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right var(--spacing-4) center;
+      padding-right: calc(var(--spacing-4) + 20px); }
+    input[type=text]:focus, select:focus, .out textarea:focus { border-color: var(--color-foreground-default); }
+    .out textarea { min-height: 76px; resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--text-size-xxs); line-height: 1.5; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
+      background: var(--color-foreground-intense); color: var(--color-foreground-inverse);
+      border: 1px solid var(--color-foreground-intense); border-radius: 0; padding: var(--spacing-3) var(--spacing-5);
+      font-family: var(--font-display); font-size: var(--text-size-sm); font-weight: var(--text-weight-med); line-height: 1.25;
+      cursor: pointer; text-decoration: none; transition: background .12s, color .12s; }
+    .btn:hover { background: var(--color-foreground-default); border-color: var(--color-foreground-default); }
+    .btn.secondary { background: var(--color-background-default); color: var(--color-foreground-intense); border-color: var(--color-border-default); }
+    .btn.secondary:hover { background: var(--color-background-subtle); border-color: var(--color-border-intense); }
+    .row { display: flex; gap: var(--spacing-3); flex-wrap: wrap; align-items: center; }
+    .out { margin-top: var(--spacing-4); }
+    .muted { color: var(--color-foreground-faint); font-size: var(--text-size-xs); line-height: 1.5; }
+    .hint { margin: var(--spacing-2) 0 0; }
+    .fld-gap { margin-top: var(--spacing-6) !important; }
+    .ok { color: var(--good); }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="kicker">Vedic Charts · Sharing</div>
-    <h1>Create a share link</h1>
-    <p>Tick the charts a link should be allowed to open, then copy the generated link and send it. The recipient will only see the charts you selected.</p>
+    <div class="site-header">
+      <a class="site-logo" href="index.html">Vedic Astrology Birth Chart</a>
+      <a class="text-link" href="index.html">← Back to charts</a>
+    </div>
+
+    <div class="section-titles">
+      <h1>Create a share link</h1>
+      <p class="tab-sub">Tick the charts a link should be allowed to open, then copy the generated link and send it. The recipient will only see the charts you selected.</p>
+    </div>
 
     <div class="note" id="softnote">
       <strong>Heads-up:</strong> this is <em>soft</em> sharing. The link controls what the viewer displays, but the underlying data still lives in the site's files, so it isn't cryptographically private. Great for friends &amp; family; not for secrets.
     </div>
 
-    <div class="card" style="margin-top:16px">
-      <h2 style="margin-top:0">1 · Choose charts</h2>
+    <div class="steps">
+    <div class="card">
+      <h2>1. Choose charts</h2>
       <div id="chartlist"></div>
-      <div class="row" style="margin-top:12px">
+      <div class="row" style="margin-top:var(--spacing-5)">
         <button class="btn secondary" id="all">Select all</button>
         <button class="btn secondary" id="none">Clear</button>
       </div>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0">2 · Link settings</h2>
+      <h2>2. Link settings</h2>
       <label class="fld" for="base">Site address (where index.html is hosted)</label>
       <input type="text" id="base" placeholder="https://yourname.github.io/vedic-astrology/index.html" />
-      <p class="muted" style="margin-top:6px">Pre-filled from this page's location. Change it to your GitHub Pages or Webflow URL so the link points to the public site.</p>
-      <label class="fld" for="first" style="margin-top:14px">Open on this chart first (optional)</label>
+      <p class="muted hint">Pre-filled from this page's location. Change it to your GitHub Pages or Webflow URL so the link points to the public site.</p>
+      <label class="fld fld-gap" for="first">Open on this chart first (optional)</label>
       <select id="first"></select>
+      <label class="chartrow fld-gap" for="compat">
+        <input type="checkbox" id="compat" />
+        <div><div class="nm">Include Compatibility</div><div class="meta">Shows the Compatibility tab and page, limited to the charts ticked above</div></div>
+      </label>
     </div>
 
     <div class="card">
-      <h2 style="margin-top:0">3 · Your link</h2>
+      <h2>3. Your link</h2>
       <div class="row">
         <button class="btn" id="gen">Generate link</button>
         <button class="btn secondary" id="copy">Copy</button>
-        <a class="btn secondary" id="preview" href="#" target="_blank" rel="noopener" style="text-decoration:none">Preview ↗</a>
+        <a class="btn secondary" id="preview" href="#" target="_blank" rel="noopener">Preview in new tab</a>
         <span id="status" class="muted"></span>
       </div>
-      <div class="out"><textarea id="link" readonly placeholder="Your share link will appear here…"></textarea></div>
+      <div class="out"><textarea id="link" readonly aria-label="Share link" placeholder="Your share link will appear here…"></textarea></div>
     </div>
-
-    <p class="muted"><a href="index.html">← Back to the chart viewer</a></p>
+    </div>
   </div>
 
   <script src="data/chart-data.js"></script>
@@ -125,6 +207,7 @@
       }
 
       listEl.addEventListener("change", refreshFirst);
+      document.getElementById("compat").addEventListener("change", generate);
       refreshFirst();
 
       document.getElementById("all").addEventListener("click", function (e) {
@@ -147,7 +230,7 @@
         if (!ids.length) { statusEl.textContent = "Pick at least one chart."; statusEl.className = "muted"; linkEl.value = ""; return ""; }
         var baseUrl = document.getElementById("base").value.trim() || base;
         var first = firstSel.value || null;
-        var link = window.VEDIC_ACCESS.buildLink(baseUrl, ids, first);
+        var link = window.VEDIC_ACCESS.buildLink(baseUrl, ids, first, document.getElementById("compat").checked);
         linkEl.value = link;
         previewEl.href = link;
         statusEl.textContent = ids.length + " chart" + (ids.length > 1 ? "s" : "") + " · link ready";
@@ -162,11 +245,15 @@
         if (!link) return;
         linkEl.select();
         navigator.clipboard ? navigator.clipboard.writeText(link).then(function () {
-          statusEl.textContent = "Copied!"; statusEl.className = "ok muted";
+          statusEl.textContent = "Copied"; statusEl.className = "ok muted";
         }) : document.execCommand("copy");
       });
 
       generate();
+
+      // Keyboard-detected focus rings
+      document.addEventListener("keydown", function (e) { if (e.key === "Tab" || e.key.indexOf("Arrow") === 0) document.documentElement.classList.add("kbd"); });
+      document.addEventListener("pointerdown", function () { document.documentElement.classList.remove("kbd"); });
     })();
   </script>
 </body>

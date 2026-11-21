@@ -12,6 +12,7 @@
  *   index.html?s=<token>     token = base64url(JSON array of chart ids)
  *   index.html?charts=a,b    human-readable fallback (comma-separated ids)
  *   index.html?c=<id>        which chart to open first (optional)
+ *   index.html?cp=1          also allow the Compatibility page (optional)
  *   (no params)              owner view: shows ALL charts
  */
 (function () {
@@ -50,10 +51,11 @@
   }
 
   // Build a shareable URL for the given base + ids (+ optional first chart)
-  function buildLink(baseUrl, ids, firstId) {
+  function buildLink(baseUrl, ids, firstId, compat) {
     var url = baseUrl.split("#")[0].split("?")[0];
     var params = ["s=" + encodeIds(ids)];
     if (firstId && ids.indexOf(firstId) >= 0) params.push("c=" + encodeURIComponent(firstId));
+    if (compat) params.push("cp=1");
     return url + "?" + params.join("&");
   }
 
@@ -61,6 +63,7 @@
   function resolve(allIds) {
     var q = getParams();
     var allowed = null;
+    var shared = !!(q.s || q.charts);
 
     if (q.s) allowed = decodeToken(q.s);
     else if (q.charts) allowed = q.charts.split(",").map(function (x) { return x.trim(); });
@@ -73,7 +76,9 @@
     if (!allowed.length) allowed = []; // explicit empty -> "no access" screen
 
     var activeId = (q.c && allowed.indexOf(q.c) >= 0) ? q.c : allowed[0];
-    return { allowed: allowed, activeId: activeId, params: q };
+    // Compatibility: always for the owner view; on shared links only when cp=1
+    var compat = !shared || q.cp === "1";
+    return { allowed: allowed, activeId: activeId, params: q, shared: shared, compat: compat };
   }
 
   // Update the ?c= param in the address bar without reloading, preserving token.
@@ -81,7 +86,7 @@
     var q = getParams();
     q.c = id;
     var parts = [];
-    ["s", "charts", "c"].forEach(function (k) {
+    ["s", "charts", "c", "cp"].forEach(function (k) {
       if (q[k] != null && q[k] !== "") parts.push(k + "=" + encodeURIComponent(q[k]));
     });
     var newUrl = location.pathname + (parts.length ? "?" + parts.join("&") : "") + location.hash;

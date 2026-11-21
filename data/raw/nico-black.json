@@ -1,9 +1,9 @@
 {
-  "name": "Nico Black",
+  "name": "Nico",
   "date": "13/04/2022",
   "time": "09:28",
   "tz": "-04:00",
-  "location": "Melbourne, Florida, USA",
+  "location": "28.08,-80.604",
   "ayanamsa": "RAMAN",
   "results": {
     "Planet_Sun": {
@@ -26,7 +26,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -54,7 +54,6 @@
           "BeneficPlanetsAspectingPlanet": [
             "Saturn"
           ],
-          "DasaPeriodAshtakavargaStrength": "75.2",
           "DispositorConjunctWith": [
             "Saturn"
           ],
@@ -203,7 +202,6 @@
             }
           },
           "PlanetConstellation": "Aswini - 1",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: debts, diseases, enemies, miseries, sorrows, illness and disappointments.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Aries",
             "DegreesIn": {
@@ -384,7 +382,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -418,7 +416,6 @@
             "Mars",
             "Saturn"
           ],
-          "DasaPeriodAshtakavargaStrength": "28",
           "DispositorConjunctWith": [],
           "DispositorFromLagna": "12",
           "DispositorFromMoon": "9",
@@ -567,7 +564,6 @@
             }
           },
           "PlanetConstellation": "Pubba - 2",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: brothers and sisters, intelligence, cousins and other immediate relations, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders, occupation, profession, temporal honours, foreign travels, self-respect, knowledge and dignity and means of livelihood.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Aquarius",
             "DegreesIn": {
@@ -749,7 +745,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -777,7 +773,6 @@
             "Moon"
           ],
           "BeneficPlanetsAspectingPlanet": [],
-          "DasaPeriodAshtakavargaStrength": "85.6",
           "DispositorConjunctWith": [
             "Mars"
           ],
@@ -926,7 +921,6 @@
             }
           },
           "PlanetConstellation": "Dhanishta - 4",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: losses, expenditure, waste, extravagance, sympathy, divine knowledge, Moksha and the state after death, wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness, beginning of life, childhood, health, environment, personality, the physical body and character, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders, children, grandfather, intelligence, emotions and fame.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Aries",
             "DegreesIn": {
@@ -1111,7 +1105,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -1139,7 +1133,6 @@
           "BeneficPlanetsAspectingPlanet": [
             "Saturn"
           ],
-          "DasaPeriodAshtakavargaStrength": "100",
           "DispositorConjunctWith": [
             "Saturn"
           ],
@@ -1288,7 +1281,6 @@
             }
           },
           "PlanetConstellation": "Aswini - 4",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: family, face, right eye, food, wealth, literary gift, and manner and source of death, self-acquisition and optimism, children, grandfather, intelligence, emotions and fame, debts, diseases, enemies, miseries, sorrows, illness and disappointments.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Leo",
             "DegreesIn": {
@@ -1469,7 +1461,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -1489,7 +1481,6 @@
           "AllPlanetsInFriendConjunctionWith": [],
           "AspectReceivedByDispositor": [],
           "BeneficPlanetsAspectingPlanet": [],
-          "DasaPeriodAshtakavargaStrength": "43.2",
           "DispositorConjunctWith": [],
           "DispositorFromLagna": "11",
           "DispositorFromMoon": "8",
@@ -1636,7 +1627,6 @@
             }
           },
           "PlanetConstellation": "Poorvabhadra - 4",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: longevity, legacies and gifts and unearned wealth, cause of death, disgrace, degradation and details pertaining to death, means of gains, elder brother and freedom from misery, brothers and sisters, intelligence, cousins and other immediate relations, children, grandfather, intelligence, emotions and fame, wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Scorpio",
             "DegreesIn": {
@@ -1759,7 +1749,7 @@
             "Ketu"
           ],
           "PlanetsInConjunction": [],
-          "PlanetSpeed": "0.22577424804778193",
+          "PlanetSpeed": "0.22577424804171756",
           "PlanetSthanaBala": "228.82444444444445",
           "PlanetStrength": "466.72",
           "PlanetTemporaryFriendList": [
@@ -1818,7 +1808,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -1842,7 +1832,6 @@
             "Moon"
           ],
           "BeneficPlanetsAspectingPlanet": [],
-          "DasaPeriodAshtakavargaStrength": "37.2",
           "DispositorConjunctWith": [
             "Mars"
           ],
@@ -1991,7 +1980,6 @@
             }
           },
           "PlanetConstellation": "Satabhisha - 3",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Good & positive effects related to: beginning of life, childhood, health, environment, personality, the physical body and character, debts, diseases, enemies, miseries, sorrows, illness and disappointments, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Cancer",
             "DegreesIn": {
@@ -2173,7 +2161,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -2203,7 +2191,6 @@
             "Moon"
           ],
           "BeneficPlanetsAspectingPlanet": [],
-          "DasaPeriodAshtakavargaStrength": "38.8",
           "DispositorConjunctWith": [
             "Mars"
           ],
@@ -2352,7 +2339,6 @@
             }
           },
           "PlanetConstellation": "Dhanishta - 3",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: father, righteousness, preceptor, grandchildren, intuition, religion, sympathy, fame, charities, leadership, journeys and communications with spirits, occupation, profession, temporal honours, foreign travels, self-respect, knowledge and dignity and means of livelihood, peace of mind, home life, mother, conveyances, house property, landed and ancestral properties, education and neck and shoulders, wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness, losses, expenditure, waste, extravagance, sympathy, divine knowledge, Moksha and the state after death.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Aquarius",
             "DegreesIn": {
@@ -2482,7 +2468,7 @@
           "PlanetsInConjunction": [
             "Mars"
           ],
-          "PlanetSpeed": "0.07788159388249136",
+          "PlanetSpeed": "0.07788160103215723",
           "PlanetSthanaBala": "290.9126851851852",
           "PlanetStrength": "523.86",
           "PlanetTemporaryFriendList": [
@@ -2515,7 +2501,7 @@
           },
           "ResidentialStrength": "0.8652299976490871",
           "SignsPlanetIsAspecting": "Aries, Scorpio, Leo",
-          "SwissEphemeris": "{ Longitude = 323.10699127259335, Latitude = -0.9745237510107737, DistanceAU = 10.352880285617754, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
+          "SwissEphemeris": "{ Longitude = 323.1069912725969, Latitude = -0.9745237510106942, DistanceAU = 10.3528802856186, SpeedLongitude = 0, SpeedLatitude = 0, SpeedDistance = 0 }"
         }
       }
     },
@@ -2539,7 +2525,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -2571,7 +2557,6 @@
           "BeneficPlanetsAspectingPlanet": [
             "Mars"
           ],
-          "DasaPeriodAshtakavargaStrength": "50",
           "DispositorConjunctWith": [],
           "DispositorFromLagna": "10",
           "DispositorFromMoon": "7",
@@ -2720,7 +2705,6 @@
             }
           },
           "PlanetConstellation": "Krithika - 2",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: wife, husband, marriage, urinary organs, marital happiness, sexual diseases, business partner, diplomacy, talent, energies and general happiness.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Capricorn",
             "DegreesIn": {
@@ -2907,7 +2891,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -2940,7 +2924,6 @@
           "BeneficPlanetsAspectingPlanet": [
             "Saturn"
           ],
-          "DasaPeriodAshtakavargaStrength": "50",
           "DispositorConjunctWith": [
             "Saturn"
           ],
@@ -3092,7 +3075,6 @@
             }
           },
           "PlanetConstellation": "Vishhaka - 4",
-          "PlanetDasaEffectsBasedOnIshtaKashta": "Bad & negative effects related to: beginning of life, childhood, health, environment, personality, the physical body and character.",
           "PlanetDashamamshaD10Sign": {
             "Name": "Cancer",
             "DegreesIn": {
@@ -3270,7 +3252,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3295,7 +3277,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3320,7 +3302,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3333,7 +3315,6 @@
           "Sun": {
             "Total": 43,
             "Rows": [
-              2,
               3,
               3,
               3,
@@ -3344,14 +3325,14 @@
               5,
               3,
               5,
-              7
+              7,
+              2
             ]
           },
           "Moon": {
             "Total": 36,
             "Rows": [
               2,
-              2,
               3,
               7,
               1,
@@ -3361,13 +3342,13 @@
               2,
               2,
               5,
+              2,
               2
             ]
           },
           "Mars": {
             "Total": 49,
             "Rows": [
-              5,
               3,
               4,
               3,
@@ -3378,14 +3359,14 @@
               6,
               7,
               2,
-              4
+              4,
+              5
             ]
           },
           "Mercury": {
             "Total": 46,
             "Rows": [
               3,
-              3,
               1,
               5,
               2,
@@ -3395,13 +3376,13 @@
               2,
               5,
               5,
-              7
+              7,
+              3
             ]
           },
           "Jupiter": {
             "Total": 36,
             "Rows": [
-              2,
               1,
               1,
               2,
@@ -3412,7 +3393,8 @@
               2,
               4,
               7,
-              4
+              4,
+              2
             ]
           },
           "Venus": {
@@ -3420,7 +3402,6 @@
             "Rows": [
               3,
               3,
-              3,
               4,
               4,
               2,
@@ -3429,13 +3410,13 @@
               3,
               6,
               3,
-              2
+              2,
+              3
             ]
           },
           "Saturn": {
             "Total": 42,
             "Rows": [
-              2,
               4,
               4,
               4,
@@ -3446,13 +3427,13 @@
               4,
               6,
               1,
-              3
+              3,
+              2
             ]
           },
           "Ascendant": {
             "Total": 45,
             "Rows": [
-              7,
               1,
               5,
               3,
@@ -3463,13 +3444,13 @@
               1,
               2,
               2,
-              6
+              6,
+              7
             ]
           },
           "Sarvashtakavarga": {
             "Total": 337,
             "Rows": [
-              26,
               20,
               24,
               31,
@@ -3480,7 +3461,8 @@
               25,
               35,
               30,
-              35
+              35,
+              26
             ]
           }
         }
@@ -3499,7 +3481,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3530,7 +3512,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3557,7 +3539,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3582,7 +3564,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3610,7 +3592,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3640,7 +3622,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3652,7 +3634,7 @@
         "SunriseTime": {
           "StdTime": "07:03 13/04/2022 -04:00",
           "Location": {
-            "Name": "Melbourne, FL, United States",
+            "Name": "28.08,-80.604",
             "Longitude": -80.604,
             "Latitude": 28.08
           }
@@ -3672,7 +3654,7 @@
             "Value": {
               "StdTime": "09:28 13/04/2022 -04:00",
               "Location": {
-                "Name": "Melbourne, FL, United States",
+                "Name": "28.08,-80.604",
                 "Longitude": -80.604,
                 "Latitude": 28.08
               }
@@ -3684,11 +3666,121 @@
         "SunsetTime": {
           "StdTime": "19:42 13/04/2022 -04:00",
           "Location": {
-            "Name": "Melbourne, FL, United States",
+            "Name": "28.08,-80.604",
             "Longitude": -80.604,
             "Latitude": 28.08
           }
         }
+      }
+    },
+    "Karana": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "Karana",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "28.08,-80.604",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "Karana": "Balava"
+      }
+    },
+    "SodyaAshtakavarga": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "SodyaAshtakavarga",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "28.08,-80.604",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "SodyaAshtakavarga": "{ House = House1, SarvaAshtakavarga = 21, AfterTrikonaShodhana = 0, SodhyaAshtakavarga = 0 }, { House = House2, SarvaAshtakavarga = 29, AfterTrikonaShodhana = 0, SodhyaAshtakavarga = 0 }, { House = House3, SarvaAshtakavarga = 34, AfterTrikonaShodhana = 0, SodhyaAshtakavarga = 0 }, { House = House4, SarvaAshtakavarga = 29, AfterTrikonaShodhana = 3, SodhyaAshtakavarga = 3 }, { House = House5, SarvaAshtakavarga = 33, AfterTrikonaShodhana = 12, SodhyaAshtakavarga = 12 }, { House = House6, SarvaAshtakavarga = 29, AfterTrikonaShodhana = 0, SodhyaAshtakavarga = 0 }, { House = House7, SarvaAshtakavarga = 38, AfterTrikonaShodhana = 4, SodhyaAshtakavarga = 4 }, { House = House8, SarvaAshtakavarga = 26, AfterTrikonaShodhana = 0, SodhyaAshtakavarga = 0 }, { House = House9, SarvaAshtakavarga = 37, AfterTrikonaShodhana = 16, SodhyaAshtakavarga = 7 }, { House = House10, SarvaAshtakavarga = 32, AfterTrikonaShodhana = 3, SodhyaAshtakavarga = 0 }, { House = House11, SarvaAshtakavarga = 41, AfterTrikonaShodhana = 7, SodhyaAshtakavarga = 7 }, { House = House12, SarvaAshtakavarga = 33, AfterTrikonaShodhana = 7, SodhyaAshtakavarga = 7 }"
+      }
+    },
+    "HouseLongitude_House1": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "HouseLongitude",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "houseNumber",
+            "Type": "HouseName",
+            "Value": "House1"
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "28.08,-80.604",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "HouseLongitude": "Begin:26.6164, Middle:44.3403, End:56.6164"
+      }
+    },
+    "HouseConstellation_House1": {
+      "Status": "Pass",
+      "Input": {
+        "CalculatorName": "HouseConstellation",
+        "Type": "SingleCall",
+        "Ayanamsa": 3,
+        "Parameters": [
+          {
+            "Name": "houseNumber",
+            "Type": "HouseName",
+            "Value": "House1"
+          },
+          {
+            "Name": "time",
+            "Type": "Time",
+            "Value": {
+              "StdTime": "09:28 13/04/2022 -04:00",
+              "Location": {
+                "Name": "28.08,-80.604",
+                "Longitude": -80.604,
+                "Latitude": 28.08
+              }
+            }
+          }
+        ]
+      },
+      "Payload": {
+        "HouseConstellation": "Rohini - 2"
       }
     }
   }

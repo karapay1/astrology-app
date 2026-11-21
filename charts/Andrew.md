@@ -1,278 +1,368 @@
 # Andrew — Vedic Birth Chart
 
 **Born:** 16 May 1986 · 06:48 (6:48 AM) · Columbia, SC, USA (34.009° N, 81.037° W) · GMT−04:00  
-**System:** Raman (sidereal) · Whole sign houses · VedAstro · Swiss Ephemeris  
-**Note:** Source data used Raman ayanamsa; project standard is Lahiri (~23° 41'). Positions are very close but not identical.
+**System:** Raman (sidereal) · Whole sign houses · VedAstro · Swiss Ephemeris
+
+## Your story
+Your luck and your career both run through the people closest to you. Saturn rules your fortune and your work, and it sits in your house of partnership, working as smoothly as any planet you have. The right partner, in love or in business, opens doors that stay shut without one.
+
+The tension is that partnership and rest are the two lowest-scoring areas of your chart, so neither comes free. Your mind meanwhile runs fast in a private corner, with Mercury and Rahu in your house of solitude. Venus, your chart ruler and your strongest planet, gives you the voice to bridge the two.
 
 ## At a glance
-- **Ascendant (Lagna):** Taurus 9° 18' — nakshatra Krithika
+- **Ascendant (Lagna):** Taurus 9° 18' — nakshatra Krittika
 - **Moon sign (Rashi):** Cancer — your emotional inner world
 - **Birth star (Nakshatra):** Aslesha — the Moon's lunar mansion
 - **Sun sign (Sūrya Rashi):** Taurus — your core self
 
----
-
 ## Personality — Ascendant in Taurus
+*You take your time, and what you build stays built.*
 
-Your rising sign is Taurus, and it shapes everything about how you meet the world: deliberate, warm, deeply sensory and quietly determined. You are not someone who rushes in. You take your time, feel things out, and then — once you have decided — you hold on with a steadiness that others find both reassuring and immovable. At the core of this is a drive to build: real things, lasting things, a life that feels solid and beautiful.
+You like to feel a thing out before you commit, and nobody rushes you into it. Once you've said yes, you stay put. Friends find that steadiness restful, and the occasional stubborn stretch less so. You want a life that is solid and good to look at: a nice home, good food, work you can point to.
 
-Venus rules your chart and it sits in Gemini in your 2nd house — making your speech, your voice and your intellectual curiosity the primary tools through which you express the Taurus warmth. You are genuinely charming in conversation, quick to connect ideas, and you have a natural ease with words and people. Income and resources are shaped by your mental agility as much as by patient accumulation.
+Venus, your chart ruler, sits in talkative Gemini in your house of money and speech. That is why a patient, sensory person also turns out to be so easy to talk to. You pick up ideas fast and make people comfortable, and a good share of your income comes from that mix of charm and quick thinking.
 
-The most important planet in your chart is Saturn — the yogakaraka for Taurus ascendant. It owns your 9th house of fortune and your 10th house of career, and it sits in Scorpio in your 7th house of partnership. Retrograde and vargottama (the same sign in both rashi and navamsa), this Saturn is one of the most powerful yogakaraka positions possible: profound, inward-turning, and deeply significant in relationships. Your professional achievement and your deepest partnerships are intertwined in ways that will become clearer over time.
+Your Sun sits almost on the rising degree, so there is nothing hidden about you. What people see is close to what you are. You rarely have to raise your voice to be taken seriously, because you carry yourself like someone who knows what they think.
 
-The Sun sits right at your ascendant in Taurus, giving you a quiet but genuine authority — a sense of being settled in yourself. The Moon is in Cancer, its own sign, in your 3rd house: instinctive, warm, emotionally intelligent in everything you learn and say. These two luminaries in strong, dignified positions give you considerable personal resilience and a natural warmth that people trust.
+Two habits are worth watching. Your slow, settled pace can harden into refusing to change a plan that has stopped working. And your income and your voice are tied together, so a stretch of saying little tends to show up in your bank account. Speak up earlier than feels natural.
 
----
+## Signature themes
 
-## Planets
+### Your best doors open through a partner
+Saturn rules both your fortune and your career and sits in your house of marriage and partnership. Good business partners and a serious relationship can start things for you that stall when you work alone.
 
-### Sun · Taurus 3° 3' · House 1 · Krithika, pada 2
-**Dignity:** Neutral · **Nakshatra lord:** Sun · **Sign lord:** Venus  
-**Rules:** 4th house (home / mother / inner peace)  
-**Navamsa:** Capricorn · **Shadbala:** 442.95 · Ishta 50.33 / Kashta 9.43
+### You sit close to the center of your own chart
+Your Sun is almost on your rising degree, so what people see is what you are. You don't have to prove yourself, and that quiet authority is why people seek you out.
 
-Your Sun rules the 4th house of home, mother and inner peace, and it sits in Taurus in your 1st house — right at the ascendant. This is a powerful placement for personal presence: you carry a quiet but genuine authority, a sense of being settled in yourself. The ease score (50.33) is among the highest in your chart, confirming that your vitality and sense of self run in your favour.
+### Your Moon is at its best here
+Your Moon is in its own sign, in your house of learning and conversation. You read people well and you learn through warmth, and your luck tends to follow when you look after your feelings.
 
-In Taurus, your Sun is steady and sensory — you do not need to prove yourself loudly, but you know what you stand for and you will not be easily moved. As lord of your 4th house, the Sun links your personal identity directly to home and emotional roots. A stable, beautiful domestic life is not just comfort for you — it is part of what keeps you running well. When home is right, everything else tends to follow.
+### Your fastest mind needs a place to land
+Mercury has the highest strain score in your chart, and it sits in your private twelfth house with Rahu. Writing and regular creative practice turn that restless thinking into something people can use.
 
-The Sun in the 1st also aspects the 7th house of partnership, meaning the Sun's qualities — warmth, dignity, a certain pride — quietly show up in your approach to close relationships. You want respect in partnership, and you give it. Krithika nakshatra (ruled by the Sun itself) adds a sharp, discerning quality: you can see through pretence, and you hold yourself and others to real standards.
+### You carry the room, and you can set it down
+Ketu in your house of daily work makes you the one who smooths things over. Rahu in your house of retreat pulls you toward quiet and depth instead. Your growth is to stop carrying everything.
 
----
+## Birth star (Nakshatra): Aslesha
+*Ruled by Mercury · deity Naga (the serpent deities)*
 
-### Moon · Cancer 26° 7' · House 3 · Aslesha, pada 3
-**Dignity:** Own sign · **Nakshatra lord:** Mercury · **Sign lord:** Moon  
-**Rules:** 3rd house (courage / communication / learning)  
-**Navamsa:** Aquarius · **Shadbala:** 369.94 · Ishta 29.43 / Kashta 30.46
+People find you easy to talk to and hard to read. You notice a shift in a room before anyone has said anything, and you rarely mention what you've noticed. Ashlesha belongs to the serpent deities, who stand for quiet power and sharp instinct. Use that sense on purpose and with honesty, because you'll often know something that other people haven't worked out yet.
 
-Your Moon is in Cancer — its own sign, in full dignity — sitting in your 3rd house of communication, effort and learning. This is a deeply instinctive mind: you absorb information through feeling as much as through logic, and your emotional intelligence is embedded in how you learn and how you speak. You communicate with genuine warmth and a kind of attentiveness that people notice.
+## The Planets (Grahas)
 
-As ruler of your 3rd house, the Moon governs your courage, your initiative and your relationships with siblings. In its own sign, this placement is strong and nurturing — you have an instinct to learn, to keep growing, to tend the connections around you. The Moon in Aslesha (ruled by Mercury) adds a perceptive, almost psychically sharp quality: you read people well and hold information with care.
+### Sun — Taurus 3° 03' · 1st house
+*Core Self & Vitality · You don't announce yourself, and people hear you anyway.*
 
-The ishta and kashta scores are almost equal (29.43 / 30.46), which means this Moon is balanced — it runs well with attention and can be strained by neglect. Tending your emotional life consciously — rest, beauty, close bonds — is how you keep the Moon's natural strength flowing. Its aspect to your 9th house of fortune links your emotional wellbeing directly to your luck.
+- **Role:** Lord of the 4th (home / mother / inner peace)
+- **Dignity:** Neutral · Functional benefic
+- **Strength (Shadbala):** 442.95 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 50.3 / 9.4
+- **Birth star (Nakshatra):** Krittika · pada 2 (ruled by Sun)
+- **Sign ruler (Sign lord):** Venus
+- **Deeper chart (Navamsa / D-9):** Capricorn
+- **Houses ruled (as lord):** 4th
+- **Aspects (Drishti):** 7th house
 
----
+You know what you stand for and you won't be talked out of it. When the pressure rises, you get quieter and firmer. Other people tend to look to you in a crisis without quite knowing why.
 
-### Mars · Sagittarius 27° 42' · House 8 · Uttarashada, pada 1
-**Dignity:** Friendly sign · **Nakshatra lord:** Sun · **Sign lord:** Jupiter  
-**Rules:** 7th house (partnership) & 12th house (release / spirituality)  
-**Navamsa:** Sagittarius · **Shadbala:** 394.89 · Ishta 47.41 / Kashta 12.29
+Home matters more to you than you let on. Your Sun rules the part of your chart about home and inner peace, so a settled house and a calm routine keep your energy up. If home is chaotic, you feel it in your work within a week. Saturn looks back at this part of your chart from the house of partnership, which adds a serious, committed note to how you handle family life.
 
-Mars rules your 7th house of partnership and your 12th house of solitude and the unseen, sitting in Sagittarius in your 8th house of depth, transformation and shared resources. This is a placement of considerable intensity: your closest relationships have a depth and complexity to them that is not merely romantic — they transform you. The 7th lord in the 8th is a classic signature for partnerships that go through real change together and come out fundamentally altered.
+You hold yourself and other people to standards, and you spot pretence quickly. In partnership you want respect first and you give it back in full. The thing to work on is saying so while it is still small, instead of letting a quiet disappointment turn into distance.
 
-In Sagittarius, Mars is philosophical and aims at meaning rather than just action. Your drive is attached to a sense of purpose — you want your effort to count for something larger than itself. In the 8th, this energy is directed inward: toward research, toward uncovering what is hidden, toward sustained, penetrating effort. Mars here has a high ease score (47.41), suggesting it runs in your favour — the intensity is real but manageable.
+**Strengthening this planet's energy** — Mixed (ease 50.3 vs. challenge 9.4) — the mantra offers gentle, general support.
+- **Deity:** Surya, the Sun god (Sūrya) — also Shiva
+- **Supports:** vitality, confidence, health, father, authority
+- **Bija (seed) mantra:** `Om Hraam Hreem Hraum Sah Suryaya Namah` — traditionally chanted 108× on Sunday.
 
-Mars aspects your 2nd, 3rd and 11th houses, quietly structuring your resources, your communication and your gains. As ruler of the 12th, there is a genuinely private part of your life — perhaps spiritual, perhaps creatively solitary — that Mars tends from the depths of the 8th. The key is to let that transformative quality work with you rather than against you.
+### Moon — Cancer 26° 07' · 3rd house
+*Emotional Inner World · You hear what people mean before they finish the sentence.*
 
----
+- **Role:** Lord of the 3rd (courage / communication / learning)
+- **Dignity:** Own sign · Functional malefic
+- **Strength (Shadbala):** 369.94 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 29.4 / 30.5
+- **Birth star (Nakshatra):** Ashlesha · pada 3 (ruled by Mercury)
+- **Sign ruler (Sign lord):** Moon
+- **Deeper chart (Navamsa / D-9):** Aquarius
+- **Houses ruled (as lord):** 3rd
+- **Aspects (Drishti):** 9th house
 
-### Mercury · Aries 25° 13' · House 12 · Bharani, pada 4 · **MOST STRAINED**
-**Dignity:** Enemy sign · **Nakshatra lord:** Venus · **Sign lord:** Mars  
-**Rules:** 2nd house (wealth / speech) & 5th house (creativity / intelligence)  
-**Navamsa:** Scorpio · **Shadbala:** 438.96 · Ishta 3.24 / Kashta 52.53
+You learn best from people you like. A good teacher or an easy conversation teaches you more than a manual, and you remember how a room felt long after you've forgotten what was said. Your siblings, neighbors and old friends get a loyal, attentive version of you.
 
-Mercury is the most strained planet in your chart: with an ishta of just 3.24 against a kashta of 52.53, it is running at a significant challenge. It sits in Aries — an enemy sign — in your 12th house of the unseen, and it rules both your 2nd house of speech and wealth and your 5th house of creativity and intelligence. This is a planet that demands conscious attention; when left unmanaged, it can scatter your thinking and make it hard to translate inner depth into clear, grounded communication.
+Your courage is the protective kind. You'll start the difficult conversation, or make the move, because someone you care about needs it. Alone, with only yourself to answer to, you tend to put things off. Give yourself a person to do it for.
 
-The placement in the 12th is part of the story: your Mercury operates behind the scenes, in private, and its gifts — real creative and analytical depth — are not always on public display. You may process things internally for a long time before articulating them. In Bharani nakshatra (ruled by Venus), there is a sensory richness and a capacity for beauty in how you think, even when it does not come out cleanly in the moment.
+This Moon is strong, and it responds to care. Sleep, beauty, a quiet evening and a few close bonds keep it steady, and when it's steady the rest of your life gets lucky: it looks across to your house of fortune. When you neglect it, you get moody and your words come out sharper than you meant. Tending it is the maintenance that keeps everything else running.
 
-The practical path forward is structure: writing, journalling, deliberate practice of clear communication. Mercury in the 12th can produce genuinely unusual, even brilliant thinking — but it needs a container. As lord of your 5th house, Mercury connects your intelligence and creative expression to the same challenges. Tending Mercury consciously — through disciplined creative practice — is how the gifts of this placement come through.
+**Strengthening this planet's energy** — Leans toward challenge (challenge 30.5 vs. ease 29.4) — a strong candidate for strengthening.
+- **Deity:** Chandra, the Moon god (with Parvati / Gauri)
+- **Supports:** emotions, calm, the mind, mother, contentment
+- **Bija (seed) mantra:** `Om Shraam Shreem Shraum Sah Chandraya Namah` — traditionally chanted 108× on Monday.
 
----
+### Mars — Sagittarius 27° 42' · 8th house
+*Drive & Courage · You go deep on a subject, and you need a reason to.*
 
-### Jupiter · Aquarius 25° 47' · House 10 · Poorvabhadra, pada 2
-**Dignity:** Friendly sign · **Nakshatra lord:** Jupiter · **Sign lord:** Saturn  
-**Rules:** 8th house (depth / transformation) & 9th house (fortune / dharma)  
-**Navamsa:** Taurus · **Shadbala:** 433.08 · Ishta 19.57 / Kashta 40.12
+- **Role:** Lord of the 7th & 12th (partnership / release)
+- **Dignity:** Friendly sign · Functional benefic
+- **Strength (Shadbala):** 394.89 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 47.4 / 12.3
+- **Birth star (Nakshatra):** Uttara Ashadha · pada 1 (ruled by Sun)
+- **Sign ruler (Sign lord):** Jupiter
+- **Deeper chart (Navamsa / D-9):** Sagittarius
+- **Houses ruled (as lord):** 7th, 12th
+- **Aspects (Drishti):** 2nd, 3rd, 11th house
 
-Jupiter rules your 8th house of transformation and your 9th house of fortune and dharma, sitting in Aquarius in your 10th house of career and public life. The planet of wisdom and growth is operating visibly in the career house — but its kashta score (40.12) significantly outweighs its ishta (19.57), which means Jupiter here asks for real effort and conscious navigation. Fortune through wisdom is the promise; it does not arrive automatically.
+Hand you a puzzle with something at stake and you'll work at it for hours. Your energy goes into research, into digging for what's under the surface, and into finishing things other people give up on. You don't have much patience for effort that doesn't lead anywhere.
 
-In Aquarius, Jupiter thinks in systems and in the long view. You have a natural affinity for big ideas, collective benefit and thinking that looks decades ahead. In the 10th, this shows up professionally: your career is shaped by Jupiter's qualities — philosophy, research, broad-minded counsel and the ability to hold the bigger picture when others are focused only on the immediate. People may look to you for perspective even when you are still developing it yourself.
+Mars rules your partnerships and your private life, and it sits in the house of deep change. Close relationships alter you. You and a partner will go through something hard together and come out different, and that is how this bond is meant to work. Shared money and big life transitions get the same treatment: you want to understand them before you sign anything.
 
-Jupiter's aspects to the 2nd, 4th and 6th houses quietly support your speech and resources, your home and inner peace, and your daily work. As lord of the 9th, fortune is woven into your career — but it arrives through genuine wisdom and service, not through shortcuts. The challenge score is a signal to keep developing Jupiter's qualities consciously: learning, teaching, staying philosophically honest.
+Mars sits in optimistic Sagittarius and works well here. The risk is brooding. A private, withdrawn stretch is fine and even useful, but you do better when the intensity has an outlet, such as a project, a long run or a subject you can study. Let the depth work for you, because pushing it away only makes it louder.
 
----
+**Strengthening this planet's energy** — Mixed (ease 47.4 vs. challenge 12.3) — the mantra offers gentle, general support.
+- **Deity:** Skanda – Kartikeya (with Hanuman)
+- **Supports:** courage, drive, energy, discipline, protection
+- **Bija (seed) mantra:** `Om Kraam Kreem Kraum Sah Bhaumaya Namah` — traditionally chanted 108× on Tuesday.
 
-### Venus · Gemini 1° 37' · House 2 · Mrigasira, pada 3 · **Chart Ruler**
-**Dignity:** Friendly sign · **Nakshatra lord:** Mars · **Sign lord:** Mercury  
-**Rules:** 1st house (self / body) & 6th house (work / health / service)  
-**Navamsa:** Libra · **Shadbala:** 537.48 (highest in chart) · Ishta 27.88 / Kashta 29.27
+### Mercury — Aries 25° 13' · 12th house
+*Mind & Communication · You've thought about it far longer than you've said.*
 
-Venus is your chart ruler — it governs your physical body, your overall health and the entire direction of your life. Sitting in Gemini in your 2nd house, your chart ruler is in a friendly sign and occupying the house of speech, resources and family — which means your identity, your voice and your earning are all deeply intertwined. You are at your best when you are communicating, connecting and building.
+- **Role:** Lord of the 2nd & 5th (speech / wealth / creativity / intelligence)
+- **Dignity:** Enemy sign / combust · Functional malefic
+- **Strength (Shadbala):** 438.96 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 3.2 / 52.5
+- **Birth star (Nakshatra):** Bharani · pada 4 (ruled by Venus)
+- **Sign ruler (Sign lord):** Mars
+- **Deeper chart (Navamsa / D-9):** Scorpio
+- **Houses ruled (as lord):** 2nd, 5th
+- **Aspects (Drishti):** 6th house
 
-The ishta and kashta scores are close (27.88 / 29.27), making Venus a planet that requires active tending — it is not automatically flowing but it is not severely strained. As the lagna lord, this is important: consciously investing in what Venus rules — beauty, relationships, creative connection, sensory pleasure — keeps your chart ruler energised and your life in better flow.
+Your thinking is quick and a little ahead of your words. You process things alone for a long time, then say the finished version, and people assume it came out of nowhere. Mercury is the planet you'll need to manage most.
 
-Venus also rules your 6th house of daily work, health and obstacles. Venus beautifies and harmonises your work life, but it also means that when Venus is under strain, daily work can feel heavier. The upside: your work tends to connect naturally to your broader gifts — charm, creativity, the ability to make things feel right. As the highest shadbala planet in your chart (537.48), Venus has the raw strength to carry both its lordships well when you give it the right conditions.
+It sits in your house of solitude, close to the Sun and overshadowed by it, next to Rahu. The result is a busy, restless mind that works best in private. Left loose, the ideas scatter and you end up with ten half-formed plans. Given a container, they can turn into something unusual and good. Writing things down, journaling and a regular creative practice all work, and it matters that you do them on a schedule.
 
----
+Mercury rules your speech, your money and your creative work, so the strain and the gift travel together. A clear page is where this mind becomes visible to other people. Treat your notes as the work itself and your income and creativity get easier, because they both draw on the same source.
 
-### Saturn · Scorpio 15° 2' · House 7 · Anuradha, pada 4 · Retrograde · Vargottama · **YOGAKARAKA**
-**Dignity:** Neutral · **Nakshatra lord:** Saturn · **Sign lord:** Mars  
-**Rules:** 9th house (fortune / dharma) & 10th house (career / public life)  
-**Navamsa:** Scorpio · **Shadbala:** 464.98 · Ishta 55.46 (highest ease in chart) / Kashta 1.92
+**Strengthening this planet's energy** — Leans toward challenge (challenge 52.5 vs. ease 3.2) — a strong candidate for strengthening.
+- **Deity:** Vishnu (Budha)
+- **Supports:** intellect, communication, learning, business
+- **Bija (seed) mantra:** `Om Braam Breem Braum Sah Budhaya Namah` — traditionally chanted 108× on Wednesday.
 
-Saturn is the yogakaraka for Taurus ascendant — it rules both your 9th house of fortune and your 10th house of career, the most auspicious combination a single planet can have. And it has the highest ease score in your entire chart (55.46) with a near-zero kashta (1.92) — this Saturn runs almost entirely in your favour. It is retrograde and vargottama (Scorpio in both rashi and navamsa), which deepens and internalises its influence: your path to career and fortune runs through an unusually profound, inward-turned version of Saturn's qualities.
+### Jupiter — Aquarius 25° 47' · 10th house
+*Wisdom & Growth · People ask you what you think about the long term.*
 
-Sitting in Scorpio in your 7th house of partnership, your yogakaraka operates through your closest relationships. This is one of the most significant configurations in your chart: your professional achievement and your deepest one-to-one bonds are genuinely intertwined. The right partners — in business or in life — can open doors that remain shut without them. And your most significant partnerships will carry Saturn's quality: serious, transformative, built on real depth rather than surface chemistry.
+- **Role:** Lord of the 8th & 9th (depth / fortune / dharma)
+- **Dignity:** Friendly sign · Functional malefic
+- **Strength (Shadbala):** 433.08 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 19.6 / 40.1
+- **Birth star (Nakshatra):** Purva Bhadrapada · pada 2 (ruled by Jupiter)
+- **Sign ruler (Sign lord):** Saturn
+- **Deeper chart (Navamsa / D-9):** Taurus
+- **Houses ruled (as lord):** 8th, 11th
+- **Aspects (Drishti):** 2nd, 4th, 6th house
 
-Saturn retrograde turns the planet's wisdom inward: you develop your sense of discipline and structure through direct personal experience, not through received wisdom. You may revisit or rebuild aspects of career and partnership more than once — and each rebuilding tends to produce something sturdier than what came before. Saturn aspects your 1st, 4th and 9th houses from the 7th, giving structure and seriousness to your personal identity, home life and fortune across the whole chart.
+Your wisdom shows up in public, at work. Colleagues come to you for perspective on where something is heading, even when you feel you're still working it out yourself. You think in systems and in decades, and you're drawn to teaching, research and any job that benefits more people than just you.
 
----
+Jupiter in Aquarius is comfortable here, and it points your career toward a larger purpose. The luck it carries doesn't arrive automatically, though. It follows effort, and it follows the kind of work you'd be proud to explain to a stranger. Shortcuts don't pay off for you the way patient, honest work does.
 
-### Rahu · Aries 6° 25' · House 12 · Aswini, pada 2 · (Retrograde by convention)
-**Dignity:** North lunar node · **Nakshatra lord:** Ketu · **Sign lord:** Mars  
-**Navamsa:** Taurus · Ishta/Kashta: not applicable
+Jupiter looks at your money, your home and your daily routine, so a good career lifts all three. Keep learning on purpose. Read outside your field, teach what you know, and stay honest about what you haven't worked out yet. The fortune follows.
 
-Rahu in your 12th house in Aries places the planet of worldly hunger in the house of release, solitude and the unseen — with an Aries quality of restless pioneering. There is a part of you drawn toward private, solitary or foreign territory: things that operate behind the scenes, things that are not easily categorised or shown. This can manifest as a pull toward spiritual seeking, creative retreat, or simply a strong need for uninterrupted private space in which to think and rebuild.
+**Strengthening this planet's energy** — Leans toward challenge (challenge 40.1 vs. ease 19.6) — a strong candidate for strengthening.
+- **Deity:** Brihaspati / Brahma (Guru)
+- **Supports:** wisdom, growth, luck, teachers, faith
+- **Bija (seed) mantra:** `Om Graam Greem Graum Sah Gurave Namah` — traditionally chanted 108× on Thursday.
 
-In Aries, Rahu's hunger has an impulsive, identity-seeking edge. In Aswini nakshatra (ruled by Ketu), there is a quality of swift movement and a desire to initiate quickly. In the 12th, this energy is redirected: the Aries drive for identity is being asked to find expression in less visible arenas — inner work, foreign environments, or creative disciplines that have no immediate public audience.
+### Venus — Gemini 1° 37' · 2nd house
+*Love & Beauty · You make things feel right, usually by talking.*
 
-The axis puts Ketu in your 6th house of daily work — your karmic past is tied to mastery of service and balance (Ketu in Libra). The growth edge is releasing the habit of defining yourself by how much you can handle and endure, while cultivating genuine depth and inward freedom. The 12th house rewards what is real, not what can be performed.
+- **Role:** Lagna lord — ruler of the 1st & 6th (self / body / daily service)
+- **Dignity:** Friendly sign · Functional malefic
+- **Strength (Shadbala):** 537.48 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 27.9 / 29.3
+- **Birth star (Nakshatra):** Mrigashira · pada 3 (ruled by Mars)
+- **Sign ruler (Sign lord):** Mercury
+- **Deeper chart (Navamsa / D-9):** Libra
+- **Houses ruled (as lord):** 1st, 6th
+- **Aspects (Drishti):** 8th house
 
----
+You charm people with ideas. A good conversation is how you show affection, and you'd rather spend an evening swapping stories than going out to something loud. Your taste runs to clever, pleasant and well made.
 
-### Ketu · Libra 6° 25' · House 6 · Chitta, pada 4 · (Retrograde by convention)
-**Dignity:** Friendly sign · **Nakshatra lord:** Mars · **Sign lord:** Venus  
-**Navamsa:** Scorpio · Ishta/Kashta: not applicable
+Venus is your strongest planet and your chart ruler, so a good deal of your direction and health depends on keeping it fed. It takes some active effort. Spend on things you love, keep up the friendships that feel easy, and make time for sensory pleasure. When you do, your energy picks up and your life flows more easily. Your speech, your family and your earning all hang from this one thread, so you're at your best when you're talking, connecting and building.
 
-Ketu in the 6th house of work, health and daily service in Libra suggests you arrive with deep, ingrained competence in managing difficulty, navigating competing demands and maintaining harmony under pressure. In Libra — ruled by Venus, your chart ruler — this Ketu has a refined, balance-seeking quality: you have the instinct for smoothing things over, maintaining equilibrium and serving with grace. It can feel automatic, even compulsive.
+Venus also rules your daily work and your health, which cuts both ways. It softens and improves the way you work, and when you're run down your job feels heavier than it should. Your work tends to link up with your broader gifts: charm, creativity, a knack for making a thing feel finished.
 
-Chitta nakshatra (ruled by Mars) adds a craftsman quality — a desire to perfect and polish. In the 6th, this can tip into over-serving, perfectionism in daily life, or taking on more than your share simply because you are capable of it. The release Ketu asks for is not of the work itself, but of the identity built around being the one who holds everything together.
+**Strengthening this planet's energy** — Leans toward challenge (challenge 29.3 vs. ease 27.9) — a strong candidate for strengthening.
+- **Deity:** Shukra (with Lakshmi)
+- **Supports:** love, relationships, beauty, comfort, creativity
+- **Bija (seed) mantra:** `Om Draam Dreem Draum Sah Shukraya Namah` — traditionally chanted 108× on Friday.
 
-Sitting in the sign of your chart ruler (Venus/Libra), there is a meaningful thread here: your ease with service, beauty and balance in daily life is hard-won karmic mastery. The task is to let that competence be a gift rather than an obligation — to bring the same grace to your own needs that you naturally extend to others.
+### Saturn ℞ — Scorpio 15° 02' · 7th house
+*Discipline & Endurance · Your best doors open through someone else's hand.*
 
----
+- **Role:** Yogakaraka — lord of the 9th & 10th (fortune / career) — Retrograde · Vargottama
+- **Dignity:** Neutral · Functional benefic · Retrograde
+- **Strength (Shadbala):** 464.98 Rupas
+- **Ease vs. challenge (Ishta / Kashta):** 55.5 / 1.9
+- **Birth star (Nakshatra):** Anuradha · pada 4 (ruled by Saturn)
+- **Sign ruler (Sign lord):** Mars
+- **Deeper chart (Navamsa / D-9):** Scorpio
+- **Houses ruled (as lord):** 9th, 10th
+- **Aspects (Drishti):** 1st, 4th, 9th house
 
-## Houses
+Your career and your luck are tied to your closest relationship, and the fit is good. This is among the smoothest-working planets in your chart, which is saying a lot for Saturn. A strong partner in business or in life can start things for you that stall when you go it alone. Your biggest relationships will have weight and depth rather than surface sparkle.
 
-| House | Sign | Key planets |
-|-------|------|-------------|
-| 1st | Taurus | Sun |
-| 2nd | Gemini | Venus |
-| 3rd | Cancer | Moon |
-| 4th | Leo | — |
-| 5th | Virgo | — |
-| 6th | Libra | Ketu |
-| 7th | Scorpio | Saturn |
-| 8th | Sagittarius | Mars |
-| 9th | Capricorn | — |
-| 10th | Aquarius | Jupiter |
-| 11th | Pisces | — |
-| 12th | Aries | Mercury, Rahu |
+You learn discipline through your own experience, and you don't take much advice. Expect to rebuild parts of your career or a partnership more than once. Each rebuild comes out sturdier than the last. A partner who sees this and doesn't flinch is worth a lot.
 
-**1st (Taurus) — Sun:** The Sun at the ascendant in Taurus gives you a quiet but real presence — grounded, warm and self-assured. Chart ruler Venus sits in the 2nd, weaving your identity closely to your voice, your resources and how you build.
+Saturn backs up the story of your chart: you work best in a pair, and the planet of patience is why your long-term bonds last. It also looks at your sense of self, your home and your fortune, so its seriousness leaks into all three. It helps to choose carefully and then stay, because the payoff comes late and it comes to people who stay.
 
-**2nd (Gemini) — Venus (chart ruler):** Your chart ruler in Gemini in the 2nd: your voice is one of your most natural gifts. You communicate with ease and charm, and income tends to arrive through mental work, connection and versatility. Beauty and ideas are the currencies of your 2nd house.
+**Strengthening this planet's energy** — Mixed (ease 55.5 vs. challenge 1.9) — the mantra offers gentle, general support.
+- **Deity:** Shani (with Hanuman)
+- **Supports:** discipline, patience, endurance, long-term work
+- **Bija (seed) mantra:** `Om Praam Preem Praum Sah Shanaischaraya Namah` — traditionally chanted 108× on Saturday.
 
-**3rd (Cancer) — Moon:** Moon in its own sign of Cancer in the 3rd gives you an instinctive, emotionally intelligent approach to learning and communication. You pick up on what is unspoken, you learn through feeling, and your courage is quiet but motivated by genuine care for those around you.
+### Rahu ℞ — Aries 6° 25' · 12th house
+*What You're Reaching For · You want room to think where nobody is watching.*
 
-**4th (Leo):** Leo 4th: home is warm, proud and has a certain grandeur to it — you need a home that reflects your sense of self. Ruled by the Sun (in the 1st), your sense of home and your sense of self are deeply linked. Saturn aspects this house from the 7th, adding seriousness and structure to domestic life over time.
+- **Role:** Karmic axis — direction of hunger / growth
+- **Dignity:** North lunar node · Functional malefic · Retrograde
+- **Birth star (Nakshatra):** Ashwini · pada 2 (ruled by Ketu)
+- **Sign ruler (Sign lord):** Mars
+- **Deeper chart (Navamsa / D-9):** Taurus
+- **Houses ruled (as lord):** —
+- **Aspects (Drishti):** 6th house
 
-**5th (Virgo):** Virgo 5th: creativity and intelligence are careful, detailed and precise. You think through creative work rather than leaping into it. Ruled by Mercury (in the 12th), your creative intelligence has a private, behind-the-scenes quality — ideas that gestate in solitude before they emerge.
+Part of you wants to disappear for a while: a quiet trip, a spare room, a project nobody knows about yet. Rahu sits in your house of solitude and retreat, and it brings a restless, pioneering edge with it. Foreign places, spiritual curiosity and creative work with no audience all pull at you.
 
-**6th (Libra) — Ketu:** Ketu in Libra in the 6th: you come to daily work with deep, almost automatic competence in maintaining balance and handling difficulty. The challenge is releasing the habit of over-serving. The 6th scores highest in your ashtakavarga (34 bindus) — daily work is more supported than it might sometimes feel.
+The drive here is impulsive. You want to start things, assert yourself and fix problems fast. This house asks you to aim that at less visible work such as inner projects, study or travel. Practice there pays off in your public life later.
 
-**7th (Scorpio) — Saturn (yogakaraka):** Yogakaraka Saturn retrograde in Scorpio in the 7th: your most important partnerships are serious, deep and transformative. Fortune and career operate through your closest relationships — this is a chart where who you are with matters as much as what you do. The Sun in the 1st aspects this house, adding warmth and dignity to how you approach commitment.
+Its opposite point is your house of daily work, and that shows what you're leaving behind. You're used to being the person who carries everything and solves everyone's problems. The pull is toward depth and a sense of inner freedom instead. This house rewards the things you can't perform for an audience.
 
-**8th (Sagittarius) — Mars:** Mars in Sagittarius in the 8th: your engagement with depth, research and transformation is philosophical and purposeful. You go deep with a reason — to understand, to find meaning, to transform. Shared resources and life's major transitions carry a searching, exploratory quality.
+**Strengthening this planet's energy** — As a lunar node, Rahu has no ease/challenge score, but its mantra is a classic way to steady its restless, karmic energy.
+- **Deity:** Durga (Rahu)
+- **Supports:** ambition, worldly desires, overcoming obstacles
+- **Bija (seed) mantra:** `Om Bhraam Bhreem Bhraum Sah Rahave Namah` — traditionally chanted 108× on Saturday.
 
-**9th (Capricorn):** Capricorn 9th: fortune is structured, patient and arrives through sustained effort. Your dharma has a Saturnian quality — long-term, practical and built on doing the work. Ruled by yogakaraka Saturn (in the 7th), your luck is directly tied to your partnerships and sustained effort. Saturn also aspects this house directly.
+### Ketu ℞ — Libra 6° 25' · 6th house
+*What You Already Know · You keep the peace so well you forget it's a job.*
 
-**10th (Aquarius) — Jupiter:** Jupiter in Aquarius in the 10th: your career is shaped by big ideas, systems thinking and a genuine concern for collective benefit. You are drawn to work that serves a broader purpose. Ruled by yogakaraka Saturn (in the 7th), your professional life is also shaped by your deepest partnerships. Jupiter aspects the 2nd, 4th and 6th from here, spreading philosophical quality through resources, home and daily work.
+- **Role:** Karmic axis — direction of mastery / release
+- **Dignity:** South lunar node · Functional malefic · Retrograde
+- **Birth star (Nakshatra):** Chitra · pada 4 (ruled by Mars)
+- **Sign ruler (Sign lord):** Venus
+- **Deeper chart (Navamsa / D-9):** Scorpio
+- **Houses ruled (as lord):** —
+- **Aspects (Drishti):** 12th house
 
-**11th (Pisces):** Pisces 11th: gains arrive through compassion, imagination and a broad, spiritually attuned network. You attract people who are sensitive, creative or visionary. Ruled by Jupiter (in the 10th), your gains are closely tied to the quality of work you put into the world.
+You walk into a tense workplace and start smoothing things over without deciding to. Ketu sits in your house of daily work, and you arrive with deep, practiced skill at balancing demands and holding the room together. You've probably been doing it since you were young.
 
-**12th (Aries) — Mercury & Rahu:** Mercury and Rahu together in Aries in the 12th: a busy, restless inner world. Your most private thinking — the ideas that gestate in solitude — carry an Aries urgency and a Rahu hunger for the unusual. Mercury rules your 2nd and 5th, so your speech, resources and creativity all draw from this private space. Foreign places and solitary creative work are meaningful arenas.
+There's a craftsman in you who wants to polish the thing one more time. In this house that turns into over-serving: taking on more than your share, because you can. What you're being asked to put down is the identity of the one who holds it all together. The work itself can stay.
 
----
+Ketu sits in the sign your chart ruler Venus rules, which makes your ease with service, balance and beauty a hard-won skill and not an accident. Let it be a gift you choose to give. Bring the same grace to your own needs that you give so easily to everybody else.
 
-## Signature Highlights
+**Strengthening this planet's energy** — As a lunar node, Ketu has no ease/challenge score, but its mantra is a classic way to steady its restless, karmic energy.
+- **Deity:** Ganesha (Ketu)
+- **Supports:** spirituality, insight, detachment, letting go
+- **Bija (seed) mantra:** `Om Sraam Sreem Sraum Sah Ketave Namah` — traditionally chanted 108× on Tuesday.
 
-**Saturn yogakaraka retrograde in the 7th — fortune through partnership**
-Saturn rules both your 9th (fortune) and 10th (career), sits retrograde and vargottama in your 7th house of partnership, and has the highest ease score in your chart (55.46). The most auspicious planet in your chart operates through your closest relationships — professional achievement and deep partnership are genuinely intertwined. This is not incidental; it is structural.
+## The Houses (Bhavas)
 
-**Sun conjunct ascendant — settled, self-assured presence**
-Your Sun sits in Taurus right at the ascendant, giving you a grounded authority that does not need to be announced. As lord of the 4th, your sense of self is rooted in home and inner peace — when those are stable, you operate at your best.
+### House 1 · Taurus · Self, body, temperament
+**Occupants:** Sun
 
-**Moon in own sign — instinctive emotional intelligence**
-The Moon in Cancer in the 3rd house is in full dignity: you learn by feeling, communicate with genuine warmth, and have an instinctive capacity for empathy. This is the heart of how you connect with people and how your courage finds its expression.
+Your Sun sits here, so you come across as steady, warm and settled in yourself. People sense your authority before you say anything. Venus, the planet that rules this house, sits in your second house, which ties who you are to your voice and your earnings.
 
-**Venus: chart ruler, highest strength — needs tending**
-Venus is simultaneously the strongest planet in your chart by shadbala (537.48) and running close to balanced on ease/challenge. As lagna lord, it governs everything — body, direction, identity. Consciously investing in beauty, relationships and creative connection is literally how you keep yourself running well.
+### House 2 · Gemini · Wealth, speech, family, food
+**Occupants:** Venus
 
-**Mercury most strained — structure unlocks depth**
-Mercury (ruler of your 2nd and 5th) has the highest challenge score in the chart (kashta 52.53). Its gifts — real creative and analytical depth — are real but require a container: writing, deliberate practice, structured communication. Tending Mercury consciously is how the 12th-house creativity comes through.
+Venus lives here, and your voice is one of your best tools. You talk easily and you charm people, and money tends to come through conversation, ideas and being adaptable. You'll earn more by speaking up than by waiting to be noticed.
 
-**The Rahu (12th) – Ketu (6th) axis**
-Your karmic axis runs between mastery of daily service and balance (Ketu in Libra, 6th) and the hunger for private depth, solitude and inward freedom (Rahu in Aries, 12th). The growth edge is moving from compulsive service toward genuine inner spaciousness — doing the work because it matters, not because you need to prove you can carry it.
+### House 3 · Cancer · Courage, effort, siblings, skills
+**Occupants:** Moon
 
----
+Your Moon sits here in its own sign, so you learn and communicate through feeling. You catch what goes unsaid, and your courage shows up when someone you love needs it. Siblings, neighbors and short trips carry a lot of warmth.
 
-## Birth Star — Aslesha
+### House 4 · Leo · Home, mother, comfort, inner peace
+**Occupants:** — (empty: this life-area plays out through its ruling planet and aspects)
 
-**Lord:** Mercury · **Deity:** Naga (the serpent deities)
+No planet sits here, so home life follows where the Sun goes. Your Sun is in your first house, which means your sense of home and your sense of self are tied together. Saturn looks at this house from your seventh, and over the years it adds seriousness and structure to your household.
 
-"The entwiner." Aslesha is the nakshatra of the serpent — perceptive, coiling, deeply instinctive. You hold things close, read beneath the surface, and have a penetrating emotional intelligence that others rarely see coming. There is real wisdom here, and real power; the invitation is to use both with care and honesty.
+### House 5 · Virgo · Creativity, children, romance, mind
+**Occupants:** — (empty: this life-area plays out through its ruling planet and aspects)
 
----
+This house has no planets in it. Mercury, which rules it, sits in your private twelfth house, so your creative ideas form alone before they come out. You think a romance through carefully, and your creative work tends to be exact and well made.
 
-## Panchanga
+### House 6 · Libra · Work, health, service, obstacles
+**Occupants:** Ketu
 
-**Summary:** Born on a Friday, on the bright-half (waxing) 7th lunar day, under Dhruva yoga (the steadfast), with Venus ruling the birth hora.
+Ketu sits here, so you're naturally good at holding a workplace together under pressure. You balance competing demands without much fuss. The challenge is to stop over-serving and to ask for help before you need it.
 
-- **Sunrise:** 06:26 · **Sunset:** 20:14
-- **Ayanamsa:** Raman (~22°) — note: project standard is Lahiri (~23° 41')
+### House 7 · Scorpio · Partnership, marriage, the public
+**Occupants:** Saturn
 
-| Limb | Value | Note |
-|------|-------|------|
-| Vara (weekday) | Friday | Ruled by Venus — your chart ruler. Being born on Venus's day with Venus as your lagna lord is a consistent, reinforcing signature: beauty, connection and creative harmony are woven into the very day you arrived. Born at 06:48, after the 06:26 sunrise, the Vedic day had already turned to Friday. |
-| Tithi (lunar day) | Saptami · Shukla Paksha | The 7th lunar day of the waxing (bright) half. The Moon is building toward fullness — a forward-moving, growth-oriented quality. Saptami is associated with the Sun, bringing themes of vitality, clarity and emerging light. |
-| Nakshatra (star) | Aslesha · pada 3 | Your Moon's birth star — the entwiner. Perceptive, coiling, deeply instinctive. In pada 3 the influence has a Gemini quality: quick, communicative, curious about what lies beneath the surface. |
-| Nithya Yoga | Dhruva — "the steadfast" | One of the most stable and auspicious yogas, associated with permanence, reliability and long-lasting results. It reinforces the Taurus-Saturn thread running through your chart: what you build tends to last. |
-| Karana (half-tithi) | Not recorded | Not available in source data. |
-| Hora lord (birth hour) | Venus | The planetary hour of your birth was ruled by Venus — your chart ruler. Venus rules the hora on Venus's own day: a double Venus signature stamped on the moment you arrived. Charm, creative ease and relational warmth are built into your birth moment. |
-| Lunar month | Vaisaakha | The second lunar month of the Vedic year (roughly April–May), associated with sustained effort, material growth and the deepening of spring. Vaisaakha carries themes of patient building and earthy abundance — a fitting month for a Taurus ascendant. |
+Saturn sits here, so your closest partnerships are serious, deep and slow to build. It rules your luck and your career too, which ties your work and your best relationships together. The Sun looks at this house from your first, and that adds warmth and dignity to how you commit.
 
----
+### House 8 · Sagittarius · Transformation, depth, shared resources
+**Occupants:** Mars
 
-## Ashtakavarga (Sarvashtakavarga)
+Mars sits here, so you approach research, shared money and big life changes with a purpose. You want to understand why, and you'll dig until you do. Mars also rules your partnerships and your private life, which links them to this house of deep change.
 
-**Total:** 337 · **Average per house:** ~28
+### House 9 · Capricorn · Fortune, dharma, higher learning, father
+**Occupants:** — (empty: this life-area plays out through its ruling planet and aspects)
 
-The 6th house (Libra, 34) scores highest — an unusual signature where daily service and overcoming obstacles are the most naturally supported arena. The 11th (Pisces, 33) and 12th (Aries, 31) also score strong. The 1st and 8th tie lowest at 22.
+No planet sits here. Saturn rules it from your seventh house, so your luck builds through sustained effort and your closest partnerships. Saturn also looks back at this house, which gives your fortune a long-game, patient quality.
+
+### House 10 · Aquarius · Career, status, authority, public role
+**Occupants:** Jupiter
+
+Jupiter sits here, so your career is shaped by big ideas and a concern for something bigger than personal gain. You're drawn to work that serves a wider purpose. Saturn rules this house from your seventh, so your career is also bound up with your closest partner.
+
+### House 11 · Pisces · Gains, networks, aspirations
+**Occupants:** — (empty: this life-area plays out through its ruling planet and aspects)
+
+This house is empty. Jupiter rules it from your tenth house, so your gains and friendships come through the quality of your work. Mars looks at this house from your eighth, which puts energy and drive behind your longer-term hopes. You attract sensitive, creative friends.
+
+### House 12 · Aries · Release, spirituality, seclusion, foreign
+**Occupants:** Mercury, Rahu
+
+Mercury and Rahu share this house, so your private mind is busy and restless. Your ideas form in solitude and carry an urgent, hungry edge, and foreign places and solitary creative work matter to you. Mercury also rules your speech, your money and your creativity, so those all draw on this private space.
+
+## Birth Almanac (Panchanga)
+You were born on a Friday, on the 7th day of the waxing Moon, under the steadfast Dhruva yoga, in an hour ruled by Venus.
+
+*Sunrise 06:26 · Sunset 20:14 · Ayanamsa 22° 13' 00″ (Raman)*
+
+| Limb | Value | What it adds |
+| --- | --- | --- |
+| Vara (weekday) | Friday | Friday belongs to Venus, your chart ruler. You arrived on your own planet's day, so charm, connection and a taste for beauty were there from the first morning. You were born at 06:48, after the 06:26 sunrise, so the traditional day had already turned to Friday. |
+| Tithi (lunar day) | Saptami · Shukla Paksha | The 7th day of the waxing half. The Moon is still building toward full, which fits a person who moves slowly and keeps growing. This day is tied to the Sun, with themes of clarity and vitality. |
+| Nakshatra (star) | Ashlesha · pada 3 | Your Moon's star is Ashlesha, the entwiner. In its third quarter it carries a Gemini flavor: quick, talkative and curious about what's underneath. |
+| Nithya Yoga | Dhruva — "the steadfast" | Dhruva means steadfast, and it points to lasting results. It fits the Taurus patience in your chart: what you build tends to hold. |
+| Karana (half-tithi) | Vanija | Vanija is the merchant half-day. It's linked to trade and practical exchange, and it gives you a shrewd, resourceful streak. |
+| Hora lord (birth hour) | Venus | Venus ruled the hour of your birth, on Venus's own day. That is a double Venus mark on the moment you arrived, which points to ease with people and a warm, creative manner. |
+| Lunar month | Vaisaakha | Vaisaakha falls around April and May, in the spring growth season. It fits a Taurus rising: patient building and earthy abundance. |
+
+## Support Map (Ashtakavarga)
+This map gives every sign points from each planet and adds them up. Your total is 337. A house above about 28 is well supported, and one below about 25 needs more care. Your highest is the 5th house of creativity at 34, then your career at 33 and your house of deep change at 32.
+
+Total 337 bindus across 12 signs · average ~28.
 
 | House | Sign | Bindus | Note |
-|-------|------|--------|------|
-| 1 | Taurus | 22 | Below average — physical vitality and personal resilience benefit from conscious tending. The Sun here adds quality regardless of bindu count. |
-| 2 | Gemini | 27 | Near average — speech and resources are steady; Venus here adds charm and ease. |
-| 3 | Cancer | 25 | Near average — communication and learning are manageable; Moon in own sign here adds instinctive strength. |
-| 4 | Leo | 27 | Near average — home and emotional roots hold steady; Saturn aspects this house from the 7th. |
-| 5 | Virgo | 30 | Strong — creativity and intelligence are well supported. |
-| 6 | Libra | 34 | Chart-highest — daily work and overcoming obstacles are exceptionally well supported. Ketu's karmic mastery in service amplifies this. |
-| 7 | Scorpio | 26 | Near average by bindus — but yogakaraka Saturn here lifts the 7th far beyond what the number alone suggests. |
-| 8 | Sagittarius | 22 | Below average — depth and transformation reward patience and philosophical acceptance; Mars adds drive and purpose. |
-| 9 | Capricorn | 32 | Strong — fortune and dharma are well supported; Saturn aspects this house, reinforcing the long-game quality of your luck. |
-| 10 | Aquarius | 28 | Average — career is steady; Jupiter here provides philosophical depth and long-range vision. |
-| 11 | Pisces | 33 | Strong — gains and networks are well supported; ruled by Jupiter in the 10th, gains flow through meaningful career work. |
-| 12 | Aries | 31 | Strong — the inner life, solitude and private retreat are naturally supported. Mercury and Rahu make this a rich, restless inner world. |
+| --- | --- | :---: | --- |
+| 1st | Taurus | 27 | Close to average at 27. Your sense of self and your energy are steady, and your Sun sits here. |
+| 2nd | Gemini | 25 | A little below average at 25. Money and speech ask for steady effort, and Venus sitting here helps the quality. |
+| 3rd | Cancer | 27 | Near average at 27. Effort and conversation go fine, and your Moon in its own sign adds instinct. |
+| 4th | Leo | 30 | Strong at 30. Home and emotional roots are well supported, and Saturn looks at this house from your seventh. |
+| 5th | Virgo | 34 | Your highest at 34. Creativity, learning and romance are the best-supported parts of your life. |
+| 6th | Libra | 26 | Near average at 26. Daily work and obstacles are manageable, and Ketu here gives you ease with service. |
+| 7th | Scorpio | 22 | Tied for lowest at 22. Partnership asks for more effort, but Saturn here rewards patience and commitment, so it matters more than the number suggests. |
+| 8th | Sagittarius | 32 | Strong at 32. Research, shared money and deep change are well supported, and Mars adds drive. |
+| 9th | Capricorn | 28 | Average at 28. Your fortune is steady, and Saturn looking at this house adds a patient, long-game luck. |
+| 10th | Aquarius | 33 | Strong at 33. Career and public life are well supported, and Jupiter here adds meaning. |
+| 11th | Pisces | 31 | Strong at 31. Gains and friendships are well supported, and they come through meaningful work. |
+| 12th | Aries | 22 | Tied for lowest at 22. Rest and retreat need deliberate care, and Mercury and Rahu make this a restless, busy inner life. |
 
-**Key takeaways:**
-- The 6th (Libra, 34) is chart-highest: daily service and overcoming obstacles is Andrew's most naturally supported arena — amplified by Ketu's karmic mastery there.
-- The 11th (33) and 12th (31) also score strong: gains and the private inner life are well backed.
-- The 9th (32) is strong: fortune rewards sustained effort, reinforced by yogakaraka Saturn's direct aspect.
-- The 1st (22) and 8th (22) tie for lowest: personal vitality and transformative depth both ask for deliberate attention and care.
-- For timing: transiting Jupiter and Saturn tend to give better results moving through high-bindu signs (Libra, Pisces, Aries, Capricorn).
+**What it means:**
+- Creativity and learning are your best-supported area, with 34 points at the 5th house. Ideas and problem-solving come naturally.
+- Career (33), deep research (32) and gains (31) all score high, so work, depth and friendships have strong backing.
+- Partnership and rest tie for lowest at 22 each. Both need deliberate attention, though Saturn gives your partnerships lasting power.
+- For timing, Jupiter and Saturn tend to bring better results as they move through Virgo, Aquarius, Sagittarius, Pisces or Leo.
 
 ---
-
-## Planet Remedies
-
-| Planet | Deity | Mantra | Day | Supports |
-|--------|-------|--------|-----|----------|
-| Sun | Surya | Om Hraam Hreem Hraum Sah Suryaya Namah | Sunday | Vitality, confidence, health, authority |
-| Moon ★ | Chandra / Parvati | Om Shraam Shreem Shraum Sah Chandraya Namah | Monday | Emotions, calm, mind, mother, contentment |
-| Mars | Skanda / Hanuman | Om Kraam Kreem Kraum Sah Bhaumaya Namah | Tuesday | Courage, drive, energy, discipline, protection |
-| Mercury ★ | Vishnu (Budha) | Om Braam Breem Braum Sah Budhaya Namah | Wednesday | Intellect, communication, learning, business |
-| Jupiter ★ | Brihaspati / Brahma | Om Graam Greem Graum Sah Gurave Namah | Thursday | Wisdom, growth, luck, teachers, faith |
-| Venus ★ | Shukra / Lakshmi | Om Draam Dreem Draum Sah Shukraya Namah | Friday | Love, relationships, beauty, comfort, creativity |
-| Saturn | Shani / Hanuman | Om Praam Preem Praum Sah Shanaischaraya Namah | Saturday | Discipline, patience, endurance, long-term work |
-| Rahu ★ | Durga | Om Bhraam Bhreem Bhraum Sah Rahave Namah | Saturday | Ambition, worldly desires, overcoming obstacles |
-| Ketu ★ | Ganesha | Om Sraam Sreem Sraum Sah Ketave Namah | Tuesday | Spirituality, insight, detachment, letting go |
+*Generated from the birth-chart data (VedAstro · Swiss Ephemeris · Raman ayanamsa). Vedic astrology is a symbolic language describing tendencies, not fixed verdicts.*

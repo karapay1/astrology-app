@@ -84,6 +84,11 @@ function toMarkdown(c) {
   L.push(`**System:** ${c.system.ayanamsa} · ${c.system.houseSystem} houses · ${c.system.source}`);
   L.push("");
 
+  if (c.story && c.story.length) {
+    L.push(`## Your story`);
+    [].concat(c.story).forEach((para) => { L.push(para); L.push(""); });
+  }
+
   L.push(`## At a glance`);
   L.push(`- **Ascendant (Lagna):** ${c.ascendant.sign} ${c.ascendant.degree} — nakshatra ${c.ascendant.nakshatra}`);
   L.push(`- **Moon sign (Rashi):** ${moon ? moon.sign : "—"} — your emotional inner world`);
@@ -165,7 +170,7 @@ function toMarkdown(c) {
   }
 
   L.push(`---`);
-  L.push(`*Generated from the birth-chart data (VedAstro · Swiss Ephemeris · Lahiri ayanamsa). Vedic astrology is a symbolic language describing tendencies, not fixed verdicts.*`);
+  L.push(`*Generated from the birth-chart data (VedAstro · Swiss Ephemeris · Raman ayanamsa). Vedic astrology is a symbolic language describing tendencies, not fixed verdicts.*`);
   L.push("");
   return L.join("\n");
 }

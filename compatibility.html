@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chart Compatibility</title>
+  <title>Chart compatibility · Vedic Astrology Birth Chart</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       /* Foreground */
-      --color-foreground-faint:         #706E68;
+      --color-foreground-faint:         #6A6862;  /* 4.52:1 on background-subtle */
       --color-foreground-subtle:        #6F4925;
       --color-foreground-default:       #663100;
       --color-foreground-intense:       #411F00;
@@ -94,7 +94,7 @@
       --text-size-xl: 1.75rem;     /* 28px */
       --text-size-2xl: 2.5rem;     /* 40px */
     }
-    /* Breakpoint convention: 1080px (two-col → one-col) and 720px (smallest).
+    /* Breakpoint convention: 1080px (two-col → one-col) and 768px (smallest) — same as index.html.
        Custom properties can't be used inside @media, so these are literal px. */
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -106,9 +106,30 @@
       line-height: var(--text-line-height-relaxed);
       -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--spacing-8) var(--spacing-7) var(--spacing-12); }
-    @media (max-width: 720px) { .wrap { padding: var(--spacing-6) var(--spacing-4) var(--spacing-9); } }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 0 var(--spacing-12); }
+    @media (max-width: 1080px) { .wrap { padding-left: var(--spacing-6); padding-right: var(--spacing-6); } }
+    /* Focus rings — keyboard only (html.kbd set by script) */
+    :focus { outline: none; }
+    html.kbd :focus-visible { outline: 2px solid var(--color-foreground-intense); outline-offset: 2px; }
+
+    /* ─── SITE HEADER (matches index.html) ─── */
+    .site-header {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-4);
+      padding: var(--spacing-9) 0 var(--spacing-6);
+      border-bottom: 1px solid var(--color-border-default);
+      margin-bottom: var(--spacing-8);
+    }
+    @media (max-width: 768px) { .site-header { padding-top: 28px; } }
+    .site-logo {
+      font-family: var(--font-display); font-size: var(--text-size-md);
+      font-weight: var(--text-weight-xbold); line-height: var(--text-line-height-compressed);
+      color: var(--color-foreground-intense); text-decoration: none;
+    }
+    .site-logo:hover { text-decoration: none; }
+    .back { font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-med);
+      color: var(--color-foreground-intense); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
     h1 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); letter-spacing: var(--text-letter-spacing-tight); font-size: var(--text-size-2xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0; }
+    @media (max-width: 768px) { h1 { font-size: var(--text-size-xl); } }
     h2 { font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-xl); line-height: var(--text-line-height-tight); color: var(--color-foreground-intense); margin: 0; }
     h3 { font-family: var(--font-display); font-weight: var(--text-weight-med); font-size: var(--text-size-sm); line-height: var(--text-line-height-tight); color: var(--color-foreground-default); margin: 0 0 var(--spacing-2); }
     p { margin: 0 0 var(--spacing-3); color: var(--color-foreground-default); font-weight: var(--text-weight-reg); }
@@ -117,8 +138,8 @@
     a { color: var(--color-foreground-subtle); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    header { border-bottom: 1px solid var(--color-border-default); padding-bottom: var(--spacing-6); margin-bottom: var(--spacing-8); }
-    .kicker { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 2px; font-size: var(--text-size-xxs); font-weight: var(--text-weight-bold); color: var(--color-foreground-subtle); margin-bottom: var(--spacing-2); }
+    .section-titles { display: flex; flex-direction: column; gap: var(--spacing-2); margin-bottom: var(--spacing-8); }
+    .section-titles .tab-sub { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-faint); margin: 0; max-width: 720px; }
 
     /* pickers */
     .pickers {
@@ -128,26 +149,27 @@
       align-items: center;
       margin-bottom: var(--spacing-8);
     }
-    @media (max-width: 720px) { .pickers { grid-template-columns: 1fr; } .vs { display: none; } }
+    @media (max-width: 768px) { .pickers { grid-template-columns: 1fr; } .vs { display: none; } }
     .picker-card {
       background: var(--color-background-subtle);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-6);
     }
-    .picker-card label { display: block; font-family: var(--font-base); font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: 1px; font-weight: var(--text-weight-semi); color: var(--color-foreground-faint); margin-bottom: var(--spacing-2); }
+    .picker-card label { display: block; font-family: var(--font-base); font-size: var(--text-size-xs); font-weight: var(--text-weight-semi); line-height: 1.5; color: var(--color-foreground-subtle); margin-bottom: var(--spacing-2); }
     .picker-card select {
+      -webkit-appearance: none; appearance: none;
       width: 100%;
-      background: var(--color-background-default);
+      background: var(--color-background-default) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' stroke='%23663100' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right var(--spacing-4) center;
       color: var(--color-foreground-intense);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
-      padding: var(--spacing-3) var(--spacing-4);
-      font-size: var(--text-size-sm);
-      font-family: var(--font-base);
+      border-radius: 0;
+      padding: var(--spacing-3) calc(var(--spacing-4) + 20px) var(--spacing-3) var(--spacing-4);
+      font-family: var(--font-display); font-weight: var(--text-weight-xbold);
+      font-size: var(--text-size-md); line-height: 1.1;
       cursor: pointer;
     }
-    .picker-card select:focus { outline: none; border-color: var(--color-border-intense); }
+    .picker-card select:focus { border-color: var(--color-foreground-default); }
     .vs { text-align: center; font-family: var(--font-display); font-weight: var(--text-weight-xbold); font-size: var(--text-size-lg); color: var(--color-foreground-faint); }
 
     /* empty state */
@@ -167,12 +189,13 @@
       margin-bottom: var(--spacing-6);
     }
     .section-header h2 { margin: 0; }
+    .section-header h2 { letter-spacing: -0.32px; line-height: 1.1; }
     .section-header .sub { font-family: var(--font-base); font-weight: var(--text-weight-reg); font-size: var(--text-size-xs); line-height: 1.5; color: var(--color-foreground-faint); }
 
     /* summary banner */
     .summary-banner {
       background: var(--color-background-brand-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-7) var(--spacing-7);
       margin-bottom: var(--spacing-8);
     }
@@ -188,7 +211,7 @@
     .overlay-card {
       background: var(--color-background-default);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-6);
     }
     .overlay-card .planet-label {
@@ -196,7 +219,7 @@
     }
     .overlay-card .pill {
       font-family: var(--font-base); font-size: var(--text-size-xxs); font-weight: var(--text-weight-semi); padding: 2px 8px;
-      border-radius: var(--border-radius-sm); text-transform: uppercase; letter-spacing: 0.5px;
+      border-radius: var(--border-radius-sm);
     }
     .pill-a { background: var(--color-background-brand-default); color: var(--color-foreground-intense); }
     .pill-b { background: var(--color-background-brand-subtle); color: var(--color-foreground-intense); }
@@ -209,7 +232,7 @@
     .aspect-row {
       background: var(--color-background-default);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-4) var(--spacing-6);
       display: grid;
       grid-template-columns: auto 1fr;
@@ -238,21 +261,21 @@
       align-items: center;
       margin-bottom: var(--spacing-5);
     }
-    @media (max-width: 720px) { .nak-row { grid-template-columns: 1fr; } .nak-arrow { display: none; } }
+    @media (max-width: 768px) { .nak-row { grid-template-columns: 1fr; } .nak-arrow { display: none; } }
     .nak-card {
       background: var(--color-background-default);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-6);
     }
     .nak-card .name { font-family: var(--font-display); font-size: var(--text-size-lg); font-weight: var(--text-weight-xbold); line-height: 1.1; color: var(--color-foreground-intense); margin-bottom: var(--spacing-1); }
-    .nak-card .detail { font-family: var(--font-base); font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: 1px; color: var(--color-foreground-faint); margin-bottom: var(--spacing-3); }
+    .nak-card .detail { font-family: var(--font-base); font-size: var(--text-size-xs); color: var(--color-foreground-faint); margin-bottom: var(--spacing-3); }
     .nak-card .desc { font-family: var(--font-base); font-size: var(--text-size-xs); color: var(--color-foreground-subtle); line-height: 1.5; }
     .nak-arrow { text-align: center; font-family: var(--font-display); font-size: var(--text-size-lg); color: var(--color-foreground-faint); }
     .nak-compat {
       background: var(--color-background-subtle);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-6);
       margin-top: var(--spacing-3);
     }
@@ -267,10 +290,10 @@
     .element-card {
       background: var(--color-background-default);
       border: 1px solid var(--color-border-default);
-      border-radius: var(--border-radius-sm);
+      border-radius: 0;
       padding: var(--spacing-4) var(--spacing-6);
     }
-    .element-card .el-label { font-family: var(--font-base); font-size: var(--text-size-xxs); text-transform: uppercase; letter-spacing: 1px; color: var(--color-foreground-faint); margin-bottom: var(--spacing-2); }
+    .element-card .el-label { font-family: var(--font-display); font-size: var(--text-size-sm); font-weight: var(--text-weight-xbold); color: var(--color-foreground-intense); margin-bottom: var(--spacing-2); }
     .element-card .el-value { font-family: var(--font-base); font-weight: var(--text-weight-semi); color: var(--color-foreground-intense); margin-bottom: var(--spacing-1); }
     .el-fire   { color: #A03A1E; }
     .el-earth  { color: #5B6E28; }
@@ -278,35 +301,34 @@
     .el-water  { color: #2D6A4F; }
     .element-card .el-note { font-family: var(--font-base); font-size: var(--text-size-xxs); color: var(--color-foreground-subtle); line-height: 1.5; }
 
-    /* back link */
-    .back { font-size: var(--text-size-xs); color: var(--color-foreground-faint); margin-bottom: var(--spacing-5); display: inline-block; }
-    .back a { color: var(--color-foreground-faint); }
-    .back:hover a { color: var(--color-foreground-subtle); }
+
   </style>
 </head>
 <body>
 <div class="wrap">
 
-  <p class="back"><a href="index.html">← Back to charts</a></p>
+  <div class="site-header">
+    <a class="site-logo" href="index.html">Vedic Astrology Birth Chart</a>
+    <a class="back" href="index.html">← Back to charts</a>
+  </div>
 
-  <header>
-    <div class="kicker">Vedic Astrology</div>
-    <h1>Chart Compatibility</h1>
-    <p style="margin-top:var(--spacing-3);color:var(--color-foreground-subtle);font-size:var(--text-size-xs);line-height:1.5;">
+  <div class="section-titles">
+    <h1>Chart compatibility</h1>
+    <p class="tab-sub">
       Synastry — how two charts interact. Pick any two people to see how their planets
       fall in each other's lives, what connections form between them, and the emotional
       texture of the relationship.
     </p>
-  </header>
+  </div>
 
   <div class="pickers">
     <div class="picker-card">
-      <label>Person A</label>
+      <label for="selA">Person A</label>
       <select id="selA"><option value="">— choose —</option></select>
     </div>
     <div class="vs">×</div>
     <div class="picker-card">
-      <label>Person B</label>
+      <label for="selB">Person B</label>
       <select id="selB"><option value="">— choose —</option></select>
     </div>
   </div>
@@ -321,13 +343,26 @@
 </div>
 
 <script src="data/chart-data.js"></script>
+<script src="data/access.js"></script>
 <script>
 (function() {
 
 // ─── data ────────────────────────────────────────────────────────────────────
 
 var DATA = window.VEDIC_DATA || {};
-var CHARTS = DATA.charts || {};
+var ALL_CHARTS = DATA.charts || {};
+// Shared links: only the charts in the link, and only if Compatibility was ticked (cp=1)
+var ACCESS = window.VEDIC_ACCESS.resolve(Object.keys(ALL_CHARTS));
+var CHARTS = {};
+if (ACCESS.compat) ACCESS.allowed.forEach(function(id) { CHARTS[id] = ALL_CHARTS[id]; });
+var BACK = "index.html" + location.search;
+document.querySelectorAll('a[href="index.html"]').forEach(function(a) { a.href = BACK; });
+if (!ACCESS.compat) {
+  document.querySelector(".wrap").innerHTML =
+    "<div class='section-titles'><h1>Compatibility isn't included</h1>" +
+    "<p class='tab-sub'>This link doesn't include the Compatibility page. <a href='" + BACK + "'>Back to the chart</a></p></div>";
+  return;
+}
 
 var SIGN_ELEMENT = {
   Aries:"Fire", Leo:"Fire", Sagittarius:"Fire",
@@ -948,6 +983,10 @@ function onChange() {
   report.style.display = "";
   renderReport(data);
 }
+
+// Keyboard-detected focus rings
+document.addEventListener("keydown", function(e) { if (e.key === "Tab" || e.key.indexOf("Arrow") === 0) document.documentElement.classList.add("kbd"); });
+document.addEventListener("pointerdown", function() { document.documentElement.classList.remove("kbd"); });
 
 populate();
 document.getElementById("selA").addEventListener("change", onChange);
