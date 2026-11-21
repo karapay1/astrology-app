@@ -343,7 +343,9 @@ an image, it must turn into a concrete trait in the same sentence.
 
 Check these before finishing a chart. `node scripts/lint-copy.js <id>` checks
 most of them automatically. If you change a rule here, change it in the lint
-too.
+too. The compatibility page's copy lives in `src/compat-engine.js` and follows
+the same rules with no em dashes at all. `node scripts/lint-copy.js --compat`
+checks every string it can produce, for every pair.
 
 **Em dashes (—)**
 - None in `motto`, `cardBlurb`, `story` or highlight titles.

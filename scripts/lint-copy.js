@@ -6,6 +6,7 @@
  *   node scripts/lint-copy.js            # every chart, summary table
  *   node scripts/lint-copy.js kara       # one chart, every issue listed
  *   node scripts/lint-copy.js kara thor  # several charts, every issue listed
+ *   node scripts/lint-copy.js --compat   # every compatibility-page string, all pairs and relationships
  *
  * Set CHART_DATA=<path> to lint a different copy of the data file.
  * Exit code 1 if any listed chart has errors, so an agent can loop until clean.
@@ -158,6 +159,39 @@ function lint(chart) {
   if (nShared.length) warnings.push(["nakshatra", `card and themes share wording: "${nShared[0]}"`]);
 
   return { errors, warnings, dashes };
+}
+
+// ---------- compatibility page ----------
+// Runs the same sentence rules over every string src/compat-engine.js can
+// produce, for every pair and relationship type.
+function lintText(field, text) {
+  const errors = [];
+  if (/—/.test(text)) errors.push([field, "em dash"]);
+  for (const w of BANNED_WORDS) { const m = text.match(wordRe(w)); if (m) errors.push([field, `banned word "${m[0]}"`]); }
+  if (/\breal\b(?! estate| life| world)/i.test(text)) errors.push([field, `"real" as an intensifier`]);
+  const lower = text.toLowerCase();
+  for (const p of BANNED_PHRASES) if (lower.includes(p)) errors.push([field, `banned phrase "${p}"`]);
+  const contrast = text.match(/\b(is|are|was) not [^.;]{1,60}[;,] (it|this|that|they) (is|are)\b|\bnot [^.,;]{1,40}, but\b|, not [^.,;]{1,30}\./gi);
+  if (contrast) errors.push([field, `contrast reveal "${contrast[0]}"`]);
+  for (const j of JARGON) { const m = text.match(new RegExp(`\\b${j}\\w*`, "gi")); if (m) errors.push([field, `jargon "${m[0]}"`]); }
+  if (/\{\w+\}|undefined|NaN/.test(text)) errors.push([field, "unfilled template"]);
+  return errors;
+}
+if (process.argv[2] === "--compat") {
+  const E = require(path.join(__dirname, "..", "src", "compat-engine.js"));
+  const ids = Object.keys(CHARTS), seen = new Map();
+  let n = 0;
+  for (const a of ids) for (const b of ids) {
+    if (a === b) continue;
+    for (const rel of Object.keys(E.REL)) {
+      const r = E.buildReport(CHARTS[a], CHARTS[b], rel);
+      for (const t of E.allText(r)) { n++; for (const e of lintText(`${a}×${b} ${rel}`, t)) seen.set(e[1] + " | " + t, e[0]); }
+    }
+  }
+  console.log(`Checked ${n} strings across ${ids.length * (ids.length - 1)} ordered pairs.`);
+  for (const [msg, where] of seen) console.log(`  ${where.padEnd(32)} ${msg}`);
+  console.log(seen.size ? `${seen.size} problems.` : "Clean.");
+  process.exit(seen.size ? 1 : 0);
 }
 
 // ---------- run ----------
